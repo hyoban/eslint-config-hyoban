@@ -1,17 +1,17 @@
 {
-  "name": "pkg-placeholder",
+  "name": "eslint-config-hyoban",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@8.15.2",
-  "description": "$description$",
+  "description": "Hyoban's ESLint Config",
   "author": "Stephen Zhou <hi@hyoban.cc>",
   "license": "MIT",
-  "homepage": "https://github.com/hyoban/pkg-placeholder#readme",
+  "homepage": "https://github.com/hyoban/eslint-config-hyoban#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hyoban/pkg-placeholder.git"
+    "url": "git+https://github.com/hyoban/eslint-config-hyoban.git"
   },
-  "bugs": "https://github.com/hyoban/pkg-placeholder/issues",
+  "bugs": "https://github.com/hyoban/eslint-config-hyoban/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
@@ -56,26 +56,39 @@
     },
     "hooks": {
       "before:init": [
-        "pnpm lint",
-        "pnpm typecheck",
-        "pnpm test --run"
+        "pnpm run lint",
+        "pnpm run typecheck",
+        "pnpm run test --run"
       ]
     }
   },
-  "devDependencies": {
-    "@stylistic/eslint-plugin": "^1.6.1",
-    "@types/node": "^20.11.17",
-    "bunchee": "^4.4.6",
+  "peerDependencies": {
     "eslint": "^8.56.0",
+    "typescript": ">=4.7.4"
+  },
+  "dependencies": {
+    "@antfu/install-pkg": "^0.3.1",
+    "@stylistic/eslint-plugin": "^1.6.1",
     "eslint-flat-config": "^1.0.4",
     "eslint-plugin-antfu": "^2.1.2",
     "eslint-plugin-import": "npm:eslint-plugin-i@^2.29.1",
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "eslint-plugin-unicorn": "^51.0.1",
+    "local-pkg": "^0.5.0",
+    "prompts": "^2.4.2",
+    "typescript-eslint": "^7.0.1"
+  },
+  "devDependencies": {
+    "@eslint-react/eslint-plugin": "1.5.4-next.3",
+    "@next/eslint-plugin-next": "^14.1.0",
+    "@types/node": "^20.11.17",
+    "@types/prompts": "^2.4.9",
+    "bunchee": "^4.4.6",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "release-it": "^17.0.3",
     "tsx": "^4.7.1",
     "typescript": "^5.3.3",
-    "typescript-eslint": "^7.0.1",
     "vitest": "^1.2.2"
   }
 }
