@@ -41,9 +41,7 @@ export default async function hyoban(options?: Options) {
 
   await ensurePackages(requiredPackages)
 
-  const finalConfig: UnifiedFlatConfig[] = []
-
-  const basicConfig = config(
+  return config(
     {
       rules: {
         'prefer-template': 'error',
@@ -145,56 +143,49 @@ export default async function hyoban(options?: Options) {
         },
       },
     ],
-  )
-  finalConfig.push(...basicConfig)
-
-  if (react) {
-    const [
-      eslintReact,
-      reactHooks,
-    ] = await Promise.all(
-      requiredReactLintPackages.map(packageName => interopDefault(import(packageName))),
-    )
-    const reactConfig = config(
-      {},
-      [
-        eslintReact.configs.all,
-        {
-          files: [GLOB_TS, GLOB_TSX],
-          rules: {
-            '@eslint-react/naming-convention/filename': ['warn', 'kebab-case'],
-            // Requires type information
-            '@eslint-react/no-leaked-conditional-rendering': 'error',
+    async () => {
+      if (!react)
+        return
+      const [
+        eslintReact,
+        reactHooks,
+      ] = await Promise.all(
+        requiredReactLintPackages.map(packageName => interopDefault(import(packageName))),
+      )
+      return [
+        [
+          eslintReact.configs.all,
+          {
+            files: [GLOB_TS, GLOB_TSX],
+            rules: {
+              '@eslint-react/naming-convention/filename': ['warn', 'kebab-case'],
+              // Requires type information
+              '@eslint-react/no-leaked-conditional-rendering': 'error',
+            },
           },
+        ],
+        {
+          plugins: {
+            'react-hooks': reactHooks,
+          },
+          rules: reactHooks.configs.recommended.rules,
         },
-      ],
-      {
-        plugins: {
-          'react-hooks': reactHooks,
-        },
-        rules: reactHooks.configs.recommended.rules,
-      },
-    ).slice(2)
-    finalConfig.push(...reactConfig)
-  }
-
-  if (next) {
-    const [eslintPluginNext,
-    ] = await Promise.all(
-      requiredNextLintPackages.map(packageName => interopDefault(import(packageName))),
-    )
-
-    const nextConfig = config(
-      {},
-      {
+      ] as UnifiedFlatConfig[]
+    },
+    async () => {
+      if (!next)
+        return
+      const [
+        eslintPluginNext,
+      ] = await Promise.all(
+        requiredNextLintPackages.map(packageName => interopDefault(import(packageName))),
+      )
+      return {
         plugins: {
           '@next/next': eslintPluginNext,
         },
         rules: eslintPluginNext.configs.recommended.rules,
-      },
-    ).slice(2)
-    finalConfig.push(...nextConfig)
-  }
-
-  return finalConfig
+      } as UnifiedFlatConfig
+    },
+  )
 }

@@ -15,8 +15,8 @@ importers:
         specifier: ^1.6.1
         version: 1.6.1(eslint@8.56.0)(typescript@5.3.3)
       eslint-flat-config:
-        specifier: ^1.0.4
-        version: 1.0.4(eslint@8.56.0)(typescript@5.3.3)
+        specifier: ^1.1.1
+        version: 1.1.1(eslint@8.56.0)(typescript@5.3.3)
       eslint-plugin-antfu:
         specifier: ^2.1.2
         version: 2.1.2(eslint@8.56.0)
@@ -2209,8 +2209,8 @@ packages:
       parse-gitignore: 2.0.0
     dev: false
 
-  /eslint-flat-config@1.0.4(eslint@8.56.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-ngZCKLKZST2cl+Gjd35GzhdtdJbtRFtAAPGCClUgiehRZ6aDrRgTFfkLMeWL/xKWEZhVnKDR2PJoJF4avG0YxA==}
+  /eslint-flat-config@1.1.1(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-dyHnEW5/8CkQx45SfVB6AVRSUcypLy3k2q60EW05YhUWDwXBQdMZw+glhGiAP+wECdlBoHVL15XqkwzghamWEg==}
     peerDependencies:
       eslint: ^8.56.0
     dependencies:
