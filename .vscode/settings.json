@@ -1,0 +1,23 @@
+{
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.rules.customizations": [
+    { "rule": "@stylistic/*", "severity": "off" },
+    { "rule": "simple-import-sort/*", "severity": "off" },
+    { "rule": "import/first", "severity": "off" },
+    { "rule": "import/newline-after-import", "severity": "off" },
+    { "rule": "import/no-duplicates", "severity": "off" },
+    { "rule": "antfu/import-dedupe", "severity": "off" }
+  ]
+}

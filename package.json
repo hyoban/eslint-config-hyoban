@@ -1,0 +1,81 @@
+{
+  "name": "pkg-placeholder",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.15.2",
+  "description": "$description$",
+  "author": "Stephen Zhou <hi@hyoban.cc>",
+  "license": "MIT",
+  "homepage": "https://github.com/hyoban/pkg-placeholder#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyoban/pkg-placeholder.git"
+  },
+  "bugs": "https://github.com/hyoban/pkg-placeholder/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc",
+    "test": "vitest",
+    "build": "bunchee",
+    "dev": "bunchee -w",
+    "start": "tsx src/index.ts",
+    "prepublishOnly": "pnpm run build",
+    "release": "release-it"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    },
+    "hooks": {
+      "before:init": [
+        "pnpm lint",
+        "pnpm typecheck",
+        "pnpm test --run"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^1.6.1",
+    "@types/node": "^20.11.17",
+    "bunchee": "^4.4.6",
+    "eslint": "^8.56.0",
+    "eslint-flat-config": "^1.0.4",
+    "eslint-plugin-antfu": "^2.1.2",
+    "eslint-plugin-import": "npm:eslint-plugin-i@^2.29.1",
+    "eslint-plugin-simple-import-sort": "^12.0.0",
+    "eslint-plugin-unicorn": "^51.0.1",
+    "release-it": "^17.0.3",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^7.0.1",
+    "vitest": "^1.2.2"
+  }
+}
