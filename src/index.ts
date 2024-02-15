@@ -21,6 +21,10 @@ const GLOB_TSX = '**/*.?([cm])tsx'
 export type Options = {
   react?: boolean
   next?: boolean
+  typescript?: {
+    strict?: boolean
+    typeChecked?: boolean
+  }
 }
 
 const reactRelatedPackages = ['react', 'react-dom']
@@ -30,20 +34,49 @@ export default async function hyoban(options?: Options) {
   const {
     react = reactRelatedPackages.some(element => isPackageExists(element)),
     next = nextRelatedPackages.some(element => isPackageExists(element)),
+    typescript,
   } = options ?? {}
+
   const requiredPackages = [
     react && '@eslint-react/eslint-plugin',
     react && 'eslint-plugin-react-hooks',
     next && '@next/eslint-plugin-next',
-  ].filter(Boolean) as string[]
-
+  ].filter(Boolean)
   await ensurePackages(requiredPackages)
+
+  const { strict = true, typeChecked = true } = typescript ?? {}
+  const typescriptPresets = strict
+    ? (typeChecked
+        ? [
+            ...tseslint.configs.strictTypeChecked,
+            ...tseslint.configs.stylisticTypeChecked,
+          ]
+        : [
+            ...tseslint.configs.strict,
+            ...tseslint.configs.stylistic,
+          ])
+    : (typeChecked
+        ? [
+            ...tseslint.configs.recommendedTypeChecked,
+            ...tseslint.configs.stylisticTypeChecked,
+          ]
+        : [
+            ...tseslint.configs.recommended,
+            ...tseslint.configs.stylistic,
+          ])
 
   return config(
     {
       rules: {
         'prefer-template': 'error',
         'no-console': ['warn', { allow: ['warn', 'error'] }],
+        'no-restricted-syntax': [
+          'error',
+          {
+            selector: 'TSEnumDeclaration',
+            message: 'We should not use Enum',
+          },
+        ],
       },
     },
     stylistic.configs['recommended-flat'],
@@ -90,24 +123,19 @@ export default async function hyoban(options?: Options) {
       },
     },
     [
-      ...tseslint.configs.strictTypeChecked,
-      ...tseslint.configs.stylisticTypeChecked,
-      {
-        languageOptions: {
-          parserOptions: {
-            project: true,
-            tsconfigRootDir: process.cwd(),
-          },
-        },
-        rules: {
-          'no-restricted-syntax': [
-            'error',
-            {
-              selector: 'TSEnumDeclaration',
-              message: 'We should not use Enum',
+      ...typescriptPresets,
+      typeChecked
+        ? {
+            languageOptions: {
+              parserOptions: {
+                project: true,
+                tsconfigRootDir: process.cwd(),
+              },
             },
-          ],
-
+          }
+        : {},
+      {
+        rules: {
           'no-unused-vars': 'off',
           '@typescript-eslint/no-unused-vars': [
             'error',
@@ -117,26 +145,36 @@ export default async function hyoban(options?: Options) {
             },
           ],
 
-          '@typescript-eslint/no-non-null-assertion': 'off',
-
           '@typescript-eslint/consistent-type-imports': 'error',
           '@typescript-eslint/no-import-type-side-effects': 'error',
-          '@typescript-eslint/consistent-type-exports': 'error',
 
           '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
           '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-
-          '@typescript-eslint/no-misused-promises': [
-            'error',
-            {
-              checksVoidReturn: {
-                arguments: false,
-                attributes: false,
-              },
-            },
-          ],
         },
       },
+      strict
+        ? {
+            rules: {
+              '@typescript-eslint/no-non-null-assertion': 'off',
+            },
+          }
+        : {},
+      typeChecked
+        ? {
+            rules: {
+              '@typescript-eslint/consistent-type-exports': 'error',
+              '@typescript-eslint/no-misused-promises': [
+                'error',
+                {
+                  checksVoidReturn: {
+                    arguments: false,
+                    attributes: false,
+                  },
+                },
+              ],
+            },
+          }
+        : {},
     ],
     async () => {
       if (!react)
@@ -147,11 +185,16 @@ export default async function hyoban(options?: Options) {
         {
           files: [GLOB_TS, GLOB_TSX],
           rules: {
-            '@eslint-react/naming-convention/filename': ['warn', 'kebab-case'],
-            // Requires type information
-            '@eslint-react/no-leaked-conditional-rendering': 'error',
+            '@eslint-react/naming-convention/filename': 'off',
           },
         },
+        typeChecked
+          ? {
+              rules: {
+                '@eslint-react/no-leaked-conditional-rendering': 'error',
+              },
+            }
+          : {},
       ] as UnifiedFlatConfig[]
     },
     async () => {

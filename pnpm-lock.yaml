@@ -4,69 +4,74 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  '@antfu/install-pkg':
-    specifier: ^0.3.1
-    version: 0.3.1
-  '@stylistic/eslint-plugin':
-    specifier: ^1.6.1
-    version: 1.6.1(eslint@8.56.0)(typescript@5.3.3)
-  eslint-flat-config:
-    specifier: ^1.1.6
-    version: 1.1.6(eslint@8.56.0)(typescript@5.3.3)
-  eslint-plugin-antfu:
-    specifier: ^2.1.2
-    version: 2.1.2(eslint@8.56.0)
-  eslint-plugin-import:
-    specifier: npm:eslint-plugin-i@^2.29.1
-    version: /eslint-plugin-i@2.29.1(@typescript-eslint/parser@7.0.1)(eslint@8.56.0)
-  eslint-plugin-simple-import-sort:
-    specifier: ^12.0.0
-    version: 12.0.0(eslint@8.56.0)
-  eslint-plugin-unicorn:
-    specifier: ^51.0.1
-    version: 51.0.1(eslint@8.56.0)
-  local-pkg:
-    specifier: ^0.5.0
-    version: 0.5.0
-  prompts:
-    specifier: ^2.4.2
-    version: 2.4.2
-  typescript-eslint:
-    specifier: ^7.0.1
-    version: 7.0.1(eslint@8.56.0)(typescript@5.3.3)
+importers:
 
-devDependencies:
-  '@eslint-react/eslint-plugin':
-    specifier: 1.5.4-next.5
-    version: 1.5.4-next.5(eslint@8.56.0)(typescript@5.3.3)
-  '@next/eslint-plugin-next':
-    specifier: ^14.1.0
-    version: 14.1.0
-  '@types/node':
-    specifier: ^20.11.17
-    version: 20.11.17
-  '@types/prompts':
-    specifier: ^2.4.9
-    version: 2.4.9
-  bunchee:
-    specifier: ^4.4.6
-    version: 4.4.6(typescript@5.3.3)
-  eslint:
-    specifier: ^8.56.0
-    version: 8.56.0
-  eslint-plugin-react-hooks:
-    specifier: ^4.6.0
-    version: 4.6.0(eslint@8.56.0)
-  tsx:
-    specifier: ^4.7.1
-    version: 4.7.1
-  typescript:
-    specifier: ^5.3.3
-    version: 5.3.3
-  vitest:
-    specifier: ^1.2.2
-    version: 1.2.2(@types/node@20.11.17)
+  .:
+    dependencies:
+      '@antfu/install-pkg':
+        specifier: ^0.3.1
+        version: 0.3.1
+      '@stylistic/eslint-plugin':
+        specifier: ^1.6.1
+        version: 1.6.1(eslint@8.56.0)(typescript@5.3.3)
+      eslint-flat-config:
+        specifier: ^1.1.6
+        version: 1.1.6(eslint@8.56.0)(typescript@5.3.3)
+      eslint-plugin-antfu:
+        specifier: ^2.1.2
+        version: 2.1.2(eslint@8.56.0)
+      eslint-plugin-import:
+        specifier: npm:eslint-plugin-i@^2.29.1
+        version: /eslint-plugin-i@2.29.1(@typescript-eslint/parser@7.0.1)(eslint@8.56.0)
+      eslint-plugin-simple-import-sort:
+        specifier: ^12.0.0
+        version: 12.0.0(eslint@8.56.0)
+      eslint-plugin-unicorn:
+        specifier: ^51.0.1
+        version: 51.0.1(eslint@8.56.0)
+      local-pkg:
+        specifier: ^0.5.0
+        version: 0.5.0
+      prompts:
+        specifier: ^2.4.2
+        version: 2.4.2
+      typescript-eslint:
+        specifier: ^7.0.1
+        version: 7.0.1(eslint@8.56.0)(typescript@5.3.3)
+    devDependencies:
+      '@eslint-react/eslint-plugin':
+        specifier: 1.5.4-next.5
+        version: 1.5.4-next.5(eslint@8.56.0)(typescript@5.3.3)
+      '@next/eslint-plugin-next':
+        specifier: ^14.1.0
+        version: 14.1.0
+      '@total-typescript/ts-reset':
+        specifier: ^0.5.1
+        version: 0.5.1
+      '@types/node':
+        specifier: ^20.11.17
+        version: 20.11.17
+      '@types/prompts':
+        specifier: ^2.4.9
+        version: 2.4.9
+      bunchee:
+        specifier: ^4.4.6
+        version: 4.4.6(typescript@5.3.3)
+      eslint:
+        specifier: ^8.56.0
+        version: 8.56.0
+      eslint-plugin-react-hooks:
+        specifier: ^4.6.0
+        version: 4.6.0(eslint@8.56.0)
+      tsx:
+        specifier: ^4.7.1
+        version: 4.7.1
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+      vitest:
+        specifier: ^1.2.2
+        version: 1.2.2(@types/node@20.11.17)
 
 packages:
 
@@ -928,6 +933,10 @@ packages:
 
   /@swc/types@0.1.5:
     resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
+    dev: true
+
+  /@total-typescript/ts-reset@0.5.1:
+    resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
     dev: true
 
   /@types/eslint@8.56.2:
