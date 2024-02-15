@@ -14,7 +14,7 @@ Hyoban's ESLint Config
 ni -D eslint eslint-config-hyoban
 ```
 
-eslint.config.js
+`eslint.config.js`
 
 ```js
 import hyoban from "eslint-config-hyoban"
@@ -28,6 +28,34 @@ for cjs
 const hyoban = require("eslint-config-hyoban").default
 
 module.exports = hyoban()
+```
+
+`.vscode/settings.json`
+
+```json
+{
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.rules.customizations": [
+    { "rule": "@stylistic/*", "severity": "off" },
+    { "rule": "simple-import-sort/*", "severity": "off" },
+    { "rule": "import/first", "severity": "off" },
+    { "rule": "import/newline-after-import", "severity": "off" },
+    { "rule": "import/no-duplicates", "severity": "off" },
+    { "rule": "antfu/import-dedupe", "severity": "off" }
+  ]
+}
 ```
 
 ## License
