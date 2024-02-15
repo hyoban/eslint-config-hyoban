@@ -58,7 +58,6 @@ export default async function hyoban(options?: Options) {
       },
     },
     [
-
       eslintPluginUnicorn.configs['flat/recommended'],
       {
         rules: {
@@ -75,9 +74,7 @@ export default async function hyoban(options?: Options) {
     {
       name: 'Import sort',
       plugins: {
-
         'simple-import-sort': simpleImportSort,
-
         'import': eslintPluginImport,
       },
       rules: {

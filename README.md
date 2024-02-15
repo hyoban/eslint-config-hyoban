@@ -6,7 +6,25 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-Hyoban's ESLint Config
+Hyoban's ESLint Config, enable most of the recommended rules from the following plugins:
+
+| Basic        | Style            | React         | Others                 |
+| ------------ | ---------------- | ------------- | ---------------------- |
+| [js] ✅      | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
+| [ts] ✅      | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
+| [unicorn] ✅ | [import-sort] ✅ | [refresh]     | [flat-gitignore] ✅    |
+| [i] ✅       | [jsonc]          | [jsx-nesting] | [config-viewer] ✅     |
+| [n]          | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
+| [compat]     | [perfectionist]  | [next] ✅     | [eslint-types]         |
+
+To view what rules are enabled:
+
+```sh
+npx eslint-flat-config-viewer
+
+# my fork (temporary)
+npx efcv
+```
 
 ## Usage
 
@@ -56,26 +74,6 @@ module.exports = hyoban()
     { "rule": "antfu/import-dedupe", "severity": "off" }
   ]
 }
-```
-
-## Features
-
-| Basic        | Style            | React         | Others                 |
-| ------------ | ---------------- | ------------- | ---------------------- |
-| [js] ✅      | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
-| [ts] ✅      | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
-| [unicorn] ✅ | [import-sort] ✅ | [refresh]     | [flat-gitignore] ✅    |
-| [i] ✅       | [jsonc]          | [jsx-nesting] | [config-viewer] ✅     |
-| [n]          | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
-| [compat]     | [perfectionist]  | [next] ✅     | [eslint-types]         |
-
-visual flat config
-
-```sh
-npx eslint-flat-config-viewer
-
-# my fork (temporary)
-npx efcv
 ```
 
 ## License
