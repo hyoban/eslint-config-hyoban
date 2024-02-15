@@ -25,6 +25,7 @@ export type Options = {
 	typescript?: {
 		strict?: boolean
 		typeChecked?: boolean
+		tsconfigRootDir?: string
 	}
 	style?: StylisticCustomizeOptions
 }
@@ -47,7 +48,11 @@ export default async function hyoban(options?: Options) {
 	].filter(Boolean)
 	await ensurePackages(requiredPackages)
 
-	const { strict = true, typeChecked = true } = typescript ?? {}
+	const {
+		strict = true,
+		typeChecked = true,
+		tsconfigRootDir = process.cwd(),
+	} = typescript ?? {}
 	const typescriptPresets = strict
 		? (typeChecked
 				? [
@@ -132,7 +137,7 @@ export default async function hyoban(options?: Options) {
 						languageOptions: {
 							parserOptions: {
 								project: true,
-								tsconfigRootDir: process.cwd(),
+								tsconfigRootDir,
 							},
 						},
 					}
