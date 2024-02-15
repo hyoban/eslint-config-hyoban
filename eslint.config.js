@@ -3,10 +3,10 @@
 import hyoban from './dist/index.js'
 
 export default hyoban({
-	react: true,
-	next: true,
-	typescript: {
-		strict: true,
-		typeChecked: true,
-	},
+  react: true,
+  next: true,
+  typescript: {
+    strict: true,
+    typeChecked: true,
+  },
 })
