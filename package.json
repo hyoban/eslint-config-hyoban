@@ -41,6 +41,7 @@
     "dist"
   ],
   "scripts": {
+    "prepare": "pnpm run build",
     "lint": "eslint .",
     "typecheck": "tsc",
     "test": "vitest",
