@@ -23,8 +23,6 @@ export type Options = {
   next?: boolean
 }
 
-const requiredReactLintPackages = ['@eslint-react/eslint-plugin', 'eslint-plugin-react-hooks']
-const requiredNextLintPackages = ['@next/eslint-plugin-next']
 const reactRelatedPackages = ['react', 'react-dom']
 const nextRelatedPackages = ['next']
 
@@ -146,40 +144,34 @@ export default async function hyoban(options?: Options) {
     async () => {
       if (!react)
         return
-      const [
-        eslintReact,
-        reactHooks,
-      ] = await Promise.all(
-        requiredReactLintPackages.map(packageName => interopDefault(import(packageName))),
-      )
+      const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
       return [
-        [
-          eslintReact.configs.all,
-          {
-            files: [GLOB_TS, GLOB_TSX],
-            rules: {
-              '@eslint-react/naming-convention/filename': ['warn', 'kebab-case'],
-              // Requires type information
-              '@eslint-react/no-leaked-conditional-rendering': 'error',
-            },
-          },
-        ],
+        eslintReact.configs.all,
         {
-          plugins: {
-            'react-hooks': reactHooks,
+          files: [GLOB_TS, GLOB_TSX],
+          rules: {
+            '@eslint-react/naming-convention/filename': ['warn', 'kebab-case'],
+            // Requires type information
+            '@eslint-react/no-leaked-conditional-rendering': 'error',
           },
-          rules: reactHooks.configs.recommended.rules,
         },
       ] as UnifiedFlatConfig[]
     },
     async () => {
+      if (!react)
+        return
+      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
+      return {
+        plugins: {
+          'react-hooks': reactHooks,
+        },
+        rules: reactHooks.configs.recommended.rules,
+      } as UnifiedFlatConfig
+    },
+    async () => {
       if (!next)
         return
-      const [
-        eslintPluginNext,
-      ] = await Promise.all(
-        requiredNextLintPackages.map(packageName => interopDefault(import(packageName))),
-      )
+      const eslintPluginNext = await interopDefault(import('@next/eslint-plugin-next'))
       return {
         plugins: {
           '@next/next': eslintPluginNext,
