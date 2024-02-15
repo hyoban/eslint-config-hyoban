@@ -47,8 +47,7 @@
     "build": "bunchee",
     "dev": "bunchee -w",
     "start": "tsx src/index.ts",
-    "prepublishOnly": "pnpm run build",
-    "release": "release-it"
+    "prepublishOnly": "pnpm run build"
   },
   "release-it": {
     "git": {
@@ -100,7 +99,6 @@
     "bunchee": "^4.4.6",
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "release-it": "^17.0.3",
     "tsx": "^4.7.1",
     "typescript": "^5.3.3",
     "vitest": "^1.2.2"

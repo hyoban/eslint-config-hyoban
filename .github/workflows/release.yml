@@ -2,24 +2,73 @@ name: Release
 
 permissions:
   contents: write
+  id-token: write
 
 on:
-  push:
-    tags:
-      - "*.*.*"
+  workflow_dispatch:
+    inputs:
+      increment:
+        description: "The release type"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - "major"
+          - "minor"
+          - "patch"
+      preRelease:
+        description: "The pre-release type"
+        required: true
+        default: "not"
+        type: choice
+        options:
+          - "alpha"
+          - "beta"
+          - "rc"
+          - "not"
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18.18.2
+      - name: Git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      - run: npx changelogithub
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Set node
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+
+      - name: Login to NPM
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Setup
+        run: npm i -g @antfu/ni release-it changelogithub should-semantic-release
+
+      - name: Install
+        run: nci
+
+      - name: Pre Release
+        run: if should-semantic-release --verbose ; then release-it ${{ github.event.inputs.increment }} --verbose --preRelease ${{ github.event.inputs.preRelease }} && changelogithub ; fi
+        if: "${{ github.event.inputs.preRelease != 'not' }}"
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Release
+        run: if should-semantic-release --verbose ; then release-it ${{ github.event.inputs.increment }} --verbose && changelogithub ; fi
+        if: "${{ github.event.inputs.preRelease == 'not' }}"
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
