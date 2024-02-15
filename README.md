@@ -8,6 +8,28 @@
 
 Hyoban's ESLint Config
 
+## Usage
+
+```sh
+ni -D eslint eslint-config-hyoban
+```
+
+eslint.config.js
+
+```js
+import hyoban from "eslint-config-hyoban"
+
+export default hyoban()
+```
+
+for cjs
+
+```js
+const hyoban = require("eslint-config-hyoban").default
+
+module.exports = hyoban()
+```
+
 ## License
 
 [MIT](./LICENSE) License © 2023-PRESENT [Stephen Zhou](https://github.com/hyoban)
