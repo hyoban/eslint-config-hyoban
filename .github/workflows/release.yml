@@ -54,20 +54,20 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Setup
-        run: npm i -g @antfu/ni release-it changelogithub should-semantic-release
+        run: npm i -g @antfu/ni release-it changelogithub
 
       - name: Install
         run: nci
 
       - name: Pre Release
-        run: if should-semantic-release --verbose ; then release-it ${{ github.event.inputs.increment }} --verbose --preRelease ${{ github.event.inputs.preRelease }} && changelogithub ; fi
+        run: release-it ${{ github.event.inputs.increment }} --verbose --preRelease ${{ github.event.inputs.preRelease }} && changelogithub
         if: "${{ github.event.inputs.preRelease != 'not' }}"
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Release
-        run: if should-semantic-release --verbose ; then release-it ${{ github.event.inputs.increment }} --verbose && changelogithub ; fi
+        run: release-it ${{ github.event.inputs.increment }} --verbose && changelogithub
         if: "${{ github.event.inputs.preRelease == 'not' }}"
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
