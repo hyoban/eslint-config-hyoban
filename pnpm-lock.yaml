@@ -15,8 +15,8 @@ importers:
         specifier: ^1.6.1
         version: 1.6.1(eslint@8.56.0)(typescript@5.3.3)
       eslint-flat-config:
-        specifier: ^1.1.1
-        version: 1.1.1(eslint@8.56.0)(typescript@5.3.3)
+        specifier: ^1.1.6
+        version: 1.1.6(eslint@8.56.0)(typescript@5.3.3)
       eslint-plugin-antfu:
         specifier: ^2.1.2
         version: 2.1.2(eslint@8.56.0)
@@ -973,8 +973,8 @@ packages:
     resolution: {integrity: sha512-OLvgeBv3vXlnnJGIAgCLYKjgMEU+wBGj07MQ/nxAaON+3mLzX7mJbhRYrVGiVvFiXtwFlkcBa/TtmglHy0UbzQ==}
     engines: {node: ^16.0.0 || >=18.0.0}
     peerDependencies:
-      '@typescript-eslint/parser': '>=7.0.1'
-      eslint: '>=8.56.0'
+      '@typescript-eslint/parser': ^7.0.0
+      eslint: ^8.56.0
       typescript: '*'
     peerDependenciesMeta:
       typescript:
@@ -1579,8 +1579,8 @@ packages:
       parse-gitignore: 2.0.0
     dev: false
 
-  /eslint-flat-config@1.1.1(eslint@8.56.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-dyHnEW5/8CkQx45SfVB6AVRSUcypLy3k2q60EW05YhUWDwXBQdMZw+glhGiAP+wECdlBoHVL15XqkwzghamWEg==}
+  /eslint-flat-config@1.1.6(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-lVda9GzTSLZg2Z943E9UaAiBFK14iKJwUHCf6EkSg5ljBlmm+wtX0T09KXGrL38dCGmMsM7gakiI+LfXJf6ghA==}
     peerDependencies:
       eslint: ^8.56.0
     dependencies:
