@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-hyoban",
   "type": "module",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "packageManager": "pnpm@8.15.2",
   "description": "Hyoban's ESLint Config",
   "author": "Stephen Zhou <hi@hyoban.cc>",
