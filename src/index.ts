@@ -87,7 +87,7 @@ export default async function hyoban(options?: Options) {
         ],
       },
     },
-    stylistic.configs.customize(style) as UnifiedFlatConfig,
+    stylistic.configs.customize(style),
     {
       plugins: {
         antfu: eslintPluginAntfu,
