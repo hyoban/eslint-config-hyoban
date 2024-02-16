@@ -31,15 +31,10 @@
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
+      "*": ["./dist/*", "./dist/index.d.ts"]
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "prepare": "pnpm run build",
     "lint": "eslint .",
@@ -51,6 +46,9 @@
     "prepublishOnly": "pnpm run build"
   },
   "release-it": {
+    "plugins": {
+      "release-it-pnpm": {}
+    },
     "git": {
       "commitMessage": "chore: release v${version}"
     },
