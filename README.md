@@ -35,33 +35,39 @@ ni -D eslint eslint-config-hyoban
 `eslint.config.js`
 
 ```js
-import hyoban from "eslint-config-hyoban"
+import hyoban from "eslint-config-hyoban";
 
-export default hyoban()
+export default hyoban();
 ```
 
 for cjs
 
 ```js
-const hyoban = require("eslint-config-hyoban").default
+const hyoban = require("eslint-config-hyoban").default;
 
-module.exports = hyoban()
+module.exports = hyoban();
 ```
 
 `.vscode/settings.json`
 
 ```json
 {
-  "[javascript][javascriptreact][typescript][typescriptreact]": {
-    "editor.formatOnSave": false
-  },
+  "editor.formatOnSave": false,
   "eslint.experimental.useFlatConfig": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "mdx",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "css"
   ],
+
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
@@ -71,7 +77,8 @@ module.exports = hyoban()
     { "rule": "import/first", "severity": "off" },
     { "rule": "import/newline-after-import", "severity": "off" },
     { "rule": "import/no-duplicates", "severity": "off" },
-    { "rule": "antfu/import-dedupe", "severity": "off" }
+    { "rule": "antfu/import-dedupe", "severity": "off" },
+    { "rule": "format/prettier", "severity": "off" }
   ]
 }
 ```

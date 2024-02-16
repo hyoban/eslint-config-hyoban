@@ -8,6 +8,7 @@ import stylistic from '@stylistic/eslint-plugin'
 import type { UnifiedFlatConfig } from 'eslint-flat-config'
 import { config } from 'eslint-flat-config'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
+import format from 'eslint-plugin-format'
 import * as eslintPluginImport from 'eslint-plugin-import'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
@@ -227,5 +228,39 @@ export default async function hyoban(options?: Options) {
         rules: eslintPluginNext.configs.recommended.rules,
       } as UnifiedFlatConfig
     },
+    ...[
+      'css',
+      'json',
+      'jsonc',
+      'json5',
+      {
+        exts: ['md'],
+        parser: 'markdown',
+      },
+      'mdx',
+      'html',
+      {
+        parser: 'yaml',
+        exts: ['yaml', 'yml'],
+      },
+    ].map(element => createFormatter(element)),
   )
+}
+
+function createFormatter(input: { exts: string[], parser: string } | string) {
+  return {
+    files:
+      typeof input === 'string'
+        ? [`**/*.${input}`]
+        : input.exts.map(ext => `**/*.${ext}`),
+    languageOptions: {
+      parser: format.parserPlain,
+    },
+    plugins: {
+      format,
+    },
+    rules: {
+      'format/prettier': ['error', { parser: typeof input === 'string' ? input : input.parser }],
+    },
+  } as UnifiedFlatConfig
 }
