@@ -8,24 +8,14 @@ on:
   workflow_dispatch:
     inputs:
       increment:
-        description: "The release type"
-        required: true
-        default: "patch"
-        type: choice
-        options:
-          - "major"
-          - "minor"
-          - "patch"
+        description: "increment (patch, minor, major, '')"
+        required: false
+        default: ""
+
       preRelease:
-        description: "The pre-release type"
-        required: true
-        default: "not"
-        type: choice
-        options:
-          - "alpha"
-          - "beta"
-          - "rc"
-          - "not"
+        description: "preRelease (alpha, beta, rc, '')"
+        required: false
+        default: ""
 
 jobs:
   release:
@@ -61,14 +51,14 @@ jobs:
 
       - name: Pre Release
         run: release-it ${{ github.event.inputs.increment }} --verbose --preRelease ${{ github.event.inputs.preRelease }} && changelogithub
-        if: "${{ github.event.inputs.preRelease != 'not' }}"
+        if: "${{ github.event.inputs.preRelease != '' }}"
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Release
         run: release-it ${{ github.event.inputs.increment }} --verbose && changelogithub
-        if: "${{ github.event.inputs.preRelease == 'not' }}"
+        if: "${{ github.event.inputs.preRelease == '' }}"
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
