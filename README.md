@@ -52,6 +52,7 @@ module.exports = hyoban();
 
 ```json
 {
+  "prettier.enable": false,
   "editor.formatOnSave": false,
   "eslint.experimental.useFlatConfig": true,
   "eslint.validate": [
@@ -67,7 +68,6 @@ module.exports = hyoban();
     "yaml",
     "css"
   ],
-
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
