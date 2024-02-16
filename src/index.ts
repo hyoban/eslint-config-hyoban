@@ -12,6 +12,7 @@ import format from 'eslint-plugin-format'
 import * as eslintPluginImport from 'eslint-plugin-import'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
+import pluginUnusedImports from 'eslint-plugin-unused-imports'
 import { isPackageExists } from 'local-pkg'
 import tseslint from 'typescript-eslint'
 
@@ -33,6 +34,16 @@ export type Options = {
 
 const reactRelatedPackages = ['react', 'react-dom']
 const nextRelatedPackages = ['next']
+
+const isInEditor = !!(
+  (
+    (process.env.VSCODE_PID
+    ?? (process.env.VSCODE_CWD)
+    ?? process.env.JETBRAINS_IDE)
+    ?? process.env.VIM
+  )
+  && !process.env.CI
+)
 
 export default async function hyoban(options?: Options) {
   const {
@@ -145,15 +156,6 @@ export default async function hyoban(options?: Options) {
         : {},
       {
         rules: {
-          'no-unused-vars': 'off',
-          '@typescript-eslint/no-unused-vars': [
-            'error',
-            {
-              argsIgnorePattern: '^_',
-              varsIgnorePattern: '^_',
-            },
-          ],
-
           '@typescript-eslint/consistent-type-imports': 'error',
           '@typescript-eslint/no-import-type-side-effects': 'error',
 
@@ -185,6 +187,20 @@ export default async function hyoban(options?: Options) {
           }
         : {},
     ],
+    {
+      plugins: {
+        'unused-imports': pluginUnusedImports,
+      },
+      rules: {
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        'unused-imports/no-unused-imports': isInEditor ? 'off' : 'error',
+        'unused-imports/no-unused-vars': [
+          'error',
+          { args: 'after-used', argsIgnorePattern: '^_', vars: 'all', varsIgnorePattern: '^_' },
+        ],
+      },
+    },
     async () => {
       if (!react)
         return

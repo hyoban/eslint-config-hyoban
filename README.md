@@ -8,14 +8,15 @@
 
 Hyoban's ESLint Config, enable most of the recommended rules from the following plugins:
 
-| Basic        | Style            | React         | Others                 |
-| ------------ | ---------------- | ------------- | ---------------------- |
-| [js] ✅      | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
-| [ts] ✅      | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
-| [unicorn] ✅ | [import-sort] ✅ | [refresh]     | [flat-gitignore] ✅    |
-| [i] ✅       | [jsonc]          | [jsx-nesting] | [config-viewer] ✅     |
-| [n]          | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
-| [compat]     | [perfectionist]  | [next] ✅     | [eslint-types]         |
+| Basic              | Style            | React         | Others                 |
+| ------------------ | ---------------- | ------------- | ---------------------- |
+| [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
+| [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
+| [unicorn] ✅       | [import-sort] ✅ | [refresh]     | [flat-gitignore] ✅    |
+| [i] ✅             | [jsonc]          | [jsx-nesting] | [config-viewer] ✅     |
+| [unused-import] ✅ | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
+| [n]                | [perfectionist]  | [next] ✅     | [eslint-types]         |
+| [compat]           | [format] ✅      |               |                        |
 
 To view what rules are enabled:
 
@@ -121,3 +122,5 @@ module.exports = hyoban();
 [config-viewer]: https://github.com/antfu/eslint-flat-config-viewer
 [@antfu/eslint-config]: https://github.com/antfu/eslint-config
 [eslint-types]: https://github.com/eslint-types
+[format]: https://github.com/antfu/eslint-plugin-format
+[unused-import]: https://github.com/sweepline/eslint-plugin-unused-imports
