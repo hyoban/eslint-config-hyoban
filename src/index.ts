@@ -35,16 +35,6 @@ export type Options = {
 const reactRelatedPackages = ['react', 'react-dom']
 const nextRelatedPackages = ['next']
 
-const isInEditor = !!(
-  (
-    (process.env.VSCODE_PID
-    ?? (process.env.VSCODE_CWD)
-    ?? process.env.JETBRAINS_IDE)
-    ?? process.env.VIM
-  )
-  && !process.env.CI
-)
-
 export default async function hyoban(options?: Options) {
   const {
     react = reactRelatedPackages.some(element => isPackageExists(element)),
@@ -194,7 +184,7 @@ export default async function hyoban(options?: Options) {
       rules: {
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
-        'unused-imports/no-unused-imports': isInEditor ? 'off' : 'error',
+        'unused-imports/no-unused-imports': 'error',
         'unused-imports/no-unused-vars': [
           'error',
           { args: 'after-used', argsIgnorePattern: '^_', vars: 'all', varsIgnorePattern: '^_' },
