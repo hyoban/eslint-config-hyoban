@@ -62,7 +62,7 @@ importers:
         version: 2.4.9
       bunchee:
         specifier: ^4.4.6
-        version: 4.4.6(typescript@5.3.3)
+        version: 4.4.8(typescript@5.3.3)
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
@@ -1353,8 +1353,8 @@ packages:
     resolution: {integrity: sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw==}
     engines: {node: '>=6'}
 
-  /bunchee@4.4.6(typescript@5.3.3):
-    resolution: {integrity: sha512-sRYDasLVGtxv/KmnRrlFpCCt23l3tZHi2ZhBlzJLmuT7c5ULorf2iJfFJzoH0g5hCgtgwkvPuO49EGFCVCVlWQ==}
+  /bunchee@4.4.8(typescript@5.3.3):
+    resolution: {integrity: sha512-YfGENthKSPF94+vJqnV51yDwTv5r6YZoBISJBe6ZeD167QL+iwgpMk2IaZzLgawJGCcoybOqII5sRchALWHhEw==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
     peerDependencies:
