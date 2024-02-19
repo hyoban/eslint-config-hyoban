@@ -3,6 +3,7 @@
 
 import process from 'node:process'
 
+import * as pluginPackageJson from '@hyoban/eslint-plugin-package-json'
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import stylistic from '@stylistic/eslint-plugin'
 import type { UnifiedFlatConfig } from 'eslint-flat-config'
@@ -10,9 +11,11 @@ import { config } from 'eslint-flat-config'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
 import format from 'eslint-plugin-format'
 import * as eslintPluginImport from 'eslint-plugin-import'
+import pluginJsonc from 'eslint-plugin-jsonc'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import pluginUnusedImports from 'eslint-plugin-unused-imports'
+import parserJsonc from 'jsonc-eslint-parser'
 import { isPackageExists } from 'local-pkg'
 import tseslint from 'typescript-eslint'
 
@@ -20,6 +23,10 @@ import { ensurePackages, interopDefault } from './utils'
 
 const GLOB_TS = '**/*.?([cm])ts'
 const GLOB_TSX = '**/*.?([cm])tsx'
+
+const GLOB_JSON = '**/*.json'
+const GLOB_JSON5 = '**/*.json5'
+const GLOB_JSONC = '**/*.jsonc'
 
 export type Options = {
   react?: boolean
@@ -191,6 +198,66 @@ export default async function hyoban(options?: Options) {
         ],
       },
     },
+    {
+      files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
+      plugins: {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        jsonc: pluginJsonc as any,
+      },
+      languageOptions: {
+        parser: parserJsonc,
+      },
+      rules: {
+        'jsonc/no-bigint-literals': 'error',
+        'jsonc/no-binary-expression': 'error',
+        'jsonc/no-binary-numeric-literals': 'error',
+        'jsonc/no-dupe-keys': 'error',
+        'jsonc/no-escape-sequence-in-identifier': 'error',
+        'jsonc/no-floating-decimal': 'error',
+        'jsonc/no-hexadecimal-numeric-literals': 'error',
+        'jsonc/no-infinity': 'error',
+        'jsonc/no-multi-str': 'error',
+        'jsonc/no-nan': 'error',
+        'jsonc/no-number-props': 'error',
+        'jsonc/no-numeric-separators': 'error',
+        'jsonc/no-octal': 'error',
+        'jsonc/no-octal-escape': 'error',
+        'jsonc/no-octal-numeric-literals': 'error',
+        'jsonc/no-parenthesized': 'error',
+        'jsonc/no-plus-sign': 'error',
+        'jsonc/no-regexp-literals': 'error',
+        'jsonc/no-sparse-arrays': 'error',
+        'jsonc/no-template-literals': 'error',
+        'jsonc/no-undefined-value': 'error',
+        'jsonc/no-unicode-codepoint-escapes': 'error',
+        'jsonc/no-useless-escape': 'error',
+        'jsonc/space-unary-ops': 'error',
+        'jsonc/valid-json-number': 'error',
+        'jsonc/vue-custom-block/no-parsing-error': 'error',
+
+        'jsonc/array-bracket-spacing': ['error', 'never'],
+        'jsonc/comma-dangle': ['error', 'never'],
+        'jsonc/comma-style': ['error', 'last'],
+        'jsonc/indent': ['error', style?.indent ?? 2],
+        'jsonc/key-spacing': ['error', { afterColon: true, beforeColon: false }],
+        'jsonc/object-curly-newline': ['error', { consistent: true, multiline: true }],
+        'jsonc/object-curly-spacing': ['error', 'always'],
+        'jsonc/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
+        'jsonc/quote-props': 'error',
+        'jsonc/quotes': 'error',
+      },
+    },
+    {
+      files: ['package.json'],
+      languageOptions: {
+        parser: parserJsonc,
+      },
+      plugins: {
+        // @ts-expect-error ignore
+        'package-json': pluginPackageJson,
+      },
+      rules: pluginPackageJson.configs.recommended.rules,
+    },
     async () => {
       if (!react)
         return
@@ -236,9 +303,6 @@ export default async function hyoban(options?: Options) {
     },
     ...[
       'css',
-      'json',
-      'jsonc',
-      'json5',
       {
         exts: ['md'],
         parser: 'markdown',
