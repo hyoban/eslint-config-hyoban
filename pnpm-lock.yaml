@@ -23,6 +23,9 @@ importers:
       eslint-plugin-antfu:
         specifier: ^2.1.2
         version: 2.1.2(eslint@8.56.0)
+      eslint-plugin-early-return:
+        specifier: ^0.0.5
+        version: 0.0.5(eslint@8.56.0)(typescript@5.3.3)
       eslint-plugin-format:
         specifier: ^0.1.0
         version: 0.1.0(eslint@8.56.0)
@@ -1795,6 +1798,16 @@ packages:
       eslint: '*'
     dependencies:
       eslint: 8.56.0
+    dev: false
+
+  /eslint-plugin-early-return@0.0.5(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-ssHjgwCDrbFIYtzDQoiz6QdEoYO0G5XY5GtHWJjYrXgV40qCyXDSZum6zPS4FD1BUNrY8pFcRP/JIb82KKAhaA==}
+    dependencies:
+      '@typescript-eslint/utils': 7.0.1(eslint@8.56.0)(typescript@5.3.3)
+    transitivePeerDependencies:
+      - eslint
+      - supports-color
+      - typescript
     dev: false
 
   /eslint-plugin-format@0.1.0(eslint@8.56.0):

@@ -9,6 +9,7 @@ import stylistic from '@stylistic/eslint-plugin'
 import type { UnifiedFlatConfig } from 'eslint-flat-config'
 import { config } from 'eslint-flat-config'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
+import pluginEarlyReturn from 'eslint-plugin-early-return'
 import format from 'eslint-plugin-format'
 import * as eslintPluginImport from 'eslint-plugin-import'
 import pluginJsonc from 'eslint-plugin-jsonc'
@@ -118,6 +119,7 @@ export default async function hyoban(options?: Options) {
           'unicorn/no-null': 'off',
           // https://github.com/orgs/web-infra-dev/discussions/10
           'unicorn/prefer-top-level-await': 'off',
+          'unicorn/no-negated-condition': 'off',
         },
       },
     ],
@@ -257,6 +259,14 @@ export default async function hyoban(options?: Options) {
         'package-json': pluginPackageJson,
       },
       rules: pluginPackageJson.configs.recommended.rules,
+    },
+    {
+      plugins: {
+        'early-return': pluginEarlyReturn,
+      },
+      rules: {
+        'early-return/prefer-early-return': 'error',
+      },
     },
     async () => {
       if (!react)
