@@ -67,6 +67,7 @@ module.exports = hyoban();
     "json",
     "jsonc",
     "yaml",
+    "github-actions-workflow",
     "css"
   ],
   "editor.codeActionsOnSave": {
