@@ -255,7 +255,6 @@ export default async function hyoban(options?: Options) {
         parser: parserJsonc,
       },
       plugins: {
-        // @ts-expect-error ignore
         'package-json': pluginPackageJson,
       },
       rules: pluginPackageJson.configs.recommended.rules,
