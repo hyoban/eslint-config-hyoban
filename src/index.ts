@@ -3,7 +3,6 @@
 
 import process from 'node:process'
 
-import * as pluginPackageJson from '@hyoban/eslint-plugin-package-json'
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import stylistic from '@stylistic/eslint-plugin'
 import type { UnifiedFlatConfig } from 'eslint-flat-config'
@@ -13,6 +12,7 @@ import pluginEarlyReturn from 'eslint-plugin-early-return'
 import format from 'eslint-plugin-format'
 import * as eslintPluginImport from 'eslint-plugin-import'
 import pluginJsonc from 'eslint-plugin-jsonc'
+import * as pluginPackageJson from 'eslint-plugin-package-json'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import pluginUnusedImports from 'eslint-plugin-unused-imports'

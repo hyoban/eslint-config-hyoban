@@ -11,9 +11,6 @@ importers:
       '@antfu/install-pkg':
         specifier: ^0.3.1
         version: 0.3.1
-      '@hyoban/eslint-plugin-package-json':
-        specifier: ^0.10.2
-        version: 0.10.2(eslint@8.56.0)(jsonc-eslint-parser@2.4.0)
       '@stylistic/eslint-plugin':
         specifier: ^1.6.2
         version: 1.6.2(eslint@8.56.0)(typescript@5.3.3)
@@ -35,6 +32,9 @@ importers:
       eslint-plugin-jsonc:
         specifier: ^2.13.0
         version: 2.13.0(eslint@8.56.0)
+      eslint-plugin-package-json:
+        specifier: ^0.10.4
+        version: 0.10.4(eslint@8.56.0)(jsonc-eslint-parser@2.4.0)
       eslint-plugin-simple-import-sort:
         specifier: ^12.0.0
         version: 12.0.0(eslint@8.56.0)
@@ -523,21 +523,6 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.1:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
-
-  /@hyoban/eslint-plugin-package-json@0.10.2(eslint@8.56.0)(jsonc-eslint-parser@2.4.0):
-    resolution: {integrity: sha512-XbGC3lqGyzGq/TKiK86f8q6xkDO3fvhFtA+vNVEPsXkPeCEmyKw3sjuerO7hgiix+nMsthINqK4Eg56frnlqJQ==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      eslint: '>=8.0.0'
-      jsonc-eslint-parser: ^2.0.0
-    dependencies:
-      eslint: 8.56.0
-      jsonc-eslint-parser: 2.4.0
-      package-json-validator: 0.6.3
-      semver: 7.5.4
-      sort-package-json: 1.57.0
-      validate-npm-package-name: 5.0.0
-    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -1967,6 +1952,21 @@ packages:
       jsonc-eslint-parser: 2.4.0
       natural-compare: 1.4.0
       synckit: 0.6.2
+    dev: false
+
+  /eslint-plugin-package-json@0.10.4(eslint@8.56.0)(jsonc-eslint-parser@2.4.0):
+    resolution: {integrity: sha512-dape6w9G7hCXDkoVWoPwrQjUK0V6636qAgUPewduXLH9RdEw/y4XGqCyvD5KujlMBQuagadMkxuGNluW0GC4vQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      eslint: '>=8.0.0'
+      jsonc-eslint-parser: ^2.0.0
+    dependencies:
+      eslint: 8.56.0
+      jsonc-eslint-parser: 2.4.0
+      package-json-validator: 0.6.3
+      semver: 7.5.4
+      sort-package-json: 1.57.0
+      validate-npm-package-name: 5.0.0
     dev: false
 
   /eslint-plugin-react-core@1.5.5(eslint@8.56.0)(typescript@5.3.3):

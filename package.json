@@ -82,7 +82,6 @@
   },
   "dependencies": {
     "@antfu/install-pkg": "^0.3.1",
-    "@hyoban/eslint-plugin-package-json": "^0.10.2",
     "@stylistic/eslint-plugin": "^1.6.2",
     "eslint-flat-config": "^1.1.8",
     "eslint-plugin-antfu": "^2.1.2",
@@ -90,6 +89,7 @@
     "eslint-plugin-format": "^0.1.0",
     "eslint-plugin-import": "npm:eslint-plugin-i@^2.29.1",
     "eslint-plugin-jsonc": "^2.13.0",
+    "eslint-plugin-package-json": "^0.10.4",
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "eslint-plugin-unicorn": "^51.0.1",
     "eslint-plugin-unused-imports": "^3.1.0",
