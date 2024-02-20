@@ -260,6 +260,7 @@ export default async function hyoban(options?: Options) {
       rules: {
         ...pluginPackageJson.configs.recommended.rules,
         'package-json/order-properties': 'off',
+        'package-json/sort-collections': 'off',
         'jsonc/sort-array-values': [
           'error',
           {
