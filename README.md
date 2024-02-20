@@ -13,10 +13,10 @@ Hyoban's ESLint Config, enable most of the recommended rules from the following 
 | [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
 | [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
 | [unicorn] ✅       | [import-sort] ✅ | [refresh]     | [flat-gitignore] ✅    |
-| [i] ✅             | [jsonc]          | [jsx-nesting] | [config-viewer] ✅     |
+| [i] ✅             | [jsonc] ✅       | [jsx-nesting] | [config-viewer] ✅     |
 | [unused-import] ✅ | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
 | [n]                | [perfectionist]  | [next] ✅     | [eslint-types]         |
-| [compat]           | [format] ✅      |               |                        |
+| [compat]           | [format] ✅      |               | [package-json] ✅      |
 
 To view what rules are enabled:
 
@@ -125,3 +125,4 @@ module.exports = hyoban();
 [eslint-types]: https://github.com/eslint-types
 [format]: https://github.com/antfu/eslint-plugin-format
 [unused-import]: https://github.com/sweepline/eslint-plugin-unused-imports
+[package-json]: https://github.com/JoshuaKGoldberg/eslint-plugin-package-json
