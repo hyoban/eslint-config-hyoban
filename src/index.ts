@@ -35,6 +35,7 @@ export type Options = {
   typescript?: {
     strict?: boolean
     typeChecked?: boolean
+    project?: string[] | string | boolean | null
     tsconfigRootDir?: string
   }
   style?: StylisticCustomizeOptions
@@ -43,7 +44,12 @@ export type Options = {
 const reactRelatedPackages = ['react', 'react-dom']
 const nextRelatedPackages = ['next']
 
-export default async function hyoban(options?: Options) {
+type ArrayExcludeFirst<T extends unknown[]> = T extends [unknown, ...infer U] ? U : never
+
+export default async function hyoban(
+  options?: Options,
+  ...args: ArrayExcludeFirst<Parameters<typeof config>>
+) {
   const {
     react = reactRelatedPackages.some(element => isPackageExists(element)),
     next = nextRelatedPackages.some(element => isPackageExists(element)),
@@ -61,6 +67,7 @@ export default async function hyoban(options?: Options) {
   const {
     strict = true,
     typeChecked = true,
+    project = true,
     tsconfigRootDir = process.cwd(),
   } = typescript ?? {}
   const typescriptPresets = strict
@@ -147,7 +154,7 @@ export default async function hyoban(options?: Options) {
         ? {
             languageOptions: {
               parserOptions: {
-                project: true,
+                project,
                 tsconfigRootDir,
               },
             },
@@ -403,6 +410,7 @@ export default async function hyoban(options?: Options) {
         exts: ['yaml', 'yml'],
       },
     ].map(element => createFormatter(element)),
+    ...args,
   )
 }
 
