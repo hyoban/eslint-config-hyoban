@@ -23,19 +23,13 @@ try {
       ...packageJsonParsed.scripts,
       prepare: 'simple-git-hooks',
     }
-    fs.writeFileSync('package.json', JSON.stringify(packageJsonParsed, null, 2))
+    fs.writeFileSync('package.json', `${JSON.stringify(packageJsonParsed, null, 2)}\n`)
 
     if (!fs.existsSync('.vscode')) {
       fs.mkdirSync('.vscode')
     }
 
-    if (!fs.existsSync('.vscode/settings.json')) {
-      fs.writeFileSync('.vscode/settings.json', settings as string)
-    }
-    else {
-      const existingSettings = JSON.parse(fs.readFileSync('.vscode/settings.json', 'utf8')) as Record<string, unknown>
-      fs.writeFileSync('.vscode/settings.json', JSON.stringify({ ...existingSettings, ...JSON.parse(settings as string) as Record<string, unknown> }, null, 2))
-    }
+    fs.writeFileSync('.vscode/settings.json', settings as string)
   }).catch(() => {
     console.error('Failed to install required packages')
   })
