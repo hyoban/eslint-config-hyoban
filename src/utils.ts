@@ -27,6 +27,8 @@ export async function ensurePackages(packages: string[]) {
       type: 'confirm',
     },
   ])
-  if (result)
-    await import('@antfu/install-pkg').then(i => i.installPackage(nonExistingPackages, { dev: true }))
+  if (!result)
+    throw new Error('You have to install required packages')
+
+  await import('@antfu/install-pkg').then(i => i.installPackage(nonExistingPackages, { dev: true }))
 }

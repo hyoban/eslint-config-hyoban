@@ -30,8 +30,8 @@ try {
     }
 
     fs.writeFileSync('.vscode/settings.json', settings as string)
-  }).catch(() => {
-    console.error('Failed to install required packages')
+  }).catch((err: Error) => {
+    console.error(err.message)
   })
 }
 catch {
