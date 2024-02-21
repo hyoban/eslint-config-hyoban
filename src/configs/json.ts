@@ -25,6 +25,17 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
     'jsonc/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
   }
 
+  const jsonFormateRulesStrict = {
+    'jsonc/array-bracket-newline': ['error', { minItems: 1 }],
+    'jsonc/array-element-newline': ['error', 'always'],
+    'jsonc/comma-style': ['error', 'last'],
+    'jsonc/indent': ['error', style?.indent ?? 2],
+    'jsonc/key-spacing': ['error', { afterColon: true, beforeColon: false }],
+    'jsonc/object-curly-newline': ['error', { minProperties: 1 }],
+    'jsonc/object-curly-spacing': ['error', 'always'],
+    'jsonc/object-property-newline': 'error',
+  }
+
   return [
     {
       files: [GLOB_JSON],
@@ -75,6 +86,7 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
         parser: parserJsonc,
       },
       rules: {
+        ...jsonFormateRulesStrict as any,
         ...pluginPackageJson.configs.recommended.rules,
         'package-json/order-properties': 'off',
         'package-json/sort-collections': 'off',
