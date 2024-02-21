@@ -343,6 +343,10 @@ export default async function hyoban(
             ],
             pathPattern: '^exports.*$',
           },
+          {
+            order: { type: 'asc' },
+            pathPattern: 'scripts',
+          },
         ],
       },
     },
