@@ -34,6 +34,9 @@
       ]
     }
   },
+  "bin": {
+    "index": "./dist/bin/index.js"
+  },
   "files": [
     "dist"
   ],
