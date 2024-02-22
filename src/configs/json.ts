@@ -9,6 +9,11 @@ import parserJsonc from 'jsonc-eslint-parser'
 import type { Options } from '..'
 
 const GLOB_JSON = '**/*.json'
+const GLOB_SHOULD_BE_JSONC = [
+  '**/tsconfig.json',
+  '**/tsconfig.*.json',
+  '**/.vscode/*.json',
+]
 const GLOB_JSON5 = '**/*.json5'
 const GLOB_JSONC = '**/*.jsonc'
 
@@ -43,7 +48,7 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
   return [
     {
       files: [GLOB_JSON],
-      ignores: ['**/tsconfig.json', '**/tsconfig.*.json'],
+      ignores: GLOB_SHOULD_BE_JSONC,
       plugins: {
         'jsonc': pluginJsonc as any,
         '@stylistic': stylistic,
@@ -57,7 +62,7 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
       },
     },
     {
-      files: [GLOB_JSONC, '**/tsconfig.json', '**/tsconfig.*.json'],
+      files: [GLOB_JSONC, ...GLOB_SHOULD_BE_JSONC],
       plugins: {
         'jsonc': pluginJsonc as any,
         '@stylistic': stylistic,
