@@ -22,6 +22,7 @@ try {
     packageJsonParsed.scripts = {
       ...packageJsonParsed.scripts,
       prepare: 'simple-git-hooks',
+      lint: 'eslint .',
     }
     fs.writeFileSync('package.json', `${JSON.stringify(packageJsonParsed, null, 2)}\n`)
 
