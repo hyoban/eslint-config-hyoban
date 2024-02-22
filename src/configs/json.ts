@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
+import stylistic from '@stylistic/eslint-plugin'
 import type { UnifiedFlatConfig } from 'eslint-flat-config'
 import pluginJsonc from 'eslint-plugin-jsonc'
 import * as pluginPackageJson from 'eslint-plugin-package-json'
@@ -23,6 +23,7 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
     'jsonc/object-curly-newline': ['error', { consistent: true, multiline: true }],
     'jsonc/object-curly-spacing': ['error', 'always'],
     'jsonc/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
+    '@stylistic/eol-last': ['error', 'always'],
   }
 
   const jsonFormateRulesStrict = {
@@ -34,6 +35,7 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
     'jsonc/object-curly-newline': ['error', { minProperties: 1 }],
     'jsonc/object-curly-spacing': ['error', 'always'],
     'jsonc/object-property-newline': 'error',
+    '@stylistic/eol-last': ['error', 'always'],
   }
 
   return [
@@ -41,7 +43,8 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
       files: [GLOB_JSON],
       ignores: ['**/tsconfig.json', '**/tsconfig.*.json'],
       plugins: {
-        jsonc: pluginJsonc as any,
+        'jsonc': pluginJsonc as any,
+        '@stylistic': stylistic,
       },
       languageOptions: {
         parser: parserJsonc,
@@ -54,7 +57,8 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
     {
       files: [GLOB_JSONC, '**/tsconfig.json', '**/tsconfig.*.json'],
       plugins: {
-        jsonc: pluginJsonc as any,
+        'jsonc': pluginJsonc as any,
+        '@stylistic': stylistic,
       },
       languageOptions: {
         parser: parserJsonc,
@@ -67,7 +71,8 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
     {
       files: [GLOB_JSON5],
       plugins: {
-        jsonc: pluginJsonc as any,
+        'jsonc': pluginJsonc as any,
+        '@stylistic': stylistic,
       },
       languageOptions: {
         parser: parserJsonc,
