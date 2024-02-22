@@ -23,6 +23,7 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
     'jsonc/object-curly-newline': ['error', { consistent: true, multiline: true }],
     'jsonc/object-curly-spacing': ['error', 'always'],
     'jsonc/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
+    '@stylistic/no-trailing-spaces': 'error',
     '@stylistic/eol-last': ['error', 'always'],
   }
 
@@ -35,6 +36,7 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
     'jsonc/object-curly-newline': ['error', { minProperties: 1 }],
     'jsonc/object-curly-spacing': ['error', 'always'],
     'jsonc/object-property-newline': 'error',
+    '@stylistic/no-trailing-spaces': 'error',
     '@stylistic/eol-last': ['error', 'always'],
   }
 
