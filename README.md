@@ -33,7 +33,7 @@ npx efcv
 ni -D eslint eslint-config-hyoban
 ```
 
-`eslint.config.js`
+`eslint.config.js` or `eslint.config.mjs` for cjs
 
 ```js
 import hyoban from "eslint-config-hyoban";
@@ -44,9 +44,8 @@ export default hyoban();
 for cjs
 
 ```js
-const hyoban = require("eslint-config-hyoban").default;
-
-module.exports = hyoban();
+// eslint-disable-next-line unicorn/prefer-module, unicorn/no-await-expression-member
+module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 ```
 
 `.vscode/settings.json`
