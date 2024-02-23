@@ -48,45 +48,11 @@ for cjs
 module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 ```
 
-`.vscode/settings.json`
+Initialize setup
 
-```json
-{
-  "prettier.enable": false,
-  "editor.formatOnSave": false,
-  "eslint.experimental.useFlatConfig": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "mdx",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml",
-    "github-actions-workflow",
-    "css"
-  ],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "eslint.rules.customizations": [
-    { "rule": "@stylistic/*", "severity": "off" },
-    { "rule": "simple-import-sort/*", "severity": "off" },
-    { "rule": "import/first", "severity": "off" },
-    { "rule": "import/newline-after-import", "severity": "off" },
-    { "rule": "import/no-duplicates", "severity": "off" },
-    { "rule": "antfu/import-dedupe", "severity": "off" },
-    { "rule": "format/prettier", "severity": "off" }
-  ]
-}
+```sh
+npx eslint-config-hyoban
 ```
-
-## License
-
-[MIT](./LICENSE) License © 2023-PRESENT [Stephen Zhou](https://github.com/hyoban)
 
 [npm-version-src]: https://img.shields.io/npm/v/eslint-config-hyoban?style=flat&colorA=080f12&colorB=1fa669
 [npm-version-href]: https://npmjs.com/package/eslint-config-hyoban
