@@ -41,7 +41,7 @@ import hyoban from "eslint-config-hyoban";
 export default hyoban();
 ```
 
-> ![Note]
+> [!Note]
 > If your ESLint version is less than 8.57.0, you have to use eslint.config.js.
 
 ```js
