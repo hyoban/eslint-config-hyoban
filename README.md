@@ -41,7 +41,8 @@ import hyoban from "eslint-config-hyoban";
 export default hyoban();
 ```
 
-for cjs
+> ![Note]
+> If your ESLint version is less than 8.57.0, you have to use eslint.config.js.
 
 ```js
 // eslint-disable-next-line unicorn/prefer-module, unicorn/no-await-expression-member
