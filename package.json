@@ -98,7 +98,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "lint-staged": "^15.2.2",
     "release-it": "^17.1.1",
-    "release-it-pnpm": "^2.2.3",
+    "release-it-pnpm": "^3.0.0",
     "simple-git-hooks": "^2.9.0",
     "tsx": "^4.7.1",
     "typescript": "^5.3.3",
