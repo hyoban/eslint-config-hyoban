@@ -98,17 +98,24 @@ export default async function hyoban(
         ],
       },
     },
-    stylistic.configs.customize(style),
-    {
-      plugins: {
-        antfu: eslintPluginAntfu,
+    [
+      stylistic.configs.customize(style),
+      {
+        plugins: {
+          antfu: eslintPluginAntfu,
+        },
+        rules: {
+          'antfu/consistent-list-newline': 'error',
+          'antfu/if-newline': 'error',
+          'antfu/top-level-function': 'error',
+        },
       },
-      rules: {
-        'antfu/consistent-list-newline': 'error',
-        'antfu/if-newline': 'error',
-        'antfu/top-level-function': 'error',
+      {
+        rules: {
+          curly: ['error', 'multi-or-nest', 'consistent'],
+        },
       },
-    },
+    ],
     [
       eslintPluginUnicorn.configs['flat/recommended'],
       {

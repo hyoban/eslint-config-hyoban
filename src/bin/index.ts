@@ -26,9 +26,8 @@ try {
     }
     fs.writeFileSync('package.json', `${JSON.stringify(packageJsonParsed, null, 2)}\n`)
 
-    if (!fs.existsSync('.vscode')) {
+    if (!fs.existsSync('.vscode'))
       fs.mkdirSync('.vscode')
-    }
 
     fs.writeFileSync('.vscode/settings.json', settings as string)
   }).catch((err: Error) => {
