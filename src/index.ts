@@ -10,9 +10,10 @@ import { config } from 'eslint-flat-config'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
 import pluginEarlyReturn from 'eslint-plugin-early-return'
 import format from 'eslint-plugin-format'
+import pluginGitHub from 'eslint-plugin-github'
 import * as eslintPluginImport from 'eslint-plugin-import'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
-import eslintPluginUnicorn from 'eslint-plugin-unicorn'
+import pluginUnicorn from 'eslint-plugin-unicorn'
 import pluginUnusedImports from 'eslint-plugin-unused-imports'
 import { isPackageExists } from 'local-pkg'
 import tseslint from 'typescript-eslint'
@@ -117,7 +118,7 @@ export default async function hyoban(
       },
     ],
     [
-      eslintPluginUnicorn.configs['flat/recommended'],
+      pluginUnicorn.configs['flat/recommended'],
       {
         rules: {
           // we should not restrict how we name our variables
@@ -128,6 +129,14 @@ export default async function hyoban(
           // https://github.com/orgs/web-infra-dev/discussions/10
           'unicorn/prefer-top-level-await': 'off',
           'unicorn/no-negated-condition': 'off',
+        },
+      },
+      {
+        plugins: {
+          github: pluginGitHub,
+        },
+        rules: {
+          'github/no-then': 'error',
         },
       },
     ],
