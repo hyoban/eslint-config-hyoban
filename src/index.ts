@@ -89,6 +89,13 @@ export default async function hyoban(
     {
       rules: {
         'prefer-template': 'error',
+        'prefer-destructuring': [
+          'error',
+          {
+            array: false,
+            object: true,
+          },
+        ],
         'no-console': ['warn', { allow: ['warn', 'error'] }],
         'no-restricted-syntax': [
           'error',
@@ -113,7 +120,11 @@ export default async function hyoban(
       },
       {
         rules: {
-          curly: ['error', 'multi-or-nest', 'consistent'],
+          'curly': ['error', 'multi-or-nest', 'consistent'],
+          '@stylistic/jsx-self-closing-comp': ['error', {
+            component: true,
+            html: true,
+          }],
         },
       },
     ],
