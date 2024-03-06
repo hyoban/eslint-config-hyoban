@@ -13,6 +13,8 @@ async function main() {
     execSync('git diff-index --quiet HEAD --')
     try {
       await ensurePackages([
+        'eslint',
+        'eslint-config-hyoban',
         'lint-staged',
         'simple-git-hooks',
       ])
@@ -33,6 +35,9 @@ async function main() {
         fs.mkdirSync('.vscode')
 
       fs.writeFileSync('.vscode/settings.json', settings as string)
+
+      const eslintConfig = `import hyoban from 'eslint-config-hyoban'\n\nexport default hyoban()\n`
+      fs.writeFileSync('eslint.config.js', eslintConfig)
     }
     catch (err) {
       if (err instanceof Error)
