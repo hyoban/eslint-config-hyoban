@@ -210,6 +210,7 @@ export default async function hyoban(
                   },
                 },
               ],
+              '@typescript-eslint/prefer-nullish-coalescing': 'off',
             },
           }
         : {},
