@@ -219,14 +219,6 @@ export default async function hyoban(
           }
         : {},
     ],
-    () => {
-      if (filesDisableTypeChecking.length === 0)
-        return
-      return {
-        ...tseslint.configs.disableTypeChecked,
-        files: filesDisableTypeChecking,
-      }
-    },
     {
       plugins: {
         'unused-imports': pluginUnusedImports,
@@ -306,6 +298,21 @@ export default async function hyoban(
         exts: ['yaml', 'yml'],
       },
     ].map(element => createFormatter(element)),
+    () => {
+      if (filesDisableTypeChecking.length === 0)
+        return
+      return [
+        {
+          ...tseslint.configs.disableTypeChecked,
+          files: filesDisableTypeChecking,
+        },
+        {
+          rules: {
+            '@eslint-react/no-leaked-conditional-rendering': 'off',
+          },
+        },
+      ]
+    },
     ...args,
   )
 }
