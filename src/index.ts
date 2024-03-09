@@ -32,6 +32,7 @@ export type Options = {
     typeChecked?: boolean
     project?: string[] | string | boolean | null
     tsconfigRootDir?: string
+    filesDisableTypeChecking?: string[]
   }
   style?: StylisticCustomizeOptions
 }
@@ -64,6 +65,7 @@ export default async function hyoban(
     typeChecked = true,
     project = true,
     tsconfigRootDir = process.cwd(),
+    filesDisableTypeChecking = [],
   } = typescript ?? {}
   const typescriptPresets = strict
     ? (typeChecked
@@ -213,6 +215,14 @@ export default async function hyoban(
                 },
               ],
               '@typescript-eslint/prefer-nullish-coalescing': 'off',
+            },
+          }
+        : {},
+      filesDisableTypeChecking.length > 0
+        ? {
+            files: filesDisableTypeChecking,
+            rules: {
+              ...tseslint.configs.disableTypeChecked.rules,
             },
           }
         : {},
