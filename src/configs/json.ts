@@ -102,6 +102,7 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
         ...pluginPackageJson.configs.recommended.rules,
         'package-json/order-properties': 'off',
         'package-json/sort-collections': 'off',
+        'package-json/valid-package-def': 'off',
         'jsonc/sort-array-values': [
           'error',
           {
@@ -170,9 +171,9 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
           },
           {
             order: [
-              'types',
               'import',
               'require',
+              'types',
               'default',
             ],
             pathPattern: '^exports.*$',
