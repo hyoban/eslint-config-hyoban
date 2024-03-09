@@ -218,15 +218,18 @@ export default async function hyoban(
             },
           }
         : {},
-      filesDisableTypeChecking.length > 0
-        ? {
-            files: filesDisableTypeChecking,
-            rules: {
-              ...tseslint.configs.disableTypeChecked.rules,
-            },
-          }
-        : {},
+
     ],
+    () => {
+      if (filesDisableTypeChecking.length === 0)
+        return
+      return {
+        files: filesDisableTypeChecking,
+        rules: {
+          ...tseslint.configs.disableTypeChecked.rules,
+        },
+      }
+    },
     {
       plugins: {
         'unused-imports': pluginUnusedImports,
