@@ -218,16 +218,13 @@ export default async function hyoban(
             },
           }
         : {},
-
     ],
     () => {
       if (filesDisableTypeChecking.length === 0)
         return
       return {
+        ...tseslint.configs.disableTypeChecked,
         files: filesDisableTypeChecking,
-        rules: {
-          ...tseslint.configs.disableTypeChecked.rules,
-        },
       }
     },
     {
