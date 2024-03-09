@@ -5,7 +5,7 @@ import process from 'node:process'
 
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import stylistic from '@stylistic/eslint-plugin'
-import type { UnifiedFlatConfig } from 'eslint-flat-config'
+import type { ConfigOptions, UnifiedFlatConfig } from 'eslint-flat-config'
 import { config } from 'eslint-flat-config'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
 import pluginEarlyReturn from 'eslint-plugin-early-return'
@@ -42,7 +42,7 @@ const nextRelatedPackages = ['next']
 type ArrayExcludeFirst<T extends unknown[]> = T extends [unknown, ...infer U] ? U : never
 
 export default async function hyoban(
-  options?: Options,
+  options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
   ...args: ArrayExcludeFirst<Parameters<typeof config>>
 ) {
   const {
@@ -87,6 +87,8 @@ export default async function hyoban(
 
   return config(
     {
+      ignores: options?.ignores,
+      ignoreFiles: options?.ignoreFiles,
       rules: {
         'prefer-template': 'error',
         'prefer-destructuring': [
