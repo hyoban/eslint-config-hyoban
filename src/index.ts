@@ -8,9 +8,9 @@ import stylistic from '@stylistic/eslint-plugin'
 import type { ConfigOptions, UnifiedFlatConfig } from 'eslint-flat-config'
 import { config } from 'eslint-flat-config'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
-import pluginEarlyReturn from 'eslint-plugin-early-return'
 import format from 'eslint-plugin-format'
 import pluginGitHub from 'eslint-plugin-github'
+import pluginHyoban from 'eslint-plugin-hyoban'
 import * as eslintPluginImport from 'eslint-plugin-import'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import pluginUnicorn from 'eslint-plugin-unicorn'
@@ -236,10 +236,11 @@ export default async function hyoban(
     ...json({ style }),
     {
       plugins: {
-        'early-return': pluginEarlyReturn,
+        hyoban: pluginHyoban,
       },
       rules: {
-        'early-return/prefer-early-return': 'error',
+        'hyoban/prefer-early-return': 'error',
+        'hyoban/no-extra-space-jsx-expression': 'error',
       },
     },
     async () => {
