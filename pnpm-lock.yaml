@@ -27,8 +27,8 @@ importers:
         specifier: ^4.10.2
         version: 4.10.2(@types/eslint@8.56.5)(eslint@8.57.0)(typescript@5.4.2)
       eslint-plugin-hyoban:
-        specifier: ^0.2.2
-        version: 0.2.2(eslint@8.57.0)(typescript@5.4.2)
+        specifier: ^0.2.4
+        version: 0.2.4(eslint@8.57.0)(typescript@5.4.2)
       eslint-plugin-import:
         specifier: npm:eslint-plugin-i@^2.29.1
         version: /eslint-plugin-i@2.29.1(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)
@@ -3216,8 +3216,8 @@ packages:
       - typescript
     dev: false
 
-  /eslint-plugin-hyoban@0.2.2(eslint@8.57.0)(typescript@5.4.2):
-    resolution: {integrity: sha512-Vh22t3VMgB+iTy9ban6sij+qFWRYO19J2UgOpN1xroZeXlQOavIrCSs6XZ8eqM2m3AVZJUuyyPxJXXVBgSAFOg==}
+  /eslint-plugin-hyoban@0.2.4(eslint@8.57.0)(typescript@5.4.2):
+    resolution: {integrity: sha512-2jMyyDhOu3YlGYYF3RAYXznAHH46Cxpp72PsFk6ZrNYW88O5Iw5tKEo1q6p1uKX+8x7gPxVg8ZpMoKnbyD8Xvg==}
     dependencies:
       '@typescript-eslint/utils': 7.1.1(eslint@8.57.0)(typescript@5.4.2)
     transitivePeerDependencies:
