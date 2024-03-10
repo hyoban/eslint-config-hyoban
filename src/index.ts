@@ -253,6 +253,8 @@ export default async function hyoban(
           files: [GLOB_TS, GLOB_TSX],
           rules: {
             '@eslint-react/naming-convention/filename': 'off',
+            '@eslint-react/ensure-use-memo-has-non-empty-deps': 'off',
+            '@eslint-react/ensure-use-callback-has-non-empty-deps': 'off',
           },
         },
         typeChecked
