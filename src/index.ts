@@ -61,8 +61,8 @@ export default async function hyoban(
   await ensurePackages(requiredPackages)
 
   const {
-    strict = true,
-    typeChecked = true,
+    strict = false,
+    typeChecked = false,
     project = true,
     tsconfigRootDir = process.cwd(),
     filesDisableTypeChecking = [],
