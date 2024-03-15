@@ -87,8 +87,6 @@ export default async function hyoban(
             ...tseslint.configs.stylistic,
           ])
 
-  const sharedStylisticConfig = stylistic.configs.customize(style)
-
   return config(
     {
       ignores: options?.ignores,
@@ -113,10 +111,9 @@ export default async function hyoban(
       },
     },
     [
+      stylistic.configs.customize(style),
       {
-        ...sharedStylisticConfig,
         rules: {
-          ...sharedStylisticConfig.rules,
           '@stylistic/jsx-self-closing-comp': ['error', {
             component: true,
             html: true,
