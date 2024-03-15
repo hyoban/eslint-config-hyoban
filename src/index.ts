@@ -25,16 +25,16 @@ const GLOB_TS = '**/*.?([cm])ts'
 const GLOB_TSX = '**/*.?([cm])tsx'
 
 export type Options = {
-  react?: boolean
-  next?: boolean
+  react?: boolean,
+  next?: boolean,
   typescript?: {
-    strict?: boolean
-    typeChecked?: boolean
-    project?: string[] | string | boolean | null
-    tsconfigRootDir?: string
-    filesDisableTypeChecking?: string[]
-  }
-  style?: StylisticCustomizeOptions
+    strict?: boolean,
+    typeChecked?: boolean,
+    project?: string[] | string | boolean | null,
+    tsconfigRootDir?: string,
+    filesDisableTypeChecking?: string[],
+  },
+  style?: StylisticCustomizeOptions,
 }
 
 const reactRelatedPackages = ['react', 'react-dom']
@@ -87,6 +87,8 @@ export default async function hyoban(
             ...tseslint.configs.stylistic,
           ])
 
+  const sharedStylisticConfig = stylistic.configs.customize(style)
+
   return config(
     {
       ignores: options?.ignores,
@@ -111,7 +113,21 @@ export default async function hyoban(
       },
     },
     [
-      stylistic.configs.customize(style),
+      {
+        ...sharedStylisticConfig,
+        rules: {
+          ...sharedStylisticConfig.rules,
+          '@stylistic/jsx-self-closing-comp': ['error', {
+            component: true,
+            html: true,
+          }],
+          '@stylistic/member-delimiter-style': ['error', {
+            multiline: { delimiter: 'comma', requireLast: true },
+            singleline: { delimiter: 'comma', requireLast: false },
+            multilineDetection: 'brackets',
+          }],
+        },
+      },
       {
         plugins: {
           antfu: eslintPluginAntfu,
@@ -120,15 +136,7 @@ export default async function hyoban(
           'antfu/consistent-list-newline': 'error',
           'antfu/if-newline': 'error',
           'antfu/top-level-function': 'error',
-        },
-      },
-      {
-        rules: {
           'curly': ['error', 'multi-or-nest', 'consistent'],
-          '@stylistic/jsx-self-closing-comp': ['error', {
-            component: true,
-            html: true,
-          }],
         },
       },
     ],
