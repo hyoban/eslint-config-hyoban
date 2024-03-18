@@ -29,7 +29,7 @@ export type Options = {
   next?: boolean,
   typescript?: {
     strict?: boolean,
-    typeChecked?: boolean,
+    typeChecked?: boolean | 'essential',
     project?: string[] | string | boolean | null,
     tsconfigRootDir?: string,
     filesDisableTypeChecking?: string[],
@@ -62,7 +62,7 @@ export default async function hyoban(
 
   const {
     strict = false,
-    typeChecked = false,
+    typeChecked = 'essential',
     project = true,
     tsconfigRootDir = process.cwd(),
     filesDisableTypeChecking = [],
@@ -92,15 +92,7 @@ export default async function hyoban(
       ignores: options?.ignores,
       ignoreFiles: options?.ignoreFiles,
       rules: {
-        'prefer-template': 'error',
-        'prefer-destructuring': [
-          'error',
-          {
-            array: false,
-            object: true,
-          },
-        ],
-        'no-console': ['warn', { allow: ['warn', 'error'] }],
+        'no-console': ['error', { allow: ['warn', 'error'] }],
         'no-restricted-syntax': [
           'error',
           {
@@ -134,6 +126,14 @@ export default async function hyoban(
           'antfu/if-newline': 'error',
           'antfu/top-level-function': 'error',
           'curly': ['error', 'multi-or-nest', 'consistent'],
+          'prefer-template': 'error',
+          'prefer-destructuring': [
+            'error',
+            {
+              array: false,
+              object: true,
+            },
+          ],
         },
       },
     ],
@@ -197,6 +197,12 @@ export default async function hyoban(
 
           '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
           '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+
+          // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
+          '@typescript-eslint/method-signature-style': [
+            'error',
+            'property',
+          ],
         },
       },
       strict
@@ -207,21 +213,27 @@ export default async function hyoban(
           }
         : {},
       typeChecked
-        ? {
-            rules: {
-              '@typescript-eslint/consistent-type-exports': 'error',
-              '@typescript-eslint/no-misused-promises': [
-                'error',
-                {
-                  checksVoidReturn: {
-                    arguments: false,
-                    attributes: false,
-                  },
+        ? (typeChecked === 'essential'
+            ? {
+                rules: {
+                  '@typescript-eslint/no-floating-promises': 'error',
                 },
-              ],
-              '@typescript-eslint/prefer-nullish-coalescing': 'off',
-            },
-          }
+              }
+            : {
+                rules: {
+                  '@typescript-eslint/consistent-type-exports': 'error',
+                  '@typescript-eslint/no-misused-promises': [
+                    'error',
+                    {
+                      checksVoidReturn: {
+                        arguments: false,
+                        attributes: false,
+                      },
+                    },
+                  ],
+                  '@typescript-eslint/prefer-nullish-coalescing': 'off',
+                },
+              })
         : {},
     ],
     {
