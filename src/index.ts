@@ -93,6 +93,7 @@ export default async function hyoban(
       ignoreFiles: options?.ignoreFiles,
       rules: {
         'no-console': ['error', { allow: ['warn', 'error'] }],
+        // https://youtu.be/XTXPKbPcvl4?si=J_2E9dM25sAEXM2x
         'no-restricted-syntax': [
           'error',
           {
@@ -216,21 +217,16 @@ export default async function hyoban(
         ? (typeChecked === 'essential'
             ? {
                 rules: {
+                  // https://youtu.be/OVNQWzdhCQA?si=PvPOOgtGW5H4uRB7
+                  '@typescript-eslint/await-thenable': 'error',
                   '@typescript-eslint/no-floating-promises': 'error',
+                  '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: { arguments: false, attributes: false } }],
                 },
               }
             : {
                 rules: {
                   '@typescript-eslint/consistent-type-exports': 'error',
-                  '@typescript-eslint/no-misused-promises': [
-                    'error',
-                    {
-                      checksVoidReturn: {
-                        arguments: false,
-                        attributes: false,
-                      },
-                    },
-                  ],
+                  '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: { arguments: false, attributes: false } }],
                   '@typescript-eslint/prefer-nullish-coalescing': 'off',
                 },
               })
