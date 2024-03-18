@@ -11,13 +11,11 @@ import eslintPluginAntfu from 'eslint-plugin-antfu'
 import format from 'eslint-plugin-format'
 import pluginGitHub from 'eslint-plugin-github'
 import pluginHyoban from 'eslint-plugin-hyoban'
-import * as eslintPluginImport from 'eslint-plugin-import'
-import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import pluginUnicorn from 'eslint-plugin-unicorn'
-import pluginUnusedImports from 'eslint-plugin-unused-imports'
 import { isPackageExists } from 'local-pkg'
 import tseslint from 'typescript-eslint'
 
+import { imports } from './configs/imports'
 import { json } from './configs/json'
 import { ensurePackages, interopDefault } from './utils'
 
@@ -162,24 +160,6 @@ export default async function hyoban(
         },
       },
     ],
-    {
-      name: 'Import sort',
-      plugins: {
-        'simple-import-sort': simpleImportSort,
-        'import': eslintPluginImport,
-      },
-      rules: {
-        'simple-import-sort/imports': 'error',
-        'simple-import-sort/exports': 'error',
-        'import/first': 'error',
-        'import/newline-after-import': 'error',
-        'import/no-duplicates': 'error',
-        'antfu/import-dedupe': 'error',
-
-        'antfu/no-import-dist': 'error',
-        'antfu/no-import-node-modules-by-path': 'error',
-      },
-    },
     [
       ...typescriptPresets,
       typeChecked
@@ -194,6 +174,20 @@ export default async function hyoban(
         : {},
       {
         rules: {
+          'no-unused-vars': 'off',
+          '@typescript-eslint/no-unused-vars': [
+            'error',
+            {
+              args: 'all',
+              argsIgnorePattern: '^_',
+              caughtErrors: 'all',
+              caughtErrorsIgnorePattern: '^_',
+              destructuredArrayIgnorePattern: '^_',
+              varsIgnorePattern: '^_',
+              ignoreRestSiblings: true,
+            },
+          ],
+
           '@typescript-eslint/consistent-type-imports': 'error',
           '@typescript-eslint/no-import-type-side-effects': 'error',
 
@@ -233,20 +227,7 @@ export default async function hyoban(
               })
         : {},
     ],
-    {
-      plugins: {
-        'unused-imports': pluginUnusedImports,
-      },
-      rules: {
-        'no-unused-vars': 'off',
-        '@typescript-eslint/no-unused-vars': 'off',
-        'unused-imports/no-unused-imports': 'error',
-        'unused-imports/no-unused-vars': [
-          'error',
-          { args: 'after-used', argsIgnorePattern: '^_', vars: 'all', varsIgnorePattern: '^_' },
-        ],
-      },
-    },
+    imports(),
     ...json({ style }),
     {
       plugins: {
