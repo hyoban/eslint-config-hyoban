@@ -32,7 +32,7 @@ async function main() {
 
     fs.writeFileSync('.vscode/settings.json', settings as string)
 
-    const eslintConfig = `import hyoban from 'eslint-config-hyoban'\n\nexport default hyoban()\n`
+    const eslintConfig = 'import hyoban from \'eslint-config-hyoban\'\n\nexport default hyoban()\n'
     fs.writeFileSync('eslint.config.js', eslintConfig)
   }
   catch (err) {

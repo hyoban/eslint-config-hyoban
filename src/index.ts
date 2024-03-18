@@ -107,6 +107,7 @@ export default async function hyoban(
       stylistic.configs.customize(style),
       {
         rules: {
+          '@stylistic/quotes': ['error', style?.quotes === 'double' ? 'double' : 'single'],
           '@stylistic/jsx-self-closing-comp': ['error', {
             component: true,
             html: true,
