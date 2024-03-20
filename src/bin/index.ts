@@ -3,7 +3,7 @@
 import fs from 'node:fs'
 
 import { ensurePackages } from '../utils'
-// @ts-expect-error no types
+// @ts-expect-error - bunchee will handle this
 import settings from './settings.txt'
 
 async function main() {
