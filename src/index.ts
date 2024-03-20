@@ -68,10 +68,10 @@ export default async function hyoban(
   const typescriptPresets = [
     ...tseslint.configs.stylistic,
     ...(strict
-      ? (typeChecked
+      ? (typeChecked === true
           ? tseslint.configs.strictTypeChecked
           : tseslint.configs.strict)
-      : (typeChecked
+      : (typeChecked === true
           ? tseslint.configs.recommendedTypeChecked
           : tseslint.configs.recommended)),
   ]
