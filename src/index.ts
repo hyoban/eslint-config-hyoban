@@ -65,25 +65,16 @@ export default async function hyoban(
     tsconfigRootDir = process.cwd(),
     filesDisableTypeChecking = [],
   } = typescript ?? {}
-  const typescriptPresets = strict
-    ? (typeChecked
-        ? [
-            ...tseslint.configs.strictTypeChecked,
-            ...tseslint.configs.stylisticTypeChecked,
-          ]
-        : [
-            ...tseslint.configs.strict,
-            ...tseslint.configs.stylistic,
-          ])
-    : (typeChecked
-        ? [
-            ...tseslint.configs.recommendedTypeChecked,
-            ...tseslint.configs.stylisticTypeChecked,
-          ]
-        : [
-            ...tseslint.configs.recommended,
-            ...tseslint.configs.stylistic,
-          ])
+  const typescriptPresets = [
+    ...tseslint.configs.stylistic,
+    ...(strict
+      ? (typeChecked
+          ? tseslint.configs.strictTypeChecked
+          : tseslint.configs.strict)
+      : (typeChecked
+          ? tseslint.configs.recommendedTypeChecked
+          : tseslint.configs.recommended)),
+  ]
 
   return config(
     {
@@ -222,7 +213,6 @@ export default async function hyoban(
                 rules: {
                   '@typescript-eslint/consistent-type-exports': 'error',
                   '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: { arguments: false, attributes: false } }],
-                  '@typescript-eslint/prefer-nullish-coalescing': 'off',
                 },
               })
         : {},
