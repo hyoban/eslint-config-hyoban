@@ -13,7 +13,7 @@ Hyoban's ESLint Config, enable most of the recommended rules from the following 
 | [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
 | [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
 | [unicorn] ✅       | [import-sort] ✅ | [refresh]     | [flat-gitignore] ✅    |
-| [i] ✅             | [jsonc] ✅       | [jsx-nesting] | [config-viewer] ✅     |
+| [import-x] ✅      | [jsonc] ✅       | [jsx-nesting] | [config-viewer] ✅     |
 | [unused-import] ✅ | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
 | [n]                | [perfectionist]  | [next] ✅     | [eslint-types]         |
 | [compat]           | [format] ✅      |               | [package-json] ✅      |
@@ -68,7 +68,7 @@ npx eslint-config-hyoban
 [js]: https://www.npmjs.com/package/@eslint/js
 [ts]: https://typescript-eslint.io
 [unicorn]: https://github.com/sindresorhus/eslint-plugin-unicorn
-[i]: https://github.com/un-es/eslint-plugin-i
+[import-x]: https://github.com/un-ts/eslint-plugin-import-x
 [n]: https://github.com/eslint-community/eslint-plugin-n
 [compat]: https://github.com/amilajack/eslint-plugin-compat
 [stylistic]: https://eslint.style
