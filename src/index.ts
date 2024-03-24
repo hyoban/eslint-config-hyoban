@@ -174,7 +174,6 @@ export default async function hyoban(
           '@typescript-eslint/no-import-type-side-effects': 'error',
 
           '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
-          '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 
           // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
           '@typescript-eslint/method-signature-style': [
