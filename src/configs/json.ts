@@ -3,7 +3,6 @@
 import stylistic from '@stylistic/eslint-plugin'
 import type { UnifiedFlatConfig } from 'eslint-flat-config'
 import pluginJsonc from 'eslint-plugin-jsonc'
-import * as pluginPackageJson from 'eslint-plugin-package-json'
 import parserJsonc from 'jsonc-eslint-parser'
 
 import type { Options } from '..'
@@ -91,18 +90,11 @@ export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[
     },
     {
       files: ['**/package.json'],
-      plugins: {
-        'package-json': pluginPackageJson,
-      },
       languageOptions: {
         parser: parserJsonc,
       },
       rules: {
         ...jsonFormateRulesStrict as any,
-        ...pluginPackageJson.configs.recommended.rules,
-        'package-json/order-properties': 'off',
-        'package-json/sort-collections': 'off',
-        'package-json/valid-package-def': 'off',
         'jsonc/sort-array-values': [
           'error',
           {
