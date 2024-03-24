@@ -27,8 +27,8 @@ importers:
         specifier: ^0.2.7
         version: 0.2.7(eslint@8.57.0)(typescript@5.4.3)
       eslint-plugin-import-x:
-        specifier: ^0.4.1
-        version: 0.4.1(eslint@8.57.0)(typescript@5.4.3)
+        specifier: ^0.4.3
+        version: 0.4.3(eslint@8.57.0)(typescript@5.4.3)
       eslint-plugin-jsonc:
         specifier: ^2.14.1
         version: 2.14.1(eslint@8.57.0)
@@ -2898,16 +2898,17 @@ packages:
       - typescript
     dev: false
 
-  /eslint-plugin-import-x@0.4.1(eslint@8.57.0)(typescript@5.4.3):
-    resolution: {integrity: sha512-UqbL8DEewDKdCQZmSsm9lzdzyyDhWmWo//HQTnbLkNW7nIWukluuc6IaE5dAFQSa9mK/M8IHTywvOvMMaX25XQ==}
+  /eslint-plugin-import-x@0.4.3(eslint@8.57.0)(typescript@5.4.3):
+    resolution: {integrity: sha512-5nfy/FjvhH16fu4p7/8uOUYEQ+yMqROhW1g3q4zYzfZHeGDt3Ckl2H1P5ihnXxBUeBW5Vx20gLe58SUUh2oEVQ==}
     engines: {node: '>=16'}
     peerDependencies:
-      eslint: ^7.2.0 || ^8
+      eslint: ^7.2.0 || ^8 || ^9.0.0-0
     dependencies:
       '@typescript-eslint/utils': 5.62.0(eslint@8.57.0)(typescript@5.4.3)
       debug: 4.3.4
       doctrine: 3.0.0
       eslint: 8.57.0
+      eslint-compat-utils: 0.5.0(eslint@8.57.0)
       eslint-import-resolver-node: 0.3.9
       get-tsconfig: 4.7.3
       is-glob: 4.0.3
