@@ -72,7 +72,6 @@
     "eslint-flat-config": "^1.1.10",
     "eslint-plugin-antfu": "^2.1.2",
     "eslint-plugin-format": "^0.1.0",
-    "eslint-plugin-github": "^4.10.2",
     "eslint-plugin-hyoban": "^0.2.7",
     "eslint-plugin-import-x": "^0.4.1",
     "eslint-plugin-jsonc": "^2.14.1",

@@ -9,7 +9,6 @@ import type { ConfigOptions, UnifiedFlatConfig } from 'eslint-flat-config'
 import { config } from 'eslint-flat-config'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
 import format from 'eslint-plugin-format'
-import pluginGitHub from 'eslint-plugin-github'
 import pluginHyoban from 'eslint-plugin-hyoban'
 import pluginUnicorn from 'eslint-plugin-unicorn'
 import { isPackageExists } from 'local-pkg'
@@ -140,14 +139,6 @@ export default async function hyoban(
           // https://github.com/orgs/web-infra-dev/discussions/10
           'unicorn/prefer-top-level-await': 'off',
           'unicorn/no-negated-condition': 'off',
-        },
-      },
-      {
-        plugins: {
-          github: pluginGitHub,
-        },
-        rules: {
-          'github/no-then': 'error',
         },
       },
     ],
