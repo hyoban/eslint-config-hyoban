@@ -73,7 +73,7 @@
     "eslint-plugin-antfu": "^2.1.2",
     "eslint-plugin-format": "^0.1.0",
     "eslint-plugin-hyoban": "^0.2.7",
-    "eslint-plugin-import-x": "^0.4.3",
+    "eslint-plugin-import-x": "^0.4.4",
     "eslint-plugin-jsonc": "^2.14.1",
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "eslint-plugin-unicorn": "^51.0.1",
