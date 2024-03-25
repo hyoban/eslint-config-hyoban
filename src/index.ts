@@ -21,7 +21,7 @@ import { ensurePackages, interopDefault } from './utils'
 const GLOB_TS = '**/*.?([cm])ts'
 const GLOB_TSX = '**/*.?([cm])tsx'
 
-export type Options = {
+export interface Options {
   react?: boolean,
   next?: boolean,
   typescript?: {
