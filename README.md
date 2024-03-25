@@ -18,27 +18,10 @@ Hyoban's ESLint Config, enable most of the recommended rules from the following 
 | [n]                | [perfectionist]  | [next] ✅     | [eslint-types]         |
 | [compat]           | [format] ✅      |               | [package-json] ✅      |
 
-To view what rules are enabled:
-
-```sh
-npx eslint-flat-config-viewer
-
-# my fork (temporary)
-npx efcv
-```
-
 ## Usage
 
 ```sh
-ni -D eslint eslint-config-hyoban
-```
-
-`eslint.config.js` or `eslint.config.mjs` for cjs
-
-```js
-import hyoban from "eslint-config-hyoban";
-
-export default hyoban();
+npx eslint-config-hyoban@latest
 ```
 
 > [!Note]
@@ -47,12 +30,6 @@ export default hyoban();
 ```js
 // eslint-disable-next-line unicorn/prefer-module, unicorn/no-await-expression-member
 module.exports = (async () => (await import("./eslint.config.mjs")).default)();
-```
-
-Initialize setup
-
-```sh
-npx eslint-config-hyoban
 ```
 
 [npm-version-src]: https://img.shields.io/npm/v/eslint-config-hyoban?style=flat&colorA=080f12&colorB=1fa669
