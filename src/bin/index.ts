@@ -4,6 +4,8 @@ import fs from 'node:fs'
 
 import { ensurePackages } from '../utils'
 // @ts-expect-error - bunchee will handle this
+import formatAction from './format.txt'
+// @ts-expect-error - bunchee will handle this
 import settings from './settings.txt'
 
 interface PackageJson {
@@ -30,6 +32,14 @@ async function main() {
       fs.mkdirSync('.vscode')
 
     fs.writeFileSync('.vscode/settings.json', settings as string)
+
+    if (!fs.existsSync('.github'))
+      fs.mkdirSync('.github')
+
+    if (!fs.existsSync('.github/workflows'))
+      fs.mkdirSync('.github/workflows')
+
+    fs.writeFileSync('.github/workflows/format.yml', formatAction as string)
 
     const eslintConfig = 'import hyoban from \'eslint-config-hyoban\'\n\nexport default hyoban()\n'
     fs.writeFileSync(
