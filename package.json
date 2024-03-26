@@ -38,7 +38,7 @@
     }
   },
   "bin": {
-    "eslint-config-hyoban": "dist/bin/index.js"
+    "eslint-config-hyoban": "./dist/bin/index.js"
   },
   "files": [
     "dist"
