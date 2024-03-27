@@ -29,7 +29,7 @@ npx eslint-config-hyoban@latest
 
 ```js
 // eslint-disable-next-line unicorn/prefer-module, unicorn/no-await-expression-member
-module.exports = (async () => (await import("./eslint.config.mjs")).default)();
+module.exports = (async () => (await import('./eslint.config.mjs')).default)()
 ```
 
 [npm-version-src]: https://img.shields.io/npm/v/eslint-config-hyoban?style=flat&colorA=080f12&colorB=1fa669

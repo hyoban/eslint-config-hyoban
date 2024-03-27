@@ -6,15 +6,15 @@ import process from 'node:process'
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import stylistic from '@stylistic/eslint-plugin'
 import type { Linter } from 'eslint'
-import type { ConfigOptions, UnifiedFlatConfig } from 'eslint-flat-config'
+import type { ConfigOptions } from 'eslint-flat-config'
 import { config } from 'eslint-flat-config'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
-import format from 'eslint-plugin-format'
 import pluginHyoban from 'eslint-plugin-hyoban'
 import pluginUnicorn from 'eslint-plugin-unicorn'
 import { isPackageExists } from 'local-pkg'
 import tseslint from 'typescript-eslint'
 
+import { format } from './configs/format'
 import { imports } from './configs/imports'
 import { json } from './configs/json'
 import { react as reactConfigs } from './configs/react'
@@ -216,19 +216,7 @@ export default async function hyoban(
       },
     },
     ...reactConfigs({ react, next, typeChecked }),
-    ...[
-      'css',
-      {
-        exts: ['md'],
-        parser: 'markdown',
-      },
-      'mdx',
-      'html',
-      {
-        parser: 'yaml',
-        exts: ['yaml', 'yml'],
-      },
-    ].map(element => createFormatter(element)),
+    ...format(style),
     () => {
       if (filesDisableTypeChecking.length === 0)
         return
@@ -246,22 +234,4 @@ export default async function hyoban(
     },
     ...args,
   ) as Promise<Linter.FlatConfig[]>
-}
-
-function createFormatter(input: { exts: string[], parser: string } | string) {
-  return {
-    files:
-      typeof input === 'string'
-        ? [`**/*.${input}`]
-        : input.exts.map(ext => `**/*.${ext}`),
-    languageOptions: {
-      parser: format.parserPlain,
-    },
-    plugins: {
-      format,
-    },
-    rules: {
-      'format/prettier': ['error', { parser: typeof input === 'string' ? input : input.parser }],
-    },
-  } as UnifiedFlatConfig
 }
