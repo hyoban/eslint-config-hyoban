@@ -131,7 +131,6 @@ export default async function hyoban(
       pluginUnicorn.configs['flat/recommended'],
       {
         rules: {
-          // we should not restrict how we name our variables
           'unicorn/prevent-abbreviations': 'off',
           'unicorn/catch-error-name': 'off',
           // https://github.com/sindresorhus/meta/discussions/7
@@ -139,6 +138,7 @@ export default async function hyoban(
           // https://github.com/orgs/web-infra-dev/discussions/10
           'unicorn/prefer-top-level-await': 'off',
           'unicorn/no-negated-condition': 'off',
+          'unicorn/no-await-expression-member': 'off',
         },
       },
     ],
