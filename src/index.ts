@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 import process from 'node:process'
 
@@ -16,10 +15,8 @@ import tseslint from 'typescript-eslint'
 
 import { imports } from './configs/imports'
 import { json } from './configs/json'
-import { ensurePackages, interopDefault } from './utils'
-
-const GLOB_TS = '**/*.?([cm])ts'
-const GLOB_TSX = '**/*.?([cm])tsx'
+import { react as reactConfigs } from './configs/react'
+import { ensurePackages } from './utils'
 
 export interface Options {
   react?: boolean,
@@ -218,51 +215,7 @@ export default async function hyoban(
         'hyoban/no-extra-space-jsx-expression': 'error',
       },
     },
-    async () => {
-      if (!react)
-        return
-      const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
-      return [
-        eslintReact.configs.all,
-        {
-          files: [GLOB_TS, GLOB_TSX],
-          rules: {
-            '@eslint-react/naming-convention/filename': 'off',
-            '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps': 'off',
-            '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps': 'off',
-          },
-        },
-        typeChecked
-          ? {
-              rules: {
-                '@eslint-react/no-leaked-conditional-rendering': 'error',
-              },
-            }
-          : {},
-      ] as UnifiedFlatConfig[]
-    },
-    async () => {
-      if (!react)
-        return
-      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
-      return {
-        plugins: {
-          'react-hooks': reactHooks,
-        },
-        rules: reactHooks.configs.recommended.rules,
-      } as UnifiedFlatConfig
-    },
-    async () => {
-      if (!next)
-        return
-      const eslintPluginNext = await interopDefault(import('@next/eslint-plugin-next'))
-      return {
-        plugins: {
-          '@next/next': eslintPluginNext,
-        },
-        rules: eslintPluginNext.configs.recommended.rules,
-      } as UnifiedFlatConfig
-    },
+    ...reactConfigs({ react, next, typeChecked }),
     ...[
       'css',
       {
