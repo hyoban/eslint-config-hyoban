@@ -36,11 +36,9 @@ export interface Options {
 const reactRelatedPackages = ['react', 'react-dom']
 const nextRelatedPackages = ['next']
 
-type ArrayExcludeFirst<T extends unknown[]> = T extends [unknown, ...infer U] ? U : never
-
 export default async function hyoban(
   options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
-  ...args: ArrayExcludeFirst<Parameters<typeof config>>
+  ...args: Array<Linter.FlatConfig | (() => Linter.FlatConfig) | (() => Promise<Linter.FlatConfig>)>
 ) {
   const {
     react = reactRelatedPackages.some(element => isPackageExists(element)),
