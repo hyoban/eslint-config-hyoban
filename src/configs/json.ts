@@ -3,7 +3,7 @@
 import stylistic from '@stylistic/eslint-plugin'
 import type { UnifiedFlatConfig } from 'eslint-flat-config'
 import pluginJsonc from 'eslint-plugin-jsonc'
-import parserJsonc from 'jsonc-eslint-parser'
+import * as parserJsonc from 'jsonc-eslint-parser'
 
 import type { Options } from '..'
 

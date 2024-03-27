@@ -5,6 +5,9 @@ import type { UnifiedFlatConfig } from 'eslint-flat-config'
 
 import { interopDefault } from '../utils'
 
+const GLOB_TS = '**/*.?([cm])ts'
+const GLOB_TSX = '**/*.?([cm])tsx'
+
 export function react(
   {
     react,
@@ -30,13 +33,19 @@ export function react(
             '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps': 'off',
           },
         },
-        typeChecked
-          ? {
-              rules: {
-                '@eslint-react/no-leaked-conditional-rendering': 'error',
-              },
-            }
-          : {},
+      ] as UnifiedFlatConfig[]
+    },
+    () => {
+      if (!react || !typeChecked)
+        return
+
+      return [
+        {
+          files: [GLOB_TS, GLOB_TSX],
+          rules: {
+            '@eslint-react/no-leaked-conditional-rendering': 'error',
+          },
+        },
       ] as UnifiedFlatConfig[]
     },
     async () => {
