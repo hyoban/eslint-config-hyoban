@@ -97,6 +97,7 @@
     "bunchee": "^5.0.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-typegen": "^0.1.0",
     "release-it": "^17.1.1",
     "release-it-pnpm": "^4.1.6",
     "tsx": "^4.7.1",

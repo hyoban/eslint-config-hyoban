@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import '../eslint-typegen.d.ts'
 
 import process from 'node:process'
 
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import stylistic from '@stylistic/eslint-plugin'
+import type { Linter } from 'eslint'
 import type { ConfigOptions, UnifiedFlatConfig } from 'eslint-flat-config'
 import { config } from 'eslint-flat-config'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
@@ -245,7 +247,7 @@ export default async function hyoban(
       ]
     },
     ...args,
-  )
+  ) as Promise<Linter.FlatConfig[]>
 }
 
 function createFormatter(input: { exts: string[], parser: string } | string) {
