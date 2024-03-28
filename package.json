@@ -72,7 +72,7 @@
     }
   },
   "dependencies": {
-    "@antfu/install-pkg": "^0.3.1",
+    "@antfu/install-pkg": "^0.3.2",
     "@stylistic/eslint-plugin": "^1.7.0",
     "eslint-flat-config": "^1.1.10",
     "eslint-plugin-antfu": "^2.1.2",
