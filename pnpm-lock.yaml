@@ -79,8 +79,8 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.57.0)
       eslint-typegen:
-        specifier: ^0.1.5
-        version: 0.1.5
+        specifier: ^0.1.6
+        version: 0.1.6
       release-it:
         specifier: ^17.1.1
         version: 17.1.1(typescript@5.4.3)
@@ -3040,8 +3040,8 @@ packages:
       esrecurse: 4.3.0
       estraverse: 5.3.0
 
-  /eslint-typegen@0.1.5:
-    resolution: {integrity: sha512-b178DT9jEdX/BsMCzO6JQzd/MFAHs1ruCrlXkPFQJP4OOkenqnlQJ+8jh1Maq3uHc3PQ8EQFPusRCxuVTy4CpQ==}
+  /eslint-typegen@0.1.6:
+    resolution: {integrity: sha512-M6a9l3ifdZvZIJahUQmf1c1gVxoNu9e8E1Uwzu3bg2jKH1dfSkO8KSViNio54vEQCvyVPfJky5U246hZf4j1RA==}
     dependencies:
       '@types/eslint': 8.56.6
       json-schema-to-typescript-lite: 14.0.0
