@@ -16,7 +16,7 @@ const GLOB_SHOULD_BE_JSONC = [
 const GLOB_JSON5 = '**/*.json5'
 const GLOB_JSONC = '**/*.jsonc'
 
-export function json(style?: Options['style']): UnifiedFlatConfig[] {
+export function jsonConfigs(style?: Options['style']): UnifiedFlatConfig[] {
   if (style === false)
     return []
 

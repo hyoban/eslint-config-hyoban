@@ -8,7 +8,7 @@ import { interopDefault } from '../utils'
 const GLOB_TS = '**/*.?([cm])ts'
 const GLOB_TSX = '**/*.?([cm])tsx'
 
-export function react(
+export function reactConfigs(
   {
     react,
     typeChecked,

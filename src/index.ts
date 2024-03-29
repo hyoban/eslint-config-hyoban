@@ -4,20 +4,18 @@ import '../eslint-typegen.d.ts'
 import process from 'node:process'
 
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
-import stylistic from '@stylistic/eslint-plugin'
 import type { Linter } from 'eslint'
 import type { ConfigOptions } from 'eslint-flat-config'
 import { config } from 'eslint-flat-config'
-import eslintPluginAntfu from 'eslint-plugin-antfu'
-import pluginHyoban from 'eslint-plugin-hyoban'
 import pluginUnicorn from 'eslint-plugin-unicorn'
 import { isPackageExists } from 'local-pkg'
 import tseslint from 'typescript-eslint'
 
-import { format } from './configs/format'
-import { imports } from './configs/imports'
-import { json } from './configs/json'
-import { react as reactConfigs } from './configs/react'
+import { formatConfigs } from './configs/format'
+import { importConfig } from './configs/imports'
+import { jsonConfigs } from './configs/json'
+import { reactConfigs } from './configs/react'
+import { stylisticConfig } from './configs/stylistic'
 import { ensurePackages } from './utils'
 
 export interface Options {
@@ -48,6 +46,7 @@ export default async function hyoban(
     react && '@eslint-react/eslint-plugin',
     react && 'eslint-plugin-react-hooks',
   ].filter(Boolean)
+
   await ensurePackages(requiredPackages)
 
   const {
@@ -57,6 +56,7 @@ export default async function hyoban(
     tsconfigRootDir = process.cwd(),
     filesDisableTypeChecking = [],
   } = typescript ?? {}
+
   const typescriptPresets = [
     ...tseslint.configs.stylistic,
     ...(strict
@@ -84,52 +84,6 @@ export default async function hyoban(
         ],
       },
     },
-    style !== false && [
-      stylistic.configs.customize(style),
-      {
-        name: 'stylistic',
-        rules: {
-          '@stylistic/quotes': ['error', style?.quotes === 'double' ? 'double' : 'single'],
-          '@stylistic/jsx-self-closing-comp': ['error', {
-            component: true,
-            html: true,
-          }],
-          '@stylistic/member-delimiter-style': ['error', {
-            multiline: { delimiter: 'comma', requireLast: true },
-            singleline: { delimiter: 'comma', requireLast: false },
-            multilineDetection: 'brackets',
-          }],
-        },
-      },
-      {
-        plugins: {
-          antfu: eslintPluginAntfu,
-        },
-        rules: {
-          'antfu/consistent-list-newline': 'error',
-          'antfu/if-newline': 'error',
-          'antfu/top-level-function': 'error',
-          'curly': ['error', 'multi-or-nest', 'consistent'],
-          'prefer-template': 'error',
-          'prefer-destructuring': [
-            'error',
-            {
-              array: false,
-              object: true,
-            },
-          ],
-        },
-      },
-      {
-        plugins: {
-          hyoban: pluginHyoban,
-        },
-        rules: {
-          'hyoban/prefer-early-return': 'error',
-          'hyoban/no-extra-space-jsx-expression': 'error',
-        },
-      },
-    ],
     [
       pluginUnicorn.configs['flat/recommended'],
       {
@@ -210,10 +164,11 @@ export default async function hyoban(
               })
         : {},
     ],
-    imports(),
-    ...json(style),
+    importConfig(),
+    stylisticConfig(style),
+    ...jsonConfigs(style),
     ...reactConfigs({ react, typeChecked }),
-    ...format(style),
+    ...formatConfigs(style),
     () => {
       if (filesDisableTypeChecking.length === 0)
         return

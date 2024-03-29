@@ -5,7 +5,7 @@ import pluginAntfu from 'eslint-plugin-antfu'
 import * as pluginImport from 'eslint-plugin-import-x'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
-export function imports(): UnifiedFlatConfig {
+export function importConfig(): UnifiedFlatConfig {
   return {
     name: 'imports',
     plugins: {

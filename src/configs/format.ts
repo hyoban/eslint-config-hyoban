@@ -35,7 +35,7 @@ function createFormatter(
   } as UnifiedFlatConfig
 }
 
-export function format(style?: Options['style']) {
+export function formatConfigs(style?: Options['style']) {
   if (style === false)
     return []
   return [
