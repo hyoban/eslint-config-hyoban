@@ -7,7 +7,7 @@ import type { Options } from '..'
 
 export function stylisticConfig(style?: Options['style']) {
   if (style === false)
-    return []
+    return 
 
   return [
     stylistic.configs.customize(style),
