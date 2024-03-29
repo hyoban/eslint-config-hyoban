@@ -74,7 +74,7 @@
   "dependencies": {
     "@antfu/install-pkg": "^0.3.2",
     "@stylistic/eslint-plugin": "^1.7.0",
-    "eslint-flat-config": "^1.1.10",
+    "eslint-flat-config": "^1.1.11",
     "eslint-plugin-antfu": "^2.1.2",
     "eslint-plugin-format": "^0.1.0",
     "eslint-plugin-hyoban": "^0.2.7",
@@ -97,7 +97,7 @@
     "bunchee": "^5.0.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-typegen": "^0.1.5",
+    "eslint-typegen": "^0.1.6",
     "release-it": "^17.1.1",
     "release-it-pnpm": "^4.1.6",
     "tsx": "^4.7.1",

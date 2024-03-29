@@ -15,8 +15,8 @@ importers:
         specifier: ^1.7.0
         version: 1.7.0(eslint@8.57.0)(typescript@5.4.3)
       eslint-flat-config:
-        specifier: ^1.1.10
-        version: 1.1.10(eslint@8.57.0)(typescript@5.4.3)
+        specifier: ^1.1.11
+        version: 1.1.11(eslint@8.57.0)(typescript@5.4.3)
       eslint-plugin-antfu:
         specifier: ^2.1.2
         version: 2.1.2(eslint@8.57.0)
@@ -79,8 +79,8 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.57.0)
       eslint-typegen:
-        specifier: ^0.1.5
-        version: 0.1.5
+        specifier: ^0.1.6
+        version: 0.1.6
       release-it:
         specifier: ^17.1.1
         version: 17.1.1(typescript@5.4.3)
@@ -2768,18 +2768,18 @@ packages:
       parse-gitignore: 2.0.0
     dev: false
 
-  /eslint-flat-config@1.1.10(eslint@8.57.0)(typescript@5.4.3):
-    resolution: {integrity: sha512-rXSkV/z1q3x/pje+139b/+k0lzfKxXdO/FzWAcMK5yO8vhpasO+FBRKKPzHZa3XQrStesoHAzlLg1tEgSa/Acw==}
+  /eslint-flat-config@1.1.11(eslint@8.57.0)(typescript@5.4.3):
+    resolution: {integrity: sha512-TeG9/2+lqhoN5BzmYZvv6ORhUkYDU8cPHkD6HMri3opp7h8qeMSwMNiJv+h0KaCDSHp8Qflsa9yFtG5zsuqr0w==}
     peerDependencies:
       eslint: ^8.56.0
     dependencies:
       '@eslint/js': 8.57.0
       '@types/eslint': 8.56.6
-      '@typescript-eslint/utils': 7.2.0(eslint@8.57.0)(typescript@5.4.3)
+      '@typescript-eslint/utils': 7.4.0(eslint@8.57.0)(typescript@5.4.3)
       defu: 6.1.4
       eslint: 8.57.0
       eslint-config-flat-gitignore: 0.1.3
-      globals: 14.0.0
+      globals: 15.0.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -3040,8 +3040,8 @@ packages:
       esrecurse: 4.3.0
       estraverse: 5.3.0
 
-  /eslint-typegen@0.1.5:
-    resolution: {integrity: sha512-b178DT9jEdX/BsMCzO6JQzd/MFAHs1ruCrlXkPFQJP4OOkenqnlQJ+8jh1Maq3uHc3PQ8EQFPusRCxuVTy4CpQ==}
+  /eslint-typegen@0.1.6:
+    resolution: {integrity: sha512-M6a9l3ifdZvZIJahUQmf1c1gVxoNu9e8E1Uwzu3bg2jKH1dfSkO8KSViNio54vEQCvyVPfJky5U246hZf4j1RA==}
     dependencies:
       '@types/eslint': 8.56.6
       json-schema-to-typescript-lite: 14.0.0
@@ -3522,8 +3522,8 @@ packages:
     dependencies:
       type-fest: 0.20.2
 
-  /globals@14.0.0:
-    resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
+  /globals@15.0.0:
+    resolution: {integrity: sha512-m/C/yR4mjO6pXDTm9/R/SpYTAIyaUB4EOzcaaMEl7mds7Mshct9GfejiJNQGjHHbdMPey13Kpu4TMbYi9ex1pw==}
     engines: {node: '>=18'}
     dev: false
 
