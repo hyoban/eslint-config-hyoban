@@ -7,6 +7,7 @@ function createFormatter(
   style?: StylisticCustomizeOptions,
 ) {
   return {
+    name: `prettier:${typeof input === 'string' ? input : input.exts.join('-')}`,
     files:
       typeof input === 'string'
         ? [`**/*.${input}`]

@@ -67,7 +67,9 @@ export function react(
         plugins: {
           '@next/next': eslintPluginNext,
         },
-        rules: eslintPluginNext.configs.recommended.rules,
+        rules: {
+          '@next/next/no-assign-module-variable': 'error',
+        },
       } as UnifiedFlatConfig
     },
   ]
