@@ -22,7 +22,6 @@ import { ensurePackages } from './utils'
 
 export interface Options {
   react?: boolean,
-  next?: boolean,
   typescript?: {
     strict?: boolean,
     typeChecked?: boolean | 'essential',
@@ -34,7 +33,6 @@ export interface Options {
 }
 
 const reactRelatedPackages = ['react', 'react-dom']
-const nextRelatedPackages = ['next']
 
 export default async function hyoban(
   options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
@@ -42,7 +40,6 @@ export default async function hyoban(
 ) {
   const {
     react = reactRelatedPackages.some(element => isPackageExists(element)),
-    next = nextRelatedPackages.some(element => isPackageExists(element)),
     typescript,
     style,
   } = options ?? {}
@@ -50,7 +47,6 @@ export default async function hyoban(
   const requiredPackages = [
     react && '@eslint-react/eslint-plugin',
     react && 'eslint-plugin-react-hooks',
-    next && '@next/eslint-plugin-next',
   ].filter(Boolean)
   await ensurePackages(requiredPackages)
 
@@ -215,7 +211,7 @@ export default async function hyoban(
         'hyoban/no-extra-space-jsx-expression': 'error',
       },
     },
-    ...reactConfigs({ react, next, typeChecked }),
+    ...reactConfigs({ react, typeChecked }),
     ...format(style),
     () => {
       if (filesDisableTypeChecking.length === 0)

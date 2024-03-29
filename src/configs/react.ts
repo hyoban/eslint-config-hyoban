@@ -11,11 +11,9 @@ const GLOB_TSX = '**/*.?([cm])tsx'
 export function react(
   {
     react,
-    next,
     typeChecked,
   }: {
     react: boolean,
-    next: boolean,
     typeChecked?: boolean | 'essential',
   },
 ) {
@@ -61,20 +59,6 @@ export function react(
           'react-hooks': reactHooks,
         },
         rules: reactHooks.configs.recommended.rules,
-      } as UnifiedFlatConfig
-    },
-    async () => {
-      if (!next)
-        return
-      const eslintPluginNext = await interopDefault(import('@next/eslint-plugin-next'))
-      return {
-        name: 'react:next',
-        plugins: {
-          '@next/next': eslintPluginNext,
-        },
-        rules: {
-          '@next/next/no-assign-module-variable': 'error',
-        },
       } as UnifiedFlatConfig
     },
   ]
