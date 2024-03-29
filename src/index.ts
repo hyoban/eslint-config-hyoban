@@ -29,7 +29,7 @@ export interface Options {
     tsconfigRootDir?: string,
     filesDisableTypeChecking?: string[],
   },
-  style?: StylisticCustomizeOptions,
+  style?: StylisticCustomizeOptions | false,
 }
 
 const reactRelatedPackages = ['react', 'react-dom']
@@ -84,7 +84,7 @@ export default async function hyoban(
         ],
       },
     },
-    [
+    style !== false && [
       stylistic.configs.customize(style),
       {
         name: 'stylistic',
@@ -211,7 +211,7 @@ export default async function hyoban(
         : {},
     ],
     imports(),
-    ...json({ style }),
+    ...json(style),
     ...reactConfigs({ react, typeChecked }),
     ...format(style),
     () => {

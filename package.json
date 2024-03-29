@@ -70,7 +70,7 @@
   "dependencies": {
     "@antfu/install-pkg": "^0.3.2",
     "@stylistic/eslint-plugin": "^1.7.0",
-    "eslint-flat-config": "^1.1.11",
+    "eslint-flat-config": "^1.1.12",
     "eslint-plugin-antfu": "^2.1.2",
     "eslint-plugin-format": "^0.1.0",
     "eslint-plugin-hyoban": "^0.2.7",

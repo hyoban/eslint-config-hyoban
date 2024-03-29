@@ -2,6 +2,8 @@ import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { UnifiedFlatConfig } from 'eslint-flat-config'
 import pluginFormat from 'eslint-plugin-format'
 
+import type { Options } from '..'
+
 function createFormatter(
   input: { exts: string[], parser: string } | string,
   style?: StylisticCustomizeOptions,
@@ -33,7 +35,9 @@ function createFormatter(
   } as UnifiedFlatConfig
 }
 
-export function format(style?: StylisticCustomizeOptions) {
+export function format(style?: Options['style']) {
+  if (style === false)
+    return []
   return [
     'css',
     {

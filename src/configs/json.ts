@@ -16,8 +16,9 @@ const GLOB_SHOULD_BE_JSONC = [
 const GLOB_JSON5 = '**/*.json5'
 const GLOB_JSONC = '**/*.jsonc'
 
-export function json(options?: { style?: Options['style'] }): UnifiedFlatConfig[] {
-  const { style } = options ?? {}
+export function json(style?: Options['style']): UnifiedFlatConfig[] {
+  if (style === false)
+    return []
 
   const jsonFormateRules = {
     'jsonc/array-bracket-spacing': ['error', 'never'],

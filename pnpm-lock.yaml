@@ -15,8 +15,8 @@ importers:
         specifier: ^1.7.0
         version: 1.7.0(eslint@8.57.0)(typescript@5.4.3)
       eslint-flat-config:
-        specifier: ^1.1.11
-        version: 1.1.11(eslint@8.57.0)(typescript@5.4.3)
+        specifier: ^1.1.12
+        version: 1.1.12(eslint@8.57.0)(typescript@5.4.3)
       eslint-plugin-antfu:
         specifier: ^2.1.2
         version: 2.1.2(eslint@8.57.0)
@@ -2740,8 +2740,8 @@ packages:
       parse-gitignore: 2.0.0
     dev: false
 
-  /eslint-flat-config@1.1.11(eslint@8.57.0)(typescript@5.4.3):
-    resolution: {integrity: sha512-TeG9/2+lqhoN5BzmYZvv6ORhUkYDU8cPHkD6HMri3opp7h8qeMSwMNiJv+h0KaCDSHp8Qflsa9yFtG5zsuqr0w==}
+  /eslint-flat-config@1.1.12(eslint@8.57.0)(typescript@5.4.3):
+    resolution: {integrity: sha512-di//rKAiMIa8tjcLEdtLKlU5phYxQZCFyk3Iu28qNlIyhpWqOfPgvKvI6Bc0RqEzlM2cGBe3DSMRmueHen6U4w==}
     peerDependencies:
       eslint: ^8.56.0
     dependencies:
