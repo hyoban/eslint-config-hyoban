@@ -87,6 +87,7 @@ export default async function hyoban(
     [
       stylistic.configs.customize(style),
       {
+        name: 'stylistic',
         rules: {
           '@stylistic/quotes': ['error', style?.quotes === 'double' ? 'double' : 'single'],
           '@stylistic/jsx-self-closing-comp': ['error', {
@@ -117,6 +118,15 @@ export default async function hyoban(
               object: true,
             },
           ],
+        },
+      },
+      {
+        plugins: {
+          hyoban: pluginHyoban,
+        },
+        rules: {
+          'hyoban/prefer-early-return': 'error',
+          'hyoban/no-extra-space-jsx-expression': 'error',
         },
       },
     ],
@@ -202,15 +212,6 @@ export default async function hyoban(
     ],
     imports(),
     ...json({ style }),
-    {
-      plugins: {
-        hyoban: pluginHyoban,
-      },
-      rules: {
-        'hyoban/prefer-early-return': 'error',
-        'hyoban/no-extra-space-jsx-expression': 'error',
-      },
-    },
     ...reactConfigs({ react, typeChecked }),
     ...format(style),
     () => {

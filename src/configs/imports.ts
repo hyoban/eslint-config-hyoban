@@ -7,6 +7,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
 export function imports(): UnifiedFlatConfig {
   return {
+    name: 'imports',
     plugins: {
       'simple-import-sort': simpleImportSort,
       'import-x': pluginImport,
