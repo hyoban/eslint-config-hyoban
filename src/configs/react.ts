@@ -27,8 +27,10 @@ export function react(
       return [
         eslintReact.configs.all,
         {
+          name: 'react:basic',
           rules: {
             '@eslint-react/naming-convention/filename': 'off',
+            '@eslint-react/naming-convention/use-state': 'off',
             '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps': 'off',
             '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps': 'off',
           },
@@ -41,6 +43,7 @@ export function react(
 
       return [
         {
+          name: 'react:type-checked',
           files: [GLOB_TS, GLOB_TSX],
           rules: {
             '@eslint-react/no-leaked-conditional-rendering': 'error',
@@ -53,6 +56,7 @@ export function react(
         return
       const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
       return {
+        name: 'react:hooks',
         plugins: {
           'react-hooks': reactHooks,
         },
@@ -64,6 +68,7 @@ export function react(
         return
       const eslintPluginNext = await interopDefault(import('@next/eslint-plugin-next'))
       return {
+        name: 'react:next',
         plugins: {
           '@next/next': eslintPluginNext,
         },
