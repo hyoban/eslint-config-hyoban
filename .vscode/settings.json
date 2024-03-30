@@ -25,11 +25,14 @@
   ],
   "eslint.rules.customizations": [
     { "rule": "@stylistic/*", "severity": "off" },
+    { "rule": "@stylistic/max-statements-per-line", "severity": "default" },
     { "rule": "simple-import-sort/*", "severity": "off" },
     { "rule": "import/first", "severity": "off" },
     { "rule": "import/newline-after-import", "severity": "off" },
     { "rule": "import/no-duplicates", "severity": "off" },
     { "rule": "antfu/import-dedupe", "severity": "off" },
-    { "rule": "format/prettier", "severity": "off" }
-  ]
+    { "rule": "format/prettier", "severity": "off" },
+    { "rule": "jsonc/indent", "severity": "off" },
+    { "rule": "hyoban/no-extra-space-jsx-expression", "severity": "off" },
+  ],
 }

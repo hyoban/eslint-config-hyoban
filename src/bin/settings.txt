@@ -25,6 +25,7 @@
   ],
   "eslint.rules.customizations": [
     { "rule": "@stylistic/*", "severity": "off" },
+    { "rule": "@stylistic/max-statements-per-line", "severity": "default" },
     { "rule": "simple-import-sort/*", "severity": "off" },
     { "rule": "import/first", "severity": "off" },
     { "rule": "import/newline-after-import", "severity": "off" },
