@@ -13,7 +13,7 @@ Hyoban's ESLint Config, enable most of the recommended rules from the following 
 | [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
 | [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
 | [unicorn] ✅       | [import-sort] ✅ | [refresh]     | [flat-gitignore] ✅    |
-| [import-x] ✅      | [jsonc] ✅       | [jsx-nesting] | [config-viewer] ✅     |
+| [import-x] ✅      | [jsonc] ✅       | [jsx-nesting] | [config-inspector]     |
 | [unused-import] ✅ | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
 | [n]                | [perfectionist]  | [next]        | [eslint-types]         |
 | [compat]           | [format] ✅      |               | [package-json]         |
@@ -63,7 +63,7 @@ module.exports = (async () => (await import('./eslint.config.mjs')).default)()
 [Tailwind CSS]: https://github.com/francoismassart/eslint-plugin-tailwindcss
 [UnoCSS]: https://unocss.dev/integrations/eslint
 [flat-gitignore]: https://github.com/antfu/eslint-config-flat-gitignore
-[config-viewer]: https://github.com/antfu/eslint-flat-config-viewer
+[config-inspector]: https://github.com/eslint/config-inspector
 [@antfu/eslint-config]: https://github.com/antfu/eslint-config
 [eslint-types]: https://github.com/eslint-types
 [format]: https://github.com/antfu/eslint-plugin-format
