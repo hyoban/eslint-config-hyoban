@@ -23,16 +23,20 @@ export function reactConfigs(
         return
       const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
       const config = eslintReact.configs.all
+      const { rules } = config
+      for (const rule of [
+        '@eslint-react/naming-convention/filename',
+        '@eslint-react/naming-convention/use-state',
+        '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps',
+        '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps',
+      ])
+        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+        delete rules[rule]
+
       return {
         name: 'react:basic',
         plugins: config.plugins,
-        rules: {
-          ...config.rules,
-          '@eslint-react/naming-convention/filename': undefined,
-          '@eslint-react/naming-convention/use-state': undefined,
-          '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps': undefined,
-          '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps': undefined,
-        },
+        rules: config.rules,
       } as UnifiedFlatConfig
     },
     () => {

@@ -73,6 +73,8 @@ export default async function hyoban(
       ignores: options?.ignores,
       ignoreFiles: options?.ignoreFiles,
       rules: {
+        // https://twitter.com/karlhorky/status/1773632485055680875
+        'array-callback-return': 'error',
         'no-console': ['error', { allow: ['warn', 'error'] }],
         // https://youtu.be/XTXPKbPcvl4?si=J_2E9dM25sAEXM2x
         'no-restricted-syntax': [
