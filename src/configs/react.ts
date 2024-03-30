@@ -22,18 +22,18 @@ export function reactConfigs(
       if (!react)
         return
       const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
-      return [
-        eslintReact.configs.all,
-        {
-          name: 'react:basic',
-          rules: {
-            '@eslint-react/naming-convention/filename': 'off',
-            '@eslint-react/naming-convention/use-state': 'off',
-            '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps': 'off',
-            '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps': 'off',
-          },
+      const config = eslintReact.configs.all
+      return {
+        name: 'react:basic',
+        plugins: config.plugins,
+        rules: {
+          ...config.rules,
+          '@eslint-react/naming-convention/filename': undefined,
+          '@eslint-react/naming-convention/use-state': undefined,
+          '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps': undefined,
+          '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps': undefined,
         },
-      ] as UnifiedFlatConfig[]
+      } as UnifiedFlatConfig
     },
     () => {
       if (!react || !typeChecked)

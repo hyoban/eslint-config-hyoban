@@ -47,7 +47,6 @@
     "build": "bunchee",
     "dev": "bunchee -w",
     "lint": "eslint .",
-    "prepare": "pnpm run build",
     "prepublishOnly": "pnpm run build",
     "start": "tsx src/index.ts",
     "test": "vitest",
@@ -93,6 +92,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-typegen": "^0.2.0",
+    "jiti": "^1.21.0",
     "tsx": "^4.7.1",
     "typescript": "^5.4.3",
     "vitest": "^1.4.0"

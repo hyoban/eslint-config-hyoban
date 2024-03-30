@@ -1,8 +1,12 @@
 // @ts-check
 import typegen from 'eslint-typegen'
+import JITI from 'jiti'
 
-// eslint-disable-next-line antfu/no-import-dist
-import hyoban from './dist/index.js'
+const jiti = JITI(import.meta.url)
+/**
+ * @type {import('./src').default}
+ */
+const hyoban = jiti('./src').default
 
 export default typegen(hyoban(
   {
