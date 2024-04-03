@@ -1,5 +1,5 @@
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
-import type { UnifiedFlatConfig } from 'eslint-flat-config'
+import type { Linter } from 'eslint'
 import pluginFormat from 'eslint-plugin-format'
 
 import type { Options } from '..'
@@ -32,7 +32,7 @@ function createFormatter(
         },
       ],
     },
-  } as UnifiedFlatConfig
+  } as Linter.FlatConfig
 }
 
 export function formatConfigs(style?: Options['style']) {

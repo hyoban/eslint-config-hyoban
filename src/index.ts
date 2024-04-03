@@ -165,7 +165,7 @@ export default async function hyoban(
                 },
               })
         : {},
-    ],
+    ] as Linter.FlatConfig[],
     importConfig(),
     stylisticConfig(style),
     ...jsonConfigs(style),
@@ -184,8 +184,8 @@ export default async function hyoban(
             '@eslint-react/no-leaked-conditional-rendering': 'off',
           },
         },
-      ]
+      ] as Linter.FlatConfig[]
     },
     ...args,
-  ) as Promise<Linter.FlatConfig[]>
+  )
 }

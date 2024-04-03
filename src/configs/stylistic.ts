@@ -1,5 +1,5 @@
 import stylistic from '@stylistic/eslint-plugin'
-import type { UnifiedFlatConfig } from 'eslint-flat-config'
+import type { Linter } from 'eslint'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
 
@@ -54,5 +54,5 @@ export function stylisticConfig(style?: Options['style']) {
         'hyoban/no-extra-space-jsx-expression': 'error',
       },
     },
-  ] as UnifiedFlatConfig[]
+  ] as Linter.FlatConfig[]
 }

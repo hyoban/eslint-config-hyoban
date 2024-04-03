@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import type { UnifiedFlatConfig } from 'eslint-flat-config'
+import type { Linter } from 'eslint'
 
 import { interopDefault } from '../utils'
 
@@ -37,7 +37,7 @@ export function reactConfigs(
         name: 'react:basic',
         plugins: config.plugins,
         rules: config.rules,
-      } as UnifiedFlatConfig
+      } as Linter.FlatConfig
     },
     () => {
       if (!react || !typeChecked)
@@ -51,7 +51,7 @@ export function reactConfigs(
             '@eslint-react/no-leaked-conditional-rendering': 'error',
           },
         },
-      ] as UnifiedFlatConfig[]
+      ] as Linter.FlatConfig
     },
     async () => {
       if (!react)
@@ -63,7 +63,7 @@ export function reactConfigs(
           'react-hooks': reactHooks,
         },
         rules: reactHooks.configs.recommended.rules,
-      } as UnifiedFlatConfig
+      } as Linter.FlatConfig
     },
   ]
 }

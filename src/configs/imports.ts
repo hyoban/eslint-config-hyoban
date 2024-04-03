@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import type { UnifiedFlatConfig } from 'eslint-flat-config'
+import type { Linter } from 'eslint'
 import pluginAntfu from 'eslint-plugin-antfu'
 import * as pluginImport from 'eslint-plugin-import-x'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
-export function importConfig(): UnifiedFlatConfig {
+export function importConfig(): Linter.FlatConfig {
   return {
     name: 'imports',
     plugins: {
