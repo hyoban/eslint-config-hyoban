@@ -5,8 +5,6 @@ import process from 'node:process'
 
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { Linter } from 'eslint'
-import type { ConfigOptions } from 'eslint-flat-config'
-import { config } from 'eslint-flat-config'
 import pluginUnicorn from 'eslint-plugin-unicorn'
 import { isPackageExists } from 'local-pkg'
 import tseslint from 'typescript-eslint'
@@ -16,7 +14,8 @@ import { importConfig } from './configs/imports'
 import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
 import { stylisticConfig } from './configs/stylistic'
-import { ensurePackages } from './utils'
+import type { ConfigOptions } from './utils'
+import { config, ensurePackages } from './utils'
 
 export interface Options {
   react?: boolean,
