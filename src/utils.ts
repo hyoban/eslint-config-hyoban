@@ -135,7 +135,6 @@ export async function config(
         linterOptions: {
           reportUnusedDisableDirectives: true,
         },
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
         rules: js.configs.recommended.rules,
       },
     ),

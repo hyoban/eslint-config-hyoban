@@ -92,6 +92,7 @@
     "@eslint/config-inspector": "^0.4.1",
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/eslint": "^8.56.7",
+    "@types/eslint__js": "^8.42.3",
     "@types/node": "20.11.30",
     "@types/prompts": "^2.4.9",
     "bunchee": "^5.1.2",
