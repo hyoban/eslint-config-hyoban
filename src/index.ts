@@ -13,7 +13,7 @@ import { formatConfigs } from './configs/format'
 import { importConfig } from './configs/imports'
 import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
-import { stylisticConfig } from './configs/stylistic'
+import { stylisticConfigs } from './configs/stylistic'
 import type { ConfigOptions } from './utils'
 import { config, ensurePackages } from './utils'
 
@@ -88,6 +88,7 @@ export default async function hyoban(
     [
       pluginUnicorn.configs['flat/recommended'],
       {
+        name: 'unicorn/recommended',
         rules: {
           'unicorn/prevent-abbreviations': 'off',
           'unicorn/catch-error-name': 'off',
@@ -113,6 +114,7 @@ export default async function hyoban(
           }
         : {},
       {
+        name: `typescript/${strict ? 'strict' : 'recommended'}${typeChecked ? '-type-checked' : ''}`,
         rules: {
           'no-unused-vars': 'off',
           '@typescript-eslint/no-unused-vars': [
@@ -166,7 +168,7 @@ export default async function hyoban(
         : {},
     ] as Linter.FlatConfig[],
     importConfig(),
-    stylisticConfig(style),
+    ...stylisticConfigs(style),
     ...jsonConfigs(style),
     ...reactConfigs({ react, typeChecked }),
     ...formatConfigs(style),

@@ -7,7 +7,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
 export function importConfig(): Linter.FlatConfig {
   return {
-    name: 'imports',
+    name: 'import/sort',
     plugins: {
       'simple-import-sort': simpleImportSort,
       'import-x': pluginImport,

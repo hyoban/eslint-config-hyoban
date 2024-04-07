@@ -47,6 +47,7 @@ export function jsonConfigs(style?: Options['style']): Linter.FlatConfig[] {
 
   return [
     {
+      name: 'json/json',
       files: [GLOB_JSON],
       ignores: GLOB_SHOULD_BE_JSONC,
       plugins: {
@@ -62,6 +63,7 @@ export function jsonConfigs(style?: Options['style']): Linter.FlatConfig[] {
       },
     },
     {
+      name: 'json/jsonc',
       files: [GLOB_JSONC, ...GLOB_SHOULD_BE_JSONC],
       plugins: {
         'jsonc': pluginJsonc as any,
@@ -76,10 +78,11 @@ export function jsonConfigs(style?: Options['style']): Linter.FlatConfig[] {
       },
     },
     {
+      name: 'json/json5',
       files: [GLOB_JSON5],
       plugins: {
         'jsonc': pluginJsonc as any,
-        '@stylistic': stylistic,
+        '@stylistic': stylistic as any,
       },
       languageOptions: {
         parser: parserJsonc,
@@ -90,6 +93,7 @@ export function jsonConfigs(style?: Options['style']): Linter.FlatConfig[] {
       },
     },
     {
+      name: 'json/package',
       files: ['**/package.json'],
       languageOptions: {
         parser: parserJsonc,

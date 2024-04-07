@@ -5,30 +5,34 @@ import pluginHyoban from 'eslint-plugin-hyoban'
 
 import type { Options } from '..'
 
-export function stylisticConfig(style?: Options['style']) {
+export function stylisticConfigs(style?: Options['style']) {
   if (style === false)
-    return
+    return []
 
   return [
-    stylistic.configs.customize(style),
-    {
-      name: 'stylistic',
-      rules: {
-        '@stylistic/quotes': ['error', style?.quotes === 'double' ? 'double' : 'single'],
-        '@stylistic/jsx-self-closing-comp': ['error', {
-          component: true,
-          html: true,
-        }],
-        '@stylistic/member-delimiter-style': ['error', {
-          multiline: { delimiter: 'comma', requireLast: true },
-          singleline: { delimiter: 'comma', requireLast: false },
-          multilineDetection: 'brackets',
-        }],
+    [
+      stylistic.configs.customize(style),
+      {
+        name: 'stylistic/base',
+        rules: {
+          '@stylistic/quotes': ['error', style?.quotes === 'double' ? 'double' : 'single'],
+          '@stylistic/jsx-self-closing-comp': ['error', {
+            component: true,
+            html: true,
+          }],
+          '@stylistic/member-delimiter-style': ['error', {
+            multiline: { delimiter: 'comma', requireLast: true },
+            singleline: { delimiter: 'comma', requireLast: false },
+            multilineDetection: 'brackets',
+          }],
+        },
       },
-    },
+    ],
     {
+      name: 'stylistic/extra',
       plugins: {
         antfu: eslintPluginAntfu,
+        hyoban: pluginHyoban,
       },
       rules: {
         'antfu/consistent-list-newline': 'error',
@@ -43,13 +47,7 @@ export function stylisticConfig(style?: Options['style']) {
             object: true,
           },
         ],
-      },
-    },
-    {
-      plugins: {
-        hyoban: pluginHyoban,
-      },
-      rules: {
+
         'hyoban/prefer-early-return': 'error',
         'hyoban/no-extra-space-jsx-expression': 'error',
       },

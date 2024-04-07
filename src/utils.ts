@@ -112,6 +112,7 @@ export async function config(
     defu <Linter.FlatConfig, Linter.FlatConfig[] >(
       rest as Linter.FlatConfig,
       {
+        name: 'js/recommended',
         files: finalOptions.files,
         languageOptions: {
           ecmaVersion: 2022,

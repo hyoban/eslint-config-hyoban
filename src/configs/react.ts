@@ -34,7 +34,7 @@ export function reactConfigs(
         delete rules[rule]
 
       return {
-        name: 'react:basic',
+        name: 'react/basic',
         plugins: config.plugins,
         rules: config.rules,
       } as Linter.FlatConfig
@@ -45,7 +45,7 @@ export function reactConfigs(
 
       return [
         {
-          name: 'react:type-checked',
+          name: 'react/type-checked',
           files: [GLOB_TS, GLOB_TSX],
           rules: {
             '@eslint-react/no-leaked-conditional-rendering': 'error',
@@ -58,7 +58,7 @@ export function reactConfigs(
         return
       const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
       return {
-        name: 'react:hooks',
+        name: 'react/hooks',
         plugins: {
           'react-hooks': reactHooks,
         },
