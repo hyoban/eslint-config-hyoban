@@ -1,0 +1,30 @@
+diff --git a/dist/index.cjs b/dist/index.cjs
+index bf5d2f0a1164e99925c032921191eb65982226af..245b730e45861016ba6a637372175bd1e24e3438 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -26,8 +26,8 @@ async function typegen(configs, options = {}) {
+         plugins: {
+           "": { rules: Object.fromEntries(builtinRules.entries()) }
+         },
+-        ...configsInput
+-      }
++      },
++      ...configsInput
+     ];
+   }
+   const plugins = await core.flatConfigsToPlugins(configsInput, options);
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 4a4daa720aa2e0090e2922469ac7d38fa39da39d..ea37d366c44bc19f4a106a522489af134f1dcb6c 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -20,8 +20,8 @@ async function typegen(configs, options = {}) {
+         plugins: {
+           "": { rules: Object.fromEntries(builtinRules.entries()) }
+         },
+-        ...configsInput
+-      }
++      },
++      ...configsInput
+     ];
+   }
+   const plugins = await flatConfigsToPlugins(configsInput, options);
