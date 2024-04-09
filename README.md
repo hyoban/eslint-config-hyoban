@@ -16,6 +16,7 @@ Hyoban's ESLint Config, enable most of the recommended rules from the following 
 | [unused-import] ✅ | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
 | [n]                | [perfectionist]  | [next]        | [eslint-types]         |
 | [compat]           | [format] ✅      |               | [package-json]         |
+|                    |                  |               | [eslint-typegen] ✅    |
 
 ## Usage
 
@@ -66,3 +67,4 @@ module.exports = (async () => (await import('./eslint.config.mjs')).default)()
 [format]: https://github.com/antfu/eslint-plugin-format
 [unused-import]: https://github.com/sweepline/eslint-plugin-unused-imports
 [package-json]: https://github.com/JoshuaKGoldberg/eslint-plugin-package-json
+[eslint-typegen]: https://github.com/antfu/eslint-typegen
