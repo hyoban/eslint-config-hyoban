@@ -2,6 +2,7 @@ import stylistic from '@stylistic/eslint-plugin'
 import type { Linter } from 'eslint'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
+import tseslint from 'typescript-eslint'
 
 import type { Options } from '..'
 
@@ -10,6 +11,7 @@ export function stylisticConfigs(style?: Options['style']) {
     return []
 
   return [
+    tseslint.configs.stylistic,
     [
       stylistic.configs.customize(style),
       {

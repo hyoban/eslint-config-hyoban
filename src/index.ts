@@ -56,16 +56,13 @@ export default async function hyoban(
     filesDisableTypeChecking = [],
   } = typescript ?? {}
 
-  const typescriptPresets = [
-    ...tseslint.configs.stylistic,
-    ...(strict
-      ? (typeChecked === true
-          ? tseslint.configs.strictTypeChecked
-          : tseslint.configs.strict)
-      : (typeChecked === true
-          ? tseslint.configs.recommendedTypeChecked
-          : tseslint.configs.recommended)),
-  ]
+  const typescriptPreset = strict
+    ? (typeChecked === true
+        ? tseslint.configs.strictTypeChecked
+        : tseslint.configs.strict)
+    : (typeChecked === true
+        ? tseslint.configs.recommendedTypeChecked
+        : tseslint.configs.recommended)
 
   return config(
     {
@@ -102,7 +99,7 @@ export default async function hyoban(
       },
     ],
     [
-      ...typescriptPresets,
+      ...typescriptPreset,
       typeChecked
         ? {
             languageOptions: {
@@ -114,7 +111,6 @@ export default async function hyoban(
           }
         : {},
       {
-        name: `typescript/${strict ? 'strict' : 'recommended'}${typeChecked ? '-type-checked' : ''}`,
         rules: {
           'no-unused-vars': 'off',
           '@typescript-eslint/no-unused-vars': [
