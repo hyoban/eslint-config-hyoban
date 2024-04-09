@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import stylistic from '@stylistic/eslint-plugin'
 import type { Linter } from 'eslint'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
@@ -6,12 +8,19 @@ import tseslint from 'typescript-eslint'
 
 import type { Options } from '..'
 
-export function stylisticConfigs(style?: Options['style']) {
+export function stylisticConfigs(style?: Options['style']): Array<Linter.FlatConfig | Linter.FlatConfig[]> {
   if (style === false)
     return []
 
   return [
-    tseslint.configs.stylistic,
+    [
+      ...tseslint.configs.stylistic as any,
+      {
+        rules: {
+          '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
+        },
+      },
+    ],
     [
       stylistic.configs.customize(style),
       {
@@ -34,7 +43,7 @@ export function stylisticConfigs(style?: Options['style']) {
       name: 'stylistic/extra',
       plugins: {
         antfu: eslintPluginAntfu,
-        hyoban: pluginHyoban,
+        hyoban: pluginHyoban as any,
       },
       rules: {
         'antfu/consistent-list-newline': 'error',
@@ -54,5 +63,5 @@ export function stylisticConfigs(style?: Options['style']) {
         'hyoban/no-extra-space-jsx-expression': 'error',
       },
     },
-  ] as Linter.FlatConfig[]
+  ]
 }

@@ -129,8 +129,6 @@ export default async function hyoban(
           '@typescript-eslint/consistent-type-imports': 'error',
           '@typescript-eslint/no-import-type-side-effects': 'error',
 
-          '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
-
           // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
           '@typescript-eslint/method-signature-style': [
             'error',
