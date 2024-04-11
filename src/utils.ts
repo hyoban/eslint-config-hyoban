@@ -42,6 +42,13 @@ export const defu = createDefu((obj, key, value) => {
 		obj[key] = [...value]
 		return true
 	}
+
+	// use set to merge arrays
+	if (Array.isArray(value) && Array.isArray(obj[key])) {
+		// @ts-expect-error It's fine here
+		obj[key] = [...new Set([...obj[key], ...value].sort())]
+		return true
+	}
 })
 
 function create(
@@ -74,7 +81,7 @@ export async function config(
 	const finalOptions = defu(options, {
 		ignores: GLOB_EXCLUDE,
 		ignoreFiles: DEFAULT_IGNORE_FILES,
-		files: [DEFAULT_GLOB_SRC],
+		files: DEFAULT_GLOB_SRC,
 	})
 	const { ignores, ignoreFiles, files: _files, ...rest } = finalOptions
 

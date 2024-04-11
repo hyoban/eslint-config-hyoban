@@ -1,4 +1,18 @@
-export const DEFAULT_GLOB_SRC = '**/*.?([cm])[jt]s?(x)'
+export const DEFAULT_GLOB_TS_SRC = [
+	'**/*.cts',
+	'**/*.mts',
+	'**/*.ts',
+	'**/*.tsx',
+]
+
+export const DEFAULT_GLOB_JS_SRC = [
+	'**/*.cjs',
+	'**/*.mjs',
+	'**/*.js',
+	'**/*.jsx',
+]
+
+export const DEFAULT_GLOB_SRC = [...DEFAULT_GLOB_TS_SRC, ...DEFAULT_GLOB_JS_SRC]
 
 export const GLOB_EXCLUDE = [
 	'**/node_modules',

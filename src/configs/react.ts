@@ -4,10 +4,8 @@
 import type { Linter } from 'eslint'
 
 import type { Options } from '..'
+import { DEFAULT_GLOB_TS_SRC } from '../consts'
 import { interopDefault } from '../utils'
-
-const GLOB_TS = '**/*.?([cm])ts'
-const GLOB_TSX = '**/*.?([cm])tsx'
 
 export function reactConfigs({
 	react,
@@ -51,7 +49,7 @@ export function reactConfigs({
 
 			return {
 				name: 'react/basic',
-				files: [GLOB_TS, GLOB_TSX],
+				files: DEFAULT_GLOB_TS_SRC,
 				plugins: config.plugins,
 				rules: config.rules,
 			} as Linter.FlatConfig
@@ -63,8 +61,11 @@ export function reactConfigs({
 
 			return {
 				name: 'react/type-checked',
-				files: [GLOB_TS, GLOB_TSX],
-				ignores: filesDisableTypeChecking,
+				files: DEFAULT_GLOB_TS_SRC,
+				ignores:
+					filesDisableTypeChecking.length > 0
+						? filesDisableTypeChecking
+						: undefined,
 				rules: {
 					'@eslint-react/no-leaked-conditional-rendering': 'error',
 				},
@@ -76,7 +77,7 @@ export function reactConfigs({
 			)
 			return {
 				name: 'react/hooks',
-				files: [GLOB_TS, GLOB_TSX],
+				files: DEFAULT_GLOB_TS_SRC,
 				plugins: {
 					'react-hooks': reactHooks,
 				},
