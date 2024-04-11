@@ -39,6 +39,8 @@ function mergeDefaultOptions(
 	}
 }
 
+export * from './consts'
+
 export default async function hyoban(
 	options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
 	...args: ConfigArray
