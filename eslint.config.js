@@ -7,9 +7,7 @@ export default typegen(
 	hyoban({
 		ignores: ['eslint-typegen.d.ts'],
 		react: true,
-		typescript: {
-			strict: true,
-			typeChecked: true,
-		},
+		strict: true,
+		typeChecked: true,
 	}),
 )

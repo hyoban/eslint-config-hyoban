@@ -27,7 +27,28 @@ try {
 		fs.mkdirSync('.vscode')
 	}
 
-	fs.writeFileSync('.vscode/settings.json', settings as string)
+	const isVscodeSettingsExist = fs.existsSync('.vscode/settings.json')
+	if (isVscodeSettingsExist) {
+		const settingsJson = fs.readFileSync('.vscode/settings.json', 'utf8')
+		const settingsParsed = JSON.parse(settingsJson) as Record<string, unknown>
+		const recommendedSettingsParsed = JSON.parse(settings as string) as Record<
+			string,
+			unknown
+		>
+		fs.writeFileSync(
+			'.vscode/settings.json',
+			`${JSON.stringify(
+				{
+					...recommendedSettingsParsed,
+					...settingsParsed,
+				},
+				null,
+				2,
+			)}\n`,
+		)
+	} else {
+		fs.writeFileSync('.vscode/settings.json', settings as string)
+	}
 
 	if (!fs.existsSync('.github')) {
 		fs.mkdirSync('.github')
@@ -40,7 +61,7 @@ try {
 	fs.writeFileSync('.github/workflows/format.yml', formatAction as string)
 
 	const eslintConfig =
-		"import hyoban from 'eslint-config-hyoban'\n\nexport default hyoban()\n"
+		"// @ts-check\nimport hyoban from 'eslint-config-hyoban'\n\nexport default hyoban()\n"
 	fs.writeFileSync(
 		packageJsonParsed.type === 'module'
 			? 'eslint.config.js'
