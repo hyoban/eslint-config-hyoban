@@ -19,7 +19,16 @@ export function typeScriptConfigs({
 			: tseslint.configs.recommended
 	return [
 		[
+			...tseslint.configs.stylistic,
 			...typescriptPreset,
+			{
+				rules: {
+					'@typescript-eslint/array-type': [
+						'error',
+						{ default: 'array-simple' },
+					],
+				},
+			},
 			typeChecked
 				? {
 						languageOptions: {
@@ -83,17 +92,6 @@ export function typeScriptConfigs({
 							},
 						}
 				: {},
-		] as Linter.FlatConfig[],
-		[
-			...tseslint.configs.stylistic,
-			{
-				rules: {
-					'@typescript-eslint/array-type': [
-						'error',
-						{ default: 'array-simple' },
-					],
-				},
-			},
 		] as Linter.FlatConfig[],
 		() => {
 			if (filesDisableTypeChecking.length === 0) {
