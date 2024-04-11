@@ -18,12 +18,24 @@ import type { ConfigOptions } from './utils'
 
 export interface Options {
 	react?: boolean
-	typescript?: {
-		strict?: boolean
-		typeChecked?: boolean | 'essential'
-		project?: string[] | string | boolean | null
-		tsconfigRootDir?: string
-		filesDisableTypeChecking?: string[]
+	strict?: boolean
+	typeChecked?: boolean | 'essential'
+	project?: string[] | string | boolean | null
+	tsconfigRootDir?: string
+	filesDisableTypeChecking?: string[]
+}
+
+function mergeDefaultOptions(
+	options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
+): Required<Options> {
+	return {
+		react: false,
+		strict: false,
+		typeChecked: 'essential',
+		project: true,
+		tsconfigRootDir: process.cwd(),
+		filesDisableTypeChecking: [],
+		...options,
 	}
 }
 
@@ -35,15 +47,14 @@ export default async function hyoban(
 		| (() => Promise<Linter.FlatConfig>)
 	>
 ) {
-	const { react = false, typescript } = options ?? {}
-
+	const finalOptions = mergeDefaultOptions(options)
 	const {
-		strict = false,
-		typeChecked = 'essential',
-		project = true,
-		tsconfigRootDir = process.cwd(),
-		filesDisableTypeChecking = [],
-	} = typescript ?? {}
+		strict,
+		typeChecked,
+		project,
+		tsconfigRootDir,
+		filesDisableTypeChecking,
+	} = finalOptions
 
 	const typescriptPreset = strict
 		? typeChecked === true
@@ -191,7 +202,7 @@ export default async function hyoban(
 			},
 		},
 		...jsonConfigs(),
-		...reactConfigs({ react, typescript }),
+		...reactConfigs(finalOptions),
 		() => {
 			if (filesDisableTypeChecking.length === 0) {
 				return

@@ -11,11 +11,10 @@ const GLOB_TSX = '**/*.?([cm])tsx'
 
 export function reactConfigs({
 	react,
-	typescript,
-}: {
-	react: boolean
-	typescript: Options['typescript']
-}) {
+	strict,
+	typeChecked,
+	filesDisableTypeChecking,
+}: Required<Options>) {
 	if (!react) {
 		return []
 	}
@@ -24,7 +23,7 @@ export function reactConfigs({
 			const eslintReact = await interopDefault(
 				import('@eslint-react/eslint-plugin'),
 			)
-			const config = typescript?.strict
+			const config = strict
 				? eslintReact.configs.all
 				: eslintReact.configs.recommended
 			const { rules } = config
@@ -58,14 +57,14 @@ export function reactConfigs({
 			} as Linter.FlatConfig
 		},
 		() => {
-			if (!typescript?.typeChecked) {
+			if (!typeChecked) {
 				return
 			}
 
 			return {
 				name: 'react/type-checked',
 				files: [GLOB_TS, GLOB_TSX],
-				ignores: typescript.filesDisableTypeChecking,
+				ignores: filesDisableTypeChecking,
 				rules: {
 					'@eslint-react/no-leaked-conditional-rendering': 'error',
 				},
