@@ -5,14 +5,13 @@ import '../eslint-typegen.d.ts'
 
 import process from 'node:process'
 
-import type { Linter } from 'eslint'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
 
 import { reactConfigs } from './configs/react'
 import { typeScriptConfigs } from './configs/typescript.js'
 import unicornConfig from './configs/unicorn'
-import type { ConfigOptions } from './utils'
+import type { ConfigArray, ConfigOptions } from './utils'
 import { config } from './utils'
 
 export interface Options {
@@ -40,11 +39,7 @@ function mergeDefaultOptions(
 
 export default async function hyoban(
 	options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
-	...args: Array<
-		| Linter.FlatConfig
-		| (() => Linter.FlatConfig)
-		| (() => Promise<Linter.FlatConfig>)
-	>
+	...args: ConfigArray
 ) {
 	const finalOptions = mergeDefaultOptions(options)
 
@@ -67,7 +62,6 @@ export default async function hyoban(
 			},
 		},
 		unicornConfig(),
-		...typeScriptConfigs(finalOptions),
 		{
 			name: 'stylistic/extra',
 			plugins: {
@@ -88,6 +82,7 @@ export default async function hyoban(
 				'hyoban/prefer-early-return': 'warn',
 			},
 		},
+		...typeScriptConfigs(finalOptions),
 		...reactConfigs(finalOptions),
 		...args,
 	)

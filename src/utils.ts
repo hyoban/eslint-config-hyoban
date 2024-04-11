@@ -67,6 +67,8 @@ type AsyncCreateFlatConfig = () => Promise<
 	MaybeArray<Linter.FlatConfig> | undefined
 >
 
+type ExcludeArrayFirstItem<T> = T extends [unknown, ...infer R] ? R : never
+export type ConfigArray = ExcludeArrayFirstItem<Parameters<typeof config>>
 export async function config(
 	options: ConfigOptionsWithFlatConfig,
 	...configs: Array<
