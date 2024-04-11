@@ -1,93 +1,93 @@
 {
-  "name": "eslint-config-hyoban",
-  "type": "module",
-  "version": "0.4.2",
-  "packageManager": "pnpm@8.15.6",
-  "description": "Hyoban's ESLint Config",
-  "author": "Stephen Zhou <hi@hyoban.cc>",
-  "license": "MIT",
-  "homepage": "https://github.com/hyoban/eslint-config-hyoban#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hyoban/eslint-config-hyoban.git"
-  },
-  "bugs": "https://github.com/hyoban/eslint-config-hyoban/issues",
-  "keywords": [],
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
-    }
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
-    }
-  },
-  "bin": {
-    "eslint-config-hyoban": "./dist/bin/index.js"
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "bunchee",
-    "build:inspector": "pnpm build && npx @eslint/config-inspector@latest build",
-    "dev": "bunchee -w",
-    "lint": "eslint",
-    "prepublishOnly": "pnpm run build",
-    "start": "tsx src/index.ts",
-    "test": "vitest",
-    "typecheck": "tsc"
-  },
-  "peerDependencies": {
-    "eslint": "^8.56.0 || ^9.0.0",
-    "typescript": ">=4.7.4"
-  },
-  "dependencies": {
-    "@eslint-react/eslint-plugin": "1.5.7",
-    "@eslint/js": "^9.0.0",
-    "@types/eslint": "^8.56.7",
-    "defu": "^6.1.4",
-    "eslint-config-flat-gitignore": "^0.1.5",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-antfu": "^2.1.2",
-    "eslint-plugin-hyoban": "^0.2.7",
-    "eslint-plugin-import-x": "^0.5.0",
-    "eslint-plugin-jsonc": "^2.15.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-simple-import-sort": "^12.0.0",
-    "eslint-plugin-unicorn": "^52.0.0",
-    "globals": "^15.0.0",
-    "jsonc-eslint-parser": "^2.4.0",
-    "typescript-eslint": "^7.6.0"
-  },
-  "devDependencies": {
-    "@total-typescript/ts-reset": "^0.5.1",
-    "@types/eslint": "^8.56.7",
-    "@types/eslint-config-prettier": "^6.11.3",
-    "@types/eslint__js": "^8.42.3",
-    "@types/node": "20.11.30",
-    "bunchee": "^5.1.2",
-    "eslint": "^9.0.0",
-    "eslint-typegen": "^0.2.2",
-    "prettier": "^3.2.5",
-    "prettier-plugin-curly": "^0.2.1",
-    "tsx": "^4.7.2",
-    "typescript": "^5.4.4",
-    "vitest": "^1.4.0"
-  }
+	"name": "eslint-config-hyoban",
+	"type": "module",
+	"version": "0.4.2",
+	"packageManager": "pnpm@8.15.6",
+	"description": "Hyoban's ESLint Config",
+	"author": "Stephen Zhou <hi@hyoban.cc>",
+	"license": "MIT",
+	"homepage": "https://github.com/hyoban/eslint-config-hyoban#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/hyoban/eslint-config-hyoban.git"
+	},
+	"bugs": "https://github.com/hyoban/eslint-config-hyoban/issues",
+	"keywords": [],
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"typesVersions": {
+		"*": {
+			"*": [
+				"./dist/*",
+				"./dist/index.d.ts"
+			]
+		}
+	},
+	"bin": {
+		"eslint-config-hyoban": "./dist/bin/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "bunchee",
+		"build:inspector": "pnpm build && npx @eslint/config-inspector@latest build",
+		"dev": "bunchee -w",
+		"lint": "eslint",
+		"prepublishOnly": "pnpm run build",
+		"start": "tsx src/index.ts",
+		"test": "vitest",
+		"typecheck": "tsc"
+	},
+	"peerDependencies": {
+		"eslint": "^8.56.0 || ^9.0.0",
+		"typescript": ">=4.7.4"
+	},
+	"dependencies": {
+		"@eslint-react/eslint-plugin": "1.5.7",
+		"@eslint/js": "^9.0.0",
+		"@types/eslint": "^8.56.7",
+		"defu": "^6.1.4",
+		"eslint-config-flat-gitignore": "^0.1.5",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-antfu": "^2.1.2",
+		"eslint-plugin-hyoban": "^0.2.7",
+		"eslint-plugin-import-x": "^0.5.0",
+		"eslint-plugin-jsonc": "^2.15.0",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-simple-import-sort": "^12.0.0",
+		"eslint-plugin-unicorn": "^52.0.0",
+		"globals": "^15.0.0",
+		"jsonc-eslint-parser": "^2.4.0",
+		"typescript-eslint": "^7.6.0"
+	},
+	"devDependencies": {
+		"@total-typescript/ts-reset": "^0.5.1",
+		"@types/eslint": "^8.56.7",
+		"@types/eslint-config-prettier": "^6.11.3",
+		"@types/eslint__js": "^8.42.3",
+		"@types/node": "20.11.30",
+		"bunchee": "^5.1.2",
+		"eslint": "^9.0.0",
+		"eslint-typegen": "^0.2.2",
+		"prettier": "^3.2.5",
+		"prettier-plugin-curly": "^0.2.1",
+		"tsx": "^4.7.2",
+		"typescript": "^5.4.4",
+		"vitest": "^1.4.0"
+	}
 }
