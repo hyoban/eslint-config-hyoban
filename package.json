@@ -1,19 +1,18 @@
 {
 	"name": "eslint-config-hyoban",
-	"type": "module",
 	"version": "0.6.0",
-	"packageManager": "pnpm@8.15.6",
 	"description": "Hyoban's ESLint Config",
-	"author": "Stephen Zhou <hi@hyoban.cc>",
-	"license": "MIT",
+	"keywords": [],
 	"homepage": "https://github.com/hyoban/eslint-config-hyoban#readme",
+	"bugs": "https://github.com/hyoban/eslint-config-hyoban/issues",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hyoban/eslint-config-hyoban.git"
 	},
-	"bugs": "https://github.com/hyoban/eslint-config-hyoban/issues",
-	"keywords": [],
+	"license": "MIT",
+	"author": "Stephen Zhou <hi@hyoban.cc>",
 	"sideEffects": false,
+	"type": "module",
 	"exports": {
 		".": {
 			"import": {
@@ -47,17 +46,13 @@
 		"build": "bunchee",
 		"build:inspector": "npx @eslint/config-inspector@latest build",
 		"dev": "bunchee -w",
-		"lint": "eslint . && prettier --check .",
-		"lint:fix": "eslint . --fix && prettier --write .",
+		"lint": "prettier --check . && eslint .",
+		"lint:fix": "prettier --write . && eslint . --fix",
 		"prepare": "pnpm run build",
 		"prepublishOnly": "pnpm run build",
 		"start": "tsx src/index.ts",
 		"test": "vitest",
 		"typecheck": "tsc"
-	},
-	"peerDependencies": {
-		"eslint": "^8.56.0 || ^9.0.0",
-		"typescript": ">=4.7.4"
 	},
 	"dependencies": {
 		"@eslint-react/eslint-plugin": "1.5.7",
@@ -67,11 +62,9 @@
 		"eslint-config-flat-gitignore": "^0.1.5",
 		"eslint-plugin-antfu": "^2.1.2",
 		"eslint-plugin-hyoban": "^0.2.7",
-		"eslint-plugin-jsonc": "^2.15.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-unicorn": "^52.0.0",
 		"globals": "^15.0.0",
-		"jsonc-eslint-parser": "^2.4.0",
 		"typescript-eslint": "^7.6.0"
 	},
 	"devDependencies": {
@@ -85,8 +78,14 @@
 		"eslint-typegen": "^0.2.2",
 		"prettier": "^3.2.5",
 		"prettier-plugin-curly": "^0.2.1",
+		"prettier-plugin-packagejson": "^2.4.14",
 		"tsx": "^4.7.2",
 		"typescript": "^5.4.4",
 		"vitest": "^1.4.0"
-	}
+	},
+	"peerDependencies": {
+		"eslint": "^8.56.0 || ^9.0.0",
+		"typescript": ">=4.7.4"
+	},
+	"packageManager": "pnpm@8.15.6"
 }

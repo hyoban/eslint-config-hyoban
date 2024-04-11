@@ -5,8 +5,8 @@ import globals from 'globals'
 
 import { DEFAULT_GLOB_SRC, DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
 
-export type MaybeArray<T> = T | T[]
-export type Awaitable<T> = T | Promise<T>
+type MaybeArray<T> = T | T[]
+type Awaitable<T> = T | Promise<T>
 
 export async function interopDefault<T>(
 	m: Awaitable<T>,
@@ -22,7 +22,7 @@ export interface ConfigOptions {
 	ignoreFiles?: string[]
 }
 
-export type ConfigOptionsWithFlatConfig = ConfigOptions &
+type ConfigOptionsWithFlatConfig = ConfigOptions &
 	Pick<
 		Linter.FlatConfig,
 		'rules' | 'languageOptions' | 'linterOptions' | 'settings'

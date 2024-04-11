@@ -11,7 +11,6 @@ import pluginHyoban from 'eslint-plugin-hyoban'
 import pluginUnicorn from 'eslint-plugin-unicorn'
 import tseslint from 'typescript-eslint'
 
-import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
 import { config } from './utils'
 import type { ConfigOptions } from './utils'
@@ -201,7 +200,6 @@ export default async function hyoban(
 				'hyoban/prefer-early-return': 'warn',
 			},
 		},
-		...jsonConfigs(),
 		...reactConfigs(finalOptions),
 		() => {
 			if (filesDisableTypeChecking.length === 0) {
