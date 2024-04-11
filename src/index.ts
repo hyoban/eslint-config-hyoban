@@ -12,11 +12,10 @@ import pluginHyoban from 'eslint-plugin-hyoban'
 import pluginUnicorn from 'eslint-plugin-unicorn'
 import tseslint from 'typescript-eslint'
 
-import { importConfig } from './configs/imports'
 import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
-import type { ConfigOptions } from './utils'
 import { config } from './utils'
+import type { ConfigOptions } from './utils'
 
 export interface Options {
 	react?: boolean
@@ -155,7 +154,6 @@ export default async function hyoban(
 						}
 				: {},
 		] as Linter.FlatConfig[],
-		importConfig(),
 		{
 			name: 'stylistic/extra',
 			plugins: {

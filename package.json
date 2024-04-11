@@ -66,7 +66,6 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-antfu": "^2.1.2",
 		"eslint-plugin-hyoban": "^0.2.7",
-		"eslint-plugin-import-x": "^0.5.0",
 		"eslint-plugin-jsonc": "^2.15.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-simple-import-sort": "^12.0.0",
@@ -76,6 +75,7 @@
 		"typescript-eslint": "^7.6.0"
 	},
 	"devDependencies": {
+		"@ianvs/prettier-plugin-sort-imports": "^4.2.1",
 		"@total-typescript/ts-reset": "^0.5.1",
 		"@types/eslint": "^8.56.7",
 		"@types/eslint-config-prettier": "^6.11.3",
