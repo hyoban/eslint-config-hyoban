@@ -12,6 +12,7 @@ export function reactConfigs({
 	strict,
 	typeChecked,
 	filesDisableTypeChecking,
+	disableCustomConfig,
 }: Required<Options>) {
 	if (!react) {
 		return []
@@ -33,6 +34,7 @@ export function reactConfigs({
 			} as Linter.FlatConfig
 		},
 		() => {
+			if (disableCustomConfig) return
 			if (strict) {
 				return {
 					name: 'react/all/custom',

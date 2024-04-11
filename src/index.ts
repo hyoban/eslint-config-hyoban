@@ -9,7 +9,7 @@ import eslintPluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
 
 import { reactConfigs } from './configs/react'
-import { typeScriptConfigs } from './configs/typescript.js'
+import { typeScriptConfigs } from './configs/typescript'
 import { unicornConfigs } from './configs/unicorn'
 import type { ConfigArray, ConfigOptions } from './utils'
 import { config } from './utils'
@@ -21,6 +21,7 @@ export interface Options {
 	project?: string[] | string | boolean | null
 	tsconfigRootDir?: string
 	filesDisableTypeChecking?: string[]
+	disableCustomConfig?: boolean
 }
 
 function mergeDefaultOptions(
@@ -33,6 +34,7 @@ function mergeDefaultOptions(
 		project: true,
 		tsconfigRootDir: process.cwd(),
 		filesDisableTypeChecking: [],
+		disableCustomConfig: false,
 		...options,
 	}
 }
@@ -42,13 +44,14 @@ export default async function hyoban(
 	...args: ConfigArray
 ) {
 	const finalOptions = mergeDefaultOptions(options)
+	const { disableCustomConfig } = finalOptions
 
 	return config(
 		{
 			ignores: options?.ignores,
 			ignoreFiles: options?.ignoreFiles,
 		},
-		{
+		!disableCustomConfig && {
 			name: 'js/custom',
 			rules: {
 				// https://twitter.com/karlhorky/status/1773632485055680875
@@ -64,8 +67,8 @@ export default async function hyoban(
 				],
 			},
 		},
-		...unicornConfigs(),
-		{
+		...unicornConfigs(finalOptions),
+		!disableCustomConfig && {
 			name: 'stylistic/custom',
 			plugins: {
 				antfu: eslintPluginAntfu,
