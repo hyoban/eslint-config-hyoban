@@ -7,6 +7,7 @@ export default function unicornConfig(): Linter.FlatConfig {
 	const config = pluginUnicorn.configs['flat/recommended']
 	const customConfig: Linter.FlatConfig = {
 		...config,
+		name: 'unicorn/recommended',
 		rules: {
 			...config.rules,
 			'unicorn/prevent-abbreviations': 'off',
