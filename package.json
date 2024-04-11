@@ -1,6 +1,6 @@
 {
 	"name": "eslint-config-hyoban",
-	"version": "0.7.2",
+	"version": "0.7.3",
 	"description": "Hyoban's ESLint Config",
 	"keywords": [],
 	"homepage": "https://github.com/hyoban/eslint-config-hyoban#readme",
