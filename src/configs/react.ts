@@ -16,11 +16,11 @@ export function reactConfigs({
 	react: boolean
 	typescript: Options['typescript']
 }) {
+	if (!react) {
+		return []
+	}
 	return [
 		async () => {
-			if (!react) {
-				return
-			}
 			const eslintReact = await interopDefault(
 				import('@eslint-react/eslint-plugin'),
 			)
@@ -49,25 +49,20 @@ export function reactConfigs({
 			} as Linter.FlatConfig
 		},
 		() => {
-			if (!react || !typescript?.typeChecked) {
+			if (!typescript?.typeChecked) {
 				return
 			}
 
-			return [
-				{
-					name: 'react/type-checked',
-					files: [GLOB_TS, GLOB_TSX],
-					ignores: typescript.filesDisableTypeChecking,
-					rules: {
-						'@eslint-react/no-leaked-conditional-rendering': 'error',
-					},
+			return {
+				name: 'react/type-checked',
+				files: [GLOB_TS, GLOB_TSX],
+				ignores: typescript.filesDisableTypeChecking,
+				rules: {
+					'@eslint-react/no-leaked-conditional-rendering': 'error',
 				},
-			] as Linter.FlatConfig
+			} as Linter.FlatConfig
 		},
 		async () => {
-			if (!react) {
-				return
-			}
 			const reactHooks = await interopDefault(
 				import('eslint-plugin-react-hooks'),
 			)
