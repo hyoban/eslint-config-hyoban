@@ -159,6 +159,17 @@ export default async function hyoban(
 						}
 				: {},
 		] as Linter.FlatConfig[],
+		[
+			...(tseslint.configs.stylistic as any),
+			{
+				rules: {
+					'@typescript-eslint/array-type': [
+						'error',
+						{ default: 'array-simple' },
+					],
+				},
+			},
+		],
 		{
 			name: 'stylistic/extra',
 			plugins: {
