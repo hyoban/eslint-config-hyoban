@@ -177,16 +177,17 @@ export default async function hyoban(
 				hyoban: pluginHyoban as any,
 			},
 			rules: {
-				'antfu/top-level-function': 'error',
-				'prefer-template': 'error',
+				'object-shorthand': 'warn',
+				'prefer-template': 'warn',
 				'prefer-destructuring': [
-					'error',
+					'warn',
 					{
 						array: false,
 						object: true,
 					},
 				],
-				'hyoban/prefer-early-return': 'error',
+				'antfu/top-level-function': 'warn',
+				'hyoban/prefer-early-return': 'warn',
 			},
 		},
 		...jsonConfigs(),
