@@ -29,12 +29,13 @@ export function reactConfigs({
 				: eslintReact.configs.recommended
 			const { rules } = config
 
-			for (const rule of [
+			const alwaysOffRules = [
 				'@eslint-react/naming-convention/filename',
 				'@eslint-react/naming-convention/use-state',
 				'@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps',
 				'@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps',
-			]) {
+			]
+			for (const rule of alwaysOffRules) {
 				if (!rules[rule]) {
 					continue
 				}
@@ -42,8 +43,16 @@ export function reactConfigs({
 				delete rules[rule]
 			}
 
+			const alwaysOnRules = [
+				'@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks',
+			]
+			for (const rule of alwaysOnRules) {
+				rules[rule] = 'error'
+			}
+
 			return {
 				name: 'react/basic',
+				files: [GLOB_TS, GLOB_TSX],
 				plugins: config.plugins,
 				rules: config.rules,
 			} as Linter.FlatConfig
@@ -68,6 +77,7 @@ export function reactConfigs({
 			)
 			return {
 				name: 'react/hooks',
+				files: [GLOB_TS, GLOB_TSX],
 				plugins: {
 					'react-hooks': reactHooks,
 				},
