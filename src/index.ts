@@ -47,6 +47,9 @@ export default async function hyoban(
 		{
 			ignores: options?.ignores,
 			ignoreFiles: options?.ignoreFiles,
+		},
+		{
+			name: 'js/custom',
 			rules: {
 				// https://twitter.com/karlhorky/status/1773632485055680875
 				'array-callback-return': 'error',
