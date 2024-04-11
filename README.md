@@ -21,14 +21,17 @@ Hyoban's ESLint Config, enable most of the recommended rules from the following 
 ## Usage
 
 ```sh
-npx eslint-config-hyoban@latest
+ni -D eslint eslint-config-hyoban
+```
+
+```sh
+npx eslint-config-hyoban
 ```
 
 > [!Note]
 > If your ESLint version is less than 8.57.0, you have to use eslint.config.js.
 
 ```js
-// eslint-disable-next-line unicorn/prefer-module, unicorn/no-await-expression-member
 module.exports = (async () => (await import('./eslint.config.mjs')).default)()
 ```
 
