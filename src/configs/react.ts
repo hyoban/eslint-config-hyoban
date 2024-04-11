@@ -3,6 +3,7 @@
 
 import type { Linter } from 'eslint'
 
+import type { Options } from '..'
 import { interopDefault } from '../utils'
 
 const GLOB_TS = '**/*.?([cm])ts'
@@ -10,10 +11,10 @@ const GLOB_TSX = '**/*.?([cm])tsx'
 
 export function reactConfigs({
 	react,
-	typeChecked,
+	typescript,
 }: {
 	react: boolean
-	typeChecked?: boolean | 'essential'
+	typescript: Options['typescript']
 }) {
 	return [
 		async () => {
@@ -43,7 +44,7 @@ export function reactConfigs({
 			} as Linter.FlatConfig
 		},
 		() => {
-			if (!react || !typeChecked) {
+			if (!react || !typescript?.typeChecked) {
 				return
 			}
 
@@ -51,6 +52,7 @@ export function reactConfigs({
 				{
 					name: 'react/type-checked',
 					files: [GLOB_TS, GLOB_TSX],
+					ignores: typescript.filesDisableTypeChecking,
 					rules: {
 						'@eslint-react/no-leaked-conditional-rendering': 'error',
 					},

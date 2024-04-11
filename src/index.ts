@@ -6,7 +6,6 @@ import '../eslint-typegen.d.ts'
 import process from 'node:process'
 
 import type { Linter } from 'eslint'
-import eslintConfigPrettier from 'eslint-config-prettier'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
 import pluginUnicorn from 'eslint-plugin-unicorn'
@@ -85,6 +84,12 @@ export default async function hyoban(
 					'unicorn/prefer-top-level-await': 'off',
 					'unicorn/no-negated-condition': 'off',
 					'unicorn/no-await-expression-member': 'off',
+
+					// conflicts with prettier
+					'unicorn/template-indent': 'off',
+					'unicorn/empty-brace-spaces': 'off',
+					'unicorn/no-nested-ternary': 'off',
+					'unicorn/number-literal-case': 'off',
 				},
 			},
 		],
@@ -174,30 +179,16 @@ export default async function hyoban(
 			},
 		},
 		...jsonConfigs(),
-		...reactConfigs({ react, typeChecked }),
+		...reactConfigs({ react, typescript }),
 		() => {
 			if (filesDisableTypeChecking.length === 0) {
 				return
 			}
-			return [
-				{
-					...tseslint.configs.disableTypeChecked,
-					files: filesDisableTypeChecking,
-				},
-				{
-					rules: {
-						'@eslint-react/no-leaked-conditional-rendering': 'off',
-					},
-				},
-			] as Linter.FlatConfig[]
+			return {
+				files: filesDisableTypeChecking,
+				...tseslint.configs.disableTypeChecked,
+			} as Linter.FlatConfig
 		},
 		...args,
-		{
-			rules: Object.fromEntries(
-				Object.entries(eslintConfigPrettier.rules).filter(([rule]) =>
-					rule.startsWith('unicorn/'),
-				),
-			),
-		},
 	)
 }
