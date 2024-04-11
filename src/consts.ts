@@ -5,12 +5,7 @@ export const DEFAULT_GLOB_TS_SRC = [
 	'**/*.tsx',
 ]
 
-export const DEFAULT_GLOB_JS_SRC = [
-	'**/*.cjs',
-	'**/*.mjs',
-	'**/*.js',
-	'**/*.jsx',
-]
+const DEFAULT_GLOB_JS_SRC = ['**/*.cjs', '**/*.mjs', '**/*.js', '**/*.jsx']
 
 export const DEFAULT_GLOB_SRC = [...DEFAULT_GLOB_TS_SRC, ...DEFAULT_GLOB_JS_SRC]
 
