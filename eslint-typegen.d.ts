@@ -3378,8 +3378,8 @@ type TypescriptEslintCommaDangle = []|[(_TypescriptEslintCommaDangleValue | {
   generics?: _TypescriptEslintCommaDangleValueWithIgnore
   tuples?: _TypescriptEslintCommaDangleValueWithIgnore
 })]
-type _TypescriptEslintCommaDangleValue = ("always-multiline" | "always" | "never" | "only-multiline")
-type _TypescriptEslintCommaDangleValueWithIgnore = ("always-multiline" | "always" | "never" | "only-multiline" | "ignore")
+type _TypescriptEslintCommaDangleValue = ("always" | "always-multiline" | "never" | "only-multiline")
+type _TypescriptEslintCommaDangleValueWithIgnore = ("always" | "always-multiline" | "ignore" | "never" | "only-multiline")
 // ----- @typescript-eslint/comma-spacing -----
 type TypescriptEslintCommaSpacing = []|[{
   before?: boolean
@@ -3949,10 +3949,10 @@ type TypescriptEslintMemberOrdering = []|[{
 type TypescriptEslintMethodSignatureStyle = []|[("property" | "method")]
 // ----- @typescript-eslint/naming-convention -----
 type _TypescriptEslintNamingConventionFormatOptionsConfig = (_TypescriptEslintNamingConventionPredefinedFormats[] | null)
-type _TypescriptEslintNamingConventionPredefinedFormats = ("camelCase" | "strictCamelCase" | "PascalCase" | "StrictPascalCase" | "snake_case" | "UPPER_CASE")
-type _TypescriptEslintNamingConventionUnderscoreOptions = ("forbid" | "allow" | "require" | "requireDouble" | "allowDouble" | "allowSingleOrDouble")
+type _TypescriptEslintNamingConventionPredefinedFormats = ("PascalCase" | "StrictPascalCase" | "UPPER_CASE" | "camelCase" | "snake_case" | "strictCamelCase")
+type _TypescriptEslintNamingConventionUnderscoreOptions = ("allow" | "allowDouble" | "allowSingleOrDouble" | "forbid" | "require" | "requireDouble")
 type _TypescriptEslintNamingConvention_PrefixSuffixConfig = string[]
-type _TypescriptEslintNamingConventionTypeModifiers = ("boolean" | "string" | "number" | "function" | "array")
+type _TypescriptEslintNamingConventionTypeModifiers = ("array" | "boolean" | "function" | "number" | "string")
 type TypescriptEslintNamingConvention = ({
   format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
@@ -4521,7 +4521,7 @@ type TypescriptEslintOnlyThrowError = []|[{
   allowThrowingUnknown?: boolean
 }]
 // ----- @typescript-eslint/padding-line-between-statements -----
-type _TypescriptEslintPaddingLineBetweenStatementsPaddingType = ("any" | "never" | "always")
+type _TypescriptEslintPaddingLineBetweenStatementsPaddingType = ("always" | "any" | "never")
 type _TypescriptEslintPaddingLineBetweenStatementsStatementType = (("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "interface" | "type") | [("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "interface" | "type"), ...(("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "interface" | "type"))[]])
 type TypescriptEslintPaddingLineBetweenStatements = {
   blankLine: _TypescriptEslintPaddingLineBetweenStatementsPaddingType

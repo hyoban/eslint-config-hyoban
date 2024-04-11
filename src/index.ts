@@ -10,7 +10,7 @@ import pluginHyoban from 'eslint-plugin-hyoban'
 
 import { reactConfigs } from './configs/react'
 import { typeScriptConfigs } from './configs/typescript.js'
-import unicornConfig from './configs/unicorn'
+import { unicornConfigs } from './configs/unicorn'
 import type { ConfigArray, ConfigOptions } from './utils'
 import { config } from './utils'
 
@@ -61,9 +61,9 @@ export default async function hyoban(
 				],
 			},
 		},
-		unicornConfig(),
+		...unicornConfigs(),
 		{
-			name: 'stylistic/extra',
+			name: 'stylistic/custom',
 			plugins: {
 				antfu: eslintPluginAntfu,
 				hyoban: pluginHyoban as any,

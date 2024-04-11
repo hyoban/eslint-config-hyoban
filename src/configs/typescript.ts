@@ -2,6 +2,7 @@ import type { Linter } from 'eslint'
 import tseslint from 'typescript-eslint'
 
 import type { Options } from '..'
+import { DEFAULT_GLOB_TS_SRC } from '../consts'
 
 export function typeScriptConfigs({
 	strict,
@@ -18,9 +19,12 @@ export function typeScriptConfigs({
 			? tseslint.configs.recommendedTypeChecked
 			: tseslint.configs.recommended
 	return [
+		[...tseslint.configs.stylistic, ...typescriptPreset] as Linter.FlatConfig[],
 		[
-			...tseslint.configs.stylistic,
-			...typescriptPreset,
+			{
+				name: 'typescript-eslint/custom',
+				files: DEFAULT_GLOB_TS_SRC,
+			},
 			{
 				rules: {
 					'@typescript-eslint/array-type': [
@@ -41,7 +45,6 @@ export function typeScriptConfigs({
 				: {},
 			{
 				rules: {
-					'no-unused-vars': 'off',
 					'@typescript-eslint/no-unused-vars': [
 						'error',
 						{

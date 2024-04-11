@@ -24,35 +24,37 @@ export function reactConfigs({
 			const config = strict
 				? eslintReact.configs.all
 				: eslintReact.configs.recommended
-			const { rules } = config
-
-			const alwaysOffRules = [
-				'@eslint-react/naming-convention/filename',
-				'@eslint-react/naming-convention/use-state',
-				'@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps',
-				'@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps',
-			]
-			for (const rule of alwaysOffRules) {
-				if (!rules[rule]) {
-					continue
-				}
-				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-				delete rules[rule]
-			}
-
-			const alwaysOnRules = [
-				'@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks',
-			]
-			for (const rule of alwaysOnRules) {
-				rules[rule] = 'error'
-			}
 
 			return {
-				name: 'react/basic',
+				name: `react/${strict ? 'all' : 'recommended'}`,
 				files: DEFAULT_GLOB_TS_SRC,
 				plugins: config.plugins,
 				rules: config.rules,
 			} as Linter.FlatConfig
+		},
+		() => {
+			if (strict) {
+				return {
+					name: 'react/all/custom',
+					files: DEFAULT_GLOB_TS_SRC,
+					rules: {
+						'@eslint-react/naming-convention/filename': 'off',
+						'@eslint-react/naming-convention/use-state': 'off',
+						'@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps':
+							'off',
+						'@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps':
+							'off',
+					},
+				} satisfies Linter.FlatConfig
+			}
+			return {
+				name: 'react/recommended/custom',
+				files: DEFAULT_GLOB_TS_SRC,
+				rules: {
+					'@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks':
+						'error',
+				},
+			} satisfies Linter.FlatConfig
 		},
 		() => {
 			if (!typeChecked) {
@@ -69,7 +71,7 @@ export function reactConfigs({
 				rules: {
 					'@eslint-react/no-leaked-conditional-rendering': 'error',
 				},
-			} as Linter.FlatConfig
+			} satisfies Linter.FlatConfig
 		},
 		async () => {
 			const reactHooks = await interopDefault(
