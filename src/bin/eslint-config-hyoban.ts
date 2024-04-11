@@ -6,8 +6,8 @@ import formatAction from './format.txt'
 import settings from './settings.txt'
 
 interface PackageJson {
-  scripts: Record<string, string>,
-  type?: string,
+  scripts: Record<string, string>
+  type?: string
 }
 
 try {
@@ -17,30 +17,37 @@ try {
     ...packageJsonParsed.scripts,
     lint: 'eslint .',
   }
-  fs.writeFileSync('package.json', `${JSON.stringify(packageJsonParsed, null, 2)}\n`)
+  fs.writeFileSync(
+    'package.json',
+    `${JSON.stringify(packageJsonParsed, null, 2)}\n`,
+  )
 
-  if (!fs.existsSync('.vscode'))
+  if (!fs.existsSync('.vscode')) {
     fs.mkdirSync('.vscode')
+  }
 
   fs.writeFileSync('.vscode/settings.json', settings as string)
 
-  if (!fs.existsSync('.github'))
+  if (!fs.existsSync('.github')) {
     fs.mkdirSync('.github')
+  }
 
-  if (!fs.existsSync('.github/workflows'))
+  if (!fs.existsSync('.github/workflows')) {
     fs.mkdirSync('.github/workflows')
+  }
 
   fs.writeFileSync('.github/workflows/format.yml', formatAction as string)
 
-  const eslintConfig = 'import hyoban from \'eslint-config-hyoban\'\n\nexport default hyoban()\n'
+  const eslintConfig =
+    "import hyoban from 'eslint-config-hyoban'\n\nexport default hyoban()\n"
   fs.writeFileSync(
     packageJsonParsed.type === 'module'
       ? 'eslint.config.js'
       : 'eslint.config.mjs',
     eslintConfig,
   )
-}
-catch (err) {
-  if (err instanceof Error)
+} catch (err) {
+  if (err instanceof Error) {
     console.error(err.message)
+  }
 }

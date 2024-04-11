@@ -33,7 +33,4 @@ export const GLOB_EXCLUDE = [
   '**/components.d.ts',
 ]
 
-export const DEFAULT_IGNORE_FILES = [
-  '.gitignore',
-  '.eslintignore',
-]
+export const DEFAULT_IGNORE_FILES = ['.gitignore', '.eslintignore']

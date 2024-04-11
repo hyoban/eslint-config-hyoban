@@ -63,6 +63,7 @@
     "@types/eslint": "^8.56.7",
     "defu": "^6.1.4",
     "eslint-config-flat-gitignore": "^0.1.5",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-antfu": "^2.1.2",
     "eslint-plugin-hyoban": "^0.2.7",
     "eslint-plugin-import-x": "^0.5.0",
@@ -77,11 +78,14 @@
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/eslint": "^8.56.7",
+    "@types/eslint-config-prettier": "^6.11.3",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "20.11.30",
     "bunchee": "^5.1.2",
     "eslint": "^9.0.0",
     "eslint-typegen": "^0.2.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-curly": "^0.2.1",
     "tsx": "^4.7.2",
     "typescript": "^5.4.4",
     "vitest": "^1.4.0"

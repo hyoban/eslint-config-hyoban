@@ -5,33 +5,18 @@ import type { Linter } from 'eslint'
 import pluginJsonc from 'eslint-plugin-jsonc'
 import * as parserJsonc from 'jsonc-eslint-parser'
 
-
 export function jsonConfigs(): Linter.FlatConfig[] {
-  const jsonFormateRulesStrict = {
-    'jsonc/array-bracket-newline': ['error', { minItems: 1 }],
-    'jsonc/array-element-newline': ['error', 'always'],
-    'jsonc/comma-style': ['error', 'last'],
-    'jsonc/indent': ['error', 2],
-    'jsonc/key-spacing': ['error', { afterColon: true, beforeColon: false }],
-    'jsonc/object-curly-newline': ['error', { minProperties: 1 }],
-    'jsonc/object-curly-spacing': ['error', 'always'],
-    'jsonc/object-property-newline': 'error',
-    '@stylistic/no-trailing-spaces': 'error',
-    '@stylistic/eol-last': ['error', 'always'],
-  }
-
   return [
     {
       name: 'json/package',
       files: ['**/package.json'],
       plugins: {
-        'jsonc': pluginJsonc as any,
+        jsonc: pluginJsonc as any,
       },
       languageOptions: {
         parser: parserJsonc,
       },
       rules: {
-        ...jsonFormateRulesStrict as any,
         'jsonc/sort-array-values': [
           'error',
           {
@@ -92,19 +77,15 @@ export function jsonConfigs(): Linter.FlatConfig[] {
           },
           {
             order: { type: 'asc' },
-            pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies(Meta)?$',
+            pathPattern:
+              '^(?:dev|peer|optional|bundled)?[Dd]ependencies(Meta)?$',
           },
           {
             order: { type: 'asc' },
             pathPattern: '^(?:resolutions|overrides|pnpm.overrides)$',
           },
           {
-            order: [
-              'import',
-              'require',
-              'types',
-              'default',
-            ],
+            order: ['import', 'require', 'types', 'default'],
             pathPattern: '^exports.*$',
           },
           {

@@ -6,6 +6,7 @@ import '../eslint-typegen.d.ts'
 import process from 'node:process'
 
 import type { Linter } from 'eslint'
+import eslintConfigPrettier from 'eslint-config-prettier'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
 import pluginUnicorn from 'eslint-plugin-unicorn'
@@ -18,24 +19,25 @@ import type { ConfigOptions } from './utils'
 import { config } from './utils'
 
 export interface Options {
-  react?: boolean,
+  react?: boolean
   typescript?: {
-    strict?: boolean,
-    typeChecked?: boolean | 'essential',
-    project?: string[] | string | boolean | null,
-    tsconfigRootDir?: string,
-    filesDisableTypeChecking?: string[],
-  },
+    strict?: boolean
+    typeChecked?: boolean | 'essential'
+    project?: string[] | string | boolean | null
+    tsconfigRootDir?: string
+    filesDisableTypeChecking?: string[]
+  }
 }
 
 export default async function hyoban(
   options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
-  ...args: Array<Linter.FlatConfig | (() => Linter.FlatConfig) | (() => Promise<Linter.FlatConfig>)>
+  ...args: Array<
+    | Linter.FlatConfig
+    | (() => Linter.FlatConfig)
+    | (() => Promise<Linter.FlatConfig>)
+  >
 ) {
-  const {
-    react = false,
-    typescript,
-  } = options ?? {}
+  const { react = false, typescript } = options ?? {}
 
   const {
     strict = false,
@@ -46,12 +48,12 @@ export default async function hyoban(
   } = typescript ?? {}
 
   const typescriptPreset = strict
-    ? (typeChecked === true
-        ? tseslint.configs.strictTypeChecked
-        : tseslint.configs.strict)
-    : (typeChecked === true
-        ? tseslint.configs.recommendedTypeChecked
-        : tseslint.configs.recommended)
+    ? typeChecked === true
+      ? tseslint.configs.strictTypeChecked
+      : tseslint.configs.strict
+    : typeChecked === true
+      ? tseslint.configs.recommendedTypeChecked
+      : tseslint.configs.recommended
 
   return config(
     {
@@ -119,10 +121,7 @@ export default async function hyoban(
           '@typescript-eslint/no-import-type-side-effects': 'error',
 
           // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
-          '@typescript-eslint/method-signature-style': [
-            'error',
-            'property',
-          ],
+          '@typescript-eslint/method-signature-style': ['error', 'property'],
         },
       },
       strict
@@ -133,21 +132,27 @@ export default async function hyoban(
           }
         : {},
       typeChecked
-        ? (typeChecked === 'essential'
-            ? {
-                rules: {
-                  // https://youtu.be/OVNQWzdhCQA?si=PvPOOgtGW5H4uRB7
-                  '@typescript-eslint/await-thenable': 'error',
-                  '@typescript-eslint/no-floating-promises': 'error',
-                  '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: { arguments: false, attributes: false } }],
-                },
-              }
-            : {
-                rules: {
-                  '@typescript-eslint/consistent-type-exports': 'error',
-                  '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: { arguments: false, attributes: false } }],
-                },
-              })
+        ? typeChecked === 'essential'
+          ? {
+              rules: {
+                // https://youtu.be/OVNQWzdhCQA?si=PvPOOgtGW5H4uRB7
+                '@typescript-eslint/await-thenable': 'error',
+                '@typescript-eslint/no-floating-promises': 'error',
+                '@typescript-eslint/no-misused-promises': [
+                  'error',
+                  { checksVoidReturn: { arguments: false, attributes: false } },
+                ],
+              },
+            }
+          : {
+              rules: {
+                '@typescript-eslint/consistent-type-exports': 'error',
+                '@typescript-eslint/no-misused-promises': [
+                  'error',
+                  { checksVoidReturn: { arguments: false, attributes: false } },
+                ],
+              },
+            }
         : {},
     ] as Linter.FlatConfig[],
     importConfig(),
@@ -159,7 +164,6 @@ export default async function hyoban(
       },
       rules: {
         'antfu/top-level-function': 'error',
-        'curly': ['error', 'multi-or-nest', 'consistent'],
         'prefer-template': 'error',
         'prefer-destructuring': [
           'error',
@@ -174,8 +178,9 @@ export default async function hyoban(
     ...jsonConfigs(),
     ...reactConfigs({ react, typeChecked }),
     () => {
-      if (filesDisableTypeChecking.length === 0)
+      if (filesDisableTypeChecking.length === 0) {
         return
+      }
       return [
         {
           ...tseslint.configs.disableTypeChecked,
@@ -189,5 +194,12 @@ export default async function hyoban(
       ] as Linter.FlatConfig[]
     },
     ...args,
+    {
+      rules: Object.fromEntries(
+        Object.entries(eslintConfigPrettier.rules).filter(([rule]) =>
+          rule.startsWith('unicorn/'),
+        ),
+      ),
+    },
   )
 }

@@ -8,30 +8,33 @@ import { interopDefault } from '../utils'
 const GLOB_TS = '**/*.?([cm])ts'
 const GLOB_TSX = '**/*.?([cm])tsx'
 
-export function reactConfigs(
-  {
-    react,
-    typeChecked,
-  }: {
-    react: boolean,
-    typeChecked?: boolean | 'essential',
-  },
-) {
+export function reactConfigs({
+  react,
+  typeChecked,
+}: {
+  react: boolean
+  typeChecked?: boolean | 'essential'
+}) {
   return [
     async () => {
-      if (!react)
+      if (!react) {
         return
-      const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
+      }
+      const eslintReact = await interopDefault(
+        import('@eslint-react/eslint-plugin'),
+      )
       const config = eslintReact.configs.all
       const { rules } = config
+
       for (const rule of [
         '@eslint-react/naming-convention/filename',
         '@eslint-react/naming-convention/use-state',
         '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps',
         '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps',
-      ])
+      ]) {
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         delete rules[rule]
+      }
 
       return {
         name: 'react/basic',
@@ -40,8 +43,9 @@ export function reactConfigs(
       } as Linter.FlatConfig
     },
     () => {
-      if (!react || !typeChecked)
+      if (!react || !typeChecked) {
         return
+      }
 
       return [
         {
@@ -54,9 +58,12 @@ export function reactConfigs(
       ] as Linter.FlatConfig
     },
     async () => {
-      if (!react)
+      if (!react) {
         return
-      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
+      }
+      const reactHooks = await interopDefault(
+        import('eslint-plugin-react-hooks'),
+      )
       return {
         name: 'react/hooks',
         plugins: {
