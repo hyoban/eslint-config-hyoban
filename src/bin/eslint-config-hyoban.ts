@@ -15,8 +15,8 @@ try {
 	const packageJsonParsed = JSON.parse(packageJson) as PackageJson
 	packageJsonParsed.scripts = {
 		...packageJsonParsed.scripts,
-		lint: 'eslint . && prettier --check .',
-		'lint:fix': 'eslint . --fix && prettier --write .',
+		lint: 'prettier --check . && eslint .',
+		'lint:fix': 'prettier --write . && eslint . --fix',
 	}
 	fs.writeFileSync(
 		'package.json',
