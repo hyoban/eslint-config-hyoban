@@ -24,7 +24,9 @@ export function reactConfigs({
 			const eslintReact = await interopDefault(
 				import('@eslint-react/eslint-plugin'),
 			)
-			const config = eslintReact.configs.all
+			const config = typescript?.strict
+				? eslintReact.configs.all
+				: eslintReact.configs.recommended
 			const { rules } = config
 
 			for (const rule of [
@@ -33,6 +35,9 @@ export function reactConfigs({
 				'@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps',
 				'@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps',
 			]) {
+				if (!rules[rule]) {
+					continue
+				}
 				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 				delete rules[rule]
 			}
