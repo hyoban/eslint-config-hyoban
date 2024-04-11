@@ -1,21 +1,21 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import '../eslint-typegen.d.ts'
 
 import process from 'node:process'
 
-import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { Linter } from 'eslint'
+import eslintPluginAntfu from 'eslint-plugin-antfu'
+import pluginHyoban from 'eslint-plugin-hyoban'
 import pluginUnicorn from 'eslint-plugin-unicorn'
-import { isPackageExists } from 'local-pkg'
 import tseslint from 'typescript-eslint'
 
-import { formatConfigs } from './configs/format'
 import { importConfig } from './configs/imports'
 import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
-import { stylisticConfigs } from './configs/stylistic'
 import type { ConfigOptions } from './utils'
-import { config, ensurePackages } from './utils'
+import { config } from './utils'
 
 export interface Options {
   react?: boolean,
@@ -26,27 +26,16 @@ export interface Options {
     tsconfigRootDir?: string,
     filesDisableTypeChecking?: string[],
   },
-  style?: StylisticCustomizeOptions | false,
 }
-
-const reactRelatedPackages = ['react', 'react-dom']
 
 export default async function hyoban(
   options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
   ...args: Array<Linter.FlatConfig | (() => Linter.FlatConfig) | (() => Promise<Linter.FlatConfig>)>
 ) {
   const {
-    react = reactRelatedPackages.some(element => isPackageExists(element)),
+    react = false,
     typescript,
-    style,
   } = options ?? {}
-
-  const requiredPackages = [
-    react && '@eslint-react/eslint-plugin',
-    react && 'eslint-plugin-react-hooks',
-  ].filter(Boolean)
-
-  await ensurePackages(requiredPackages)
 
   const {
     strict = false,
@@ -162,10 +151,28 @@ export default async function hyoban(
         : {},
     ] as Linter.FlatConfig[],
     importConfig(),
-    ...stylisticConfigs(style),
-    ...jsonConfigs(style),
+    {
+      name: 'stylistic/extra',
+      plugins: {
+        antfu: eslintPluginAntfu,
+        hyoban: pluginHyoban as any,
+      },
+      rules: {
+        'antfu/top-level-function': 'error',
+        'curly': ['error', 'multi-or-nest', 'consistent'],
+        'prefer-template': 'error',
+        'prefer-destructuring': [
+          'error',
+          {
+            array: false,
+            object: true,
+          },
+        ],
+        'hyoban/prefer-early-return': 'error',
+      },
+    },
+    ...jsonConfigs(),
     ...reactConfigs({ react, typeChecked }),
-    ...formatConfigs(style),
     () => {
       if (filesDisableTypeChecking.length === 0)
         return
