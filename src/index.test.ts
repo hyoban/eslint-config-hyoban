@@ -13,7 +13,7 @@ it('should replace array in rules', () => {
 			},
 		),
 	).toEqual({
-		a: ['1', 'always', '2', 'always'],
+		a: ['1', '2', 'always'],
 	})
 
 	expect(
