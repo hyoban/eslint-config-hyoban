@@ -1,7 +1,6 @@
 // @ts-check
 import typegen from 'eslint-typegen'
 
- 
 import hyoban from './dist/index.js'
 
 export default typegen(
