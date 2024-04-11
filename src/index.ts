@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 import '../eslint-typegen.d.ts'
 
 import process from 'node:process'
@@ -8,10 +8,10 @@ import process from 'node:process'
 import type { Linter } from 'eslint'
 import eslintPluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
-import pluginUnicorn from 'eslint-plugin-unicorn'
 import tseslint from 'typescript-eslint'
 
 import { reactConfigs } from './configs/react'
+import unicornConfig from './configs/unicorn'
 import { config } from './utils'
 import type { ConfigOptions } from './utils'
 
@@ -81,28 +81,7 @@ export default async function hyoban(
 				],
 			},
 		},
-		[
-			pluginUnicorn.configs['flat/recommended'],
-			{
-				name: 'unicorn/recommended',
-				rules: {
-					'unicorn/prevent-abbreviations': 'off',
-					'unicorn/catch-error-name': 'off',
-					// https://github.com/sindresorhus/meta/discussions/7
-					'unicorn/no-null': 'off',
-					// https://github.com/orgs/web-infra-dev/discussions/10
-					'unicorn/prefer-top-level-await': 'off',
-					'unicorn/no-negated-condition': 'off',
-					'unicorn/no-await-expression-member': 'off',
-
-					// conflicts with prettier
-					'unicorn/template-indent': 'off',
-					'unicorn/empty-brace-spaces': 'off',
-					'unicorn/no-nested-ternary': 'off',
-					'unicorn/number-literal-case': 'off',
-				},
-			},
-		],
+		unicornConfig(),
 		[
 			...typescriptPreset,
 			typeChecked
