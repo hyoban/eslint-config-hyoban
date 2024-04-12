@@ -16,7 +16,7 @@ export function packageConfig({ indent }: Required<Options>) {
 			rules: {
 				"package-json/order-properties": "off",
 				"package-json/sort-collections": "off",
-				"jsonc/indent": ["error", indent],
+				"jsonc/indent": ["warn", indent],
 				"jsonc/sort-array-values": [
 					"error",
 					{

@@ -8,20 +8,20 @@ import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 export function importConfig(): Linter.FlatConfig {
 	return {
-		name: "import/sort",
+		name: "import",
 		plugins: {
 			"simple-import-sort": simpleImportSort,
 			"import-x": pluginImport as any,
 			antfu: pluginAntfu,
 		},
 		rules: {
-			"simple-import-sort/imports": "error",
-			"simple-import-sort/exports": "error",
-			"import-x/first": "error",
-			"import-x/newline-after-import": "error",
-			"import-x/no-duplicates": "error",
+			"simple-import-sort/imports": "warn",
+			"simple-import-sort/exports": "warn",
+			"import-x/first": "warn",
+			"import-x/newline-after-import": "warn",
+			"import-x/no-duplicates": "warn",
 
-			"antfu/import-dedupe": "error",
+			"antfu/import-dedupe": "warn",
 			"antfu/no-import-dist": "error",
 			"antfu/no-import-node-modules-by-path": "error",
 		},
