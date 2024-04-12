@@ -32,7 +32,7 @@ npx eslint-config-hyoban
 > If your ESLint version is less than 8.57.0, you have to use eslint.config.js.
 
 ```js
-module.exports = (async () => (await import('./eslint.config.mjs')).default)()
+module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 ```
 
 [npm-version-src]: https://img.shields.io/npm/v/eslint-config-hyoban?style=flat&colorA=080f12&colorB=1fa669

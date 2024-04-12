@@ -1,42 +1,42 @@
-import fs from 'node:fs'
+import fs from "node:fs";
 
 // @ts-expect-error - bunchee will handle this
-import formatAction from './format.txt'
+import formatAction from "./format.txt";
 // @ts-expect-error - bunchee will handle this
-import settings from './settings.txt'
+import settings from "./settings.txt";
 
 interface PackageJson {
-	scripts: Record<string, string>
-	type?: string
+	scripts: Record<string, string>;
+	type?: string;
 }
 
 try {
-	const packageJson = fs.readFileSync('package.json', 'utf8')
-	const packageJsonParsed = JSON.parse(packageJson) as PackageJson
+	const packageJson = fs.readFileSync("package.json", "utf8");
+	const packageJsonParsed = JSON.parse(packageJson) as PackageJson;
 	packageJsonParsed.scripts = {
 		...packageJsonParsed.scripts,
-		lint: 'prettier --check . && eslint .',
-		'lint:fix': 'prettier --write . && eslint . --fix',
-	}
+		"lint": "prettier --check . && eslint .",
+		"lint:fix": "prettier --write . && eslint . --fix",
+	};
 	fs.writeFileSync(
-		'package.json',
+		"package.json",
 		`${JSON.stringify(packageJsonParsed, null, 2)}\n`,
-	)
+	);
 
-	if (!fs.existsSync('.vscode')) {
-		fs.mkdirSync('.vscode')
+	if (!fs.existsSync(".vscode")) {
+		fs.mkdirSync(".vscode");
 	}
 
-	const isVscodeSettingsExist = fs.existsSync('.vscode/settings.json')
+	const isVscodeSettingsExist = fs.existsSync(".vscode/settings.json");
 	if (isVscodeSettingsExist) {
-		const settingsJson = fs.readFileSync('.vscode/settings.json', 'utf8')
-		const settingsParsed = JSON.parse(settingsJson) as Record<string, unknown>
+		const settingsJson = fs.readFileSync(".vscode/settings.json", "utf8");
+		const settingsParsed = JSON.parse(settingsJson) as Record<string, unknown>;
 		const recommendedSettingsParsed = JSON.parse(settings as string) as Record<
 			string,
 			unknown
-		>
+		>;
 		fs.writeFileSync(
-			'.vscode/settings.json',
+			".vscode/settings.json",
 			`${JSON.stringify(
 				{
 					...recommendedSettingsParsed,
@@ -45,31 +45,31 @@ try {
 				null,
 				2,
 			)}\n`,
-		)
+		);
 	} else {
-		fs.writeFileSync('.vscode/settings.json', settings as string)
+		fs.writeFileSync(".vscode/settings.json", settings as string);
 	}
 
-	if (!fs.existsSync('.github')) {
-		fs.mkdirSync('.github')
+	if (!fs.existsSync(".github")) {
+		fs.mkdirSync(".github");
 	}
 
-	if (!fs.existsSync('.github/workflows')) {
-		fs.mkdirSync('.github/workflows')
+	if (!fs.existsSync(".github/workflows")) {
+		fs.mkdirSync(".github/workflows");
 	}
 
-	fs.writeFileSync('.github/workflows/format.yml', formatAction as string)
+	fs.writeFileSync(".github/workflows/format.yml", formatAction as string);
 
 	const eslintConfig =
-		"// @ts-check\nimport hyoban from 'eslint-config-hyoban'\n\nexport default hyoban()\n"
+		"// @ts-check\nimport hyoban from 'eslint-config-hyoban'\n\nexport default hyoban()\n";
 	fs.writeFileSync(
-		packageJsonParsed.type === 'module'
-			? 'eslint.config.js'
-			: 'eslint.config.mjs',
+		packageJsonParsed.type === "module" ?
+			"eslint.config.js"
+		:	"eslint.config.mjs",
 		eslintConfig,
-	)
+	);
 } catch (err) {
 	if (err instanceof Error) {
-		console.error(err.message)
+		console.error(err.message);
 	}
 }
