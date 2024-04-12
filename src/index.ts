@@ -5,12 +5,11 @@ import "../eslint-typegen.d.ts";
 
 import process from "node:process";
 
-import type { Linter } from "eslint";
 import eslintPluginAntfu from "eslint-plugin-antfu";
 import pluginHyoban from "eslint-plugin-hyoban";
-import packageJson from "eslint-plugin-package-json/configs/recommended";
 
 import { importConfig } from "./configs/imports";
+import { packageConfig } from "./configs/package";
 import { reactConfigs } from "./configs/react";
 import { typeScriptConfigs } from "./configs/typescript";
 import { unicornConfigs } from "./configs/unicorn";
@@ -25,6 +24,7 @@ export interface Options {
 	tsconfigRootDir?: string;
 	filesDisableTypeChecking?: string[];
 	disableCustomConfig?: boolean;
+	indent?: number | "tab";
 }
 
 function mergeDefaultOptions(
@@ -38,6 +38,7 @@ function mergeDefaultOptions(
 		tsconfigRootDir: process.cwd(),
 		filesDisableTypeChecking: [],
 		disableCustomConfig: false,
+		indent: "tab",
 		...options,
 	};
 }
@@ -74,7 +75,7 @@ export default async function hyoban(
 		},
 		...unicornConfigs(finalOptions),
 		importConfig(),
-		packageJson as Linter.FlatConfig,
+		packageConfig(finalOptions),
 		!disableCustomConfig && {
 			name: "stylistic/custom",
 			plugins: {
