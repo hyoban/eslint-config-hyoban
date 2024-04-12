@@ -33,7 +33,9 @@ export function reactConfigs({
 			} as Linter.FlatConfig;
 		},
 		() => {
-			if (disableCustomConfig) return;
+			if (disableCustomConfig) {
+				return;
+			}
 			if (strict) {
 				return {
 					name: "react/all/custom",
