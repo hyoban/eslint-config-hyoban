@@ -15,7 +15,7 @@ try {
 	const packageJsonParsed = JSON.parse(packageJson) as PackageJson;
 	packageJsonParsed.scripts = {
 		...packageJsonParsed.scripts,
-		"lint": "prettier --check . && eslint .",
+		lint: "prettier --check . && eslint .",
 		"lint:fix": "prettier --write . && eslint . --fix",
 	};
 	fs.writeFileSync(
@@ -63,9 +63,9 @@ try {
 	const eslintConfig =
 		"// @ts-check\nimport hyoban from 'eslint-config-hyoban'\n\nexport default hyoban()\n";
 	fs.writeFileSync(
-		packageJsonParsed.type === "module" ?
-			"eslint.config.js"
-		:	"eslint.config.mjs",
+		packageJsonParsed.type === "module"
+			? "eslint.config.js"
+			: "eslint.config.mjs",
 		eslintConfig,
 	);
 } catch (err) {
