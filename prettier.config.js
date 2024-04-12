@@ -14,6 +14,7 @@ const config = {
 		},
 	],
 	plugins: [
+		// the order of these plugins is important, do not change
 		"@ianvs/prettier-plugin-sort-imports",
 		"prettier-plugin-curly",
 		"prettier-plugin-packagejson",
