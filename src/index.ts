@@ -5,8 +5,10 @@ import "../eslint-typegen.d.ts";
 
 import process from "node:process";
 
+import type { Linter } from "eslint";
 import eslintPluginAntfu from "eslint-plugin-antfu";
 import pluginHyoban from "eslint-plugin-hyoban";
+import packageJson from "eslint-plugin-package-json/configs/recommended";
 
 import { importConfig } from "./configs/imports";
 import { reactConfigs } from "./configs/react";
@@ -72,6 +74,7 @@ export default async function hyoban(
 		},
 		...unicornConfigs(finalOptions),
 		importConfig(),
+		packageJson as Linter.FlatConfig,
 		!disableCustomConfig && {
 			name: "stylistic/custom",
 			plugins: {

@@ -4,5 +4,12 @@
 	"eslint.experimental.useFlatConfig": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit"
-	}
+	},
+	"eslint.probe": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"json"
+	]
 }
