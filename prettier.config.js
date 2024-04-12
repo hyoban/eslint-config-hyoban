@@ -1,4 +1,4 @@
-// ni -D prettier prettier-plugin-curly @ianvs/prettier-plugin-sort-imports prettier-plugin-packagejson
+// ni -D prettier @ianvs/prettier-plugin-sort-imports prettier-plugin-packagejson
 
 /** @type {import('@ianvs/prettier-plugin-sort-imports').PrettierConfig} */
 const config = {
@@ -14,9 +14,7 @@ const config = {
 		},
 	],
 	plugins: [
-		// the order of these plugins is important, do not change
 		"@ianvs/prettier-plugin-sort-imports",
-		"prettier-plugin-curly",
 		"prettier-plugin-packagejson",
 	],
 	importOrder: [
