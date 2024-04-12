@@ -14,8 +14,8 @@ const config = {
 		},
 	],
 	plugins: [
-		"prettier-plugin-curly",
 		"@ianvs/prettier-plugin-sort-imports",
+		"prettier-plugin-curly",
 		"prettier-plugin-packagejson",
 	],
 	importOrder: [
