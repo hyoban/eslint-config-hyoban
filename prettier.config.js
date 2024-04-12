@@ -4,7 +4,6 @@
 const config = {
 	semi: false,
 	singleQuote: true,
-	useTabs: true,
 	overrides: [
 		{
 			files: 'pnpm-lock.yaml',
