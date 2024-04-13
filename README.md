@@ -4,7 +4,10 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 
-Hyoban's ESLint Config, enable most of the recommended rules from the following plugins:
+Hyoban's ESLint Config
+
+1. Enable most of the recommended rules for `js`, `ts`, and `react`
+1. Use [Prettier](https://prettier.io) for code formatting
 
 | Basic           | Style            | React         | Others                 |
 | --------------- | ---------------- | ------------- | ---------------------- |

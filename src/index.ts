@@ -24,6 +24,7 @@ export interface Options {
 	tsconfigRootDir?: string;
 	filesDisableTypeChecking?: string[];
 	disableCustomConfig?: boolean;
+	disableLintForPackageJson?: boolean;
 	indent?: number | "tab";
 }
 
@@ -38,6 +39,7 @@ function mergeDefaultOptions(
 		tsconfigRootDir: process.cwd(),
 		filesDisableTypeChecking: [],
 		disableCustomConfig: false,
+		disableLintForPackageJson: false,
 		indent: "tab",
 		...options,
 	};
@@ -50,7 +52,7 @@ export default async function hyoban(
 	...args: ConfigArray
 ) {
 	const finalOptions = mergeDefaultOptions(options);
-	const { disableCustomConfig } = finalOptions;
+	const { disableCustomConfig, disableLintForPackageJson } = finalOptions;
 
 	return config(
 		{
@@ -75,7 +77,7 @@ export default async function hyoban(
 		},
 		...unicornConfigs(finalOptions),
 		importConfig(),
-		packageConfig(finalOptions),
+		!disableLintForPackageJson && packageConfig(finalOptions),
 		!disableCustomConfig && {
 			name: "stylistic/custom",
 			plugins: {
