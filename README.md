@@ -2,7 +2,6 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
 Hyoban's ESLint Config, enable most of the recommended rules from the following plugins:
@@ -75,9 +74,8 @@ export default hyoban();
 module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 ```
 
-## Tips
-
-### Auto fix for Pull Request
+> [!TIP]
+> Auto fix for Pull Request
 
 ```yml
 name: Format
@@ -123,8 +121,6 @@ jobs:
 [npm-downloads-href]: https://npmjs.com/package/eslint-config-hyoban
 [license-src]: https://img.shields.io/github/license/hyoban/eslint-config-hyoban.svg?style=flat&colorA=080f12&colorB=1fa669
 [license-href]: https://github.com/hyoban/eslint-config-hyoban/blob/main/LICENSE
-[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
-[jsdocs-href]: https://www.jsdocs.io/package/eslint-config-hyoban
 [js]: https://www.npmjs.com/package/@eslint/js
 [ts]: https://typescript-eslint.io
 [unicorn]: https://github.com/sindresorhus/eslint-plugin-unicorn
