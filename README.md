@@ -34,7 +34,7 @@ export default hyoban();
 ```
 
 > [!WARNING]
-> If your ESLint version is less than 8.57.0, you have to use eslint.config.js.
+> If your ESLint version is less than `8.57.0`, you have to use `eslint.config.js`.
 
 ```js
 module.exports = (async () => (await import("./eslint.config.mjs")).default)();
@@ -55,7 +55,7 @@ module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 ```
 
 > [!WARNING]
-> If your ESLint version is less than 9.0.0, you have to use `eslint .` instead of `eslint`.
+> If your ESLint version is less than `9.0.0`, you have to use `eslint .` instead of `eslint`.
 
 `settings.json` for VSCode
 
