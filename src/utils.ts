@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import { createDefu } from "defu";
 import type { Linter } from "eslint";
+import globals from "globals";
 
 import { DEFAULT_GLOB_SRC, DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from "./consts";
 
@@ -108,6 +109,14 @@ export async function config(
 			files: finalOptions.files,
 			languageOptions: {
 				ecmaVersion: 2022,
+				globals: {
+					...globals.browser,
+					...globals.es2021,
+					...globals.node,
+					document: "readonly",
+					navigator: "readonly",
+					window: "readonly",
+				},
 				parserOptions: {
 					ecmaFeatures: {
 						jsx: true,

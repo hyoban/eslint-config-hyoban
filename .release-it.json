@@ -8,10 +8,10 @@
 	},
 	"hooks": {
 		"before:init": [
+			"pnpm run build",
 			"pnpm run lint",
 			"pnpm run typecheck",
-			"pnpm run test --run",
-			"pnpm run build"
+			"pnpm run test --run"
 		]
 	}
 }
