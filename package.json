@@ -29,17 +29,6 @@
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/*",
-				"./dist/index.d.ts"
-			]
-		}
-	},
-	"bin": {
-		"eslint-config-hyoban": "./dist/bin/index.js"
-	},
 	"files": [
 		"dist"
 	],
@@ -47,8 +36,8 @@
 		"build": "bunchee",
 		"build:inspector": "npx @eslint/config-inspector@latest build",
 		"dev": "bunchee -w",
-		"lint": "prettier --check . && eslint .",
-		"lint:fix": "prettier --write . && eslint . --fix",
+		"lint": "prettier --list-different . && eslint",
+		"lint:fix": "prettier --list-different --write . && eslint --fix",
 		"prepare": "pnpm run build",
 		"prepublishOnly": "pnpm run build",
 		"start": "tsx src/index.ts",

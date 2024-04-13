@@ -24,8 +24,45 @@ Hyoban's ESLint Config, enable most of the recommended rules from the following 
 ni -D eslint eslint-config-hyoban
 ```
 
-```sh
-npx eslint-config-hyoban
+`eslint.config.js` or `eslint.config.mjs`
+
+```ts
+// @ts-check
+import hyoban from "eslint-config-hyoban";
+
+export default hyoban();
+```
+
+`scripts` in `package.json`
+
+```json
+{
+	"scripts": {
+		"lint": "prettier --list-different . && eslint",
+		"lint:fix": "prettier --list-different --write . && eslint --fix"
+	}
+}
+```
+
+`settings.json` for VSCode
+
+```jsonc
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+	},
+
+	"eslint.experimental.useFlatConfig": true,
+	"eslint.probe": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"json",
+	],
+}
 ```
 
 > [!Note]
@@ -33,6 +70,48 @@ npx eslint-config-hyoban
 
 ```js
 module.exports = (async () => (await import("./eslint.config.mjs")).default)();
+```
+
+## Tips
+
+### Auto fix for Pull Request
+
+```yml
+name: Format
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  format-code:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          run_install: |
+            - args: [--frozen-lockfile]
+
+      - name: Lint
+        run: pnpm run lint:fix
+
+      # Commit all changed files back to the repository
+      - uses: stefanzweifel/git-auto-commit-action@v5
 ```
 
 [npm-version-src]: https://img.shields.io/npm/v/eslint-config-hyoban?style=flat&colorA=080f12&colorB=1fa669
