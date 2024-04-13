@@ -33,6 +33,13 @@ import hyoban from "eslint-config-hyoban";
 export default hyoban();
 ```
 
+> [!WARNING]
+> If your ESLint version is less than 8.57.0, you have to use eslint.config.js.
+
+```js
+module.exports = (async () => (await import("./eslint.config.mjs")).default)();
+```
+
 > [!TIP]
 > You can disable my custom rules by setting `hyoban({ disableCustomConfig: true, disableLintForPackageJson: true })`.
 
@@ -69,13 +76,6 @@ export default hyoban();
 		"json",
 	],
 }
-```
-
-> [!WARNING]
-> If your ESLint version is less than 8.57.0, you have to use eslint.config.js.
-
-```js
-module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 ```
 
 > [!TIP]
