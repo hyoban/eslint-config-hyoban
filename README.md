@@ -44,6 +44,9 @@ export default hyoban();
 }
 ```
 
+> [!WARNING]
+> If your ESLint version is less than 9.0.0, you have to use `eslint .` instead of `eslint`.
+
 `settings.json` for VSCode
 
 ```jsonc
@@ -65,7 +68,7 @@ export default hyoban();
 }
 ```
 
-> [!Note]
+> [!WARNING]
 > If your ESLint version is less than 8.57.0, you have to use eslint.config.js.
 
 ```js
