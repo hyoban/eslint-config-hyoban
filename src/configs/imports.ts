@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
-import type { Linter } from "eslint";
+import type { ESLint, Linter } from "eslint";
 import pluginAntfu from "eslint-plugin-antfu";
 import * as pluginImport from "eslint-plugin-import-x";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
@@ -11,7 +8,7 @@ export function importConfig(): Linter.FlatConfig {
 		name: "import",
 		plugins: {
 			"simple-import-sort": simpleImportSort,
-			"import-x": pluginImport as any,
+			"import-x": pluginImport as unknown as ESLint.Plugin,
 			"antfu": pluginAntfu,
 		},
 		rules: {
