@@ -33,6 +33,9 @@ import hyoban from "eslint-config-hyoban";
 export default hyoban();
 ```
 
+> [!TIP]
+> You can disable my custom rules by setting `hyoban({ disableCustomConfig: true,disableLintForPackageJson: true })`.
+
 `scripts` in `package.json`
 
 ```json
