@@ -22,9 +22,8 @@ export function reactConfigs({
 			const eslintReact = await interopDefault(
 				import("@eslint-react/eslint-plugin"),
 			);
-			const config = strict
-				? eslintReact.configs.all
-				: eslintReact.configs.recommended;
+			const config =
+				strict ? eslintReact.configs.all : eslintReact.configs.recommended;
 
 			return {
 				name: `react/${strict ? "all" : "recommended"}`,
@@ -69,9 +68,9 @@ export function reactConfigs({
 				name: "react/type-checked",
 				files: DEFAULT_GLOB_TS_SRC,
 				ignores:
-					filesDisableTypeChecking.length > 0
-						? filesDisableTypeChecking
-						: undefined,
+					filesDisableTypeChecking.length > 0 ?
+						filesDisableTypeChecking
+					:	undefined,
 				rules: {
 					"@eslint-react/no-leaked-conditional-rendering": "error",
 				},

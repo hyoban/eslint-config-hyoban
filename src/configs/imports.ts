@@ -12,7 +12,7 @@ export function importConfig(): Linter.FlatConfig {
 		plugins: {
 			"simple-import-sort": simpleImportSort,
 			"import-x": pluginImport as any,
-			antfu: pluginAntfu,
+			"antfu": pluginAntfu,
 		},
 		rules: {
 			"simple-import-sort/imports": "warn",

@@ -49,6 +49,7 @@ export const GLOB_EXCLUDE = [
 	"**/__snapshots__",
 	"**/auto-import?(s).d.ts",
 	"**/components.d.ts",
+	"**/eslint-typegen.d.ts",
 ];
 
 export const DEFAULT_IGNORE_FILES = [".gitignore", ".eslintignore"];
