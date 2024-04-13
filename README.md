@@ -3,11 +3,9 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
-Hyoban's ESLint Config
-
-1. Enable most of the recommended rules for `js`, `ts`, and `react`
-1. Use [Prettier](https://prettier.io) for code formatting
+Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and `react`.
 
 | Basic           | Style            | React         | Others                 |
 | --------------- | ---------------- | ------------- | ---------------------- |
