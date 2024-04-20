@@ -17,7 +17,7 @@ export function importConfig(): Linter.FlatConfig {
 			"import-x/first": "warn",
 			"import-x/newline-after-import": "warn",
 			"import-x/no-duplicates": "warn",
-
+			"import-x/consistent-type-specifier-style": ["warn", "prefer-top-level"],
 			"antfu/import-dedupe": "warn",
 			"antfu/no-import-dist": "error",
 			"antfu/no-import-node-modules-by-path": "error",
