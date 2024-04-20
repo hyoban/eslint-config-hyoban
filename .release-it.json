@@ -1,19 +1,19 @@
 {
-	"plugins": {
-		"release-it-pnpm": {
-			"disableRelease": true
-		}
-	},
-	"git": {
-		"commitMessage": "chore: release v${version}",
-		"tagName": "v${version}"
-	},
-	"hooks": {
-		"before:init": [
-			"pnpm run build",
-			"pnpm run lint",
-			"pnpm run typecheck",
-			"pnpm run test --run"
-		]
-	}
+  "plugins": {
+    "release-it-pnpm": {
+      "disableRelease": true
+    }
+  },
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}"
+  },
+  "hooks": {
+    "before:init": [
+      "pnpm run build",
+      "pnpm run lint",
+      "pnpm run typecheck",
+      "pnpm run test --run"
+    ]
+  }
 }

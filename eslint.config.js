@@ -5,9 +5,9 @@ import typegen from "eslint-typegen";
 import hyoban from "./dist/index.js";
 
 export default typegen(
-	hyoban({
-		react: true,
-		strict: true,
-		typeChecked: true,
-	}),
+  hyoban({
+    react: true,
+    strict: true,
+    typeChecked: true,
+  }),
 );

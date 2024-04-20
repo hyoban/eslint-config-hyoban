@@ -47,10 +47,10 @@ module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 
 ```json
 {
-	"scripts": {
-		"lint": "prettier --list-different . && eslint",
-		"lint:fix": "prettier --list-different --write . && eslint --fix"
-	}
+  "scripts": {
+    "lint": "prettier --list-different . && eslint",
+    "lint:fix": "prettier --list-different --write . && eslint --fix"
+  }
 }
 ```
 
@@ -61,20 +61,20 @@ module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 
 ```jsonc
 {
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnSave": true,
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": "explicit",
-	},
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+  },
 
-	"eslint.experimental.useFlatConfig": true,
-	"eslint.probe": [
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact",
-		"json",
-	],
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+  ],
 }
 ```
 

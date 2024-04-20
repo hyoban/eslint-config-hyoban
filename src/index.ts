@@ -17,89 +17,89 @@ import type { ConfigArray, ConfigOptions } from "./utils";
 import { config } from "./utils";
 
 export interface Options {
-	react?: boolean;
-	strict?: boolean;
-	typeChecked?: boolean | "essential";
-	project?: string[] | string | boolean | null;
-	tsconfigRootDir?: string;
-	filesDisableTypeChecking?: string[];
-	disableCustomConfig?: boolean;
-	disableLintForPackageJson?: boolean;
-	indent?: number | "tab";
+  react?: boolean;
+  strict?: boolean;
+  typeChecked?: boolean | "essential";
+  project?: string[] | string | boolean | null;
+  tsconfigRootDir?: string;
+  filesDisableTypeChecking?: string[];
+  disableCustomConfig?: boolean;
+  disableLintForPackageJson?: boolean;
+  indent?: number | "tab";
 }
 
 function mergeDefaultOptions(
-	options?: Options & Pick<ConfigOptions, "ignores" | "ignoreFiles">,
+  options?: Options & Pick<ConfigOptions, "ignores" | "ignoreFiles">,
 ): Required<Options> {
-	return {
-		react: false,
-		strict: false,
-		typeChecked: "essential",
-		project: true,
-		tsconfigRootDir: process.cwd(),
-		filesDisableTypeChecking: [],
-		disableCustomConfig: false,
-		disableLintForPackageJson: false,
-		indent: "tab",
-		...options,
-	};
+  return {
+    react: false,
+    strict: false,
+    typeChecked: "essential",
+    project: true,
+    tsconfigRootDir: process.cwd(),
+    filesDisableTypeChecking: [],
+    disableCustomConfig: false,
+    disableLintForPackageJson: false,
+    indent: 2,
+    ...options,
+  };
 }
 
 export * from "./consts";
 
 export default async function hyoban(
-	options?: Options & Pick<ConfigOptions, "ignores" | "ignoreFiles">,
-	...args: ConfigArray
+  options?: Options & Pick<ConfigOptions, "ignores" | "ignoreFiles">,
+  ...args: ConfigArray
 ) {
-	const finalOptions = mergeDefaultOptions(options);
-	const { disableCustomConfig, disableLintForPackageJson } = finalOptions;
+  const finalOptions = mergeDefaultOptions(options);
+  const { disableCustomConfig, disableLintForPackageJson } = finalOptions;
 
-	return config(
-		{
-			ignores: options?.ignores,
-			ignoreFiles: options?.ignoreFiles,
-		},
-		!disableCustomConfig && {
-			name: "@eslint/js/custom",
-			rules: {
-				// https://twitter.com/karlhorky/status/1773632485055680875
-				"array-callback-return": "error",
-				"no-console": ["error", { allow: ["warn", "error"] }],
-				// https://youtu.be/XTXPKbPcvl4?si=J_2E9dM25sAEXM2x
-				"no-restricted-syntax": [
-					"error",
-					{
-						selector: "TSEnumDeclaration",
-						message: "We should not use Enum",
-					},
-				],
-			},
-		},
-		...unicornConfigs(finalOptions),
-		importConfig(),
-		!disableLintForPackageJson && packageConfig(finalOptions),
-		!disableCustomConfig && {
-			name: "stylistic/custom",
-			plugins: {
-				antfu: eslintPluginAntfu,
-				hyoban: pluginHyoban as any,
-			},
-			rules: {
-				"object-shorthand": "warn",
-				"prefer-template": "warn",
-				"prefer-destructuring": [
-					"warn",
-					{
-						array: false,
-						object: true,
-					},
-				],
-				"antfu/top-level-function": "warn",
-				"hyoban/prefer-early-return": "warn",
-			},
-		},
-		...typeScriptConfigs(finalOptions),
-		...reactConfigs(finalOptions),
-		...args,
-	);
+  return config(
+    {
+      ignores: options?.ignores,
+      ignoreFiles: options?.ignoreFiles,
+    },
+    !disableCustomConfig && {
+      name: "@eslint/js/custom",
+      rules: {
+        // https://twitter.com/karlhorky/status/1773632485055680875
+        "array-callback-return": "error",
+        "no-console": ["error", { allow: ["warn", "error"] }],
+        // https://youtu.be/XTXPKbPcvl4?si=J_2E9dM25sAEXM2x
+        "no-restricted-syntax": [
+          "error",
+          {
+            selector: "TSEnumDeclaration",
+            message: "We should not use Enum",
+          },
+        ],
+      },
+    },
+    ...unicornConfigs(finalOptions),
+    importConfig(),
+    !disableLintForPackageJson && packageConfig(),
+    !disableCustomConfig && {
+      name: "stylistic/custom",
+      plugins: {
+        antfu: eslintPluginAntfu,
+        hyoban: pluginHyoban as any,
+      },
+      rules: {
+        "object-shorthand": "warn",
+        "prefer-template": "warn",
+        "prefer-destructuring": [
+          "warn",
+          {
+            array: false,
+            object: true,
+          },
+        ],
+        "antfu/top-level-function": "warn",
+        "hyoban/prefer-early-return": "warn",
+      },
+    },
+    ...typeScriptConfigs(finalOptions),
+    ...reactConfigs(finalOptions),
+    ...args,
+  );
 }
