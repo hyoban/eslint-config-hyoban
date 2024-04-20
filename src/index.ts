@@ -60,7 +60,7 @@ export default async function hyoban(
 			ignoreFiles: options?.ignoreFiles,
 		},
 		!disableCustomConfig && {
-			name: "js/custom",
+			name: "@eslint/js/custom",
 			rules: {
 				// https://twitter.com/karlhorky/status/1773632485055680875
 				"array-callback-return": "error",

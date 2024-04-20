@@ -105,7 +105,7 @@ export async function config(
 	return [
 		globalIgnores,
 		defu<Linter.FlatConfig, Linter.FlatConfig[]>(rest as Linter.FlatConfig, {
-			name: "js/recommended",
+			name: "@eslint/js/recommended",
 			files: finalOptions.files,
 			languageOptions: {
 				ecmaVersion: 2022,
