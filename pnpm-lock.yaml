@@ -82,8 +82,8 @@ importers:
         specifier: ^3.2.5
         version: 3.2.5
       prettier-config-hyoban:
-        specifier: ^2.0.2
-        version: 2.0.2
+        specifier: ^2.0.3
+        version: 2.0.3
       tsx:
         specifier: ^4.7.2
         version: 4.7.2
@@ -1533,8 +1533,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-config-hyoban@2.0.2:
-    resolution: {integrity: sha512-seCdPXFcCpbn4yxbHH+sAxQKyDD+dIsFKM7qiO/IL+ZtCfd3dWSxnpUopCCczS3fKS42KEInyrMA9Exco8v1jg==}
+  prettier-config-hyoban@2.0.3:
+    resolution: {integrity: sha512-PAuvbJNbC9vyMT4kKR0eGGENhmGW73/lsNtjianEL0N2gySZoXQvwWy5jJ5IjbNNWOZHTfy20HGJK2KeOumByw==}
 
   prettier@3.2.5:
     resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
@@ -3471,7 +3471,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-config-hyoban@2.0.2: {}
+  prettier-config-hyoban@2.0.3: {}
 
   prettier@3.2.5: {}
 
