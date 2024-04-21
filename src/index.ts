@@ -5,7 +5,7 @@ import process from 'node:process'
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 
 import { importConfig } from './configs/imports'
-import { packageConfig } from './configs/package'
+import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
 import { stylisticConfig as stylisticConfig } from './configs/stylistic'
 import { typeScriptConfigs } from './configs/typescript'
@@ -75,7 +75,7 @@ export default async function hyoban(
     },
     ...unicornConfigs(),
     importConfig(),
-    packageConfig(),
+    ...jsonConfigs(finalOptions),
     ...typeScriptConfigs(finalOptions),
     ...reactConfigs(finalOptions),
     stylisticConfig(finalOptions),
