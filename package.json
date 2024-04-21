@@ -36,8 +36,8 @@
     "build": "bunchee",
     "build:inspector": "npx @eslint/config-inspector@latest build",
     "dev": "bunchee -w",
-    "lint": "prettier --list-different . && eslint",
-    "lint:fix": "prettier --list-different --write . && eslint --fix",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "prepare": "pnpm run build",
     "prepublishOnly": "pnpm run build",
     "start": "tsx src/index.ts",
@@ -75,11 +75,8 @@
     "bunchee": "^5.1.2",
     "eslint": "^9.1.0",
     "eslint-typegen": "^0.2.3",
-    "prettier": "^3.2.5",
-    "prettier-config-hyoban": "^2.1.0",
     "tsx": "^4.7.2",
     "typescript": "^5.4.5",
     "vitest": "^1.5.0"
-  },
-  "prettier": "prettier-config-hyoban"
+  }
 }

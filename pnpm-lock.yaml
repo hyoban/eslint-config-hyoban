@@ -81,12 +81,6 @@ importers:
       eslint-typegen:
         specifier: ^0.2.3
         version: 0.2.3(eslint@9.1.0)
-      prettier:
-        specifier: ^3.2.5
-        version: 3.2.5
-      prettier-config-hyoban:
-        specifier: ^2.1.0
-        version: 2.1.0
       tsx:
         specifier: ^4.7.2
         version: 4.7.2
@@ -1540,14 +1534,6 @@ packages:
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
-
-  prettier-config-hyoban@2.1.0:
-    resolution: {integrity: sha512-NF5SZg4cyalk927wb0lfR0i7nQFfy1bXZQ2EGbILhLeTBAki7K0THelhwoCjjr+9azfnnT+C0bQZSmknJ+6wcg==}
-
-  prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
-    engines: {node: '>=14'}
-    hasBin: true
 
   pretty-bytes@5.6.0:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
@@ -3482,10 +3468,6 @@ snapshots:
       source-map-js: 1.0.2
 
   prelude-ls@1.2.1: {}
-
-  prettier-config-hyoban@2.1.0: {}
-
-  prettier@3.2.5: {}
 
   pretty-bytes@5.6.0: {}
 

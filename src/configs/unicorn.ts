@@ -20,12 +20,6 @@ export function unicornConfigs() {
         'unicorn/prefer-top-level-await': 'off',
         'unicorn/no-negated-condition': 'off',
         'unicorn/no-await-expression-member': 'off',
-
-        // conflicts with prettier
-        'unicorn/template-indent': 'off',
-        'unicorn/empty-brace-spaces': 'off',
-        'unicorn/no-nested-ternary': 'off',
-        'unicorn/number-literal-case': 'off',
       },
     } satisfies Linter.FlatConfig,
   ]
