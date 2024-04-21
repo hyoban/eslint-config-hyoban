@@ -79,7 +79,9 @@ module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 ```
 
 > [!TIP]
-> Auto fix for Pull Request
+> You can use [prettier-config-hyoban](https://github.com/hyoban/prettier-config-hyoban) for Prettier to avoid conflicts.
+
+## Auto fix for Pull Request
 
 ```yml
 name: Format
