@@ -76,7 +76,7 @@
     "eslint": "^9.1.0",
     "eslint-typegen": "^0.2.3",
     "prettier": "^3.2.5",
-    "prettier-config-hyoban": "^2.0.3",
+    "prettier-config-hyoban": "^2.1.0",
     "tsx": "^4.7.2",
     "typescript": "^5.4.5",
     "vitest": "^1.5.0"

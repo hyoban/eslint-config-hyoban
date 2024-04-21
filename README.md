@@ -48,6 +48,17 @@ module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 ```json
 {
   "scripts": {
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  }
+}
+```
+
+If you need Prettier
+
+```json
+{
+  "scripts": {
     "lint": "prettier --list-different . && eslint",
     "lint:fix": "prettier --list-different --write . && eslint --fix"
   }
@@ -61,8 +72,10 @@ module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 
 ```jsonc
 {
+  // If you need Prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
   },
