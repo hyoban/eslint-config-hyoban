@@ -14,7 +14,7 @@ import type { ConfigArray, ConfigOptions } from './utils'
 import { config } from './utils'
 
 export interface Options {
-  react?: boolean,
+  react?: 'vite' | 'remix' | 'next' | false,
   strict?: boolean,
   typeChecked?: boolean | 'essential',
   project?: string[] | string | boolean | null,

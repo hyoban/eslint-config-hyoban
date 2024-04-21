@@ -11,7 +11,7 @@ Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and
 | --------------- | ---------------- | ------------- | ---------------------- |
 | [js] ✅         | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
 | [ts] ✅         | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
-| [unicorn] ✅    | [import-sort] ✅ | [refresh]     | [flat-gitignore] ✅    |
+| [unicorn] ✅    | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅    |
 | [import-x] ✅   | [jsonc] ✅       | [jsx-nesting] | [config-inspector]     |
 | [unused-import] | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
 | [n]             | [perfectionist]  | [next]        | [eslint-types]         |

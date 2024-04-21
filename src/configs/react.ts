@@ -85,5 +85,44 @@ export function reactConfigs({
         rules: reactHooks.configs.recommended.rules,
       } as Linter.FlatConfig
     },
+    async () => {
+      const reactRefresh = await interopDefault(
+        import('eslint-plugin-react-refresh'),
+      )
+
+      return {
+        name: 'react/refresh',
+        files: DEFAULT_GLOB_TS_SRC,
+        plugins: {
+          'react-refresh': reactRefresh,
+        },
+        rules: {
+          'react-refresh/only-export-components': [
+            'warn',
+            {
+              allowConstantExport: react === 'vite',
+              allowExportNames: react === 'next'
+                ? [
+                    'config',
+                    'generateStaticParams',
+                    'metadata',
+                    'generateMetadata',
+                    'viewport',
+                    'generateViewport',
+                  ]
+                : react === 'remix'
+                  ? [
+                      'meta',
+                      'links',
+                      'headers',
+                      'loader',
+                      'action',
+                    ]
+                  : undefined,
+            },
+          ],
+        },
+      } as Linter.FlatConfig
+    },
   ]
 }
