@@ -12,11 +12,9 @@ export function reactConfigs({
   strict,
   typeChecked,
   filesDisableTypeChecking,
-  disableCustomConfig,
 }: Required<Options>) {
-  if (!react) {
-    return [];
-  }
+  if (!react) return [];
+
   return [
     async () => {
       const eslintReact = await interopDefault(
@@ -34,9 +32,6 @@ export function reactConfigs({
       } as Linter.FlatConfig;
     },
     () => {
-      if (disableCustomConfig) {
-        return;
-      }
       if (strict) {
         return {
           name: "react/all/custom",
@@ -61,9 +56,7 @@ export function reactConfigs({
       } satisfies Linter.FlatConfig;
     },
     () => {
-      if (!typeChecked) {
-        return;
-      }
+      if (!typeChecked) return;
 
       return {
         name: "react/type-checked",

@@ -137,15 +137,13 @@ export async function config(
           if (typeof c === "function") {
             const resolved = await c();
 
-            if (!resolved) {
-              return;
-            }
+            if (!resolved) return;
+
             return mergeConfigs(resolved, finalOptions);
           }
 
-          if (!c) {
-            return;
-          }
+          if (!c) return;
+
           return mergeConfigs(c, finalOptions);
         }),
       )
@@ -157,8 +155,7 @@ function mergeConfigs(
   c: MaybeArray<Linter.FlatConfig>,
   finalOptions: Required<ConfigOptions>,
 ): Linter.FlatConfig {
-  if (Array.isArray(c)) {
-    return create(defu({}, ...c.reverse()), finalOptions);
-  }
+  if (Array.isArray(c)) return create(defu({}, ...c.reverse()), finalOptions);
+
   return create(c, finalOptions);
 }

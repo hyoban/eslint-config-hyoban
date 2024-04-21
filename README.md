@@ -9,7 +9,7 @@ Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and
 
 | Basic           | Style            | React         | Others                 |
 | --------------- | ---------------- | ------------- | ---------------------- |
-| [js] ✅         | [stylistic]      | [react] ✅    | [Tailwind CSS]         |
+| [js] ✅         | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
 | [ts] ✅         | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
 | [unicorn] ✅    | [import-sort] ✅ | [refresh]     | [flat-gitignore] ✅    |
 | [import-x] ✅   | [jsonc] ✅       | [jsx-nesting] | [config-inspector]     |

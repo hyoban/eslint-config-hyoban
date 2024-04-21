@@ -10,7 +10,6 @@ export function typeScriptConfigs({
   project,
   tsconfigRootDir,
   filesDisableTypeChecking,
-  disableCustomConfig,
 }: Required<Options>) {
   const typescriptPreset = strict
     ? typeChecked === true
@@ -32,78 +31,76 @@ export function typeScriptConfigs({
         },
       },
     ] as Linter.FlatConfig[],
-    !disableCustomConfig &&
-      ([
-        {
-          name: "typescript-eslint/custom",
-          files: DEFAULT_GLOB_TS_SRC,
+    [
+      {
+        name: "typescript-eslint/custom",
+        files: DEFAULT_GLOB_TS_SRC,
+      },
+      {
+        rules: {
+          "@typescript-eslint/array-type": [
+            "error",
+            { default: "array-simple" },
+          ],
         },
-        {
-          rules: {
-            "@typescript-eslint/array-type": [
-              "error",
-              { default: "array-simple" },
-            ],
-          },
+      },
+      {
+        rules: {
+          "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+              args: "all",
+              argsIgnorePattern: "^_",
+              caughtErrors: "all",
+              caughtErrorsIgnorePattern: "^_",
+              destructuredArrayIgnorePattern: "^_",
+              varsIgnorePattern: "^_",
+              ignoreRestSiblings: true,
+            },
+          ],
+
+          "@typescript-eslint/consistent-type-imports": "error",
+          "@typescript-eslint/no-import-type-side-effects": "error",
+
+          // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
+          "@typescript-eslint/method-signature-style": ["error", "property"],
         },
-        {
-          rules: {
-            "@typescript-eslint/no-unused-vars": [
-              "error",
-              {
-                args: "all",
-                argsIgnorePattern: "^_",
-                caughtErrors: "all",
-                caughtErrorsIgnorePattern: "^_",
-                destructuredArrayIgnorePattern: "^_",
-                varsIgnorePattern: "^_",
-                ignoreRestSiblings: true,
+      },
+      strict && {
+        rules: {
+          "@typescript-eslint/no-non-null-assertion": "off",
+        },
+      },
+      typeChecked &&
+        (typeChecked === "essential"
+          ? {
+              rules: {
+                // https://youtu.be/OVNQWzdhCQA?si=PvPOOgtGW5H4uRB7
+                "@typescript-eslint/await-thenable": "error",
+                "@typescript-eslint/no-floating-promises": "error",
+                "@typescript-eslint/no-misused-promises": [
+                  "error",
+                  {
+                    checksVoidReturn: { arguments: false, attributes: false },
+                  },
+                ],
               },
-            ],
-
-            "@typescript-eslint/consistent-type-imports": "error",
-            "@typescript-eslint/no-import-type-side-effects": "error",
-
-            // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
-            "@typescript-eslint/method-signature-style": ["error", "property"],
-          },
-        },
-        strict && {
-          rules: {
-            "@typescript-eslint/no-non-null-assertion": "off",
-          },
-        },
-        typeChecked &&
-          (typeChecked === "essential"
-            ? {
-                rules: {
-                  // https://youtu.be/OVNQWzdhCQA?si=PvPOOgtGW5H4uRB7
-                  "@typescript-eslint/await-thenable": "error",
-                  "@typescript-eslint/no-floating-promises": "error",
-                  "@typescript-eslint/no-misused-promises": [
-                    "error",
-                    {
-                      checksVoidReturn: { arguments: false, attributes: false },
-                    },
-                  ],
-                },
-              }
-            : {
-                rules: {
-                  "@typescript-eslint/consistent-type-exports": "error",
-                  "@typescript-eslint/no-misused-promises": [
-                    "error",
-                    {
-                      checksVoidReturn: { arguments: false, attributes: false },
-                    },
-                  ],
-                },
-              }),
-      ] as Linter.FlatConfig[]),
+            }
+          : {
+              rules: {
+                "@typescript-eslint/consistent-type-exports": "error",
+                "@typescript-eslint/no-misused-promises": [
+                  "error",
+                  {
+                    checksVoidReturn: { arguments: false, attributes: false },
+                  },
+                ],
+              },
+            }),
+    ] as Linter.FlatConfig[],
     () => {
-      if (filesDisableTypeChecking.length === 0) {
-        return;
-      }
+      if (filesDisableTypeChecking.length === 0) return;
+
       return {
         files: filesDisableTypeChecking,
         ...tseslint.configs.disableTypeChecked,

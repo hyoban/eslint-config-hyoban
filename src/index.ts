@@ -1,16 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import "../eslint-typegen.d.ts";
 
 import process from "node:process";
 
-import eslintPluginAntfu from "eslint-plugin-antfu";
-import pluginHyoban from "eslint-plugin-hyoban";
+import type { StylisticCustomizeOptions } from "@stylistic/eslint-plugin";
 
 import { importConfig } from "./configs/imports";
 import { packageConfig } from "./configs/package";
 import { reactConfigs } from "./configs/react";
+import { stylisticConfig as stylisticConfig } from "./configs/stylistic";
 import { typeScriptConfigs } from "./configs/typescript";
 import { unicornConfigs } from "./configs/unicorn";
 import type { ConfigArray, ConfigOptions } from "./utils";
@@ -23,9 +20,8 @@ export interface Options {
   project?: string[] | string | boolean | null;
   tsconfigRootDir?: string;
   filesDisableTypeChecking?: string[];
-  disableCustomConfig?: boolean;
-  disableLintForPackageJson?: boolean;
   indent?: number | "tab";
+  stylistic?: Pick<StylisticCustomizeOptions, "indent" | "quotes" | "semi">;
 }
 
 function mergeDefaultOptions(
@@ -38,9 +34,12 @@ function mergeDefaultOptions(
     project: true,
     tsconfigRootDir: process.cwd(),
     filesDisableTypeChecking: [],
-    disableCustomConfig: false,
-    disableLintForPackageJson: false,
     indent: 2,
+    stylistic: {
+      indent: 2,
+      quotes: "single",
+      semi: false,
+    },
     ...options,
   };
 }
@@ -52,14 +51,13 @@ export default async function hyoban(
   ...args: ConfigArray
 ) {
   const finalOptions = mergeDefaultOptions(options);
-  const { disableCustomConfig, disableLintForPackageJson } = finalOptions;
 
   return config(
     {
       ignores: options?.ignores,
       ignoreFiles: options?.ignoreFiles,
     },
-    !disableCustomConfig && {
+    {
       name: "@eslint/js/custom",
       rules: {
         // https://twitter.com/karlhorky/status/1773632485055680875
@@ -75,31 +73,12 @@ export default async function hyoban(
         ],
       },
     },
-    ...unicornConfigs(finalOptions),
+    ...unicornConfigs(),
     importConfig(),
-    !disableLintForPackageJson && packageConfig(),
-    !disableCustomConfig && {
-      name: "stylistic/custom",
-      plugins: {
-        antfu: eslintPluginAntfu,
-        hyoban: pluginHyoban as any,
-      },
-      rules: {
-        "object-shorthand": "warn",
-        "prefer-template": "warn",
-        "prefer-destructuring": [
-          "warn",
-          {
-            array: false,
-            object: true,
-          },
-        ],
-        "antfu/top-level-function": "warn",
-        "hyoban/prefer-early-return": "warn",
-      },
-    },
+    packageConfig(),
     ...typeScriptConfigs(finalOptions),
     ...reactConfigs(finalOptions),
+    stylisticConfig(finalOptions),
     ...args,
   );
 }
