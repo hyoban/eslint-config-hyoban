@@ -110,15 +110,15 @@ export function reactConfigs({
                     'viewport',
                     'generateViewport',
                   ]
-                : react === 'remix'
-                  ? [
-                      'meta',
-                      'links',
-                      'headers',
-                      'loader',
-                      'action',
-                    ]
-                  : undefined,
+                : (react === 'remix'
+                    ? [
+                        'meta',
+                        'links',
+                        'headers',
+                        'loader',
+                        'action',
+                      ]
+                    : undefined),
             },
           ],
         },

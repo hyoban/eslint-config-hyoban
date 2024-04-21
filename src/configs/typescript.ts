@@ -12,12 +12,12 @@ export function typeScriptConfigs({
   filesDisableTypeChecking,
 }: Required<Options>) {
   const typescriptPreset = strict
-    ? typeChecked === true
-      ? tseslint.configs.strictTypeChecked
-      : tseslint.configs.strict
-    : typeChecked === true
-      ? tseslint.configs.recommendedTypeChecked
-      : tseslint.configs.recommended
+    ? (typeChecked === true
+        ? tseslint.configs.strictTypeChecked
+        : tseslint.configs.strict)
+    : (typeChecked === true
+        ? tseslint.configs.recommendedTypeChecked
+        : tseslint.configs.recommended)
   return [
     [
       ...tseslint.configs.stylistic,
