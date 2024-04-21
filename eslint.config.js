@@ -6,7 +6,7 @@ import hyoban from './dist/index.js'
 
 export default typegen(
   hyoban({
-    react: true,
+    react: 'vite',
     strict: true,
     typeChecked: true,
   }),
