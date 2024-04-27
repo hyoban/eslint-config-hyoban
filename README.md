@@ -39,9 +39,6 @@ export default hyoban();
 module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 ```
 
-> [!TIP]
-> You can disable my custom rules by setting `hyoban({ disableCustomConfig: true, disableLintForPackageJson: true })`.
-
 `scripts` in `package.json`
 
 ```json
