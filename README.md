@@ -39,6 +39,26 @@ export default hyoban();
 module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 ```
 
+> [!TIP]
+> If you find that saving files in the editor is a bit laggy, try turning off rules that require type checking while in the editor.
+
+```ts
+// @ts-check
+import hyoban from "eslint-config-hyoban";
+
+const isInEditor = !!(
+  (process.env.VSCODE_PID ||
+    process.env.VSCODE_CWD ||
+    process.env.JETBRAINS_IDE ||
+    process.env.VIM) &&
+  !process.env.CI
+);
+
+export default hyoban({
+  typeChecked: isInEditor ? false : "essential",
+});
+```
+
 `scripts` in `package.json`
 
 ```json
@@ -73,7 +93,7 @@ If you need Prettier
   "editor.formatOnSave": true,
 
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
+    "source.fixAll.eslint": "explicit"
   },
 
   "eslint.experimental.useFlatConfig": true,
@@ -82,8 +102,8 @@ If you need Prettier
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "json",
-  ],
+    "json"
+  ]
 }
 ```
 
