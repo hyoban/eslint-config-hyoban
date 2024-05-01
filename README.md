@@ -6,16 +6,16 @@
 
 Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and `react`.
 
-| Basic           | Style            | React         | Others                 |
-| --------------- | ---------------- | ------------- | ---------------------- |
-| [js] ✅         | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
-| [ts] ✅         | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
-| [unicorn] ✅    | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅    |
-| [import-x] ✅   | [jsonc] ✅       | [jsx-nesting] | [config-inspector] ✅  |
-| [unused-import] | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
-| [n]             | [perfectionist]  | [next]        | [eslint-types]         |
-| [compat]        | [format]         |               | [package-json] ✅      |
-|                 |                  |               | [eslint-typegen] ✅    |
+| Basic             | Style            | React         | Others                 |
+| ----------------- | ---------------- | ------------- | ---------------------- |
+| [js] ✅           | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
+| [ts] ✅           | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
+| [unicorn] ✅      | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅    |
+| [import-x] ✅     | [jsonc] ✅       | [jsx-nesting] | [config-inspector] ✅  |
+| [unused-import]   | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
+| [n]               | [perfectionist]  | [next]        | [eslint-types]         |
+| [compat]          | [format]         |               | [command] ✅           |
+| [package-json] ✅ |                  |               | [eslint-typegen] ✅    |
 
 ## Usage
 
@@ -184,3 +184,4 @@ jobs:
 [unused-import]: https://github.com/sweepline/eslint-plugin-unused-imports
 [package-json]: https://github.com/JoshuaKGoldberg/eslint-plugin-package-json
 [eslint-typegen]: https://github.com/antfu/eslint-typegen
+[command]: https://github.com/antfu/eslint-plugin-command
