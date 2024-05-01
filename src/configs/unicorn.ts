@@ -11,15 +11,16 @@ export function unicornConfigs() {
     ],
     {
       name: 'unicorn/custom',
+      /// keep-sorted
       rules: {
-        'unicorn/prevent-abbreviations': 'off',
         'unicorn/catch-error-name': 'off',
+        'unicorn/no-await-expression-member': 'off',
+        'unicorn/no-negated-condition': 'off',
         // https://github.com/sindresorhus/meta/discussions/7
         'unicorn/no-null': 'off',
         // https://github.com/orgs/web-infra-dev/discussions/10
         'unicorn/prefer-top-level-await': 'off',
-        'unicorn/no-negated-condition': 'off',
-        'unicorn/no-await-expression-member': 'off',
+        'unicorn/prevent-abbreviations': 'off',
       },
     } satisfies Linter.FlatConfig,
   ]

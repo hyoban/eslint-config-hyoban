@@ -29,6 +29,9 @@ importers:
       eslint-plugin-antfu:
         specifier: ^2.1.2
         version: 2.1.2(eslint@9.1.1)
+      eslint-plugin-command:
+        specifier: ^0.1.4
+        version: 0.1.4(eslint@9.1.1)
       eslint-plugin-hyoban:
         specifier: ^0.2.7
         version: 0.2.7(eslint@9.1.1)(typescript@5.4.5)
@@ -948,6 +951,11 @@ packages:
 
   eslint-plugin-antfu@2.1.2:
     resolution: {integrity: sha512-s7ZTOM3uq0iqpp6gF0UEotnvup7f2PHBUftCytLZX0+6C9j9KadKZQh6bVVngAyFgsmeD9+gcBopOYLClb2oDg==}
+    peerDependencies:
+      eslint: '*'
+
+  eslint-plugin-command@0.1.4:
+    resolution: {integrity: sha512-JT2uzbb7J5ujY9lhURC13dBslLhf2T6T7KrdIOEE+zPrMAiJEgAD3/y6gKhC3wUE7DnK+NjbfZxbPA4pSNWORQ==}
     peerDependencies:
       eslint: '*'
 
@@ -2789,6 +2797,10 @@ snapshots:
       - supports-color
 
   eslint-plugin-antfu@2.1.2(eslint@9.1.1):
+    dependencies:
+      eslint: 9.1.1
+
+  eslint-plugin-command@0.1.4(eslint@9.1.1):
     dependencies:
       eslint: 9.1.1
 
