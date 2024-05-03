@@ -12,13 +12,15 @@ export function importConfig(): Linter.FlatConfig {
       'antfu': pluginAntfu,
     },
     rules: {
-      'simple-import-sort/imports': 'warn',
-      'simple-import-sort/exports': 'warn',
-      'import-x/first': 'warn',
-      'import-x/newline-after-import': 'warn',
-      'import-x/no-duplicates': 'warn',
-      'import-x/consistent-type-specifier-style': ['warn', 'prefer-top-level'],
-      'antfu/import-dedupe': 'warn',
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+      'import-x/first': 'error',
+      'import-x/newline-after-import': 'error',
+      'import-x/no-duplicates': 'error',
+      'antfu/import-dedupe': 'error',
+
+      'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+
       'antfu/no-import-dist': 'error',
       'antfu/no-import-node-modules-by-path': 'error',
     },
