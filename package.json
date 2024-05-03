@@ -55,7 +55,7 @@
     "defu": "^6.1.4",
     "eslint-config-flat-gitignore": "^0.1.5",
     "eslint-plugin-antfu": "^2.1.2",
-    "eslint-plugin-command": "^0.1.4",
+    "eslint-plugin-command": "^0.1.6",
     "eslint-plugin-hyoban": "^0.2.7",
     "eslint-plugin-import-x": "^0.5.0",
     "eslint-plugin-jsonc": "^2.15.1",
@@ -72,10 +72,10 @@
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "20.12.7",
-    "bunchee": "^5.1.4",
+    "bunchee": "^5.1.5",
     "eslint": "^9.1.1",
     "eslint-typegen": "^0.2.4",
     "typescript": "^5.4.5",
-    "vitest": "^1.5.3"
+    "vitest": "^1.6.0"
   }
 }
