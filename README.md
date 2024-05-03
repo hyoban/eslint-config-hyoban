@@ -70,6 +70,9 @@ export default hyoban({
 }
 ```
 
+> [!WARNING]
+> If your ESLint version is less than `9.0.0`, you have to use `eslint .` instead of `eslint`.
+
 If you need Prettier
 
 ```json
@@ -81,21 +84,18 @@ If you need Prettier
 }
 ```
 
-> [!WARNING]
-> If your ESLint version is less than `9.0.0`, you have to use `eslint .` instead of `eslint`.
+> [!TIP]
+> You can use [prettier-config-hyoban](https://github.com/hyoban/prettier-config-hyoban) for Prettier to avoid conflicts.
 
 `settings.json` for VSCode
 
 ```jsonc
 {
-  // If you need Prettier
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
 
+  // You may don't need this in the future
   "eslint.experimental.useFlatConfig": true,
   "eslint.probe": [
     "javascript",
@@ -103,12 +103,13 @@ If you need Prettier
     "typescript",
     "typescriptreact",
     "json"
-  ]
+  ],
+
+  // If you need Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }
 ```
-
-> [!TIP]
-> You can use [prettier-config-hyoban](https://github.com/hyoban/prettier-config-hyoban) for Prettier to avoid conflicts.
 
 ## Auto fix for Pull Request
 
