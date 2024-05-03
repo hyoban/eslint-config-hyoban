@@ -87,7 +87,7 @@ If you need Prettier
 > [!TIP]
 > You can use [prettier-config-hyoban](https://github.com/hyoban/prettier-config-hyoban) for Prettier to avoid conflicts.
 
-`settings.json` for VSCode
+`.vscode/settings.json` for VSCode.
 
 ```jsonc
 {
@@ -108,6 +108,18 @@ If you need Prettier
   // If you need Prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true
+}
+```
+
+`.zed/settings.json` for Zed, read more at [Zed's documentation](https://zed.dev/docs/configuring-zed#formatter) and [related PR](https://github.com/zed-industries/zed/pull/10121).
+
+```jsonc
+{
+  "formatter": {
+    "code_actions": {
+      "source.fixAll.eslint": true
+    }
+  }
 }
 ```
 
