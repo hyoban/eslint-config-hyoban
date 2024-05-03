@@ -22,6 +22,7 @@ export interface Options {
   tsconfigRootDir?: string,
   filesDisableTypeChecking?: string[],
   stylistic?: Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'semi'>,
+  restrictedSyntax?: Array<string | { selector: string, message?: string }>,
 }
 
 function mergeDefaultOptions(
@@ -39,6 +40,7 @@ function mergeDefaultOptions(
       quotes: 'single',
       semi: false,
     },
+    restrictedSyntax: [],
     ...options,
   }
 }
@@ -72,6 +74,7 @@ export default async function hyoban(
             selector: 'TSEnumDeclaration',
             message: 'We should not use Enum',
           },
+          ...finalOptions.restrictedSyntax,
         ],
       },
     },
