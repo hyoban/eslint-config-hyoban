@@ -8,7 +8,7 @@ import command from 'eslint-plugin-command/config'
 import { importConfig } from './configs/imports'
 import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
-import { stylisticConfig as stylisticConfig } from './configs/stylistic'
+import { stylisticConfigs } from './configs/stylistic'
 import { typeScriptConfigs } from './configs/typescript'
 import { unicornConfigs } from './configs/unicorn'
 import type { ConfigArray, ConfigOptions } from './utils'
@@ -21,7 +21,6 @@ export interface Options {
   project?: string[] | string | boolean | null,
   tsconfigRootDir?: string,
   filesDisableTypeChecking?: string[],
-  indent?: number | 'tab',
   stylistic?: Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'semi'>,
 }
 
@@ -35,7 +34,6 @@ function mergeDefaultOptions(
     project: true,
     tsconfigRootDir: process.cwd(),
     filesDisableTypeChecking: [],
-    indent: 2,
     stylistic: {
       indent: 2,
       quotes: 'single',
@@ -82,7 +80,7 @@ export default async function hyoban(
     ...jsonConfigs(finalOptions),
     ...typeScriptConfigs(finalOptions),
     ...reactConfigs(finalOptions),
-    stylisticConfig(finalOptions),
+    ...stylisticConfigs(finalOptions),
     command(),
     ...args,
   )
