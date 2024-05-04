@@ -18,6 +18,7 @@ export function unicornConfigs() {
         'unicorn/no-negated-condition': 'off',
         // https://github.com/sindresorhus/meta/discussions/7
         'unicorn/no-null': 'off',
+        'unicorn/prefer-spread': 'off',
         // https://github.com/orgs/web-infra-dev/discussions/10
         'unicorn/prefer-top-level-await': 'off',
         'unicorn/prevent-abbreviations': 'off',
