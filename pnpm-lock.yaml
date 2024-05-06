@@ -27,14 +27,14 @@ importers:
         specifier: ^0.1.5
         version: 0.1.5
       eslint-plugin-antfu:
-        specifier: npm:@hyoban/eslint-plugin-antfu@2.1.2
-        version: '@hyoban/eslint-plugin-antfu@2.1.2(eslint@9.2.0)'
+        specifier: npm:@hyoban/eslint-plugin-antfu@2.1.2-1
+        version: '@hyoban/eslint-plugin-antfu@2.1.2-1(eslint@9.2.0)'
       eslint-plugin-command:
         specifier: npm:@hyoban/eslint-plugin-command@0.1.8
         version: '@hyoban/eslint-plugin-command@0.1.8(eslint@9.2.0)'
       eslint-plugin-hyoban:
-        specifier: ^0.2.7
-        version: 0.2.7(eslint@9.2.0)(typescript@5.4.5)
+        specifier: ^0.2.8
+        version: 0.2.8(eslint@9.2.0)(typescript@5.4.5)
       eslint-plugin-import-x:
         specifier: ^0.5.0
         version: 0.5.0(eslint@9.2.0)(typescript@5.4.5)
@@ -320,8 +320,8 @@ packages:
     resolution: {integrity: sha512-X38nUbachlb01YMlvPFojKoiXq+LzZvuSce70KPMPdeM1Rj03k4dR7lDslhbqXn3Ang4EU3+EAmwEAsbrjHW3g==}
     engines: {node: '>=18.18'}
 
-  '@hyoban/eslint-plugin-antfu@2.1.2':
-    resolution: {integrity: sha512-qumaXkdDlzBxYUP940+17ppK3gZS+Jd8E7F97eGXD8WHaZvQnGGQvps0/trdWvII8ustXQr1xs4HzGEmwkF8/w==}
+  '@hyoban/eslint-plugin-antfu@2.1.2-1':
+    resolution: {integrity: sha512-fsnT0TSaTws0bQ4suBe6wSaLh/c/wtDQffAozUbjEvXOTbBmEt++1BBmtoGFkzxj/YnTnensh9rdZe7R/mXQKw==}
     peerDependencies:
       eslint: '*'
 
@@ -959,8 +959,10 @@ packages:
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
 
-  eslint-plugin-hyoban@0.2.7:
-    resolution: {integrity: sha512-3ToNBDL6JiFDBQiv/EE/dtLZCgdA7rn9fEWVzV0F4WAXHOsfNuM3IOk0of7C51pog9eRYOYTMXmrzvt/3i36cA==}
+  eslint-plugin-hyoban@0.2.8:
+    resolution: {integrity: sha512-lSlStio01IOEFw8d154k3I3vZ173ScK2/2Oa2UYKu42zgKNBk4tX0SJvUMbcFZHstBHRanEBBuuZBgQ+fmFl0Q==}
+    peerDependencies:
+      eslint: '*'
 
   eslint-plugin-import-x@0.5.0:
     resolution: {integrity: sha512-C7R8Z4IzxmsoOPMtSzwuOBW5FH6iRlxHR6iTks+MzVlrk3r3TUxokkWTx3ypdj9nGOEP+CG/5e6ebZzHbxgbbQ==}
@@ -2148,7 +2150,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.2.3': {}
 
-  '@hyoban/eslint-plugin-antfu@2.1.2(eslint@9.2.0)':
+  '@hyoban/eslint-plugin-antfu@2.1.2-1(eslint@9.2.0)':
     dependencies:
       eslint: 9.2.0
 
@@ -2804,11 +2806,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-hyoban@0.2.7(eslint@9.2.0)(typescript@5.4.5):
+  eslint-plugin-hyoban@0.2.8(eslint@9.2.0)(typescript@5.4.5):
     dependencies:
       '@typescript-eslint/utils': 7.8.0(eslint@9.2.0)(typescript@5.4.5)
+      eslint: 9.2.0
     transitivePeerDependencies:
-      - eslint
       - supports-color
       - typescript
 
