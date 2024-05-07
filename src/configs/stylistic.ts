@@ -55,6 +55,7 @@ export function stylisticConfigs({ stylistic }: Required<Options>) {
 
         'hyoban/prefer-early-return': 'error',
         'hyoban/no-extra-space-jsx-expression': 'error',
+        'hyoban/jsx-attribute-spacing': 'error',
       },
     },
   ] as Linter.FlatConfig[]
