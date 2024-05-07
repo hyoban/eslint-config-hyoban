@@ -54,7 +54,6 @@ export function stylisticConfigs({ stylistic }: Required<Options>) {
         'antfu/top-level-function': 'error',
 
         'hyoban/prefer-early-return': 'error',
-        'hyoban/no-extra-space-jsx-expression': 'error',
         'hyoban/jsx-attribute-spacing': 'error',
       },
     },
