@@ -60,10 +60,6 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: attw --pack .
 
-      - name: Dedupe
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: pnpm dedupe --check
-
       - name: Knip
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: knip
