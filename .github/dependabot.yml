@@ -10,3 +10,5 @@ updates:
     schedule:
       interval: "daily"
     versioning-strategy: increase
+    ignore:
+      - dependency-name: "eslint-plugin-react-hooks"
