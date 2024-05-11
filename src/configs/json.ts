@@ -155,9 +155,9 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
           },
           {
             order: [
+              'types',
               'import',
               'require',
-              'types',
               'default',
             ],
             pathPattern: '^exports.*$',
