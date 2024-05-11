@@ -115,7 +115,11 @@ If you need Prettier
     "json"
   ],
 
-  // If you need Prettier
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+
+  // If you need Prettier, make sure to not use it with `js` `ts` and `json`
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true
 }
