@@ -95,9 +95,19 @@ If you need Prettier
     "source.fixAll.eslint": "explicit"
   },
 
+  // If you want to silent stylistic rules
+  "eslint.rules.customizations": [
+    { "rule": "@stylistic/*", "severity": "off" },
+    { "rule": "simple-import-sort/*", "severity": "off" },
+    { "rule": "antfu/consistent-list-newline", "severity": "off" },
+    { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
+    { "rule": "@stylistic/no-tabs", "severity": "default" },
+    { "rule": "@stylistic/max-statements-per-line", "severity": "default" }
+  ],
+
   // You may don't need this in the future
   "eslint.experimental.useFlatConfig": true,
-  "eslint.probe": [
+  "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
