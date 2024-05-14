@@ -4,19 +4,17 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 
-Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and `react`.
+Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and `react`, use ESLint for formatting, and provide a lot of useful plugins.
 
-| Basic             | Style            | React         | Others                 |
-| ----------------- | ---------------- | ------------- | ---------------------- |
-| [js] ✅           | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]         |
-| [ts] ✅           | [antfu] ✅       | [hooks] ✅    | [UnoCSS]               |
-| [unicorn] ✅      | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅    |
-| [import-x] ✅     | [jsonc] ✅       | [jsx-nesting] | [config-inspector] ✅  |
-| [unused-import]   | [yml]            | [jsx-a11y]    | [@antfu/eslint-config] |
-| [n]               | [perfectionist]  | [next]        | [eslint-types]         |
-| [compat]          | [format]         |               | [command] ✅           |
-| [package-json] ✅ |                  |               | [eslint-typegen] ✅    |
-|                   |                  |               | [regexp] ✅            |
+| Basic           | Style            | React         | Others              | Tools                  |
+| --------------- | ---------------- | ------------- | ------------------- | ---------------------- |
+| [js] ✅         | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]      | [config-inspector] ✅  |
+| [ts] ✅         | [antfu] ✅       | [hooks] ✅    | [UnoCSS]            | [eslint-types]         |
+| [unicorn] ✅    | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅ | [eslint-typegen] ✅    |
+| [import-x] ✅   | [jsonc] ✅       | [jsx-nesting] | [command] ✅        | [@antfu/eslint-config] |
+| [unused-import] | [yml]            | [jsx-a11y]    | [regexp] ✅         |                        |
+| [n]             | [perfectionist]  | [next]        | [package-json] ✅   |                        |
+| [compat]        | [format]         |               |                     |                        |
 
 ## Usage
 
