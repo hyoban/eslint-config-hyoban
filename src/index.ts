@@ -3,7 +3,9 @@ import '../eslint-typegen.d.ts'
 import process from 'node:process'
 
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
+import type { Linter } from 'eslint'
 import command from 'eslint-plugin-command/config'
+import * as regexpPlugin from 'eslint-plugin-regexp'
 
 import { importConfig } from './configs/imports'
 import { jsonConfigs } from './configs/json'
@@ -84,6 +86,7 @@ export default async function hyoban(
     ...typeScriptConfigs(finalOptions),
     ...reactConfigs(finalOptions),
     ...stylisticConfigs(finalOptions),
+    regexpPlugin.configs['flat/recommended'] as Linter.FlatConfig,
     command(),
     ...args,
   )

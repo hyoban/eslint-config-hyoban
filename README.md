@@ -16,6 +16,7 @@ Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and
 | [n]               | [perfectionist]  | [next]        | [eslint-types]         |
 | [compat]          | [format]         |               | [command] ✅           |
 | [package-json] ✅ |                  |               | [eslint-typegen] ✅    |
+|                   |                  |               | [eslint-plugin-regexp] |
 
 ## Usage
 
@@ -212,3 +213,4 @@ jobs:
 [package-json]: https://github.com/JoshuaKGoldberg/eslint-plugin-package-json
 [eslint-typegen]: https://github.com/antfu/eslint-typegen
 [command]: https://github.com/antfu/eslint-plugin-command
+[eslint-plugin-regexp]: https://github.com/ota-meshi/eslint-plugin-regexp

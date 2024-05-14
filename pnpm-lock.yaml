@@ -15,7 +15,7 @@ importers:
         specifier: ^9.2.0
         version: 9.2.0
       '@stylistic/eslint-plugin':
-        specifier: 2.1.0
+        specifier: ^2.1.0
         version: 2.1.0(eslint@9.2.0)(typescript@5.4.5)
       '@types/eslint':
         specifier: ^8.56.10
@@ -50,6 +50,9 @@ importers:
       eslint-plugin-react-refresh:
         specifier: ^0.4.7
         version: 0.4.7(eslint@9.2.0)
+      eslint-plugin-regexp:
+        specifier: ^2.5.0
+        version: 2.5.0(eslint@9.2.0)
       eslint-plugin-simple-import-sort:
         specifier: ^12.1.0
         version: 12.1.0(eslint@9.2.0)
@@ -859,6 +862,10 @@ packages:
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
+  comment-parser@1.4.1:
+    resolution: {integrity: sha512-buhp5kePrmda3vhc5B9t7pUQXAb2Tnd0qgpkIhPhkHXxJpiPJ11H0ZEU0oBpJ2QztSbzG/ZxMj/CHsYJqRHmyg==}
+    engines: {node: '>= 12.0.0'}
+
   commondir@1.0.1:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
 
@@ -1038,6 +1045,12 @@ packages:
     resolution: {integrity: sha512-yrj+KInFmwuQS2UQcg1SF83ha1tuHC1jMQbRNyuWtlEzzKRDgAl7L4Yp4NlDUZTZNlWvHEzOtJhMi40R7JxcSw==}
     peerDependencies:
       eslint: '>=7'
+
+  eslint-plugin-regexp@2.5.0:
+    resolution: {integrity: sha512-I7vKcP0o75WS5SHiVNXN+Eshq49sbrweMQIuqSL3AId9AwDe9Dhbfug65vw64LxmOd4v+yf5l5Xt41y9puiq0g==}
+    engines: {node: ^18 || >=20}
+    peerDependencies:
+      eslint: '>=8.44.0'
 
   eslint-plugin-simple-import-sort@12.1.0:
     resolution: {integrity: sha512-Y2fqAfC11TcG/WP3TrI1Gi3p3nc8XJyEOJYHyEPEGI/UAgNx6akxxlX74p7SbAQdLcgASKhj8M0GKvH3vq/+ig==}
@@ -1300,6 +1313,10 @@ packages:
   js-yaml@4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
     hasBin: true
+
+  jsdoc-type-pratt-parser@4.0.0:
+    resolution: {integrity: sha512-YtOli5Cmzy3q4dP26GraSOeAhqecewG04hoO8DY56CH4KJ9Fvv5qKWUCCo3HZob7esJQHCv6/+bnTy72xZZaVQ==}
+    engines: {node: '>=12.0.0'}
 
   jsesc@0.5.0:
     resolution: {integrity: sha512-uZz5UnB7u4T9LvwmFqXii7pZSouaRPorGs5who1Ip7VO0wxanFvBL7GkM6dTHlgX+jhBApRetaWpnDabOeTcnA==}
@@ -1581,6 +1598,14 @@ packages:
     resolution: {integrity: sha512-Ug69mNOpfvKDAc2Q8DRpMjjzdtrnv9HcSMX+4VsZxD1aZ6ZzrIE7rlzXBtWTyhULSMKg076AW6WR5iZpD0JiOg==}
     engines: {node: '>=8'}
 
+  refa@0.12.1:
+    resolution: {integrity: sha512-J8rn6v4DBb2nnFqkqwy6/NnTYMcgLA+sLr0iIO41qpv0n+ngb7ksag2tMRl0inb1bbO/esUwzW1vbJi7K0sI0g==}
+    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+
+  regexp-ast-analysis@0.7.1:
+    resolution: {integrity: sha512-sZuz1dYW/ZsfG17WSAG7eS85r5a0dDsvg+7BiiYR5o6lKCAtUrEwdmRmaGF6rwVj3LcmAeYkOWKEPlbPzN3Y3A==}
+    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+
   regexp-tree@0.1.27:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
     hasBin: true
@@ -1630,6 +1655,10 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
+
+  scslre@0.3.0:
+    resolution: {integrity: sha512-3A6sD0WYP7+QrjbfNA2FN3FsOaGGFoekCVgTyypy53gPxhbkCIjtO6YWgdrfM+n/8sI8JeXZOIxsHjMTNxQ4nQ==}
+    engines: {node: ^14.0.0 || >=16.0.0}
 
   semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
@@ -2702,6 +2731,8 @@ snapshots:
 
   color-name@1.1.4: {}
 
+  comment-parser@1.4.1: {}
+
   commondir@1.0.1: {}
 
   concat-map@0.0.1: {}
@@ -2951,6 +2982,17 @@ snapshots:
   eslint-plugin-react-refresh@0.4.7(eslint@9.2.0):
     dependencies:
       eslint: 9.2.0
+
+  eslint-plugin-regexp@2.5.0(eslint@9.2.0):
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.0(eslint@9.2.0)
+      '@eslint-community/regexpp': 4.10.0
+      comment-parser: 1.4.1
+      eslint: 9.2.0
+      jsdoc-type-pratt-parser: 4.0.0
+      refa: 0.12.1
+      regexp-ast-analysis: 0.7.1
+      scslre: 0.3.0
 
   eslint-plugin-simple-import-sort@12.1.0(eslint@9.2.0):
     dependencies:
@@ -3262,6 +3304,8 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
+  jsdoc-type-pratt-parser@4.0.0: {}
+
   jsesc@0.5.0: {}
 
   jsesc@3.0.2: {}
@@ -3523,6 +3567,15 @@ snapshots:
       parse-json: 5.2.0
       type-fest: 0.6.0
 
+  refa@0.12.1:
+    dependencies:
+      '@eslint-community/regexpp': 4.10.0
+
+  regexp-ast-analysis@0.7.1:
+    dependencies:
+      '@eslint-community/regexpp': 4.10.0
+      refa: 0.12.1
+
   regexp-tree@0.1.27: {}
 
   regjsparser@0.10.0:
@@ -3588,6 +3641,12 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  scslre@0.3.0:
+    dependencies:
+      '@eslint-community/regexpp': 4.10.0
+      refa: 0.12.1
+      regexp-ast-analysis: 0.7.1
 
   semver@5.7.2: {}
 
