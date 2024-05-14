@@ -30,7 +30,9 @@ jobs:
             - args: [--frozen-lockfile]
 
       - name: Lint
-        run: pnpm run lint:fix
+        run: |
+          rm eslint-typegen.d.ts
+          pnpm run lint:fix
 
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v5
