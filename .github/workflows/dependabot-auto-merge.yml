@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.PAT }}
 
       - name: Set node
         uses: actions/setup-node@v4
@@ -31,6 +34,12 @@ jobs:
 
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v5
+        id: auto-commit-action #mandatory for the output to show up in ${{ steps }}
+      
+      - name: Throw an error if there are changes
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        run: exit 1
+
   test:
     needs: format-code
     strategy:
