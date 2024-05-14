@@ -13,6 +13,8 @@ export function unicornConfigs() {
       name: 'unicorn/custom',
       /// keep-sorted
       rules: {
+        // Conflicts with eslint-plugin-regexp
+        'unicorn/better-regex': 'off',
         'unicorn/catch-error-name': 'off',
         'unicorn/no-array-reduce': 'off',
         'unicorn/no-await-expression-member': 'off',
