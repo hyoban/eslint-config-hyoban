@@ -14,6 +14,7 @@ export function unicornConfigs() {
       /// keep-sorted
       rules: {
         'unicorn/catch-error-name': 'off',
+        'unicorn/no-array-reduce': 'off',
         'unicorn/no-await-expression-member': 'off',
         'unicorn/no-negated-condition': 'off',
         // https://github.com/sindresorhus/meta/discussions/7
