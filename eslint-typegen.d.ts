@@ -531,6 +531,11 @@ export interface RuleOptions {
    */
   '@stylistic/keyword-spacing'?: Linter.RuleEntry<StylisticKeywordSpacing>
   /**
+   * Enforce position of line comments
+   * @see https://eslint.style/rules/js/line-comment-position
+   */
+  '@stylistic/line-comment-position'?: Linter.RuleEntry<StylisticLineCommentPosition>
+  /**
    * Enforce consistent linebreak style
    * @see https://eslint.style/rules/js/linebreak-style
    */
@@ -560,6 +565,11 @@ export interface RuleOptions {
    * @see https://eslint.style/rules/ts/member-delimiter-style
    */
   '@stylistic/member-delimiter-style'?: Linter.RuleEntry<StylisticMemberDelimiterStyle>
+  /**
+   * Enforce a particular style for multiline comments
+   * @see https://eslint.style/rules/js/multiline-comment-style
+   */
+  '@stylistic/multiline-comment-style'?: Linter.RuleEntry<StylisticMultilineCommentStyle>
   /**
    * Enforce newlines between operands of ternary expressions
    * @see https://eslint.style/rules/js/multiline-ternary
@@ -4891,6 +4901,13 @@ type StylisticKeywordSpacing = []|[{
     }
   }
 }]
+// ----- @stylistic/line-comment-position -----
+type StylisticLineCommentPosition = []|[(("above" | "beside") | {
+  position?: ("above" | "beside")
+  ignorePattern?: string
+  applyDefaultPatterns?: boolean
+  applyDefaultIgnorePatterns?: boolean
+})]
 // ----- @stylistic/linebreak-style -----
 type StylisticLinebreakStyle = []|[("unix" | "windows")]
 // ----- @stylistic/lines-around-comment -----
@@ -5044,6 +5061,10 @@ interface _StylisticMemberDelimiterStyle_DelimiterConfig {
     requireLast?: boolean
   }
 }
+// ----- @stylistic/multiline-comment-style -----
+type StylisticMultilineCommentStyle = ([]|[("starred-block" | "bare-block")] | []|["separate-lines"]|["separate-lines", {
+  checkJSDoc?: boolean
+}])
 // ----- @stylistic/multiline-ternary -----
 type StylisticMultilineTernary = []|[("always" | "always-multiline" | "never")]|[("always" | "always-multiline" | "never"), {
   ignoreJSX?: boolean
