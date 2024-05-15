@@ -90,8 +90,11 @@ If you need Prettier
 
 ```jsonc
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+  "[javascript][javascriptreact][typescript][typescriptreact][json][jsonc]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
   },
 
   // If you want to silent stylistic rules
@@ -111,16 +114,9 @@ If you need Prettier
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "json"
-  ],
-
-  // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
-  "editor.formatOnSave": false,
-
-  // If you need Prettier, make sure to not use it with `js` `ts` and `json`
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
+    "json",
+    "jsonc"
+  ]
 }
 ```
 
