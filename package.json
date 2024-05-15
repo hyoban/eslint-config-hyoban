@@ -72,7 +72,7 @@
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "20.12.11",
+    "@types/node": "20.12.12",
     "bunchee": "^5.1.5",
     "eslint": "^9.2.0",
     "eslint-typegen": "^0.2.4",
