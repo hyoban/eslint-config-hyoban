@@ -2,11 +2,26 @@ import pluginStylistic from '@stylistic/eslint-plugin'
 import type { ESLint, Linter } from 'eslint'
 import pluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
+import tseslint from 'typescript-eslint'
 
 import type { Options } from '..'
+import { DEFAULT_GLOB_TS_SRC } from '../consts'
 
 export function stylisticConfigs({ stylistic }: Required<Options>) {
   return [
+    tseslint.configs.stylistic,
+    [
+      {
+        name: 'typescript-eslint/stylistic/custom',
+        files: DEFAULT_GLOB_TS_SRC,
+        rules: {
+          '@typescript-eslint/array-type': [
+            'error',
+            { default: 'array-simple' },
+          ],
+        },
+      },
+    ],
     {
       name: '@stylistic/shared',
       ...pluginStylistic.configs.customize(stylistic),
@@ -48,6 +63,7 @@ export function stylisticConfigs({ stylistic }: Required<Options>) {
           },
         ],
         'object-shorthand': 'error',
+        'arrow-body-style': ['error', 'as-needed'],
 
         'antfu/consistent-list-newline': 'error',
         'antfu/if-newline': 'error',

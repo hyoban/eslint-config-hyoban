@@ -20,7 +20,6 @@ export function typeScriptConfigs({
         : tseslint.configs.recommended)
   return [
     [
-      ...tseslint.configs.stylistic,
       ...typescriptPreset,
       typeChecked && {
         languageOptions: {
@@ -35,14 +34,6 @@ export function typeScriptConfigs({
       {
         name: 'typescript-eslint/custom',
         files: DEFAULT_GLOB_TS_SRC,
-      },
-      {
-        rules: {
-          '@typescript-eslint/array-type': [
-            'error',
-            { default: 'array-simple' },
-          ],
-        },
       },
       {
         rules: {
