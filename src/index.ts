@@ -86,7 +86,10 @@ export default async function hyoban(
     ...typeScriptConfigs(finalOptions),
     ...reactConfigs(finalOptions),
     ...stylisticConfigs(finalOptions),
-    regexpPlugin.configs['flat/recommended'] as Linter.FlatConfig,
+    [
+      { name: 'regexp/recommended' } satisfies Linter.FlatConfig,
+      regexpPlugin.configs['flat/recommended'] as Linter.FlatConfig,
+    ],
     command(),
     ...args,
   )
