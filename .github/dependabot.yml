@@ -13,3 +13,5 @@ updates:
     ignore:
       - dependency-name: "eslint-plugin-react-hooks"
         versions: ["0.0.0"]
+      - dependency-name: "eslint-plugin-react-compiler"
+        versions: ["0.0.0"]

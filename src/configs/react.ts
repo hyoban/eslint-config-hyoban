@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import type { Linter } from 'eslint'
+import type { ESLint, Linter } from 'eslint'
 
 import type { Options } from '..'
 import { DEFAULT_GLOB_TS_SRC } from '../consts'
@@ -28,9 +28,9 @@ export function reactConfigs({
       return {
         name: `react/${strict ? 'all' : 'recommended'}`,
         files: DEFAULT_GLOB_TS_SRC,
-        plugins: config.plugins,
+        plugins: config.plugins as unknown as Record<string, ESLint.Plugin>,
         rules: config.rules,
-      } as Linter.FlatConfig
+      } satisfies Linter.FlatConfig
     },
     () => {
       if (strict) {
@@ -73,9 +73,7 @@ export function reactConfigs({
       } satisfies Linter.FlatConfig
     },
     async () => {
-      const reactHooks = await interopDefault(
-        import('eslint-plugin-react-hooks'),
-      )
+      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
       return {
         name: 'react/hooks',
         files: DEFAULT_GLOB_TS_SRC,
@@ -83,12 +81,23 @@ export function reactConfigs({
           'react-hooks': reactHooks,
         },
         rules: reactHooks.configs.recommended.rules,
-      } as Linter.FlatConfig
+      } satisfies Linter.FlatConfig
     },
     async () => {
-      const reactRefresh = await interopDefault(
-        import('eslint-plugin-react-refresh'),
-      )
+      const reactCompiler = await interopDefault(import('eslint-plugin-react-compiler'))
+      return {
+        name: 'react/compiler',
+        files: DEFAULT_GLOB_TS_SRC,
+        plugins: {
+          'react-compiler': reactCompiler,
+        },
+        rules: {
+          'react-compiler/react-compiler': 'error',
+        },
+      } satisfies Linter.FlatConfig
+    },
+    async () => {
+      const reactRefresh = await interopDefault(import('eslint-plugin-react-refresh'))
 
       return {
         name: 'react/refresh',
@@ -122,7 +131,7 @@ export function reactConfigs({
             },
           ],
         },
-      } as Linter.FlatConfig
+      } satisfies Linter.FlatConfig
     },
   ]
 }
