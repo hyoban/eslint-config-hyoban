@@ -45,8 +45,8 @@ importers:
         specifier: ^0.13.1
         version: 0.13.1(eslint@9.2.0)(jsonc-eslint-parser@2.4.0)
       eslint-plugin-react-hooks:
-        specifier: 5.1.0-beta-e7d213dfb0-20240507
-        version: 5.1.0-beta-e7d213dfb0-20240507(eslint@9.2.0)
+        specifier: 5.1.0-rc-915b914b3a-20240515
+        version: 5.1.0-rc-915b914b3a-20240515(eslint@9.2.0)
       eslint-plugin-react-refresh:
         specifier: ^0.4.7
         version: 0.4.7(eslint@9.2.0)
@@ -1031,8 +1031,8 @@ packages:
       eslint: ^8.57.0
       typescript: ^5.3.3
 
-  eslint-plugin-react-hooks@5.1.0-beta-e7d213dfb0-20240507:
-    resolution: {integrity: sha512-tZG6F/cSt0Q5oFbzx2b33P2ScXBbaaTrqwQ6k3ozEgWw3lFjCvJ9x1z5y5AA9phaZZFB7t/Z/TiS2HPcPOkL6w==}
+  eslint-plugin-react-hooks@5.1.0-rc-915b914b3a-20240515:
+    resolution: {integrity: sha512-paf59zX5WFcZrYcy77i3PerVW3pYgX8Gxq9448XCiQ6ghysqNH5WvvPNVQDrfBD5+j7I4dXVOs060MxikBNOLg==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -2969,7 +2969,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react-hooks@5.1.0-beta-e7d213dfb0-20240507(eslint@9.2.0):
+  eslint-plugin-react-hooks@5.1.0-rc-915b914b3a-20240515(eslint@9.2.0):
     dependencies:
       eslint: 9.2.0
 
