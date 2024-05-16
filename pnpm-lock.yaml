@@ -30,8 +30,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0(eslint@9.2.0)
       eslint-plugin-command:
-        specifier: ^0.2.0
-        version: 0.2.0(eslint@9.2.0)
+        specifier: ^0.2.1
+        version: 0.2.1(eslint@9.2.0)
       eslint-plugin-hyoban:
         specifier: ^0.4.1
         version: 0.4.1(eslint@9.2.0)(typescript@5.4.5)
@@ -122,6 +122,10 @@ packages:
   '@babel/highlight@7.24.2':
     resolution: {integrity: sha512-Yac1ao4flkTxTteCDZLEvdxg2fZfz1v8M4QpaGypq/WPDqg3ijHYbDfs+LG5hvzSoqaSZ9/Z9lKSP3CjZjv+pA==}
     engines: {node: '>=6.9.0'}
+
+  '@es-joy/jsdoccomment@0.43.0':
+    resolution: {integrity: sha512-Q1CnsQrytI3TlCB1IVWXWeqUIPGVEKGaE7IbVdt13Nq/3i0JESAkQQERrfiQkmlpijl+++qyqPgaS31Bvc1jRQ==}
+    engines: {node: '>=16'}
 
   '@esbuild/aix-ppc64@0.19.10':
     resolution: {integrity: sha512-Q+mk96KJ+FZ30h9fsJl+67IjNJm3x2eX+GBWGmocAKgzp27cowCOOqSdscX80s0SpdFXZnIv/+1xD1EctFx96Q==}
@@ -974,8 +978,8 @@ packages:
     peerDependencies:
       eslint: '*'
 
-  eslint-plugin-command@0.2.0:
-    resolution: {integrity: sha512-SGOMTs6Pu5HQKwCF9uZ214cdVlJ99U+6GRoUS01zeLZmcQcFU4YXy2KTKqXaEsNCvaFY91OrHRZbh4/1xt9Yzw==}
+  eslint-plugin-command@0.2.1:
+    resolution: {integrity: sha512-dA44MFCzjNpGlKa1xRA+qi2bTbpf5+zr2JgWUp9IFPteN+qCIS8DHu4EGmPs1680STcwQPvYBANFudpvIOeCYA==}
     peerDependencies:
       eslint: '*'
 
@@ -1969,6 +1973,15 @@ snapshots:
       js-tokens: 4.0.0
       picocolors: 1.0.0
 
+  '@es-joy/jsdoccomment@0.43.0':
+    dependencies:
+      '@types/eslint': 8.56.10
+      '@types/estree': 1.0.5
+      '@typescript-eslint/types': 7.9.0
+      comment-parser: 1.4.1
+      esquery: 1.5.0
+      jsdoc-type-pratt-parser: 4.0.0
+
   '@esbuild/aix-ppc64@0.19.10':
     optional: true
 
@@ -2051,7 +2064,7 @@ snapshots:
       '@eslint-react/tools': 1.5.11
       '@eslint-react/types': 1.5.11(eslint@9.2.0)(typescript@5.4.5)
       '@typescript-eslint/scope-manager': 7.8.0
-      '@typescript-eslint/types': 7.8.0
+      '@typescript-eslint/types': 7.9.0
       '@typescript-eslint/utils': 7.9.0(eslint@9.2.0)(typescript@5.4.5)
       string-ts: 2.1.1
     transitivePeerDependencies:
@@ -2069,7 +2082,7 @@ snapshots:
       '@eslint-react/var': 1.5.11(eslint@9.2.0)(typescript@5.4.5)
       '@typescript-eslint/scope-manager': 7.8.0
       '@typescript-eslint/type-utils': 7.8.0(eslint@9.2.0)(typescript@5.4.5)
-      '@typescript-eslint/types': 7.8.0
+      '@typescript-eslint/types': 7.9.0
       '@typescript-eslint/utils': 7.9.0(eslint@9.2.0)(typescript@5.4.5)
       short-unique-id: 5.2.0
       valibot: 0.30.0
@@ -2105,7 +2118,7 @@ snapshots:
       '@eslint-react/types': 1.5.11(eslint@9.2.0)(typescript@5.4.5)
       '@eslint-react/var': 1.5.11(eslint@9.2.0)(typescript@5.4.5)
       '@typescript-eslint/scope-manager': 7.8.0
-      '@typescript-eslint/types': 7.8.0
+      '@typescript-eslint/types': 7.9.0
       '@typescript-eslint/utils': 7.9.0(eslint@9.2.0)(typescript@5.4.5)
       micro-memoize: 4.1.2
     transitivePeerDependencies:
@@ -2140,7 +2153,7 @@ snapshots:
       '@eslint-react/tools': 1.5.11
       '@eslint-react/types': 1.5.11(eslint@9.2.0)(typescript@5.4.5)
       '@typescript-eslint/scope-manager': 7.8.0
-      '@typescript-eslint/types': 7.8.0
+      '@typescript-eslint/types': 7.9.0
       '@typescript-eslint/utils': 7.9.0(eslint@9.2.0)(typescript@5.4.5)
       string-ts: 2.1.1
       valibot: 0.30.0
@@ -2842,8 +2855,9 @@ snapshots:
       '@antfu/utils': 0.7.8
       eslint: 9.2.0
 
-  eslint-plugin-command@0.2.0(eslint@9.2.0):
+  eslint-plugin-command@0.2.1(eslint@9.2.0):
     dependencies:
+      '@es-joy/jsdoccomment': 0.43.0
       eslint: 9.2.0
 
   eslint-plugin-hyoban@0.4.1(eslint@9.2.0)(typescript@5.4.5):
