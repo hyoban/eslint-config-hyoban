@@ -58,8 +58,17 @@ export function stylisticConfigs({ stylistic }: Required<Options>) {
         'prefer-destructuring': [
           'error',
           {
-            array: false,
-            object: true,
+            VariableDeclarator: {
+              array: false,
+              object: true,
+            },
+            AssignmentExpression: {
+              array: false,
+              object: false,
+            },
+          },
+          {
+            enforceForRenamedProperties: false,
           },
         ],
         'object-shorthand': 'error',
