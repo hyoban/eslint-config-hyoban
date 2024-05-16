@@ -63,7 +63,7 @@ export function stylisticConfigs({ stylistic }: Required<Options>) {
           },
         ],
         'object-shorthand': 'error',
-        'arrow-body-style': ['error', 'as-needed'],
+        'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
 
         'antfu/consistent-list-newline': 'error',
         'antfu/if-newline': 'error',
