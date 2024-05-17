@@ -105,6 +105,7 @@ If you need Prettier
   },
 
   "eslint.codeActionsOnSave.rules": [
+    "!no-var",
     "!prefer-const",
     "!unused-imports/no-unused-imports",
     "!simple-import-sort/*",
@@ -116,6 +117,7 @@ If you need Prettier
     { "rule": "@stylistic/*", "severity": "off" },
     { "rule": "antfu/consistent-list-newline", "severity": "off" },
     { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
+    { "rule": "no-var", "severity": "off" },
     { "rule": "prefer-const", "severity": "off" },
     { "rule": "unused-imports/no-unused-imports", "severity": "off" },
     { "rule": "simple-import-sort/*", "severity": "off" },
