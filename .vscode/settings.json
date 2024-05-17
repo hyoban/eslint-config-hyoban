@@ -8,6 +8,7 @@
 
   "eslint.codeActionsOnSave.rules": [
     "!prefer-const",
+    "!unused-imports/no-unused-imports",
     "*"
   ],
 
@@ -18,6 +19,7 @@
     { "rule": "antfu/consistent-list-newline", "severity": "off" },
     { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
     { "rule": "prefer-const", "severity": "off" },
+    { "rule": "unused-imports/no-unused-imports", "severity": "off" },
     { "rule": "@stylistic/no-tabs", "severity": "default" },
     { "rule": "@stylistic/max-statements-per-line", "severity": "default" }
   ],
