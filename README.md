@@ -6,6 +6,8 @@
 
 Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and `react`, use ESLint for formatting, and provide a lot of useful plugins.
 
+Read more about why I use ESLint for linting and formatting on [xLog](https://hyoban.xlog.app/why-eslint).
+
 | Basic              | Style            | React         | Others              | Tools                  |
 | ------------------ | ---------------- | ------------- | ------------------- | ---------------------- |
 | [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]      | [config-inspector] ✅  |
