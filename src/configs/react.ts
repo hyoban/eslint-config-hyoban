@@ -1,10 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
 import type { ESLint, Linter } from 'eslint'
 
 import type { Options } from '..'
-import { DEFAULT_GLOB_TS_SRC } from '../consts'
+import { DEFAULT_GLOB_JSX_SRC, DEFAULT_GLOB_TS_SRC } from '../consts'
 import { interopDefault } from '../utils'
 
 export function reactConfigs({
@@ -73,35 +70,29 @@ export function reactConfigs({
       } satisfies Linter.FlatConfig
     },
     async () => {
-      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
+      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks')) as ESLint.Plugin
+      const reactCompiler = await interopDefault(import('eslint-plugin-react-compiler')) as ESLint.Plugin
       return {
-        name: 'react/hooks',
+        name: 'react/official',
         files: DEFAULT_GLOB_TS_SRC,
-        plugins: {
-          'react-hooks': reactHooks,
-        },
-        rules: reactHooks.configs.recommended.rules,
-      } satisfies Linter.FlatConfig
-    },
-    async () => {
-      const reactCompiler = await interopDefault(import('eslint-plugin-react-compiler'))
-      return {
-        name: 'react/compiler',
-        files: DEFAULT_GLOB_TS_SRC,
+        /// keep-sorted
         plugins: {
           'react-compiler': reactCompiler,
+          'react-hooks': reactHooks,
         },
+        /// keep-sorted
         rules: {
           'react-compiler/react-compiler': 'error',
+          'react-hooks/exhaustive-deps': 'warn',
+          'react-hooks/rules-of-hooks': 'error',
         },
       } satisfies Linter.FlatConfig
     },
     async () => {
-      const reactRefresh = await interopDefault(import('eslint-plugin-react-refresh'))
-
+      const reactRefresh = await interopDefault(import('eslint-plugin-react-refresh')) as ESLint.Plugin
       return {
         name: 'react/refresh',
-        files: DEFAULT_GLOB_TS_SRC,
+        files: DEFAULT_GLOB_JSX_SRC,
         plugins: {
           'react-refresh': reactRefresh,
         },

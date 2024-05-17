@@ -12,6 +12,11 @@ export const DEFAULT_GLOB_JS_SRC = [
   '**/*.jsx',
 ]
 
+export const DEFAULT_GLOB_JSX_SRC = [
+  '**/*.jsx',
+  '**/*.tsx',
+]
+
 export const DEFAULT_GLOB_SRC = [
   ...DEFAULT_GLOB_TS_SRC,
   ...DEFAULT_GLOB_JS_SRC,
