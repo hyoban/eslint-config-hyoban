@@ -58,7 +58,7 @@ export default hyoban({
 });
 ```
 
-`scripts` in `package.json`
+`package.json`
 
 ```json
 {
