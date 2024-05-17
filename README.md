@@ -19,7 +19,7 @@ Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and
 ## Usage
 
 ```sh
-ni -D eslint eslint-config-hyoban
+ni -D eslint eslint-config-hyoban lint-staged simple-git-hooks
 ```
 
 `eslint.config.js` or `eslint.config.mjs`
@@ -64,7 +64,14 @@ export default hyoban({
 {
   "scripts": {
     "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint --fix",
+    "prepare": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
 ```
@@ -85,24 +92,6 @@ If you need Prettier
 
 > [!TIP]
 > You can use [prettier-config-hyoban](https://github.com/hyoban/prettier-config-hyoban) for Prettier to avoid conflicts.
-
-Lint Staged
-
-`ni -D lint-staged simple-git-hooks`
-
-```json
-{
-  "scripts": {
-    "prepare": "simple-git-hooks"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
-  }
-}
-```
 
 `.vscode/settings.json` for VSCode.
 
