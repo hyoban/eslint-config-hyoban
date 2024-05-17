@@ -6,15 +6,15 @@
 
 Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and `react`, use ESLint for formatting, and provide a lot of useful plugins.
 
-| Basic           | Style            | React         | Others              | Tools                  |
-| --------------- | ---------------- | ------------- | ------------------- | ---------------------- |
-| [js] ✅         | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]      | [config-inspector] ✅  |
-| [ts] ✅         | [antfu] ✅       | [hooks] ✅    | [UnoCSS]            | [eslint-types]         |
-| [unicorn] ✅    | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅ | [eslint-typegen] ✅    |
-| [import-x] ✅   | [jsonc] ✅       | [compiler] ✅ | [command] ✅        | [@antfu/eslint-config] |
-| [unused-import] | [yml]            | [jsx-a11y]    | [regexp] ✅         |                        |
-| [n]             | [perfectionist]  | [next]        | [package-json] ✅   |                        |
-| [compat]        | [format]         | [jsx-nesting] |                     |                        |
+| Basic              | Style            | React         | Others              | Tools                  |
+| ------------------ | ---------------- | ------------- | ------------------- | ---------------------- |
+| [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]      | [config-inspector] ✅  |
+| [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS]            | [eslint-types]         |
+| [unicorn] ✅       | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅ | [eslint-typegen] ✅    |
+| [import-x] ✅      | [jsonc] ✅       | [compiler] ✅ | [command] ✅        | [@antfu/eslint-config] |
+| [unused-import] ✅ | [yml]            | [jsx-a11y]    | [regexp] ✅         |                        |
+| [n]                | [perfectionist]  | [next]        | [package-json] ✅   |                        |
+| [compat]           | [format]         | [jsx-nesting] |                     |                        |
 
 ## Usage
 
@@ -85,6 +85,24 @@ If you need Prettier
 
 > [!TIP]
 > You can use [prettier-config-hyoban](https://github.com/hyoban/prettier-config-hyoban) for Prettier to avoid conflicts.
+
+Lint Staged
+
+`ni -D lint-staged simple-git-hooks`
+
+```json
+{
+  "scripts": {
+    "prepare": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
+```
 
 `.vscode/settings.json` for VSCode.
 
