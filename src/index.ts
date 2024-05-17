@@ -3,9 +3,10 @@ import '../eslint-typegen.d.ts'
 import process from 'node:process'
 
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
-import type { Linter } from 'eslint'
+import type { ESLint, Linter } from 'eslint'
 import command from 'eslint-plugin-command/config'
 import * as regexpPlugin from 'eslint-plugin-regexp'
+import pluginUnusedImports from 'eslint-plugin-unused-imports'
 
 import { importConfig } from './configs/imports'
 import { jsonConfigs } from './configs/json'
@@ -78,10 +79,31 @@ export default async function hyoban(
           },
           ...finalOptions.restrictedSyntax,
         ],
+        // for eslint-plugin-unused-imports
+        'no-unused-vars': 'off',
       },
     },
     ...unicornConfigs(),
     importConfig(),
+    {
+      name: 'unused-imports',
+      plugins: {
+        'unused-imports': pluginUnusedImports as ESLint.Plugin,
+      },
+      rules: {
+        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-vars': [
+          'error',
+          {
+            args: 'after-used',
+            argsIgnorePattern: '^_',
+            ignoreRestSiblings: true,
+            vars: 'all',
+            varsIgnorePattern: '^_',
+          },
+        ],
+      },
+    },
     ...jsonConfigs(finalOptions),
     ...typeScriptConfigs(finalOptions),
     ...reactConfigs(finalOptions),

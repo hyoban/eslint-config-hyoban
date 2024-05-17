@@ -37,18 +37,8 @@ export function typeScriptConfigs({
       },
       {
         rules: {
-          '@typescript-eslint/no-unused-vars': [
-            'error',
-            {
-              args: 'all',
-              argsIgnorePattern: '^_',
-              caughtErrors: 'all',
-              caughtErrorsIgnorePattern: '^_',
-              destructuredArrayIgnorePattern: '^_',
-              varsIgnorePattern: '^_',
-              ignoreRestSiblings: true,
-            },
-          ],
+          // for eslint-plugin-unused-imports
+          '@typescript-eslint/no-unused-vars': 'off',
 
           '@typescript-eslint/consistent-type-imports': 'error',
           '@typescript-eslint/no-import-type-side-effects': 'error',
