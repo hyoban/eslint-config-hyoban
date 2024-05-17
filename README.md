@@ -104,6 +104,7 @@ If you need Prettier
     }
   },
 
+  // If you do not want to autofix some rules on save
   "eslint.codeActionsOnSave.rules": [
     "!no-var",
     "!prefer-const",
