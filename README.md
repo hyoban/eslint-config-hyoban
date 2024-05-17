@@ -97,12 +97,20 @@ If you need Prettier
     }
   },
 
+  "eslint.codeActionsOnSave.rules": [
+    "!prefer-const",
+    "!unused-imports/no-unused-imports",
+    "*"
+  ],
+
   // If you want to silent stylistic rules
   "eslint.rules.customizations": [
     { "rule": "@stylistic/*", "severity": "off" },
     { "rule": "simple-import-sort/*", "severity": "off" },
     { "rule": "antfu/consistent-list-newline", "severity": "off" },
     { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
+    { "rule": "prefer-const", "severity": "off" },
+    { "rule": "unused-imports/no-unused-imports", "severity": "off" },
     { "rule": "@stylistic/no-tabs", "severity": "default" },
     { "rule": "@stylistic/max-statements-per-line", "severity": "default" }
   ],
