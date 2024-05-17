@@ -11,10 +11,10 @@ Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and
 | [js] ✅         | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]      | [config-inspector] ✅  |
 | [ts] ✅         | [antfu] ✅       | [hooks] ✅    | [UnoCSS]            | [eslint-types]         |
 | [unicorn] ✅    | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅ | [eslint-typegen] ✅    |
-| [import-x] ✅   | [jsonc] ✅       | [jsx-nesting] | [command] ✅        | [@antfu/eslint-config] |
+| [import-x] ✅   | [jsonc] ✅       | [compiler] ✅ | [command] ✅        | [@antfu/eslint-config] |
 | [unused-import] | [yml]            | [jsx-a11y]    | [regexp] ✅         |                        |
 | [n]             | [perfectionist]  | [next]        | [package-json] ✅   |                        |
-| [compat]        | [format]         |               |                     |                        |
+| [compat]        | [format]         | [jsx-nesting] |                     |                        |
 
 ## Usage
 
@@ -94,7 +94,7 @@ If you need Prettier
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
-    },
+    }
   },
 
   // If you want to silent stylistic rules
@@ -208,3 +208,4 @@ jobs:
 [eslint-typegen]: https://github.com/antfu/eslint-typegen
 [command]: https://github.com/antfu/eslint-plugin-command
 [regexp]: https://github.com/ota-meshi/eslint-plugin-regexp
+[compiler]: https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
