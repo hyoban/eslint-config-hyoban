@@ -19,6 +19,7 @@ export function typeScriptConfigs({
         ? tseslint.configs.recommendedTypeChecked
         : tseslint.configs.recommended)
   return [
+    tseslint.configs.base as Linter.FlatConfig,
     [
       ...typescriptPreset,
       typeChecked && {
@@ -37,9 +38,6 @@ export function typeScriptConfigs({
       },
       {
         rules: {
-          // for eslint-plugin-unused-imports
-          '@typescript-eslint/no-unused-vars': 'off',
-
           '@typescript-eslint/consistent-type-imports': 'error',
           '@typescript-eslint/no-import-type-side-effects': 'error',
 

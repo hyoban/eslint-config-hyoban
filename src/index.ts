@@ -79,10 +79,9 @@ export default async function hyoban(
           },
           ...finalOptions.restrictedSyntax,
         ],
-        // for eslint-plugin-unused-imports
-        'no-unused-vars': 'off',
       },
     },
+    ...typeScriptConfigs(finalOptions),
     ...unicornConfigs(),
     importConfig(),
     {
@@ -91,6 +90,8 @@ export default async function hyoban(
         'unused-imports': pluginUnusedImports as ESLint.Plugin,
       },
       rules: {
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
         'unused-imports/no-unused-imports': 'error',
         'unused-imports/no-unused-vars': [
           'error',
@@ -105,12 +106,16 @@ export default async function hyoban(
       },
     },
     ...jsonConfigs(finalOptions),
-    ...typeScriptConfigs(finalOptions),
     ...reactConfigs(finalOptions),
     ...stylisticConfigs(finalOptions),
     [
-      { name: 'regexp/recommended' } satisfies Linter.FlatConfig,
       regexpPlugin.configs['flat/recommended'] as Linter.FlatConfig,
+      {
+        name: 'regexp/recommended',
+        rules: {
+          'unicorn/better-regex': 'off',
+        },
+      } satisfies Linter.FlatConfig,
     ],
     command(),
     ...args,
