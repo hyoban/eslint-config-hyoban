@@ -76,7 +76,7 @@
     "@types/eslint__js": "^8.42.3",
     "@types/node": "20.12.12",
     "bunchee": "^5.1.5",
-    "eslint": "^9.2.0",
+    "eslint": "^9.3.0",
     "eslint-typegen": "^0.2.4",
     "lint-staged": "^15.2.2",
     "simple-git-hooks": "^2.11.1",
