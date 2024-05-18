@@ -114,7 +114,10 @@ export default async function hyoban(
               'one-var': 'off',
               'prefer-named-capture-group': 'off',
               'require-unicode-regexp': 'off',
+              // work with simple-import-sort
+              'sort-imports': 'off',
               'sort-keys': 'off',
+              'sort-vars': 'off',
             },
           }
         : {},
