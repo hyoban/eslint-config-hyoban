@@ -71,7 +71,7 @@ type AsyncCreateFlatConfig = () => Promise<
 type ExcludeArrayFirstItem<T> = T extends [unknown, ...infer R] ? R : never
 export type ConfigArray = ExcludeArrayFirstItem<Parameters<typeof config>>
 export async function config(
-  options: ConfigOptionsWithFlatConfig,
+  options: ConfigOptionsWithFlatConfig & { strict?: boolean },
   ...configs: Array<
     | undefined
     | null
@@ -86,7 +86,7 @@ export async function config(
     ignoreFiles: DEFAULT_IGNORE_FILES,
     files: DEFAULT_GLOB_SRC,
   })
-  const { ignores, ignoreFiles, files: _files, ...rest } = finalOptions
+  const { ignores, ignoreFiles, files: _files, strict, ...rest } = finalOptions
 
   const gitignore = await interopDefault(
     import('eslint-config-flat-gitignore'),
@@ -105,7 +105,7 @@ export async function config(
   return [
     globalIgnores,
     defu<Linter.FlatConfig, Linter.FlatConfig[]>(rest as Linter.FlatConfig, {
-      name: '@eslint/js/recommended',
+      name: strict ? '@eslint/js/all' : '@eslint/js/recommended',
       files: finalOptions.files,
       languageOptions: {
         ecmaVersion: 2022,
@@ -129,7 +129,9 @@ export async function config(
       linterOptions: {
         reportUnusedDisableDirectives: true,
       },
-      rules: js.configs.recommended.rules,
+      rules: strict
+        ? js.configs.all.rules
+        : js.configs.recommended.rules,
     }),
     ...(
       await Promise.all(
