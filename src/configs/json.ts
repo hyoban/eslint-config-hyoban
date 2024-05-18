@@ -4,7 +4,7 @@ import pluginJsonc from 'eslint-plugin-jsonc'
 import packageJson from 'eslint-plugin-package-json/configs/recommended'
 import * as parserJsonc from 'jsonc-eslint-parser'
 
-import type { Options } from '..'
+import type { Options } from '../option'
 
 const GLOB_JSON = '**/*.json'
 const GLOB_SHOULD_BE_JSONC = [

@@ -4,8 +4,8 @@ import pluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
 import tseslint from 'typescript-eslint'
 
-import type { Options } from '..'
 import { DEFAULT_GLOB_TS_SRC } from '../consts'
+import type { Options } from '../option'
 
 export function stylisticConfigs({ stylistic }: Required<Options>) {
   return [

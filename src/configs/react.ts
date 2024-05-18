@@ -1,7 +1,7 @@
 import type { ESLint, Linter } from 'eslint'
 
-import type { Options } from '..'
 import { DEFAULT_GLOB_JSX_SRC, DEFAULT_GLOB_TS_SRC } from '../consts'
+import type { Options } from '../option'
 import { interopDefault } from '../utils'
 
 export function reactConfigs({

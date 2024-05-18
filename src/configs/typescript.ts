@@ -1,8 +1,8 @@
 import type { Linter } from 'eslint'
 import tseslint from 'typescript-eslint'
 
-import type { Options } from '..'
 import { DEFAULT_GLOB_TS_SRC } from '../consts'
+import type { Options } from '../option'
 
 export function typeScriptConfigs({
   strict,
