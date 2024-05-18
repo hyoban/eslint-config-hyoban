@@ -107,6 +107,7 @@ If you need Prettier
   },
 
   // If you do not want to autofix some rules on save
+  // You can put this in your user settings
   "eslint.codeActionsOnSave.rules": [
     "!no-var",
     "!prefer-const",
@@ -116,6 +117,7 @@ If you need Prettier
   ],
 
   // If you want to silent stylistic rules
+  // You can put this in your user settings
   "eslint.rules.customizations": [
     { "rule": "@stylistic/*", "severity": "off" },
     { "rule": "@stylistic/no-tabs", "severity": "default" },
