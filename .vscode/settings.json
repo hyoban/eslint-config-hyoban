@@ -11,20 +11,21 @@
     "!no-var",
     "!prefer-const",
     "!unused-imports/no-unused-imports",
+    "!@stylistic/jsx-self-closing-comp",
     "*"
   ],
 
   // If you want to silent stylistic rules
   "eslint.rules.customizations": [
     { "rule": "@stylistic/*", "severity": "off" },
+    { "rule": "@stylistic/no-tabs", "severity": "default" },
+    { "rule": "@stylistic/max-statements-per-line", "severity": "default" },
     { "rule": "antfu/consistent-list-newline", "severity": "off" },
     { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
+    { "rule": "simple-import-sort/*", "severity": "off" },
     { "rule": "no-var", "severity": "off" },
     { "rule": "prefer-const", "severity": "off" },
-    { "rule": "unused-imports/no-unused-imports", "severity": "off" },
-    { "rule": "simple-import-sort/*", "severity": "off" },
-    { "rule": "@stylistic/no-tabs", "severity": "default" },
-    { "rule": "@stylistic/max-statements-per-line", "severity": "default" }
+    { "rule": "unused-imports/no-unused-imports", "severity": "off" }
   ],
 
   // You may don't need this in the future
