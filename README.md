@@ -106,6 +106,17 @@ If you need Prettier
     }
   },
 
+  // You may don't need this in the future
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "jsonc"
+  ],
+
   // If you do not want to autofix some rules on save
   // You can put this in your user settings
   "eslint.codeActionsOnSave.rules": [
@@ -128,17 +139,6 @@ If you need Prettier
     { "rule": "no-var", "severity": "off" },
     { "rule": "prefer-const", "severity": "off" },
     { "rule": "unused-imports/no-unused-imports", "severity": "off" }
-  ],
-
-  // You may don't need this in the future
-  "eslint.experimental.useFlatConfig": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "jsonc"
   ]
 }
 ```
