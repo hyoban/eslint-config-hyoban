@@ -2329,6 +2329,7 @@ export interface RuleOptions {
   /**
    * Enforce position of line comments
    * @see https://eslint.org/docs/latest/rules/line-comment-position
+   * @deprecated
    */
   'line-comment-position'?: Linter.RuleEntry<LineCommentPosition>
   /**
@@ -2410,6 +2411,7 @@ export interface RuleOptions {
   /**
    * Enforce a particular style for multiline comments
    * @see https://eslint.org/docs/latest/rules/multiline-comment-style
+   * @deprecated
    */
   'multiline-comment-style'?: Linter.RuleEntry<MultilineCommentStyle>
   /**
@@ -2782,7 +2784,7 @@ export interface RuleOptions {
    * Disallow characters which are made with multiple code points in character class syntax
    * @see https://eslint.org/docs/latest/rules/no-misleading-character-class
    */
-  'no-misleading-character-class'?: Linter.RuleEntry<[]>
+  'no-misleading-character-class'?: Linter.RuleEntry<NoMisleadingCharacterClass>
   /**
    * Disallow mixed binary operators
    * @see https://eslint.org/docs/latest/rules/no-mixed-operators
@@ -7391,6 +7393,9 @@ type _FuncNamesValue = ("always" | "as-needed" | "never")
 // ----- func-style -----
 type FuncStyle = []|[("declaration" | "expression")]|[("declaration" | "expression"), {
   allowArrowFunctions?: boolean
+  overrides?: {
+    namedExports?: ("declaration" | "expression" | "ignore")
+  }
 }]
 // ----- function-call-argument-newline -----
 type FunctionCallArgumentNewline = []|[("always" | "never" | "consistent")]
@@ -8571,9 +8576,11 @@ type NoExtendNative = []|[{
   exceptions?: string[]
 }]
 // ----- no-extra-boolean-cast -----
-type NoExtraBooleanCast = []|[{
+type NoExtraBooleanCast = []|[({
+  enforceForInnerExpressions?: boolean
+} | {
   enforceForLogicalOperands?: boolean
-}]
+})]
 // ----- no-extra-parens -----
 type NoExtraParens = ([]|["functions"] | []|["all"]|["all", {
   conditionalAssign?: boolean
@@ -8647,6 +8654,10 @@ type NoMagicNumbers = []|[{
   ignoreDefaultValues?: boolean
   ignoreClassFieldInitialValues?: boolean
 }]
+// ----- no-misleading-character-class -----
+type NoMisleadingCharacterClass = []|[{
+  allowEscape?: boolean
+}]
 // ----- no-mixed-operators -----
 type NoMixedOperators = []|[{
   groups?: [("+" | "-" | "*" | "/" | "%" | "**" | "&" | "|" | "^" | "~" | "<<" | ">>" | ">>>" | "==" | "!=" | "===" | "!==" | ">" | ">=" | "<" | "<=" | "&&" | "||" | "in" | "instanceof" | "?:" | "??"), ("+" | "-" | "*" | "/" | "%" | "**" | "&" | "|" | "^" | "~" | "<<" | ">>" | ">>>" | "==" | "!=" | "===" | "!==" | ">" | ">=" | "<" | "<=" | "&&" | "||" | "in" | "instanceof" | "?:" | "??"), ...(("+" | "-" | "*" | "/" | "%" | "**" | "&" | "|" | "^" | "~" | "<<" | ">>" | ">>>" | "==" | "!=" | "===" | "!==" | ">" | ">=" | "<" | "<=" | "&&" | "||" | "in" | "instanceof" | "?:" | "??"))[]][]
@@ -8703,8 +8714,10 @@ type NoRedeclare = []|[{
 // ----- no-restricted-exports -----
 type NoRestrictedExports = []|[({
   restrictedNamedExports?: string[]
+  restrictedNamedExportsPattern?: string
 } | {
   restrictedNamedExports?: string[]
+  restrictedNamedExportsPattern?: string
   restrictDefaultExports?: {
     direct?: boolean
     named?: boolean
