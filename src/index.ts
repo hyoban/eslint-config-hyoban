@@ -1,8 +1,5 @@
 import '../eslint-typegen.d.ts'
 
-import process from 'node:process'
-
-import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import commandConfig from 'eslint-plugin-command/config'
 
 import { importConfig } from './configs/imports'
@@ -13,39 +10,10 @@ import { stylisticConfigs } from './configs/stylistic'
 import { typeScriptConfigs } from './configs/typescript'
 import { unicornConfigs } from './configs/unicorn'
 import { unusedConfig } from './configs/unused'
+import type { Options } from './option'
+import { mergeDefaultOptions } from './option'
 import type { ConfigArray, ConfigOptions } from './utils'
 import { config } from './utils'
-
-export interface Options {
-  react?: 'vite' | 'remix' | 'next' | false,
-  strict?: boolean,
-  typeChecked?: boolean | 'essential',
-  project?: string[] | string | boolean | null,
-  tsconfigRootDir?: string,
-  filesDisableTypeChecking?: string[],
-  stylistic?: Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'semi'>,
-  restrictedSyntax?: Array<string | { selector: string, message?: string }>,
-}
-
-function mergeDefaultOptions(
-  options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
-): Required<Options> {
-  return {
-    react: false,
-    strict: false,
-    typeChecked: 'essential',
-    project: true,
-    tsconfigRootDir: process.cwd(),
-    filesDisableTypeChecking: [],
-    stylistic: {
-      indent: 2,
-      quotes: 'single',
-      semi: false,
-    },
-    restrictedSyntax: [],
-    ...options,
-  }
-}
 
 export * from './consts'
 

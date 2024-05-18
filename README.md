@@ -60,6 +60,9 @@ export default hyoban({
 });
 ```
 
+> [!TIP]
+> You can customize the preset by passing options according to [available options](https://github.com/hyoban/eslint-config-hyoban/blob/main/src/option.ts)
+
 `package.json`
 
 ```json
@@ -118,7 +121,7 @@ If you need Prettier
   ],
 
   // If you do not want to autofix some rules on save
-  // You can put this in your user settings
+  // You can put this in your user settings or workspace settings
   "eslint.codeActionsOnSave.rules": [
     "!no-var",
     "!prefer-const",
@@ -128,7 +131,7 @@ If you need Prettier
   ],
 
   // If you want to silent stylistic rules
-  // You can put this in your user settings
+  // You can put this in your user settings or workspace settings
   "eslint.rules.customizations": [
     { "rule": "@stylistic/*", "severity": "off" },
     { "rule": "@stylistic/no-tabs", "severity": "default" },
