@@ -69,6 +69,7 @@ export default async function hyoban(
           // https://twitter.com/karlhorky/status/1773632485055680875
           'array-callback-return': 'error',
           'eqeqeq': ['error', 'smart'],
+          'new-cap': ['error', { capIsNew: false, newIsCap: true, properties: true }],
           'no-console': ['error', { allow: ['warn', 'error'] }],
           // https://twitter.com/ryanflorence/status/1786394911895683512
           'no-param-reassign': 'error',
@@ -84,23 +85,35 @@ export default async function hyoban(
           ],
           'no-template-curly-in-string': 'error',
           'no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
+          'prefer-arrow-callback': ['error', { allowNamedFunctions: true, allowUnboundThis: true }],
         },
       },
       finalOptions.strict
         ? {
             /// keep-sorted
             rules: {
+              'camelcase': 'off',
               'capitalized-comments': 'off',
               'consistent-return': 'off',
               'func-style': 'off',
               'id-length': 'off',
+              'init-declarations': 'off',
               'max-lines-per-function': 'off',
+              'max-statements': 'off',
               'no-duplicate-imports': 'off',
+              'no-implicit-coercion': 'off',
+              'no-inline-comments': 'off',
+              'no-lonely-if': 'off',
               'no-magic-numbers': 'off',
               'no-shadow': 'off',
               'no-ternary': 'off',
               'no-undefined': 'off',
+              'no-underscore-dangle': 'off',
+              'no-useless-assignment': 'off',
+              'no-warning-comments': 'off',
               'one-var': 'off',
+              'prefer-named-capture-group': 'off',
+              'require-unicode-regexp': 'off',
               'sort-keys': 'off',
             },
           }

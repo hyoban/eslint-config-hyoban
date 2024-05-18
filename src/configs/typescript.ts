@@ -38,6 +38,8 @@ export function typeScriptConfigs({
       },
       {
         rules: {
+          'no-use-before-define': 'off',
+
           '@typescript-eslint/consistent-type-imports': 'error',
           '@typescript-eslint/no-import-type-side-effects': 'error',
 
