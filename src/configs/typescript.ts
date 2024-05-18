@@ -76,6 +76,7 @@ export function typeScriptConfigs({
                   checksVoidReturn: { arguments: false, attributes: false },
                 },
               ],
+              '@typescript-eslint/restrict-template-expressions': ['error', {}],
             },
           }),
     ] as Linter.FlatConfig[],
