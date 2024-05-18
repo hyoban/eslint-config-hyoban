@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
+          token: ${{ secrets.PAT }}
 
       - name: Set node
         uses: actions/setup-node@v4
@@ -104,4 +105,4 @@ jobs:
         run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.PAT}}
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
