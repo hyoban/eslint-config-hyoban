@@ -5,13 +5,16 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
 export function importConfig(): Linter.FlatConfig {
   return {
-    name: 'import',
+    name: 'extend/import',
     plugins: {
       'simple-import-sort': simpleImportSort,
       'import-x': pluginImport as unknown as ESLint.Plugin,
       'antfu': pluginAntfu,
     },
     rules: {
+      'sort-imports': 'off',
+      'import-x/order': 'off',
+
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
       'import-x/first': 'error',

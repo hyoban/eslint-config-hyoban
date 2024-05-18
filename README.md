@@ -111,7 +111,6 @@ If you need Prettier
     "!no-var",
     "!prefer-const",
     "!unused-imports/no-unused-imports",
-    "!simple-import-sort/*",
     "*"
   ],
 

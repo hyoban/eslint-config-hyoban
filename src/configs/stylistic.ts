@@ -34,10 +34,6 @@ export function stylisticConfigs({ stylistic }: Required<Options>) {
         '@stylistic': pluginStylistic,
       },
       rules: {
-        '@stylistic/quotes': [
-          'error',
-          stylistic.quotes === 'double' ? 'double' : 'single',
-        ],
         '@stylistic/jsx-self-closing-comp': [
           'error',
           {

@@ -3,17 +3,16 @@ import '../eslint-typegen.d.ts'
 import process from 'node:process'
 
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
-import type { ESLint, Linter } from 'eslint'
-import command from 'eslint-plugin-command/config'
-import * as regexpPlugin from 'eslint-plugin-regexp'
-import pluginUnusedImports from 'eslint-plugin-unused-imports'
+import commandConfig from 'eslint-plugin-command/config'
 
 import { importConfig } from './configs/imports'
 import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
+import { regexConfig } from './configs/regex'
 import { stylisticConfigs } from './configs/stylistic'
 import { typeScriptConfigs } from './configs/typescript'
 import { unicornConfigs } from './configs/unicorn'
+import { unusedConfig } from './configs/unused'
 import type { ConfigArray, ConfigOptions } from './utils'
 import { config } from './utils'
 
@@ -67,57 +66,31 @@ export default async function hyoban(
       rules: {
         // https://twitter.com/karlhorky/status/1773632485055680875
         'array-callback-return': 'error',
+        'eqeqeq': ['error', 'smart'],
         'no-console': ['error', { allow: ['warn', 'error'] }],
         // https://twitter.com/ryanflorence/status/1786394911895683512
         'no-param-reassign': 'error',
-        // https://youtu.be/XTXPKbPcvl4?si=J_2E9dM25sAEXM2x
         'no-restricted-syntax': [
           'error',
-          {
-            selector: 'TSEnumDeclaration',
-            message: 'We should not use Enum',
-          },
+          'DebuggerStatement',
+          'LabeledStatement',
+          'WithStatement',
+          // https://youtu.be/XTXPKbPcvl4?si=J_2E9dM25sAEXM2x
+          'TSEnumDeclaration',
+          'TSExportAssignment',
           ...finalOptions.restrictedSyntax,
         ],
       },
     },
-    ...typeScriptConfigs(finalOptions),
     ...unicornConfigs(),
+    ...typeScriptConfigs(finalOptions),
     importConfig(),
-    {
-      name: 'unused-imports',
-      plugins: {
-        'unused-imports': pluginUnusedImports as ESLint.Plugin,
-      },
-      rules: {
-        'no-unused-vars': 'off',
-        '@typescript-eslint/no-unused-vars': 'off',
-        'unused-imports/no-unused-imports': 'error',
-        'unused-imports/no-unused-vars': [
-          'error',
-          {
-            args: 'after-used',
-            argsIgnorePattern: '^_',
-            ignoreRestSiblings: true,
-            vars: 'all',
-            varsIgnorePattern: '^_',
-          },
-        ],
-      },
-    },
+    unusedConfig(),
+    regexConfig(),
+    commandConfig(),
+    ...stylisticConfigs(finalOptions),
     ...jsonConfigs(finalOptions),
     ...reactConfigs(finalOptions),
-    ...stylisticConfigs(finalOptions),
-    [
-      regexpPlugin.configs['flat/recommended'] as Linter.FlatConfig,
-      {
-        name: 'regexp/recommended',
-        rules: {
-          'unicorn/better-regex': 'off',
-        },
-      } satisfies Linter.FlatConfig,
-    ],
-    command(),
     ...args,
   )
 }
