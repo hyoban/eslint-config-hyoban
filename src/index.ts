@@ -62,6 +62,7 @@ export default async function hyoban(
             rules: {
               'camelcase': 'off',
               'capitalized-comments': 'off',
+              'complexity': 'off',
               'consistent-return': 'off',
               'func-style': 'off',
               'id-length': 'off',

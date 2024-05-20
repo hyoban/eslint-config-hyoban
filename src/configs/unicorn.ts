@@ -19,6 +19,7 @@ export function unicornConfigs() {
         'unicorn/no-array-reduce': 'off',
         'unicorn/no-await-expression-member': 'off',
         'unicorn/no-negated-condition': 'off',
+        'unicorn/no-nested-ternary': 'off',
         // https://github.com/sindresorhus/meta/discussions/7
         'unicorn/no-null': 'off',
         'unicorn/prefer-spread': 'off',
