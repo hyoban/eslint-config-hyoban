@@ -1,6 +1,7 @@
 import pluginStylistic from '@stylistic/eslint-plugin'
 import type { ESLint, Linter } from 'eslint'
 import pluginAntfu from 'eslint-plugin-antfu'
+import pluginHyoban from 'eslint-plugin-hyoban'
 import pluginJsonc from 'eslint-plugin-jsonc'
 import packageJson from 'eslint-plugin-package-json/configs/recommended'
 import * as parserJsonc from 'jsonc-eslint-parser'
@@ -29,6 +30,7 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
     '@stylistic/no-trailing-spaces': 'error',
     '@stylistic/eol-last': ['error', 'always'],
     'antfu/consistent-list-newline': 'error',
+    'hyoban/jsonc-inline-spacing': 'error',
   }
 
   return [
@@ -39,6 +41,7 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
       plugins: {
         '@stylistic': pluginStylistic as unknown as ESLint.Plugin,
         'antfu': pluginAntfu,
+        'hyoban': pluginHyoban as unknown as ESLint.Plugin,
         'jsonc': pluginJsonc as unknown as ESLint.Plugin,
         'package-json': packageJson.plugins['package-json'] as ESLint.Plugin,
       },

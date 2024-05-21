@@ -1805,6 +1805,11 @@ export interface RuleOptions {
    */
   'handle-callback-err'?: Linter.RuleEntry<HandleCallbackErr>
   /**
+   * Enforce consistent spacing around JSONC attributes
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/jsonc-inline-spacing.ts
+   */
+  'hyoban/jsonc-inline-spacing'?: Linter.RuleEntry<[]>
+  /**
    * Enforce consistent spacing around JSX attributes
    * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/jsx-attribute-spacing.ts
    */
