@@ -81,6 +81,7 @@ export default async function hyoban(
               'no-undefined': 'off',
               'no-underscore-dangle': 'off',
               'no-useless-assignment': 'off',
+              'no-void': ['error', { allowAsStatement: true }],
               'no-warning-comments': 'off',
               'object-shorthand': 'off',
               'one-var': 'off',
@@ -88,8 +89,6 @@ export default async function hyoban(
               'prefer-named-capture-group': 'off',
               'prefer-template': 'off',
               'require-unicode-regexp': 'off',
-              // work with simple-import-sort
-              'sort-imports': 'off',
               'sort-keys': 'off',
               'sort-vars': 'off',
             },
