@@ -60,10 +60,12 @@ export default async function hyoban(
         ? {
             /// keep-sorted
             rules: {
+              'arrow-body-style': 'off',
               'camelcase': 'off',
               'capitalized-comments': 'off',
               'complexity': 'off',
               'consistent-return': 'off',
+              'curly': 'off',
               'func-style': 'off',
               'id-length': 'off',
               'init-declarations': 'off',
@@ -80,8 +82,11 @@ export default async function hyoban(
               'no-underscore-dangle': 'off',
               'no-useless-assignment': 'off',
               'no-warning-comments': 'off',
+              'object-shorthand': 'off',
               'one-var': 'off',
+              'prefer-destructuring': 'off',
               'prefer-named-capture-group': 'off',
+              'prefer-template': 'off',
               'require-unicode-regexp': 'off',
               // work with simple-import-sort
               'sort-imports': 'off',
