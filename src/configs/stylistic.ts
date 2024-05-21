@@ -41,14 +41,6 @@ export function stylisticConfigs({ stylistic }: Required<Options>) {
             html: true,
           },
         ],
-        '@stylistic/member-delimiter-style': [
-          'error',
-          {
-            multiline: { delimiter: 'comma', requireLast: true },
-            singleline: { delimiter: 'comma', requireLast: false },
-            multilineDetection: 'brackets',
-          },
-        ],
         'curly': ['error', 'multi-or-nest', 'consistent'],
         'prefer-template': 'error',
         'prefer-destructuring': [

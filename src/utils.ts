@@ -17,9 +17,9 @@ export async function interopDefault<T>(
 }
 
 export interface ConfigOptions {
-  files?: string[],
-  ignores?: string[],
-  ignoreFiles?: string[],
+  files?: string[]
+  ignores?: string[]
+  ignoreFiles?: string[]
 }
 
 type ConfigOptionsWithFlatConfig = ConfigOptions &

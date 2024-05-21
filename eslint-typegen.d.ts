@@ -7232,6 +7232,8 @@ type AntfuConsistentListNewline = []|[{
   ObjectPattern?: boolean
   ArrayPattern?: boolean
   JSXOpeningElement?: boolean
+  JSONArrayExpression?: boolean
+  JSONObjectExpression?: boolean
 }]
 // ----- antfu/indent-unindent -----
 type AntfuIndentUnindent = []|[{
