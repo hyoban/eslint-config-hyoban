@@ -27,8 +27,8 @@ importers:
         specifier: ^0.1.5
         version: 0.1.5
       eslint-plugin-antfu:
-        specifier: npm:@hyoban/eslint-plugin-antfu@2.2.0-1
-        version: '@hyoban/eslint-plugin-antfu@2.2.0-1(eslint-ts-patch@9.2.0-6)'
+        specifier: npm:@hyoban/eslint-plugin-antfu@2.2.0-2
+        version: '@hyoban/eslint-plugin-antfu@2.2.0-2(eslint-ts-patch@9.2.0-6)'
       eslint-plugin-command:
         specifier: ^0.2.3
         version: 0.2.3(eslint-ts-patch@9.2.0-6)
@@ -600,8 +600,8 @@ packages:
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
 
-  '@hyoban/eslint-plugin-antfu@2.2.0-1':
-    resolution: {integrity: sha512-NrLDyC7D5iOgLRutGt5Z1wLAd1BLSiHcPpEBlY6+6V+OUplVgji0r/tfgb6GgQ79V6YORjTsmu+akhsBICcwUQ==}
+  '@hyoban/eslint-plugin-antfu@2.2.0-2':
+    resolution: {integrity: sha512-xEekQUuZKM9hWDYiLrRhuClfgddqG/1gyM+HWDyYMiRds0nbg6Q/rClML7ibu9ikrMBaYjhsnRZcTKap8MZoPg==}
     peerDependencies:
       eslint: '*'
 
@@ -2882,7 +2882,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.3.0': {}
 
-  '@hyoban/eslint-plugin-antfu@2.2.0-1(eslint-ts-patch@9.2.0-6)':
+  '@hyoban/eslint-plugin-antfu@2.2.0-2(eslint-ts-patch@9.2.0-6)':
     dependencies:
       '@antfu/utils': 0.7.8
       eslint: eslint-ts-patch@9.2.0-6

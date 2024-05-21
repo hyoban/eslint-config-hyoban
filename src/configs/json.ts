@@ -1,5 +1,6 @@
 import pluginStylistic from '@stylistic/eslint-plugin'
 import type { ESLint, Linter } from 'eslint'
+import pluginAntfu from 'eslint-plugin-antfu'
 import pluginJsonc from 'eslint-plugin-jsonc'
 import packageJson from 'eslint-plugin-package-json/configs/recommended'
 import * as parserJsonc from 'jsonc-eslint-parser'
@@ -16,38 +17,29 @@ const GLOB_JSON5 = '**/*.json5'
 const GLOB_JSONC = '**/*.jsonc'
 
 export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig[] {
-  const jsonFormateRules = {
+  const jsonFormateRules: Linter.RulesRecord = {
     'jsonc/array-bracket-spacing': ['error', 'never'],
+    'jsonc/comma-dangle': ['error', 'never'],
     'jsonc/comma-style': ['error', 'last'],
     'jsonc/indent': ['error', stylistic.indent ?? 2],
     'jsonc/key-spacing': ['error', { afterColon: true, beforeColon: false }],
-    'jsonc/object-curly-newline': ['error', { consistent: true, multiline: true }],
     'jsonc/object-curly-spacing': ['error', 'always'],
-    'jsonc/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
+    'jsonc/quote-props': 'error',
+    'jsonc/quotes': 'error',
     '@stylistic/no-trailing-spaces': 'error',
     '@stylistic/eol-last': ['error', 'always'],
-  }
-
-  const jsonFormateRulesStrict = {
-    'jsonc/array-bracket-newline': ['error', { minItems: 1 }],
-    'jsonc/array-element-newline': ['error', 'always'],
-    'jsonc/comma-style': ['error', 'last'],
-    'jsonc/indent': ['error', stylistic.indent ?? 2],
-    'jsonc/key-spacing': ['error', { afterColon: true, beforeColon: false }],
-    'jsonc/object-curly-newline': ['error', { minProperties: 1 }],
-    'jsonc/object-curly-spacing': ['error', 'always'],
-    'jsonc/object-property-newline': 'error',
-    '@stylistic/no-trailing-spaces': 'error',
-    '@stylistic/eol-last': ['error', 'always'],
+    'antfu/consistent-list-newline': 'error',
   }
 
   return [
     {
       name: 'json/setup',
       files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
+      /// keep-sorted
       plugins: {
-        'jsonc': pluginJsonc as unknown as ESLint.Plugin,
         '@stylistic': pluginStylistic as unknown as ESLint.Plugin,
+        'antfu': pluginAntfu,
+        'jsonc': pluginJsonc as unknown as ESLint.Plugin,
         'package-json': packageJson.plugins['package-json'] as ESLint.Plugin,
       },
       languageOptions: {
@@ -86,7 +78,7 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
         ...packageJson.rules,
         'package-json/order-properties': 'off',
         'package-json/sort-collections': 'off',
-        ...jsonFormateRulesStrict as Linter.FlatConfig['rules'],
+        ...jsonFormateRules as Linter.FlatConfig['rules'],
         'jsonc/sort-array-values': [
           'error',
           {
