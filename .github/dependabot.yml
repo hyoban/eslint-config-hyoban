@@ -16,3 +16,8 @@ updates:
         versions: ["0.0.0"]
       - dependency-name: "eslint-plugin-react-compiler"
         versions: ["0.0.0"]
+    groups:
+      all-non-major:
+        update-types:
+          - "minor"
+          - "patch"
