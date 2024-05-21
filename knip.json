@@ -1,4 +1,5 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "ignoreDependencies": ["@eslint/config-inspector", "lint-staged"]
+  "ignoreDependencies": ["@eslint/config-inspector", "lint-staged"],
+  "entry": ["eslint.config.ts", "src/index.ts"]
 }
