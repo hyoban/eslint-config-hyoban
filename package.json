@@ -35,7 +35,7 @@
   "scripts": {
     "build": "pnpm typegen && bunchee",
     "build:inspector": "npx @eslint/config-inspector@latest build",
-    "dev": "pnpm typegen && bunchee -w",
+    "dev": "pnpm typegen && npx @eslint/config-inspector@latest",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prepare": "simple-git-hooks && pnpm run build",
@@ -77,7 +77,8 @@
     "@types/eslint__js": "^8.42.3",
     "@types/node": "20.12.12",
     "bunchee": "^5.1.5",
-    "eslint": "^9.3.0",
+    "eslint": "npm:eslint-ts-patch@9.2.0-6",
+    "eslint-ts-patch": "9.2.0-6",
     "eslint-typegen": "^0.2.4",
     "lint-staged": "^15.2.2",
     "simple-git-hooks": "^2.11.1",
