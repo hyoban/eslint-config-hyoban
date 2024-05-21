@@ -7124,6 +7124,8 @@ type TypescriptEslintSortTypeConstituents = []|[{
   
   checkUnions?: boolean
   
+  caseSensitive?: boolean
+  
   groupOrder?: ("conditional" | "function" | "import" | "intersection" | "keyword" | "nullish" | "literal" | "named" | "object" | "operator" | "tuple" | "union")[]
 }]
 // ----- @typescript-eslint/space-before-blocks -----
