@@ -24,10 +24,12 @@ export function stylisticConfigs({ stylistic }: Required<Options>) {
     ],
     {
       name: '@stylistic/shared',
+      files: undefined,
       ...pluginStylistic.configs.customize(stylistic),
     },
     {
       name: '@stylistic/customize',
+      files: undefined,
       plugins: {
         'antfu': pluginAntfu,
         'hyoban': pluginHyoban as unknown as ESLint.Plugin,

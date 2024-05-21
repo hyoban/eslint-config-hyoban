@@ -59,7 +59,7 @@ function create(
   const { files } = options
   return defu<Linter.FlatConfig, Linter.FlatConfig[]>(
     config,
-    config.files ? {} : { files },
+    'files' in config ? {} : { files },
   )
 }
 
