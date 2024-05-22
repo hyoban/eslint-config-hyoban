@@ -7,9 +7,11 @@ import tseslint from 'typescript-eslint'
 import { DEFAULT_GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
 
-export function stylisticConfigs({ stylistic }: Required<Options>) {
+export function stylisticConfigs({ stylistic, typeChecked }: Required<Options>) {
   return [
-    tseslint.configs.stylistic,
+    typeChecked === true
+      ? tseslint.configs.stylisticTypeChecked
+      : tseslint.configs.stylistic,
     [
       {
         name: 'typescript-eslint/stylistic/custom',
