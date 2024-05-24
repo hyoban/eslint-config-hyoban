@@ -14,7 +14,7 @@ export async function cspellConfig({ cspell }: Required<Options>): Promise<Linte
     numSuggestions: 8,
   }
   if (typeof cspell === 'object')
-    cspellOption = defu(cspell, cspellOption)
+    cspellOption = defu(cspell as CSpellOption, cspellOption)
 
   return {
     name: 'cspell/recommended',

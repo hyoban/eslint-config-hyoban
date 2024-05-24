@@ -17,7 +17,7 @@ export interface Options {
   filesDisableTypeChecking?: string[]
   stylistic?: Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'semi'>
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
-  cspell?: CSpellOption | boolean
+  cspell?: Partial<CSpellOption> | boolean
 }
 
 export function mergeDefaultOptions(

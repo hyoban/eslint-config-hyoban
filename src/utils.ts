@@ -63,8 +63,7 @@ function create(
   )
 }
 
-type CreateFlatConfig = () => MaybeArray<Linter.FlatConfig> | undefined
-type AsyncCreateFlatConfig = () => Promise< MaybeArray<Linter.FlatConfig> | undefined>
+type CreateFlatConfig = () => Awaitable<MaybeArray<Linter.FlatConfig> | undefined>
 
 type ExcludeArrayFirstItem<T> = T extends [unknown, ...infer R] ? R : never
 export type ConfigArray = ExcludeArrayFirstItem<Parameters<typeof config>>
@@ -76,7 +75,6 @@ export async function config(
     | false
     | MaybeArray<Awaitable<Linter.FlatConfig | undefined>>
     | CreateFlatConfig
-    | AsyncCreateFlatConfig
   >
 ): Promise<Linter.FlatConfig[]> {
   const finalOptions = defu(options, {
