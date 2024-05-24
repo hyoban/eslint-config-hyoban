@@ -13,23 +13,19 @@ import { unicornConfigs } from './configs/unicorn'
 import { unusedConfig } from './configs/unused'
 import type { Options } from './option'
 import { mergeDefaultOptions } from './option'
-import type { ConfigArray, ConfigOptions } from './utils'
+import type { ConfigArray } from './utils'
 import { config } from './utils'
 
 export * from './consts'
 
 export default async function hyoban(
-  options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
+  options?: Options,
   ...args: ConfigArray
 ) {
   const finalOptions = mergeDefaultOptions(options)
 
   return config(
-    {
-      ignores: options?.ignores,
-      ignoreFiles: options?.ignoreFiles,
-      strict: finalOptions.strict,
-    },
+    finalOptions,
     [
       {
         name: '@eslint/js/custom',

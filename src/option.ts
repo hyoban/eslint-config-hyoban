@@ -2,13 +2,13 @@ import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { Linter } from 'eslint'
 
 import type { RuleOptions } from '../eslint-typegen'
-import type { ConfigOptions } from './utils'
+import { DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
 
 type TypeWithGeneric<T> = T[]
 type ExtractGeneric<Type> = Type extends TypeWithGeneric<infer X> ? X : never
 
 export type CSpellOption = Exclude<ExtractGeneric<RuleOptions['@cspell/spellchecker']>, Linter.RuleLevel>
-export interface Options {
+export type Options = {
   react?: 'vite' | 'remix' | 'next' | false
   strict?: boolean
   typeChecked?: boolean | 'essential'
@@ -18,10 +18,12 @@ export interface Options {
   stylistic?: Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'semi'>
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   cspell?: Partial<CSpellOption> | boolean
-}
+  ignores?: string[]
+  ignoreFiles?: string[]
+} & Pick<Linter.FlatConfig, 'linterOptions' | 'settings'>
 
 export function mergeDefaultOptions(
-  options?: Options & Pick<ConfigOptions, 'ignores' | 'ignoreFiles'>,
+  options?: Options,
 ): Required<Options> {
   return {
     react: false,
@@ -37,6 +39,12 @@ export function mergeDefaultOptions(
     },
     restrictedSyntax: [],
     cspell: false,
+    ignores: GLOB_EXCLUDE,
+    ignoreFiles: DEFAULT_IGNORE_FILES,
+    linterOptions: {
+      reportUnusedDisableDirectives: true,
+    },
+    settings: {},
     ...options,
   }
 }

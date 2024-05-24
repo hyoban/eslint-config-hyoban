@@ -3,7 +3,8 @@ import { createDefu } from 'defu'
 import type { Linter } from 'eslint'
 import globals from 'globals'
 
-import { DEFAULT_GLOB_SRC, DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
+import { DEFAULT_GLOB_SRC } from './consts'
+import type { Options } from './option'
 
 type MaybeArray<T> = T | T[]
 type Awaitable<T> = T | Promise<T>
@@ -15,18 +16,6 @@ export async function interopDefault<T>(
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
   return (resolved as any).default || resolved
 }
-
-export interface ConfigOptions {
-  files?: string[]
-  ignores?: string[]
-  ignoreFiles?: string[]
-}
-
-type ConfigOptionsWithFlatConfig = ConfigOptions &
-  Pick<
-    Linter.FlatConfig,
-    'rules' | 'languageOptions' | 'linterOptions' | 'settings'
-  >
 
 const severities = new Set([0, 1, 2, 'off', 'warn', 'error'])
 
@@ -52,23 +41,12 @@ export const defu = createDefu((obj, key, value) => {
   }
 })
 
-function create(
-  config: Linter.FlatConfig,
-  options: Required<ConfigOptions>,
-): Linter.FlatConfig {
-  const { files } = options
-  return defu<Linter.FlatConfig, Linter.FlatConfig[]>(
-    config,
-    'files' in config ? {} : { files },
-  )
-}
-
 type CreateFlatConfig = () => Awaitable<MaybeArray<Linter.FlatConfig> | undefined>
-
 type ExcludeArrayFirstItem<T> = T extends [unknown, ...infer R] ? R : never
+
 export type ConfigArray = ExcludeArrayFirstItem<Parameters<typeof config>>
 export async function config(
-  options: ConfigOptionsWithFlatConfig & { strict?: boolean },
+  options: Required<Options>,
   ...configs: Array<
     | undefined
     | null
@@ -77,12 +55,7 @@ export async function config(
     | CreateFlatConfig
   >
 ): Promise<Linter.FlatConfig[]> {
-  const finalOptions = defu(options, {
-    ignores: GLOB_EXCLUDE,
-    ignoreFiles: DEFAULT_IGNORE_FILES,
-    files: DEFAULT_GLOB_SRC,
-  })
-  const { ignores, ignoreFiles, files: _files, strict, ...rest } = finalOptions
+  const { ignores, ignoreFiles, strict, linterOptions } = options
 
   const gitignore = await interopDefault(
     import('eslint-config-flat-gitignore'),
@@ -100,9 +73,9 @@ export async function config(
 
   return [
     globalIgnores,
-    defu<Linter.FlatConfig, Linter.FlatConfig[]>(rest as Linter.FlatConfig, {
+    {
       name: strict ? '@eslint/js/all' : '@eslint/js/recommended',
-      files: finalOptions.files,
+      files: DEFAULT_GLOB_SRC,
       languageOptions: {
         ecmaVersion: 2022,
         globals: {
@@ -122,13 +95,11 @@ export async function config(
         },
         sourceType: 'module',
       },
-      linterOptions: {
-        reportUnusedDisableDirectives: true,
-      },
+      linterOptions,
       rules: strict
         ? js.configs.all.rules
         : js.configs.recommended.rules,
-    }),
+    },
     ...(
       await Promise.all(
         configs.map(async (c) => {
@@ -138,13 +109,13 @@ export async function config(
             if (!resolved)
               return
 
-            return mergeConfigs(resolved, finalOptions)
+            return mergeConfigs(resolved)
           }
 
           if (!c)
             return
 
-          return mergeConfigs(c, finalOptions)
+          return mergeConfigs(c)
         }),
       )
     ).filter(Boolean),
@@ -153,7 +124,6 @@ export async function config(
 
 async function mergeConfigs(
   _c: MaybeArray<Awaitable<Linter.FlatConfig | undefined>>,
-  finalOptions: Required<ConfigOptions>,
 ): Promise<Linter.FlatConfig | undefined> {
   const c = await _c
 
@@ -161,7 +131,16 @@ async function mergeConfigs(
     return
 
   if (Array.isArray(c))
-    return create(defu({}, ...c.reverse()), finalOptions)
+    return withFiles(defu({}, ...c.reverse()))
 
-  return create(c, finalOptions)
+  return withFiles(c)
+}
+
+function withFiles(
+  config: Linter.FlatConfig,
+): Linter.FlatConfig {
+  return defu<Linter.FlatConfig, Linter.FlatConfig[]>(
+    config,
+    'files' in config ? {} : { files: DEFAULT_GLOB_SRC },
+  )
 }
