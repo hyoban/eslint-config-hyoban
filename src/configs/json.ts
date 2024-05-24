@@ -3,16 +3,8 @@ import pluginJsonc from 'eslint-plugin-jsonc'
 import packageJson from 'eslint-plugin-package-json/configs/recommended'
 import * as parserJsonc from 'jsonc-eslint-parser'
 
+import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC, GLOB_SHOULD_BE_JSONC } from '../consts'
 import type { Options } from '../option'
-
-const GLOB_JSON = '**/*.json'
-const GLOB_SHOULD_BE_JSONC = [
-  '**/tsconfig.json',
-  '**/tsconfig.*.json',
-  '**/.vscode/*.json',
-]
-const GLOB_JSON5 = '**/*.json5'
-const GLOB_JSONC = '**/*.jsonc'
 
 export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig[] {
   const jsonFormateRules: Linter.RulesRecord = {
@@ -133,6 +125,7 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
           },
           {
             order: { type: 'asc' },
+            // eslint-disable-next-line @cspell/spellchecker
             pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies(Meta)?$',
           },
           {

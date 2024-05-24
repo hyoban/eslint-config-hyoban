@@ -1,7 +1,13 @@
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
+import type { Linter } from 'eslint'
 
+import type { RuleOptions } from '../eslint-typegen'
 import type { ConfigOptions } from './utils'
 
+type TypeWithGeneric<T> = T[]
+type ExtractGeneric<Type> = Type extends TypeWithGeneric<infer X> ? X : never
+
+export type CSpellOption = Exclude<ExtractGeneric<RuleOptions['@cspell/spellchecker']>, Linter.RuleLevel>
 export interface Options {
   react?: 'vite' | 'remix' | 'next' | false
   strict?: boolean
@@ -11,6 +17,7 @@ export interface Options {
   filesDisableTypeChecking?: string[]
   stylistic?: Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'semi'>
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
+  cspell?: CSpellOption | boolean
 }
 
 export function mergeDefaultOptions(
@@ -29,6 +36,7 @@ export function mergeDefaultOptions(
       semi: false,
     },
     restrictedSyntax: [],
+    cspell: false,
     ...options,
   }
 }

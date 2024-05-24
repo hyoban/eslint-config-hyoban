@@ -1,5 +1,5 @@
 import type { Linter } from 'eslint'
-import tseslint from 'typescript-eslint'
+import typescriptEslint from 'typescript-eslint'
 
 import { DEFAULT_GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
@@ -13,13 +13,13 @@ export function typeScriptConfigs({
 }: Required<Options>) {
   const typescriptPreset = strict
     ? (typeChecked === true
-        ? tseslint.configs.strictTypeChecked
-        : tseslint.configs.strict)
+        ? typescriptEslint.configs.strictTypeChecked
+        : typescriptEslint.configs.strict)
     : (typeChecked === true
-        ? tseslint.configs.recommendedTypeChecked
-        : tseslint.configs.recommended)
+        ? typescriptEslint.configs.recommendedTypeChecked
+        : typescriptEslint.configs.recommended)
   return [
-    tseslint.configs.base as Linter.FlatConfig,
+    typescriptEslint.configs.base as Linter.FlatConfig,
     [
       ...typescriptPreset,
       typeChecked && {
@@ -86,7 +86,7 @@ export function typeScriptConfigs({
 
       return {
         files: filesDisableTypeChecking,
-        ...tseslint.configs.disableTypeChecked,
+        ...typescriptEslint.configs.disableTypeChecked,
       } as Linter.FlatConfig
     },
   ]

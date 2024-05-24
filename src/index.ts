@@ -2,6 +2,7 @@ import '../eslint-typegen.d.ts'
 
 import commandConfig from 'eslint-plugin-command/config'
 
+import { cspellConfig } from './configs/cspell'
 import { importConfig } from './configs/imports'
 import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
@@ -101,6 +102,7 @@ export default async function hyoban(
     unusedConfig(),
     regexConfig(),
     commandConfig(),
+    cspellConfig(finalOptions),
     ...stylisticConfigs(finalOptions),
     ...jsonConfigs(finalOptions),
     ...reactConfigs(finalOptions),

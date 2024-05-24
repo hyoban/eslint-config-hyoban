@@ -14,7 +14,7 @@ const plugins = await flatConfigsToPlugins(
         },
       },
     },
-    ...(await hyoban({ react: 'vite', strict: true, typeChecked: true })),
+    ...(await hyoban({ react: 'vite', strict: true, typeChecked: true, cspell: true })),
   ],
 )
 const dts = await pluginsToRulesDTS(plugins)

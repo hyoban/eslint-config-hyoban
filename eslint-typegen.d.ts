@@ -10,6 +10,10 @@ declare module 'eslint' {
 
 export interface RuleOptions {
   /**
+   * CSpell spellchecker
+   */
+  '@cspell/spellchecker'?: Linter.RuleEntry<CspellSpellchecker>
+  /**
    * disallow passing 'children' to void DOM elements
    * @see https://eslint-react.xyz/rules/dom-no-children-in-void-dom-elements
    */
@@ -4735,6 +4739,77 @@ export interface RuleOptions {
 }
 
 /* ======= Declarations ======= */
+// ----- @cspell/spellchecker -----
+type CspellSpellchecker = []|[{
+  
+  autoFix: boolean
+  
+  checkComments?: boolean
+  
+  checkIdentifiers?: boolean
+  
+  checkJSXText?: boolean
+  
+  checkStringTemplates?: boolean
+  
+  checkStrings?: boolean
+  
+  configFile?: string
+  
+  cspell?: {
+    
+    allowCompoundWords?: boolean
+    
+    dictionaries?: (string | string)[]
+    dictionaryDefinitions?: {
+      
+      description?: string
+      
+      name: string
+      
+      noSuggest?: boolean
+      
+      path: string
+      
+      repMap?: [string, string][]
+      
+      type?: ("S" | "W" | "C" | "T")
+      
+      useCompounds?: boolean
+    }[]
+    
+    enabled?: boolean
+    
+    flagWords?: string[]
+    
+    ignoreRegExpList?: (string | string | ("Base64" | "Base64MultiLine" | "Base64SingleLine" | "CStyleComment" | "CStyleHexValue" | "CSSHexValue" | "CommitHash" | "CommitHashLink" | "Email" | "EscapeCharacters" | "HexValues" | "href" | "PhpHereDoc" | "PublicKey" | "RsaCert" | "SshRsa" | "SHA" | "HashStrings" | "SpellCheckerDisable" | "SpellCheckerDisableBlock" | "SpellCheckerDisableLine" | "SpellCheckerDisableNext" | "SpellCheckerIgnoreInDocSetting" | "string" | "UnicodeRef" | "Urls" | "UUID" | "Everything"))[]
+    
+    ignoreWords?: string[]
+    
+    import?: (string | string[])
+    
+    includeRegExpList?: (string | string | ("Base64" | "Base64MultiLine" | "Base64SingleLine" | "CStyleComment" | "CStyleHexValue" | "CSSHexValue" | "CommitHash" | "CommitHashLink" | "Email" | "EscapeCharacters" | "HexValues" | "href" | "PhpHereDoc" | "PublicKey" | "RsaCert" | "SshRsa" | "SHA" | "HashStrings" | "SpellCheckerDisable" | "SpellCheckerDisableBlock" | "SpellCheckerDisableLine" | "SpellCheckerDisableNext" | "SpellCheckerIgnoreInDocSetting" | "string" | "UnicodeRef" | "Urls" | "UUID" | "Everything"))[]
+    
+    language?: string
+    
+    words?: string[]
+  }
+  
+  customWordListFile?: (string | {
+    
+    path: string
+  })
+  
+  debugMode?: boolean
+  
+  generateSuggestions: boolean
+  
+  ignoreImportProperties?: boolean
+  
+  ignoreImports?: boolean
+  
+  numSuggestions: number
+}]
 // ----- @eslint-react/naming-convention/component-name -----
 type EslintReactNamingConventionComponentName = []|[(("PascalCase" | "CONSTANT_CASE") | {
   excepts?: string[]

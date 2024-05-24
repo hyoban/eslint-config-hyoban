@@ -64,9 +64,7 @@ function create(
 }
 
 type CreateFlatConfig = () => MaybeArray<Linter.FlatConfig> | undefined
-type AsyncCreateFlatConfig = () => Promise<
-  MaybeArray<Linter.FlatConfig> | undefined
->
+type AsyncCreateFlatConfig = () => Promise< MaybeArray<Linter.FlatConfig> | undefined>
 
 type ExcludeArrayFirstItem<T> = T extends [unknown, ...infer R] ? R : never
 export type ConfigArray = ExcludeArrayFirstItem<Parameters<typeof config>>
@@ -76,7 +74,7 @@ export async function config(
     | undefined
     | null
     | false
-    | MaybeArray<Linter.FlatConfig>
+    | MaybeArray<Awaitable<Linter.FlatConfig | undefined>>
     | CreateFlatConfig
     | AsyncCreateFlatConfig
   >
@@ -155,10 +153,15 @@ export async function config(
   ]
 }
 
-function mergeConfigs(
-  c: MaybeArray<Linter.FlatConfig>,
+async function mergeConfigs(
+  _c: MaybeArray<Awaitable<Linter.FlatConfig | undefined>>,
   finalOptions: Required<ConfigOptions>,
-): Linter.FlatConfig {
+): Promise<Linter.FlatConfig | undefined> {
+  const c = await _c
+
+  if (!c)
+    return
+
   if (Array.isArray(c))
     return create(defu({}, ...c.reverse()), finalOptions)
 

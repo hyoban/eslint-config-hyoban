@@ -22,12 +22,27 @@ export const DEFAULT_GLOB_SRC = [
   ...DEFAULT_GLOB_JS_SRC,
 ]
 
+export const GLOB_JSON = '**/*.json'
+export const GLOB_SHOULD_BE_JSONC = [
+  '**/tsconfig.json',
+  '**/tsconfig.*.json',
+  '**/.vscode/*.json',
+]
+export const GLOB_JSON5 = '**/*.json5'
+export const GLOB_JSONC = '**/*.jsonc'
+export const GLOB_JSON_SRC = [
+  GLOB_JSON,
+  GLOB_JSON5,
+  GLOB_JSONC,
+]
+
 export const GLOB_EXCLUDE = [
   '**/node_modules',
   '**/dist',
   '**/package-lock.json',
   '**/yarn.lock',
   '**/pnpm-lock.yaml',
+  // eslint-disable-next-line @cspell/spellchecker
   '**/bun.lockb',
 
   '**/output',
