@@ -72,6 +72,7 @@ export default async function hyoban(
               'init-declarations': 'off',
               'max-lines-per-function': 'off',
               'max-statements': 'off',
+              'no-continue': 'off',
               'no-duplicate-imports': 'off',
               'no-implicit-coercion': 'off',
               'no-inline-comments': 'off',

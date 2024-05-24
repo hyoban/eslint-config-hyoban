@@ -12,18 +12,23 @@ export function stylisticConfigs({ stylistic, typeChecked }: Required<Options>) 
     typeChecked === true
       ? typescriptEslint.configs.stylisticTypeChecked
       : typescriptEslint.configs.stylistic,
-    [
-      {
-        name: 'typescript-eslint/stylistic/custom',
-        files: DEFAULT_GLOB_TS_SRC,
-        rules: {
-          '@typescript-eslint/array-type': [
-            'error',
-            { default: 'array-simple' },
-          ],
-        },
+    {
+      name: 'typescript-eslint/stylistic/custom',
+      files: DEFAULT_GLOB_TS_SRC,
+      rules: {
+        '@typescript-eslint/array-type': [
+          'error',
+          { default: 'array-simple' },
+        ],
       },
-    ],
+    },
+    typeChecked && {
+      name: 'typescript-eslint/stylistic-type-checked/custom',
+      files: DEFAULT_GLOB_TS_SRC,
+      rules: {
+        '@typescript-eslint/prefer-nullish-coalescing': 'off',
+      },
+    },
     {
       name: '@stylistic/shared',
       files: undefined,
