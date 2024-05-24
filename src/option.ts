@@ -4,10 +4,8 @@ import type { Linter } from 'eslint'
 import type { RuleOptions } from '../eslint-typegen'
 import { DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
 
-type TypeWithGeneric<T> = T[]
-type ExtractGeneric<Type> = Type extends TypeWithGeneric<infer X> ? X : never
-
-export type CSpellOption = Exclude<ExtractGeneric<RuleOptions['@cspell/spellchecker']>, Linter.RuleLevel>
+type ExtractGeneric<Type> = Type extends Array<infer X> ? X : never
+export type CSpellOption = Exclude<ExtractGeneric<RuleOptions['@cspell/spellchecker']>, Linter.RuleLevel | undefined>
 export type Options = {
   react?: 'vite' | 'remix' | 'next' | false
   strict?: boolean
