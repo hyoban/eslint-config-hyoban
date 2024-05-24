@@ -38,16 +38,7 @@ export default async function hyoban(
           'no-console': ['error', { allow: ['warn', 'error'] }],
           // https://twitter.com/ryanflorence/status/1786394911895683512
           'no-param-reassign': 'error',
-          'no-restricted-syntax': [
-            'error',
-            'DebuggerStatement',
-            'LabeledStatement',
-            'WithStatement',
-            // https://youtu.be/XTXPKbPcvl4?si=J_2E9dM25sAEXM2x
-            'TSEnumDeclaration',
-            'TSExportAssignment',
-            ...finalOptions.restrictedSyntax,
-          ],
+          'no-restricted-syntax': ['error', ...finalOptions.restrictedSyntax],
           'no-template-curly-in-string': 'error',
           'no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
           'prefer-arrow-callback': ['error', { allowNamedFunctions: true, allowUnboundThis: true }],
