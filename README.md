@@ -28,9 +28,9 @@ ni -D eslint eslint-config-hyoban lint-staged simple-git-hooks
 
 ```ts
 // @ts-check
-import hyoban from "eslint-config-hyoban";
+import defineConfig from "eslint-config-hyoban";
 
-export default hyoban();
+export default defineConfig();
 ```
 
 > [!WARNING]
@@ -45,7 +45,7 @@ module.exports = (async () => (await import("./eslint.config.mjs")).default)();
 
 ```ts
 // @ts-check
-import hyoban from "eslint-config-hyoban";
+import defineConfig from "eslint-config-hyoban";
 
 const isInEditor = !!(
   (process.env.VSCODE_PID ||
@@ -55,7 +55,7 @@ const isInEditor = !!(
   !process.env.CI
 );
 
-export default hyoban({
+export default defineConfig({
   typeChecked: isInEditor ? false : "essential",
 });
 ```
