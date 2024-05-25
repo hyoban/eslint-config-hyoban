@@ -56,7 +56,12 @@ export function mergeDefaultOptions(
           : []
       ),
     ],
-    settings: {},
+    settings: {
+      tailwindcss: {
+        // eslint-disable-next-line @cspell/spellchecker
+        callees: ['classnames', 'clsx', 'ctl', 'cn'],
+      },
+    },
     strict: false,
     stylistic: {
       indent: 2,
