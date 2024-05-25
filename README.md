@@ -10,13 +10,13 @@ Read more about why I use ESLint for linting and formatting on [xLog](https://hy
 
 | Basic              | Style            | React         | Others              | Tools                  |
 | ------------------ | ---------------- | ------------- | ------------------- | ---------------------- |
-| [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]      | [config-inspector] ✅  |
+| [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS] ✅   | [config-inspector] ✅  |
 | [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS]            | [eslint-types]         |
 | [unicorn] ✅       | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅ | [eslint-typegen] ✅    |
 | [import-x] ✅      | [jsonc] ✅       | [compiler] ✅ | [command] ✅        | [@antfu/eslint-config] |
 | [unused-import] ✅ | [yml]            | [jsx-a11y]    | [regexp] ✅         |                        |
 | [n]                | [perfectionist]  | [next]        | [package-json] ✅   |                        |
-| [compat]           | [format]         | [jsx-nesting] |                     |                        |
+| [compat]           | [format]         | [jsx-nesting] | [cspell] ✅         |                        |
 
 ## Usage
 
@@ -235,3 +235,4 @@ jobs:
 [command]: https://github.com/antfu/eslint-plugin-command
 [regexp]: https://github.com/ota-meshi/eslint-plugin-regexp
 [compiler]: https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
+[cspell]: https://github.com/streetsidesoftware/cspell/tree/main/packages/cspell-eslint-plugin#readme
