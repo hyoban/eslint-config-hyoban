@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
 import type { Linter } from 'eslint'
 import pluginUnicorn from 'eslint-plugin-unicorn'
 
