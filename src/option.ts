@@ -10,6 +10,7 @@ export type CSpellOption = Exclude<ExtractGeneric<RuleOptions['@cspell/spellchec
 /// keep-sorted
 export type Options = {
   cspell?: Partial<CSpellOption> | boolean
+  fileCase?: 'camelCase' | 'snakeCase' | 'kebabCase' | 'pascalCase' | false
   filesDisableTypeChecking?: string[]
   ignoreFiles?: string[]
   ignores?: string[]
@@ -29,6 +30,7 @@ export function mergeDefaultOptions(
   /// keep-sorted
   const defaultOptions: Required<Options> = {
     cspell: false,
+    fileCase: 'kebabCase',
     filesDisableTypeChecking: [],
     ignoreFiles: DEFAULT_IGNORE_FILES,
     ignores: GLOB_EXCLUDE,

@@ -51,6 +51,7 @@ export function typeScriptConfigs({
       },
       strict && {
         rules: {
+          '@typescript-eslint/ban-ts-comment': 'error',
           '@typescript-eslint/no-non-null-assertion': 'off',
         },
       },

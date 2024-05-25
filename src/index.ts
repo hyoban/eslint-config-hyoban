@@ -85,7 +85,7 @@ export default async function hyoban(
           }
         : {},
     ],
-    ...unicornConfigs(),
+    ...unicornConfigs(finalOptions),
     ...typeScriptConfigs(finalOptions),
     importConfig(),
     unusedConfig(),

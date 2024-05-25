@@ -1,7 +1,9 @@
 import type { Linter } from 'eslint'
 import pluginUnicorn from 'eslint-plugin-unicorn'
 
-export function unicornConfigs() {
+import type { Options } from '../option'
+
+export function unicornConfigs({ fileCase }: Required<Options>) {
   return [
     [
       { name: 'unicorn/recommended' } satisfies Linter.FlatConfig,
@@ -12,7 +14,7 @@ export function unicornConfigs() {
       /// keep-sorted
       rules: {
         'unicorn/catch-error-name': 'off',
-        'unicorn/filename-case': 'off',
+        'unicorn/filename-case': !fileCase ? 'off' : ['error', { case: fileCase }],
         'unicorn/import-style': 'off',
         'unicorn/no-array-for-each': 'off',
         'unicorn/no-array-reduce': 'off',
