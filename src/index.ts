@@ -8,6 +8,7 @@ import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
 import { regexConfig } from './configs/regex'
 import { stylisticConfigs } from './configs/stylistic'
+import { tailwindCSSConfig } from './configs/tailwindcss'
 import { typeScriptConfigs } from './configs/typescript'
 import { unicornConfigs } from './configs/unicorn'
 import { unusedConfig } from './configs/unused'
@@ -94,6 +95,7 @@ export default async function hyoban(
     ...stylisticConfigs(finalOptions),
     ...jsonConfigs(finalOptions),
     ...reactConfigs(finalOptions),
+    tailwindCSSConfig(finalOptions),
     ...args,
   )
 }
