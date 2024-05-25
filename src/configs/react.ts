@@ -37,10 +37,8 @@ export function reactConfigs({
           rules: {
             '@eslint-react/naming-convention/filename': 'off',
             '@eslint-react/naming-convention/use-state': 'off',
-            '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps':
-              'off',
-            '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps':
-              'off',
+            '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps': 'off',
+            '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps': 'off',
           },
         } satisfies Linter.FlatConfig
       }

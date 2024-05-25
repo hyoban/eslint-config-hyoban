@@ -12,6 +12,9 @@ export function unicornConfigs() {
       /// keep-sorted
       rules: {
         'unicorn/catch-error-name': 'off',
+        'unicorn/filename-case': 'off',
+        'unicorn/import-style': 'off',
+        'unicorn/no-array-for-each': 'off',
         'unicorn/no-array-reduce': 'off',
         'unicorn/no-await-expression-member': 'off',
         'unicorn/no-negated-condition': 'off',

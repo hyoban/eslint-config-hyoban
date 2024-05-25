@@ -16,10 +16,8 @@ export function stylisticConfigs({ stylistic, typeChecked }: Required<Options>) 
       name: 'typescript-eslint/stylistic/custom',
       files: DEFAULT_GLOB_TS_SRC,
       rules: {
-        '@typescript-eslint/array-type': [
-          'error',
-          { default: 'array-simple' },
-        ],
+        '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
+        '@typescript-eslint/no-empty-function': 'off',
       },
     },
     typeChecked && {
