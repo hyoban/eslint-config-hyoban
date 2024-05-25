@@ -54,7 +54,7 @@ export async function config(
     | CreateFlatConfig
   >
 ): Promise<Linter.FlatConfig[]> {
-  const { ignores, ignoreFiles, strict, linterOptions } = options
+  const { ignores, ignoreFiles, strict, linterOptions, settings } = options
 
   const gitignore = await interopDefault(
     import('eslint-config-flat-gitignore'),
@@ -98,6 +98,7 @@ export async function config(
       rules: strict
         ? js.configs.all.rules
         : js.configs.recommended.rules,
+      settings,
     },
     ...(
       await Promise.all(
