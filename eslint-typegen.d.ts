@@ -1534,6 +1534,11 @@ export interface RuleOptions {
    */
   'antfu/consistent-list-newline'?: Linter.RuleEntry<AntfuConsistentListNewline>
   /**
+   * Enforce Anthony's style of curly bracket
+   * @see https://github.com/antfu/eslint-plugin-antfu/blob/main/src/rules/curly.test.ts
+   */
+  'antfu/curly'?: Linter.RuleEntry<[]>
+  /**
    * Newline after if
    * @see https://github.com/antfu/eslint-plugin-antfu/blob/main/src/rules/if-newline.md
    */

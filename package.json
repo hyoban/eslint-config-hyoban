@@ -57,7 +57,7 @@
     "@types/eslint": "^8.56.10",
     "defu": "^6.1.4",
     "eslint-config-flat-gitignore": "^0.1.5",
-    "eslint-plugin-antfu": "npm:@hyoban/eslint-plugin-antfu@2.2.0-2",
+    "eslint-plugin-antfu": "^2.3.0",
     "eslint-plugin-command": "^0.2.3",
     "eslint-plugin-hyoban": "^0.5.1",
     "eslint-plugin-import-x": "^0.5.1",

@@ -30,8 +30,8 @@ importers:
         specifier: ^0.1.5
         version: 0.1.5
       eslint-plugin-antfu:
-        specifier: npm:@hyoban/eslint-plugin-antfu@2.2.0-2
-        version: '@hyoban/eslint-plugin-antfu@2.2.0-2(eslint-ts-patch@9.2.0-6)'
+        specifier: ^2.3.0
+        version: 2.3.0(eslint-ts-patch@9.2.0-6)
       eslint-plugin-command:
         specifier: ^0.2.3
         version: 0.2.3(eslint-ts-patch@9.2.0-6)
@@ -809,11 +809,6 @@ packages:
   '@humanwhocodes/retry@0.3.0':
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
-
-  '@hyoban/eslint-plugin-antfu@2.2.0-2':
-    resolution: {integrity: sha512-xEekQUuZKM9hWDYiLrRhuClfgddqG/1gyM+HWDyYMiRds0nbg6Q/rClML7ibu9ikrMBaYjhsnRZcTKap8MZoPg==}
-    peerDependencies:
-      eslint: '*'
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -1596,6 +1591,11 @@ packages:
 
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
+
+  eslint-plugin-antfu@2.3.0:
+    resolution: {integrity: sha512-Swf63oV4wq4/b0UvhVPcN+6xbH+O+HMUM6tPPf8ECVktEj5kqYSVS6RARw9dyKD1blnuCKNtxNATlI8WzqREuA==}
+    peerDependencies:
+      eslint: '*'
 
   eslint-plugin-command@0.2.3:
     resolution: {integrity: sha512-1bBYNfjZg60N2ZpLV5ATYSYyueIJ+zl5yKrTs0UFDdnyu07dNSZ7Xplnc+Wb6SXTdc1sIaoIrnuyhvztcltX6A==}
@@ -3635,11 +3635,6 @@ snapshots:
 
   '@humanwhocodes/retry@0.3.0': {}
 
-  '@hyoban/eslint-plugin-antfu@2.2.0-2(eslint-ts-patch@9.2.0-6)':
-    dependencies:
-      '@antfu/utils': 0.7.8
-      eslint: eslint-ts-patch@9.2.0-6
-
   '@isaacs/cliui@8.0.2':
     dependencies:
       string-width: 5.1.2
@@ -4469,6 +4464,11 @@ snapshots:
       resolve: 1.22.8
     transitivePeerDependencies:
       - supports-color
+
+  eslint-plugin-antfu@2.3.0(eslint-ts-patch@9.2.0-6):
+    dependencies:
+      '@antfu/utils': 0.7.8
+      eslint: eslint-ts-patch@9.2.0-6
 
   eslint-plugin-command@0.2.3(eslint-ts-patch@9.2.0-6):
     dependencies:
