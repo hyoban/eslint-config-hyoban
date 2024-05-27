@@ -18,5 +18,6 @@ updates:
     groups:
       all-non-major:
         update-types:
+          - "major"
           - "minor"
           - "patch"
