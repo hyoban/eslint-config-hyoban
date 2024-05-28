@@ -15,6 +15,7 @@ export type Options = {
   ignoreFiles?: string[]
   ignores?: string[]
   project?: string[] | string | boolean | null
+  projectService?: boolean
   react?: 'vite' | 'remix' | 'next' | false
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   strict?: boolean
@@ -37,7 +38,8 @@ export function mergeDefaultOptions(
     linterOptions: {
       reportUnusedDisableDirectives: true,
     },
-    project: true,
+    project: false,
+    projectService: true,
     react: false,
     restrictedSyntax: [
       'DebuggerStatement',

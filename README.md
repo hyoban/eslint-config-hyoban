@@ -33,13 +33,6 @@ import defineConfig from "eslint-config-hyoban";
 export default defineConfig();
 ```
 
-> [!WARNING]
-> If your ESLint version is less than `8.57.0`, you have to use `eslint.config.js`.
-
-```js
-module.exports = (async () => (await import("./eslint.config.mjs")).default)();
-```
-
 > [!TIP]
 > If you find that saving files in the editor is a bit laggy, try turning off rules that require type checking while in the editor.
 

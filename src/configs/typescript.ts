@@ -8,6 +8,7 @@ export function typeScriptConfigs({
   strict,
   typeChecked,
   project,
+  projectService,
   tsconfigRootDir,
   filesDisableTypeChecking,
 }: Required<Options>) {
@@ -26,6 +27,7 @@ export function typeScriptConfigs({
         languageOptions: {
           parserOptions: {
             project,
+            projectService,
             tsconfigRootDir,
           },
         },

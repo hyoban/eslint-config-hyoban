@@ -32,6 +32,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+  },
   "scripts": {
     "build": "pnpm typegen && bunchee",
     "build:inspector": "npx @eslint/config-inspector@latest build",
@@ -46,8 +49,13 @@
     "typegen": "tsx scripts/typegen.ts"
   },
   "peerDependencies": {
-    "eslint": "^8.56.0 || ^9.0.0",
-    "typescript": ">=4.7.4"
+    "eslint": "^8.57.0 || ^9.0.0",
+    "typescript": ">=4.8.4"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@cspell/eslint-plugin": "^8.8.3",
@@ -73,12 +81,13 @@
     "eslint-plugin-unused-imports": "^4.0.0",
     "globals": "^15.3.0",
     "jsonc-eslint-parser": "^2.4.0",
-    "typescript-eslint": "^7.10.0"
+    "typescript-eslint": "8.0.0-alpha.18"
   },
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "20.12.12",
+    "@typescript-eslint/utils": "8.0.0-alpha.18",
     "bunchee": "^5.1.5",
     "cspell": "^8.8.3",
     "eslint": "npm:eslint-ts-patch@9.2.0-6",
