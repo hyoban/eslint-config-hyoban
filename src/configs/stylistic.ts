@@ -76,6 +76,7 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
             html: true,
           },
         ],
+        '@stylistic/max-statements-per-line': 'off',
         'antfu/consistent-list-newline': 'error',
         'hyoban/jsx-attribute-spacing': 'error',
 

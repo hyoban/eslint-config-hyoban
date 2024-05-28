@@ -3,7 +3,7 @@ import pluginUnicorn from 'eslint-plugin-unicorn'
 
 import type { Options } from '../option'
 
-export function unicornConfigs({ fileCase }: Required<Options>) {
+export function unicornConfigs({ fileCase, lessOpinionated }: Required<Options>) {
   return [
     [
       { name: 'unicorn/recommended' } satisfies Linter.FlatConfig,
@@ -27,6 +27,14 @@ export function unicornConfigs({ fileCase }: Required<Options>) {
         // https://github.com/orgs/web-infra-dev/discussions/10
         'unicorn/prefer-top-level-await': 'off',
         'unicorn/prevent-abbreviations': 'off',
+
+        ...(lessOpinionated
+          ? {
+              'unicorn/prefer-array-some': 'off',
+              'unicorn/prefer-ternary': 'off',
+            }
+          : {}
+        ),
       },
     } satisfies Linter.FlatConfig,
   ]

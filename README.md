@@ -128,7 +128,6 @@ If you need Prettier
   "eslint.rules.customizations": [
     { "rule": "@stylistic/*", "severity": "off" },
     { "rule": "@stylistic/no-tabs", "severity": "default" },
-    { "rule": "@stylistic/max-statements-per-line", "severity": "default" },
     { "rule": "antfu/consistent-list-newline", "severity": "off" },
     { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
     { "rule": "simple-import-sort/*", "severity": "off" },
