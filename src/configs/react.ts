@@ -1,6 +1,6 @@
 import type { ESLint, Linter } from 'eslint'
 
-import { DEFAULT_GLOB_JSX_SRC, DEFAULT_GLOB_TS_SRC } from '../consts'
+import { GLOB_JSX_SRC, GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
 import { interopDefault } from '../utils'
 
@@ -24,7 +24,7 @@ export function reactConfigs({
 
       return {
         name: `react/${strict ? 'all' : 'recommended'}`,
-        files: DEFAULT_GLOB_TS_SRC,
+        files: GLOB_TS_SRC,
         plugins: config.plugins as unknown as Record<string, ESLint.Plugin>,
         rules: config.rules,
       } satisfies Linter.FlatConfig
@@ -33,7 +33,7 @@ export function reactConfigs({
       if (strict) {
         return {
           name: 'react/all/custom',
-          files: DEFAULT_GLOB_TS_SRC,
+          files: GLOB_TS_SRC,
           rules: {
             '@eslint-react/naming-convention/filename': 'off',
             '@eslint-react/naming-convention/use-state': 'off',
@@ -44,7 +44,7 @@ export function reactConfigs({
       }
       return {
         name: 'react/recommended/custom',
-        files: DEFAULT_GLOB_TS_SRC,
+        files: GLOB_TS_SRC,
         rules: {
           '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks':
             'error',
@@ -57,7 +57,7 @@ export function reactConfigs({
 
       return {
         name: 'react/type-checked',
-        files: DEFAULT_GLOB_TS_SRC,
+        files: GLOB_TS_SRC,
         ignores:
           filesDisableTypeChecking.length > 0
             ? filesDisableTypeChecking
@@ -72,7 +72,7 @@ export function reactConfigs({
       const reactCompiler = await interopDefault(import('eslint-plugin-react-compiler')) as ESLint.Plugin
       return {
         name: 'react/official',
-        files: DEFAULT_GLOB_TS_SRC,
+        files: GLOB_TS_SRC,
         /// keep-sorted
         plugins: {
           'react-compiler': reactCompiler,
@@ -90,7 +90,7 @@ export function reactConfigs({
       const reactRefresh = await interopDefault(import('eslint-plugin-react-refresh')) as ESLint.Plugin
       return {
         name: 'react/refresh',
-        files: DEFAULT_GLOB_JSX_SRC,
+        files: GLOB_JSX_SRC,
         plugins: {
           'react-refresh': reactRefresh,
         },

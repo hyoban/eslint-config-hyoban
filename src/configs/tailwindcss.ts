@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint'
 
-import { DEFAULT_GLOB_TS_SRC } from '../consts'
+import { GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
 import { interopDefault } from '../utils'
 
@@ -14,7 +14,7 @@ export function tailwindCSSConfig({ tailwindCSS }: Required<Options>) {
       ...tailwind.configs['flat/recommended'],
       {
         name: 'tailwindcss/recommended',
-        files: DEFAULT_GLOB_TS_SRC,
+        files: GLOB_TS_SRC,
       },
       typeof tailwindCSS === 'object' && !tailwindCSS.order && {
         rules: {

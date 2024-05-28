@@ -1,7 +1,7 @@
 import type { Linter } from 'eslint'
 import typescriptEslint from 'typescript-eslint'
 
-import { DEFAULT_GLOB_TS_SRC } from '../consts'
+import { GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
 
 export function typeScriptConfigs({
@@ -36,7 +36,7 @@ export function typeScriptConfigs({
     [
       {
         name: 'typescript-eslint/custom',
-        files: DEFAULT_GLOB_TS_SRC,
+        files: GLOB_TS_SRC,
       },
       {
         rules: {

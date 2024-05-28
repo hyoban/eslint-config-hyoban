@@ -4,7 +4,7 @@ import pluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
 import typescriptEslint from 'typescript-eslint'
 
-import { DEFAULT_GLOB_TS_SRC } from '../consts'
+import { GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
 
 export function stylisticConfigs({ stylistic, typeChecked }: Required<Options>) {
@@ -14,7 +14,7 @@ export function stylisticConfigs({ stylistic, typeChecked }: Required<Options>) 
       : typescriptEslint.configs.stylistic,
     {
       name: 'typescript-eslint/stylistic/custom',
-      files: DEFAULT_GLOB_TS_SRC,
+      files: GLOB_TS_SRC,
       rules: {
         '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
         '@typescript-eslint/no-empty-function': 'off',
@@ -22,7 +22,7 @@ export function stylisticConfigs({ stylistic, typeChecked }: Required<Options>) 
     },
     typeChecked && {
       name: 'typescript-eslint/stylistic-type-checked/custom',
-      files: DEFAULT_GLOB_TS_SRC,
+      files: GLOB_TS_SRC,
       rules: {
         '@typescript-eslint/prefer-nullish-coalescing': 'off',
       },

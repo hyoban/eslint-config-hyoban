@@ -1,25 +1,22 @@
-export const DEFAULT_GLOB_TS_SRC = [
+export const GLOB_TS_SRC = [
   '**/*.cts',
   '**/*.mts',
   '**/*.ts',
   '**/*.tsx',
 ]
-
-export const DEFAULT_GLOB_JS_SRC = [
+export const GLOB_JS_SRC = [
   '**/*.cjs',
   '**/*.mjs',
   '**/*.js',
   '**/*.jsx',
 ]
-
-export const DEFAULT_GLOB_JSX_SRC = [
+export const GLOB_JSX_SRC = [
   '**/*.jsx',
   '**/*.tsx',
 ]
-
-export const DEFAULT_GLOB_SRC = [
-  ...DEFAULT_GLOB_TS_SRC,
-  ...DEFAULT_GLOB_JS_SRC,
+export const GLOB_SRC = [
+  ...GLOB_TS_SRC,
+  ...GLOB_JS_SRC,
 ]
 
 export const GLOB_JSON = '**/*.json'
@@ -72,4 +69,7 @@ export const GLOB_EXCLUDE = [
   '**/eslint-typegen.d.ts',
 ]
 
-export const DEFAULT_IGNORE_FILES = ['.gitignore', '.eslintignore']
+export const DEFAULT_IGNORE_FILES = [
+  '.gitignore',
+  '.eslintignore',
+]

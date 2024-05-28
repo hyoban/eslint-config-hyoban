@@ -2,7 +2,7 @@ import { writeFileSync } from 'node:fs'
 
 import { defineConfig } from 'cspell'
 
-import { DEFAULT_GLOB_SRC, GLOB_EXCLUDE } from '../src/consts'
+import { GLOB_EXCLUDE, GLOB_SRC } from '../src/consts'
 
 const config = defineConfig({
   words: [
@@ -14,7 +14,7 @@ const config = defineConfig({
   ],
   ignorePaths: [
     ...GLOB_EXCLUDE,
-    ...DEFAULT_GLOB_SRC,
+    ...GLOB_SRC,
   ],
 })
 

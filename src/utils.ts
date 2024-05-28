@@ -3,7 +3,7 @@ import { createDefu } from 'defu'
 import type { Linter } from 'eslint'
 import globals from 'globals'
 
-import { DEFAULT_GLOB_SRC } from './consts'
+import { GLOB_SRC } from './consts'
 import type { Options } from './option'
 
 type MaybeArray<T> = T | T[]
@@ -74,7 +74,7 @@ export async function config(
     globalIgnores,
     {
       name: strict ? '@eslint/js/all' : '@eslint/js/recommended',
-      files: DEFAULT_GLOB_SRC,
+      files: GLOB_SRC,
       languageOptions: {
         ecmaVersion: 2022,
         globals: {
@@ -141,6 +141,6 @@ function withFiles(
 ): Linter.FlatConfig {
   return defu<Linter.FlatConfig, Linter.FlatConfig[]>(
     config,
-    'files' in config ? {} : { files: DEFAULT_GLOB_SRC },
+    'files' in config ? {} : { files: GLOB_SRC },
   )
 }
