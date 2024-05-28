@@ -5,7 +5,7 @@ import globals from 'globals'
 import { GLOB_SRC } from '../consts'
 import type { Options } from '../option'
 
-export function javaScriptConfig({
+export function javaScriptConfigs({
   strict,
   restrictedSyntax,
   linterOptions,

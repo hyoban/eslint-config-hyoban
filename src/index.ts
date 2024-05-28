@@ -4,7 +4,7 @@ import commandConfig from 'eslint-plugin-command/config'
 
 import { cspellConfig } from './configs/cspell'
 import { importConfig } from './configs/imports'
-import { javaScriptConfig } from './configs/javascript'
+import { javaScriptConfigs } from './configs/javascript'
 import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
 import { regexConfig } from './configs/regex'
@@ -28,7 +28,7 @@ export default async function hyoban(
 
   return config(
     finalOptions,
-    ...javaScriptConfig(finalOptions),
+    ...javaScriptConfigs(finalOptions),
     ...unicornConfigs(finalOptions),
     ...typeScriptConfigs(finalOptions),
     importConfig(),
