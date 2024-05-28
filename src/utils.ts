@@ -1,7 +1,5 @@
-import js from '@eslint/js'
 import { createDefu } from 'defu'
 import type { Linter } from 'eslint'
-import globals from 'globals'
 
 import { GLOB_SRC } from './consts'
 import type { Options } from './option'
@@ -54,9 +52,7 @@ export async function config(
   options: Required<Options>,
   ...configs: ConfigArray
 ): Promise<Linter.FlatConfig[]> {
-  /// keep-sorted
-  const { ignoreFiles, ignores, linterOptions, settings, strict } = options
-
+  const { ignoreFiles, ignores } = options
   const gitignore = await interopDefault(import('eslint-config-flat-gitignore'))
   const globalIgnores = defu(
     {
@@ -72,33 +68,6 @@ export async function config(
 
   return [
     globalIgnores,
-    /// keep-sorted
-    {
-      files: GLOB_SRC,
-      languageOptions: {
-        ecmaVersion: 2022,
-        globals: {
-          ...globals.browser,
-          ...globals.es2021,
-          ...globals.node,
-          document: 'readonly',
-          navigator: 'readonly',
-          window: 'readonly',
-        },
-        parserOptions: {
-          ecmaFeatures: {
-            jsx: true,
-          },
-          ecmaVersion: 2022,
-          sourceType: 'module',
-        },
-        sourceType: 'module',
-      },
-      linterOptions,
-      name: strict ? '@eslint/js/all' : '@eslint/js/recommended',
-      rules: strict ? js.configs.all.rules : js.configs.recommended.rules,
-      settings,
-    },
     ...(
       await Promise.all(
         configs.map(async (c) => {
