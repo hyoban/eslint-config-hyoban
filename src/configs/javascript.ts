@@ -40,7 +40,6 @@ export function javaScriptConfigs({
       settings,
     },
     [
-
       // we can enabled in stylistic config if needed
       strict
         ? {
@@ -91,7 +90,6 @@ export function javaScriptConfigs({
               'require-unicode-regexp': 'off',
               'sort-keys': 'off',
               'sort-vars': 'off',
-
             },
           }
         : {},

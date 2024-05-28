@@ -7,7 +7,7 @@ import typescriptEslint from 'typescript-eslint'
 import { GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
 
-export function stylisticConfigs({ stylistic, typeChecked }: Required<Options>) {
+export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Required<Options>) {
   return [
     typeChecked === true
       ? typescriptEslint.configs.stylisticTypeChecked
@@ -41,15 +41,8 @@ export function stylisticConfigs({ stylistic, typeChecked }: Required<Options>) 
         '@stylistic': pluginStylistic,
       },
       rules: {
-        '@stylistic/jsx-self-closing-comp': [
-          'error',
-          {
-            component: true,
-            html: true,
-          },
-        ],
-        'curly': ['error', 'multi-or-nest', 'consistent'],
-        'prefer-template': 'error',
+        'arrow-body-style': 'error',
+        'object-shorthand': 'error',
         'prefer-destructuring': [
           'error',
           {
@@ -66,15 +59,28 @@ export function stylisticConfigs({ stylistic, typeChecked }: Required<Options>) 
             enforceForRenamedProperties: false,
           },
         ],
-        'object-shorthand': 'error',
-        'arrow-body-style': 'error',
-
+        'prefer-template': 'error',
+        '@stylistic/jsx-self-closing-comp': [
+          'error',
+          {
+            component: true,
+            html: true,
+          },
+        ],
         'antfu/consistent-list-newline': 'error',
-        'antfu/if-newline': 'error',
-        'antfu/top-level-function': 'error',
-
-        'hyoban/prefer-early-return': 'error',
         'hyoban/jsx-attribute-spacing': 'error',
+
+        ...(lessOpinionated
+          ? {
+              curly: ['error', 'multi-line', 'consistent'],
+            }
+          : {
+              'antfu/curly': 'error',
+              'antfu/if-newline': 'error',
+              'antfu/top-level-function': 'error',
+              'hyoban/prefer-early-return': 'error',
+            }
+        ),
       },
     },
   ] as Linter.FlatConfig[]

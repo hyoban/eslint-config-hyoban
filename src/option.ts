@@ -7,6 +7,7 @@ import { DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
 
 type ExtractGeneric<Type> = Type extends Array<infer X> ? X : never
 export type CSpellOption = Exclude<ExtractGeneric<RuleOptions['@cspell/spellchecker']>, Linter.RuleLevel | undefined>
+
 /// keep-sorted
 export type Options = {
   cspell?: Partial<CSpellOption> | boolean
@@ -14,6 +15,7 @@ export type Options = {
   filesDisableTypeChecking?: string[]
   ignoreFiles?: string[]
   ignores?: string[]
+  lessOpinionated?: boolean
   project?: string[] | string | boolean | null
   projectService?: boolean
   react?: 'vite' | 'remix' | 'next' | false
@@ -35,6 +37,7 @@ export function mergeDefaultOptions(
     filesDisableTypeChecking: [],
     ignoreFiles: DEFAULT_IGNORE_FILES,
     ignores: GLOB_EXCLUDE,
+    lessOpinionated: false,
     linterOptions: {
       reportUnusedDisableDirectives: true,
     },
