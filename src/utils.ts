@@ -41,39 +41,39 @@ export const defu = createDefu((obj, key, value) => {
 })
 
 type CreateFlatConfig = () => Awaitable<MaybeArray<Linter.FlatConfig> | undefined>
-type ExcludeArrayFirstItem<T> = T extends [unknown, ...infer R] ? R : never
 
-export type ConfigArray = ExcludeArrayFirstItem<Parameters<typeof config>>
+export type ConfigArray = Array<
+  | undefined
+  | null
+  | false
+  | MaybeArray<Awaitable<Linter.FlatConfig | undefined>>
+  | CreateFlatConfig
+>
+
 export async function config(
   options: Required<Options>,
-  ...configs: Array<
-    | undefined
-    | null
-    | false
-    | MaybeArray<Awaitable<Linter.FlatConfig | undefined>>
-    | CreateFlatConfig
-  >
+  ...configs: ConfigArray
 ): Promise<Linter.FlatConfig[]> {
-  const { ignores, ignoreFiles, strict, linterOptions, settings } = options
+  /// keep-sorted
+  const { ignoreFiles, ignores, linterOptions, settings, strict } = options
 
-  const gitignore = await interopDefault(
-    import('eslint-config-flat-gitignore'),
-  )
-
+  const gitignore = await interopDefault(import('eslint-config-flat-gitignore'))
   const globalIgnores = defu(
     {
       ignores,
     },
-    gitignore({
-      files: ignoreFiles,
-      strict: false,
-    }),
+    gitignore(
+      {
+        files: ignoreFiles,
+        strict: false,
+      },
+    ),
   )
 
   return [
     globalIgnores,
+    /// keep-sorted
     {
-      name: strict ? '@eslint/js/all' : '@eslint/js/recommended',
       files: GLOB_SRC,
       languageOptions: {
         ecmaVersion: 2022,
@@ -95,9 +95,8 @@ export async function config(
         sourceType: 'module',
       },
       linterOptions,
-      rules: strict
-        ? js.configs.all.rules
-        : js.configs.recommended.rules,
+      name: strict ? '@eslint/js/all' : '@eslint/js/recommended',
+      rules: strict ? js.configs.all.rules : js.configs.recommended.rules,
       settings,
     },
     ...(

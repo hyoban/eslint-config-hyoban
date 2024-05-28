@@ -14,11 +14,12 @@ export function importConfig(): Linter.FlatConfig {
     rules: {
       'sort-imports': 'off',
       'import-x/order': 'off',
-
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
+
       'import-x/first': 'error',
       'import-x/newline-after-import': 'error',
+      'no-duplicate-imports': 'off',
       'import-x/no-duplicates': 'error',
       'antfu/import-dedupe': 'error',
 

@@ -28,6 +28,7 @@ export default async function hyoban(
   return config(
     finalOptions,
     [
+      // all rules here are nice to have, let's enable them
       {
         name: '@eslint/js/custom',
         /// keep-sorted
@@ -45,43 +46,66 @@ export default async function hyoban(
           'prefer-arrow-callback': ['error', { allowNamedFunctions: true, allowUnboundThis: true }],
         },
       },
+      // we can enabled in stylistic config if needed
       finalOptions.strict
         ? {
             /// keep-sorted
             rules: {
               'arrow-body-style': 'off',
+              'curly': 'off',
+              'func-style': 'off',
+              'object-shorthand': 'off',
+              'prefer-destructuring': 'off',
+              'prefer-template': 'off',
+            },
+          }
+        : {},
+      // too opinionated, let this be decided by the user
+      finalOptions.strict
+        ? {
+            /// keep-sorted
+            rules: {
               'camelcase': 'off',
               'capitalized-comments': 'off',
               'complexity': 'off',
               'consistent-return': 'off',
-              'curly': 'off',
-              'func-style': 'off',
               'id-length': 'off',
-              'init-declarations': 'off',
               'max-lines-per-function': 'off',
               'max-lines': 'off',
               'max-statements': 'off',
-              'no-continue': 'off',
-              'no-duplicate-imports': 'off',
               'no-implicit-coercion': 'off',
               'no-inline-comments': 'off',
-              'no-lonely-if': 'off',
               'no-magic-numbers': 'off',
+              'no-warning-comments': 'off',
+            },
+          }
+        : {},
+      // may not very useful
+      finalOptions.strict
+        ? {
+            /// keep-sorted
+            rules: {
+              'init-declarations': 'off',
+              'no-continue': 'off',
               'no-shadow': 'off',
               'no-ternary': 'off',
               'no-undefined': 'off',
               'no-underscore-dangle': 'off',
-              'no-useless-assignment': 'off',
-              'no-void': ['error', { allowAsStatement: true }],
-              'no-warning-comments': 'off',
-              'object-shorthand': 'off',
               'one-var': 'off',
-              'prefer-destructuring': 'off',
               'prefer-named-capture-group': 'off',
-              'prefer-template': 'off',
               'require-unicode-regexp': 'off',
               'sort-keys': 'off',
               'sort-vars': 'off',
+
+            },
+          }
+        : {},
+      // change for more precise
+      finalOptions.strict
+        ? {
+            /// keep-sorted
+            rules: {
+              'no-void': ['error', { allowAsStatement: true }],
             },
           }
         : {},
