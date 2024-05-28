@@ -1216,6 +1216,7 @@ export interface RuleOptions {
   /**
    * Disallow `require` statements except in import statements
    * @see https://typescript-eslint.io/rules/no-var-requires
+   * @deprecated
    */
   '@typescript-eslint/no-var-requires'?: Linter.RuleEntry<TypescriptEslintNoVarRequires>
   /**
@@ -6325,6 +6326,8 @@ type TypescriptEslintNoRedeclare = []|[{
 type TypescriptEslintNoRequireImports = []|[{
   
   allow?: string[]
+  
+  allowAsImport?: boolean
 }]
 // ----- @typescript-eslint/no-restricted-imports -----
 type TypescriptEslintNoRestrictedImports = ((string | {
