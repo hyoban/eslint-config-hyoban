@@ -48,6 +48,7 @@ export function javaScriptConfigs({
               'arrow-body-style': 'off',
               'curly': 'off',
               'func-style': 'off',
+              'no-empty-function': 'off',
               'object-shorthand': 'off',
               'prefer-destructuring': 'off',
               'prefer-template': 'off',

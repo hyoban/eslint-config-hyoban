@@ -16,8 +16,17 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
       name: 'typescript-eslint/stylistic/custom',
       files: GLOB_TS_SRC,
       rules: {
-        '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
         '@typescript-eslint/no-empty-function': 'off',
+
+        ...(lessOpinionated
+          ? {
+              '@typescript-eslint/array-type': 'off',
+              '@typescript-eslint/consistent-type-definitions': 'off',
+            }
+          : {
+              '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
+            }
+        ),
       },
     },
     typeChecked && {
