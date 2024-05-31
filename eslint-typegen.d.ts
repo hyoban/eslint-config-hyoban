@@ -14,6 +14,16 @@ export interface RuleOptions {
    */
   '@cspell/spellchecker'?: Linter.RuleEntry<CspellSpellchecker>
   /**
+   * enforce boolean attributes notation in JSX
+   * @see https://eslint-react.xyz/rules/avoid-shorthand-boolean
+   */
+  '@eslint-react/avoid-shorthand-boolean'?: Linter.RuleEntry<[]>
+  /**
+   * enforce using fragment component instead of shorthand fragment syntax
+   * @see https://eslint-react.xyz/rules/avoid-shorthand-fragment
+   */
+  '@eslint-react/avoid-shorthand-fragment'?: Linter.RuleEntry<[]>
+  /**
    * disallow passing 'children' to void DOM elements
    * @see https://eslint-react.xyz/rules/dom-no-children-in-void-dom-elements
    */
