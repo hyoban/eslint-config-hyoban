@@ -27,6 +27,7 @@ export function unicornConfigs({ fileCase, lessOpinionated }: Required<Options>)
         // https://github.com/orgs/web-infra-dev/discussions/10
         'unicorn/prefer-top-level-await': 'off',
         'unicorn/prevent-abbreviations': 'off',
+        'unicorn/text-encoding-identifier-case': 'warn',
 
         ...(lessOpinionated
           ? {

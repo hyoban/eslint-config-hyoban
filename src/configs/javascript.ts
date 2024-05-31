@@ -114,7 +114,7 @@ export function javaScriptConfigs({
           'new-cap': ['error', { capIsNew: false, newIsCap: true, properties: true }],
           'no-console': ['error', { allow: ['warn', 'error'] }],
           // https://twitter.com/ryanflorence/status/1786394911895683512
-          'no-param-reassign': 'error',
+          'no-param-reassign': 'warn',
           'no-restricted-syntax': ['error', ...restrictedSyntax],
           'no-template-curly-in-string': 'error',
           'no-use-before-define': ['error', { classes: false, functions: false, variables: true }],

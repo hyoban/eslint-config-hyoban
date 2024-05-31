@@ -42,19 +42,23 @@ export function typeScriptConfigs({
         rules: {
           'no-use-before-define': 'off',
 
-          '@typescript-eslint/ban-ts-comment': 'off',
+          '@typescript-eslint/ban-ts-comment': 'warn',
+          '@typescript-eslint/no-explicit-any': 'warn',
+          '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
 
           '@typescript-eslint/consistent-type-imports': 'error',
           '@typescript-eslint/no-import-type-side-effects': 'error',
-
           // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
           '@typescript-eslint/method-signature-style': ['error', 'property'],
         },
       },
       strict && {
         rules: {
-          '@typescript-eslint/ban-ts-comment': 'error',
           '@typescript-eslint/no-non-null-assertion': 'off',
+
+          '@typescript-eslint/ban-ts-comment': 'error',
+          '@typescript-eslint/no-explicit-any': 'error',
+          '@typescript-eslint/no-unsafe-assignment': 'error',
         },
       },
       typeChecked
