@@ -19,6 +19,7 @@ export function typeScriptConfigs({
     : (typeChecked === true
         ? typescriptEslint.configs.recommendedTypeChecked
         : typescriptEslint.configs.recommended)
+
   return [
     typescriptEslint.configs.base as Linter.FlatConfig,
     [
@@ -37,14 +38,8 @@ export function typeScriptConfigs({
       {
         name: 'typescript-eslint/custom',
         files: GLOB_TS_SRC,
-      },
-      {
         rules: {
           'no-use-before-define': 'off',
-
-          '@typescript-eslint/ban-ts-comment': 'warn',
-          '@typescript-eslint/no-explicit-any': 'warn',
-          '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
 
           '@typescript-eslint/consistent-type-imports': 'error',
           '@typescript-eslint/no-import-type-side-effects': 'error',
@@ -52,15 +47,20 @@ export function typeScriptConfigs({
           '@typescript-eslint/method-signature-style': ['error', 'property'],
         },
       },
-      strict && {
-        rules: {
-          '@typescript-eslint/no-non-null-assertion': 'off',
-
-          '@typescript-eslint/ban-ts-comment': 'error',
-          '@typescript-eslint/no-explicit-any': 'error',
-          '@typescript-eslint/no-unsafe-assignment': 'error',
-        },
-      },
+      strict
+        ? {
+            rules: {
+              '@typescript-eslint/no-non-null-assertion': 'off',
+            },
+          }
+        : {
+            rules: {
+              '@typescript-eslint/ban-ts-comment': 'warn',
+              '@typescript-eslint/no-explicit-any': 'warn',
+              '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
+              '@typescript-eslint/no-unused-expressions': 'warn',
+            },
+          },
       typeChecked
       && (typeChecked === 'essential'
         ? {
