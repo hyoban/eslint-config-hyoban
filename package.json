@@ -72,7 +72,7 @@
     "eslint-plugin-jsonc": "^2.16.0",
     "eslint-plugin-package-json": "^0.13.1",
     "eslint-plugin-react-compiler": "0.0.0-experimental-c8b3f72-20240517",
-    "eslint-plugin-react-hooks": "5.1.0-rc-f994737d14-20240522",
+    "eslint-plugin-react-hooks": "5.1.0-rc-935180c7e0-20240524",
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-regexp": "^2.6.0",
     "eslint-plugin-simple-import-sort": "^12.1.0",
