@@ -69,7 +69,7 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
           },
         ],
         'prefer-template': 'error',
-        '@stylistic/operator-linebreak': ['error', stylistic.linebreak ?? 'before'],
+        '@stylistic/operator-linebreak': ['error', stylistic.lineBreak ?? 'before'],
         '@stylistic/jsx-self-closing-comp': [
           'error',
           {
