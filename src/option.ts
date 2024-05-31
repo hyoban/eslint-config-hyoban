@@ -21,7 +21,7 @@ export type Options = {
   react?: 'vite' | 'remix' | 'next' | false
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   strict?: boolean
-  stylistic?: Omit<StylisticCustomizeOptions, 'flat' | 'pluginName'>
+  stylistic?: Omit<StylisticCustomizeOptions, 'flat' | 'pluginName'> & { linebreak?: 'after' | 'before' }
   tailwindCSS?: boolean | { order: boolean }
   tsconfigRootDir?: string
   typeChecked?: boolean | 'essential'
