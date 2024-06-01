@@ -86,6 +86,7 @@ export function javaScriptConfigs({
               'no-ternary': 'off',
               'no-undefined': 'off',
               'no-underscore-dangle': 'off',
+              'no-useless-assignment': 'off',
               'one-var': 'off',
               'prefer-named-capture-group': 'off',
               'require-unicode-regexp': 'off',

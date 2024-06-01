@@ -39,6 +39,8 @@ export function reactConfigs({
             '@eslint-react/naming-convention/use-state': 'off',
             '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps': 'off',
             '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps': 'off',
+            '@eslint-react/avoid-shorthand-boolean': 'off',
+            '@eslint-react/avoid-shorthand-fragment': 'off',
           },
         } satisfies Linter.FlatConfig
       }
