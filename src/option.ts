@@ -48,8 +48,9 @@ export function mergeDefaultOptions(
       'DebuggerStatement',
       'LabeledStatement',
       'WithStatement',
+      // https://www.typescriptlang.org/docs/handbook/enums.html#const-enums
       // https://youtu.be/XTXPKbPcvl4?si=J_2E9dM25sAEXM2x
-      'TSEnumDeclaration',
+      'TSEnumDeclaration[const=true]',
       'TSExportAssignment',
       ...(
         options?.react
