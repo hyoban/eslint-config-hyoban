@@ -33,7 +33,7 @@ export function mergeDefaultOptions(
   /// keep-sorted
   const defaultOptions: Required<Options> = {
     cspell: false,
-    fileCase: 'kebabCase',
+    fileCase: false,
     filesDisableTypeChecking: [],
     ignoreFiles: DEFAULT_IGNORE_FILES,
     ignores: GLOB_EXCLUDE,
@@ -41,8 +41,8 @@ export function mergeDefaultOptions(
     linterOptions: {
       reportUnusedDisableDirectives: true,
     },
-    project: false,
-    projectService: true,
+    project: !!options?.typeChecked,
+    projectService: false,
     react: false,
     restrictedSyntax: [
       'DebuggerStatement',
@@ -52,17 +52,11 @@ export function mergeDefaultOptions(
       // https://youtu.be/XTXPKbPcvl4?si=J_2E9dM25sAEXM2x
       'TSEnumDeclaration[const=true]',
       'TSExportAssignment',
-      ...(
-        options?.react
-          ? [
-            // https://github.com/jsx-eslint/eslint-plugin-react/issues/2628#issuecomment-984160944
-              {
-                selector: 'ImportDeclaration[source.value=\'react\'][specifiers.0.type=\'ImportDefaultSpecifier\']',
-                message: 'Default React import not allowed',
-              },
-            ]
-          : []
-      ),
+      // https://github.com/jsx-eslint/eslint-plugin-react/issues/2628#issuecomment-984160944
+      {
+        selector: 'ImportDeclaration[source.value=\'react\'][specifiers.0.type=\'ImportDefaultSpecifier\']',
+        message: 'Default React import not allowed, use import * as React from \'react\'',
+      },
     ],
     settings: {
       tailwindcss: {
@@ -78,7 +72,7 @@ export function mergeDefaultOptions(
     },
     tailwindCSS: false,
     tsconfigRootDir: process.cwd(),
-    typeChecked: 'essential',
+    typeChecked: false,
   }
 
   return defu<Required<Options>, Options[]>(

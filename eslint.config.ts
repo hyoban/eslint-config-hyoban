@@ -6,6 +6,7 @@ export default hyoban(
     strict: true,
     typeChecked: true,
     cspell: true,
+    fileCase: 'kebabCase',
     tailwindCSS: { order: false },
   },
   {
