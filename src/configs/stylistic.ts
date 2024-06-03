@@ -69,15 +69,10 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
           },
         ],
         'prefer-template': 'error',
-        '@stylistic/operator-linebreak': ['error', stylistic.lineBreak ?? 'before'],
-        '@stylistic/jsx-self-closing-comp': [
-          'error',
-          {
-            component: true,
-            html: true,
-          },
-        ],
+        '@stylistic/jsx-self-closing-comp': ['error', { component: true, html: true }],
         '@stylistic/max-statements-per-line': 'off',
+        '@stylistic/multiline-ternary': ['error', 'always-multiline', { ignoreJSX: true }],
+        '@stylistic/operator-linebreak': ['error', stylistic.lineBreak ?? 'before'],
         'antfu/consistent-list-newline': 'error',
         'hyoban/jsx-attribute-spacing': 'error',
 
