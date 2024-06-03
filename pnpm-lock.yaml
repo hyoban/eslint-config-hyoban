@@ -48,8 +48,8 @@ importers:
         specifier: ^0.13.1
         version: 0.13.1(eslint-ts-patch@9.2.0-6)(jsonc-eslint-parser@2.4.0)
       eslint-plugin-react-compiler:
-        specifier: 0.0.0-experimental-c8b3f72-20240517
-        version: 0.0.0-experimental-c8b3f72-20240517(eslint-ts-patch@9.2.0-6)
+        specifier: 0.0.0-experimental-51a85ea-20240601
+        version: 0.0.0-experimental-51a85ea-20240601(eslint-ts-patch@9.2.0-6)
       eslint-plugin-react-hooks:
         specifier: 5.1.0-rc-f994737d14-20240522
         version: 5.1.0-rc-f994737d14-20240522(eslint-ts-patch@9.2.0-6)
@@ -1692,8 +1692,8 @@ packages:
       eslint: '>=8.0.0'
       jsonc-eslint-parser: ^2.0.0
 
-  eslint-plugin-react-compiler@0.0.0-experimental-c8b3f72-20240517:
-    resolution: {integrity: sha512-cxUTFNMEKiLX6uFaRfrr2GHnB7KUHDMYLjEGzDec82ka6WyBCHg906nGSf3JvVnQKHaBDfUk7Mmv/JMvdgQB8Q==}
+  eslint-plugin-react-compiler@0.0.0-experimental-51a85ea-20240601:
+    resolution: {integrity: sha512-ROiKTVu9pZsNHyJepZj/JULWnkw8+I8+9gOF/MkJ8Q22/9f9MkPQkD2f6FXzVH+iyWbp7DQ3RXKhB3hWhf8AIg==}
     engines: {node: ^14.17.0 || ^16.0.0 || >= 18.0.0}
     peerDependencies:
       eslint: '>=7'
@@ -4665,7 +4665,7 @@ snapshots:
       sort-package-json: 1.57.0
       validate-npm-package-name: 5.0.0
 
-  eslint-plugin-react-compiler@0.0.0-experimental-c8b3f72-20240517(eslint-ts-patch@9.2.0-6):
+  eslint-plugin-react-compiler@0.0.0-experimental-51a85ea-20240601(eslint-ts-patch@9.2.0-6):
     dependencies:
       '@babel/core': 7.24.5
       '@babel/parser': 7.24.5
