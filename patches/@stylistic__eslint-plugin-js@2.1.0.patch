@@ -1,0 +1,85 @@
+diff --git a/dist/indent.js b/dist/indent.js
+index b6fde2f627dfb91961177415fbde76604cc63cea..2db9438c8fbc1d9d3eb96391af9e0e59c86e2b8a 100644
+--- a/dist/indent.js
++++ b/dist/indent.js
+@@ -1140,8 +1140,80 @@ var indent = utils.createRule({
+       (listeners, ignoredSelector) => Object.assign(listeners, { [ignoredSelector]: addToIgnoredNodes }),
+       {}
+     );
++
++    // JSXText
++    function getNodeIndent(node, byLastLine = false, excludeCommas = false) {
++      let src = context.sourceCode.getText(node, node.loc.start.column)
++      const lines = src.split('\n')
++      if (byLastLine)
++        src = lines[lines.length - 1]
++      else
++        src = lines[0]
++
++      const skip = excludeCommas ? ',' : ''
++
++      let regExp
++      if (indentType === 'space')
++        regExp = new RegExp(`^[ ${skip}]+`)
++      else
++        regExp = new RegExp(`^[\t${skip}]+`)
++
++      const indent = regExp.exec(src)
++      return indent ? indent[0].length : 0
++    }
++
++    function handleJSXTextnode(node) {
++      if (!node.parent)
++        return
++
++      if (node.parent.type !== 'JSXElement' && node.parent.type !== 'JSXFragment')
++        return
++
++      const value = node.value
++      const regExp = indentType === 'space' ? /\n( *)[\t ]*\S/g : /\n(\t*)[\t ]*\S/g
++      const nodeIndentsPerLine = Array.from(
++        String(value).matchAll(regExp),
++        match => (match[1] ? match[1].length : 0),
++      )
++      const hasFirstInLineNode = nodeIndentsPerLine.length > 0
++      const parentNodeIndent = getNodeIndent(node.parent)
++      const indent = parentNodeIndent + indentSize
++      if (
++        hasFirstInLineNode
++        && !nodeIndentsPerLine.every(actualIndent => actualIndent === indent)
++      ) {
++        nodeIndentsPerLine.forEach((nodeIndent) => {
++          reportJSXText(node, indent, nodeIndent)
++        })
++      }
++    }
++
++    function reportJSXText(node, needed, gotten, loc) {
++      context.report({
++        node,
++        messageId: 'wrongIndentation',
++        data: createErrorMessageData(needed, gotten, gotten),
++        fix: getFixerFunction(node, needed),
++        ...loc ? { loc } : {},
++      })
++    }
++
++    const indentChar = indentType === 'space' ? ' ' : '\t'
++    function getFixerFunction(node, needed) {
++      const indent = Array(needed + 1).join(indentChar)
++
++      return function fix(fixer) {
++        const regExp = /\n[\t ]*(\S)/g
++        const fixedText = node.raw.replace(regExp, (match, p1) => `\n${indent}${p1}`)
++        return fixer.replaceText(node, fixedText)
++      }
++    }
++
+     return Object.assign(
+       offsetListeners,
++      {
++        JSXText: handleJSXTextnode,
++      },
+       ignoredNodeListeners,
+       {
+         "*:exit": function(node) {

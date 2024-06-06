@@ -1,0 +1,35 @@
+diff --git a/dist/configs.js b/dist/configs.js
+index 650f7a3b7ab8c13a831b77169a73a6ea770fdba0..7998813c31d7710eeb726c840ca15dc386696c34 100644
+--- a/dist/configs.js
++++ b/dist/configs.js
+@@ -184,22 +184,6 @@ function customize(options = {}) {
+       ignoreComments: false,
+       ignoredNodes: [
+         "TemplateLiteral *",
+-        "JSXElement",
+-        "JSXElement > *",
+-        "JSXAttribute",
+-        "JSXIdentifier",
+-        "JSXNamespacedName",
+-        "JSXMemberExpression",
+-        "JSXSpreadAttribute",
+-        "JSXExpressionContainer",
+-        "JSXOpeningElement",
+-        "JSXClosingElement",
+-        "JSXFragment",
+-        "JSXOpeningFragment",
+-        "JSXClosingFragment",
+-        "JSXText",
+-        "JSXEmptyExpression",
+-        "JSXSpreadChild",
+         "TSUnionType",
+         "TSIntersectionType",
+         "TSTypeParameterInstantiation",
+@@ -296,7 +280,6 @@ function customize(options = {}) {
+       "@stylistic/jsx-equals-spacing": "error",
+       "@stylistic/jsx-first-prop-new-line": "error",
+       "@stylistic/jsx-function-call-newline": ["error", "multiline"],
+-      "@stylistic/jsx-indent": ["error", indent, { checkAttributes: true, indentLogicalExpressions: true }],
+       "@stylistic/jsx-indent-props": ["error", indent],
+       "@stylistic/jsx-max-props-per-line": ["error", { maximum: 1, when: "multiline" }],
+       "@stylistic/jsx-one-expression-per-line": ["error", { allow: "single-child" }],

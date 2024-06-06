@@ -4,6 +4,14 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@stylistic/eslint-plugin-js@2.1.0':
+    hash: iajnve6hsdgobplpwagreo2anm
+    path: patches/@stylistic__eslint-plugin-js@2.1.0.patch
+  '@stylistic/eslint-plugin@2.1.0':
+    hash: gj6qya3r5ogn56olbwqczeeo4i
+    path: patches/@stylistic__eslint-plugin@2.1.0.patch
+
 importers:
 
   .:
@@ -17,9 +25,6 @@ importers:
       '@eslint/js':
         specifier: ^9.4.0
         version: 9.4.0
-      '@stylistic/eslint-plugin':
-        specifier: ^2.1.0
-        version: 2.1.0(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
       '@types/eslint':
         specifier: ^8.56.10
         version: 8.56.10
@@ -36,8 +41,8 @@ importers:
         specifier: ^0.2.3
         version: 0.2.3(eslint-ts-patch@9.4.0-0)
       eslint-plugin-hyoban:
-        specifier: ^0.5.4
-        version: 0.5.4(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
+        specifier: ^0.6.0
+        version: 0.6.0(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
       eslint-plugin-import-x:
         specifier: ^0.5.1
         version: 0.5.1(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
@@ -81,6 +86,9 @@ importers:
         specifier: 8.0.0-alpha.28
         version: 8.0.0-alpha.28(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
     devDependencies:
+      '@stylistic/eslint-plugin':
+        specifier: 2.1.0
+        version: 2.1.0(patch_hash=gj6qya3r5ogn56olbwqczeeo4i)(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
       '@total-typescript/ts-reset':
         specifier: ^0.5.1
         version: 0.5.1
@@ -1658,8 +1666,8 @@ packages:
     peerDependencies:
       eslint: '*'
 
-  eslint-plugin-hyoban@0.5.4:
-    resolution: {integrity: sha512-wlAI5PviTddn6JSAgp8edfUCLNafM4UCtq1One+joEiVkiXYt3yfRJ6zatt84OsueXQ9RLcZTnzx9grh+/vVGQ==}
+  eslint-plugin-hyoban@0.6.0:
+    resolution: {integrity: sha512-zz0ZHdffS6jJIW8RovjCjR6I1IzGRFCQBfqXR7zvXycKPLVY/BCxINXSUzioD9GVk3bnnM36NQfHdM9dCw7AJw==}
     peerDependencies:
       eslint: '*'
 
@@ -3842,7 +3850,7 @@ snapshots:
 
   '@sinclair/typebox@0.27.8': {}
 
-  '@stylistic/eslint-plugin-js@2.1.0(eslint-ts-patch@9.4.0-0)':
+  '@stylistic/eslint-plugin-js@2.1.0(patch_hash=iajnve6hsdgobplpwagreo2anm)(eslint-ts-patch@9.4.0-0)':
     dependencies:
       '@types/eslint': 8.56.10
       acorn: 8.11.3
@@ -3852,7 +3860,7 @@ snapshots:
 
   '@stylistic/eslint-plugin-jsx@2.1.0(eslint-ts-patch@9.4.0-0)':
     dependencies:
-      '@stylistic/eslint-plugin-js': 2.1.0(eslint-ts-patch@9.4.0-0)
+      '@stylistic/eslint-plugin-js': 2.1.0(patch_hash=iajnve6hsdgobplpwagreo2anm)(eslint-ts-patch@9.4.0-0)
       '@types/eslint': 8.56.10
       eslint: eslint-ts-patch@9.4.0-0
       estraverse: 5.3.0
@@ -3869,7 +3877,7 @@ snapshots:
 
   '@stylistic/eslint-plugin-ts@2.1.0(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)':
     dependencies:
-      '@stylistic/eslint-plugin-js': 2.1.0(eslint-ts-patch@9.4.0-0)
+      '@stylistic/eslint-plugin-js': 2.1.0(patch_hash=iajnve6hsdgobplpwagreo2anm)(eslint-ts-patch@9.4.0-0)
       '@types/eslint': 8.56.10
       '@typescript-eslint/utils': 7.11.0(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
       eslint: eslint-ts-patch@9.4.0-0
@@ -3877,9 +3885,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@stylistic/eslint-plugin@2.1.0(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)':
+  '@stylistic/eslint-plugin@2.1.0(patch_hash=gj6qya3r5ogn56olbwqczeeo4i)(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)':
     dependencies:
-      '@stylistic/eslint-plugin-js': 2.1.0(eslint-ts-patch@9.4.0-0)
+      '@stylistic/eslint-plugin-js': 2.1.0(patch_hash=iajnve6hsdgobplpwagreo2anm)(eslint-ts-patch@9.4.0-0)
       '@stylistic/eslint-plugin-jsx': 2.1.0(eslint-ts-patch@9.4.0-0)
       '@stylistic/eslint-plugin-plus': 2.1.0(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
       '@stylistic/eslint-plugin-ts': 2.1.0(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
@@ -4592,7 +4600,7 @@ snapshots:
       '@es-joy/jsdoccomment': 0.43.0
       eslint: eslint-ts-patch@9.4.0-0
 
-  eslint-plugin-hyoban@0.5.4(eslint-ts-patch@9.4.0-0)(typescript@5.4.5):
+  eslint-plugin-hyoban@0.6.0(eslint-ts-patch@9.4.0-0)(typescript@5.4.5):
     dependencies:
       '@typescript-eslint/utils': 7.11.0(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
       eslint: eslint-ts-patch@9.4.0-0
