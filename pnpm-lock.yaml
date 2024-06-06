@@ -36,8 +36,8 @@ importers:
         specifier: ^0.2.3
         version: 0.2.3(eslint-ts-patch@9.4.0-0)
       eslint-plugin-hyoban:
-        specifier: ^0.5.2
-        version: 0.5.2(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
+        specifier: ^0.5.3
+        version: 0.5.3(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
       eslint-plugin-import-x:
         specifier: ^0.5.1
         version: 0.5.1(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
@@ -1658,8 +1658,8 @@ packages:
     peerDependencies:
       eslint: '*'
 
-  eslint-plugin-hyoban@0.5.2:
-    resolution: {integrity: sha512-1wF/p1ysuDTfpdTkPwhoLL/YCetZwXnfM6sus50o3jNtTVAi+Sy4VXEHk1TBb6B7P3+arcR3hITgXCg6xXo64g==}
+  eslint-plugin-hyoban@0.5.3:
+    resolution: {integrity: sha512-sBcEF6Fwpyv7ZFr0Du+FIqKS0aSjkEgZi25L/3tBnX/XRj9TVKb/lqhP8YVFxKHhDBex2Rbitv/WYqHnAnZrPQ==}
     peerDependencies:
       eslint: '*'
 
@@ -4592,7 +4592,7 @@ snapshots:
       '@es-joy/jsdoccomment': 0.43.0
       eslint: eslint-ts-patch@9.4.0-0
 
-  eslint-plugin-hyoban@0.5.2(eslint-ts-patch@9.4.0-0)(typescript@5.4.5):
+  eslint-plugin-hyoban@0.5.3(eslint-ts-patch@9.4.0-0)(typescript@5.4.5):
     dependencies:
       '@typescript-eslint/utils': 7.11.0(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
       eslint: eslint-ts-patch@9.4.0-0
