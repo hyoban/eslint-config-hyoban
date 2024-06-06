@@ -102,7 +102,7 @@ If you need Prettier
     }
   },
 
-  // You may don't need this in the future
+  // You don't need this if you use ESLint VSCode(v3.0.7+)
   "eslint.experimental.useFlatConfig": true,
   "eslint.validate": [
     "javascript",
@@ -113,13 +113,14 @@ If you need Prettier
     "jsonc"
   ],
 
-  // If you do not want to autofix some rules on save
+  // If you do not want to auto fix some rules on save
   // You can put this in your user settings or workspace settings
   "eslint.codeActionsOnSave.rules": [
     "!no-var",
     "!prefer-const",
     "!unused-imports/no-unused-imports",
     "!@stylistic/jsx-self-closing-comp",
+    "!tailwindcss/classnames-order",
     "*"
   ],
 
@@ -134,6 +135,10 @@ If you need Prettier
     { "rule": "no-var", "severity": "off" },
     { "rule": "prefer-const", "severity": "off" },
     { "rule": "unused-imports/no-unused-imports", "severity": "off" }
+  ],
+  // You can also silent all auto fixable rules
+  "eslint.rules.customizations": [
+    { "rule": "*", "fixable": true, "severity": "off" }
   ]
 }
 ```
@@ -150,45 +155,9 @@ If you need Prettier
 }
 ```
 
-## Auto fix for Pull Request
+## Tips
 
-```yml
-name: Format
-
-on:
-  pull_request:
-    branches:
-      - main
-
-jobs:
-  format-code:
-    runs-on: ubuntu-latest
-
-    permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the
-      # added or changed files to the repository.
-      contents: write
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set node
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          run_install: |
-            - args: [--frozen-lockfile]
-
-      - name: Lint
-        run: pnpm run lint:fix
-
-      # Commit all changed files back to the repository
-      - uses: stefanzweifel/git-auto-commit-action@v5
-```
+- [Auto fix for Pull Request](https://github.com/hyoban/eslint-config-hyoban/blob/main/.github/workflows/format.yml)
 
 [npm-version-src]: https://img.shields.io/npm/v/eslint-config-hyoban?style=flat&colorA=080f12&colorB=1fa669
 [npm-version-href]: https://npmjs.com/package/eslint-config-hyoban
