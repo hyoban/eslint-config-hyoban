@@ -101,8 +101,7 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "@stylistic/eslint-plugin-js@2.1.0": "patches/@stylistic__eslint-plugin-js@2.1.0.patch",
-      "@stylistic/eslint-plugin@2.1.0": "patches/@stylistic__eslint-plugin@2.1.0.patch"
+      "@stylistic/eslint-plugin-js@2.1.0": "patches/@stylistic__eslint-plugin-js@2.1.0.patch"
     }
   },
   "simple-git-hooks": {

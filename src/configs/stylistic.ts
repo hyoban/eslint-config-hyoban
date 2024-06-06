@@ -4,14 +4,46 @@ import pluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
 import typescriptEslint from 'typescript-eslint'
 
-import { GLOB_TS_SRC } from '../consts'
+import { GLOB_JSX_SRC, GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
+import type { ConfigArray } from '../utils'
 
-export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Required<Options>) {
+export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Required<Options>): ConfigArray {
+  const jsxIgnoreNodes = [
+    'TemplateLiteral *',
+    'TSUnionType',
+    'TSIntersectionType',
+    'TSTypeParameterInstantiation',
+    'FunctionExpression > .params[decorators.length > 0]',
+    'FunctionExpression > .params > :matches(Decorator, :not(:first-child))',
+    'ClassBody.body > PropertyDefinition[decorators.length > 0] > .key',
+  ]
+
+  const nonJsxIgnoreNodes = [
+    'JSXOpeningElement',
+    'JSXClosingElement',
+  ]
+
+  const basicIndentRuleOptions = {
+    ArrayExpression: 1,
+    CallExpression: { arguments: 1 },
+    flatTernaryExpressions: false,
+    FunctionDeclaration: { body: 1, parameters: 1 },
+    FunctionExpression: { body: 1, parameters: 1 },
+    ignoreComments: false,
+    ImportDeclaration: 1,
+    MemberExpression: 1,
+    ObjectExpression: 1,
+    offsetTernaryExpressions: true,
+    outerIIFEBody: 1,
+    SwitchCase: 1,
+    VariableDeclarator: 1,
+  }
+
   return [
-    typeChecked === true
+    (typeChecked === true
       ? typescriptEslint.configs.stylisticTypeChecked
-      : typescriptEslint.configs.stylistic,
+      : typescriptEslint.configs.stylistic) as Linter.FlatConfig,
     {
       name: 'typescript-eslint/stylistic/custom',
       files: GLOB_TS_SRC,
@@ -39,7 +71,7 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
     {
       name: '@stylistic/shared',
       files: undefined,
-      ...pluginStylistic.configs.customize(stylistic),
+      ...pluginStylistic.configs.customize(stylistic) as Linter.FlatConfig,
     },
     {
       name: '@stylistic/customize',
@@ -47,7 +79,7 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
       plugins: {
         'antfu': pluginAntfu,
         'hyoban': pluginHyoban as unknown as ESLint.Plugin,
-        '@stylistic': pluginStylistic,
+        '@stylistic': pluginStylistic as unknown as ESLint.Plugin,
       },
       rules: {
         'arrow-body-style': 'error',
@@ -76,6 +108,16 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
         'antfu/consistent-list-newline': 'error',
         'hyoban/jsx-attribute-spacing': 'error',
 
+        '@stylistic/jsx-indent': 'off',
+        '@stylistic/indent': [
+          'error',
+          stylistic.indent,
+          {
+            ...basicIndentRuleOptions,
+            ignoredNodes: [...jsxIgnoreNodes, ...nonJsxIgnoreNodes],
+          },
+        ],
+
         ...(lessOpinionated
           ? {
               curly: ['error', 'multi-line', 'consistent'],
@@ -89,5 +131,18 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
         ),
       },
     },
-  ] as Linter.FlatConfig[]
+    {
+      files: GLOB_JSX_SRC,
+      rules: {
+        '@stylistic/indent': [
+          'error',
+          stylistic.indent,
+          {
+            ...basicIndentRuleOptions,
+            ignoredNodes: jsxIgnoreNodes,
+          },
+        ],
+      },
+    },
+  ]
 }
