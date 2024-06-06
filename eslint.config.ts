@@ -1,3 +1,5 @@
+// @eslint-ts-patch-loader jiti
+
 import hyoban from './src'
 
 export default hyoban(

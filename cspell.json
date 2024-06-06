@@ -6,7 +6,8 @@
     "hyoban",
     "vitepress",
     "nuxt",
-    "defu"
+    "defu",
+    "jiti"
   ],
   "ignorePaths": [
     "**/node_modules",
