@@ -1139,6 +1139,11 @@ export interface RuleOptions {
    */
   '@typescript-eslint/no-unnecessary-qualifier'?: Linter.RuleEntry<[]>
   /**
+   * Disallow unnecessary template expressions
+   * @see https://typescript-eslint.io/rules/no-unnecessary-template-expression
+   */
+  '@typescript-eslint/no-unnecessary-template-expression'?: Linter.RuleEntry<[]>
+  /**
    * Disallow type arguments that are equal to the default
    * @see https://typescript-eslint.io/rules/no-unnecessary-type-arguments
    */
@@ -1218,11 +1223,6 @@ export interface RuleOptions {
    * @see https://typescript-eslint.io/rules/no-useless-empty-export
    */
   '@typescript-eslint/no-useless-empty-export'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unnecessary template literals
-   * @see https://typescript-eslint.io/rules/no-useless-template-literals
-   */
-  '@typescript-eslint/no-useless-template-literals'?: Linter.RuleEntry<[]>
   /**
    * Disallow `require` statements except in import statements
    * @see https://typescript-eslint.io/rules/no-var-requires
@@ -1337,6 +1337,7 @@ export interface RuleOptions {
   /**
    * Enforce using `@ts-expect-error` over `@ts-ignore`
    * @see https://typescript-eslint.io/rules/prefer-ts-expect-error
+   * @deprecated
    */
   '@typescript-eslint/prefer-ts-expect-error'?: Linter.RuleEntry<[]>
   /**
@@ -1350,7 +1351,7 @@ export interface RuleOptions {
    */
   '@typescript-eslint/require-array-sort-compare'?: Linter.RuleEntry<TypescriptEslintRequireArraySortCompare>
   /**
-   * Disallow async functions which have no `await` expression
+   * Disallow async functions which do not return promises and have no `await` expression
    * @see https://typescript-eslint.io/rules/require-await
    */
   '@typescript-eslint/require-await'?: Linter.RuleEntry<[]>
@@ -1372,6 +1373,7 @@ export interface RuleOptions {
   /**
    * Enforce constituents of a type union/intersection to be sorted alphabetically
    * @see https://typescript-eslint.io/rules/sort-type-constituents
+   * @deprecated
    */
   '@typescript-eslint/sort-type-constituents'?: Linter.RuleEntry<TypescriptEslintSortTypeConstituents>
   /**
@@ -1650,7 +1652,7 @@ export interface RuleOptions {
    */
   'func-names'?: Linter.RuleEntry<FuncNames>
   /**
-   * Enforce the consistent use of either `function` declarations or expressions
+   * Enforce the consistent use of either `function` declarations or expressions assigned to variables
    * @see https://eslint.org/docs/latest/rules/func-style
    */
   'func-style'?: Linter.RuleEntry<FuncStyle>
@@ -6276,6 +6278,18 @@ type TypescriptEslintNoFloatingPromises = []|[{
   ignoreVoid?: boolean
   
   ignoreIIFE?: boolean
+  allowForKnownSafePromises?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
 }]
 // ----- @typescript-eslint/no-inferrable-types -----
 type TypescriptEslintNoInferrableTypes = []|[{
