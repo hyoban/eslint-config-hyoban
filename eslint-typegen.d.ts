@@ -1703,17 +1703,17 @@ export interface RuleOptions {
   'handle-callback-err'?: Linter.RuleEntry<HandleCallbackErr>
   /**
    * Enforce consistent spacing around JSONC attributes
-   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/jsonc-inline-spacing.ts
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/jsonc-inline-spacing.test.ts
    */
   'hyoban/jsonc-inline-spacing'?: Linter.RuleEntry<[]>
   /**
    * Enforce consistent spacing around JSX attributes
-   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/jsx-attribute-spacing.ts
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/jsx-attribute-spacing.test.ts
    */
   'hyoban/jsx-attribute-spacing'?: Linter.RuleEntry<[]>
   /**
    * Prefer early return pattern to clean if else statement
-   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/prefer-early-return.ts
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/prefer-early-return.test.ts
    */
   'hyoban/prefer-early-return'?: Linter.RuleEntry<[]>
   /**
@@ -6279,6 +6279,18 @@ type TypescriptEslintNoFloatingPromises = []|[{
   
   ignoreIIFE?: boolean
   allowForKnownSafePromises?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+  allowForKnownSafeCalls?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
     path?: string
