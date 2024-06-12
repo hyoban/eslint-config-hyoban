@@ -1,7 +1,16 @@
 diff --git a/dist/indent.js b/dist/indent.js
-index b6fde2f627dfb91961177415fbde76604cc63cea..2db9438c8fbc1d9d3eb96391af9e0e59c86e2b8a 100644
+index b6fde2f627dfb91961177415fbde76604cc63cea..3b42de8d634b78db21eeeb8e7a3ed5507529ea29 100644
 --- a/dist/indent.js
 +++ b/dist/indent.js
+@@ -604,7 +604,7 @@ var indent = utils.createRule({
+     }
+     function validateTokenIndent(token, desiredIndent) {
+       const indentation = tokenInfo.getTokenIndent(token);
+-      return indentation === desiredIndent || indentation.includes(" ") && indentation.includes("	");
++      return indentation === desiredIndent
+     }
+     function isOuterIIFE(node) {
+       if (!node.parent || node.parent.type !== "CallExpression" || node.parent.callee !== node)
 @@ -1140,8 +1140,80 @@ var indent = utils.createRule({
        (listeners, ignoredSelector) => Object.assign(listeners, { [ignoredSelector]: addToIgnoredNodes }),
        {}
