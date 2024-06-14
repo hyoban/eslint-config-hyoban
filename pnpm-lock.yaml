@@ -68,8 +68,8 @@ importers:
         specifier: ^3.17.3
         version: 3.17.3(tailwindcss@3.4.3)
       eslint-plugin-unicorn:
-        specifier: ^53.0.0
-        version: 53.0.0(eslint-ts-patch@9.4.0-0)
+        specifier: ^54.0.0
+        version: 54.0.0(eslint-ts-patch@9.4.0-0)
       eslint-plugin-unused-imports:
         specifier: ^4.0.0
         version: 4.0.0(eslint-ts-patch@9.4.0-0)
@@ -99,8 +99,8 @@ importers:
         specifier: 8.0.0-alpha.30
         version: 8.0.0-alpha.30(eslint-ts-patch@9.4.0-0)(typescript@5.4.5)
       bunchee:
-        specifier: ^5.2.0
-        version: 5.2.0(typescript@5.4.5)
+        specifier: ^5.2.1
+        version: 5.2.1(typescript@5.4.5)
       cspell:
         specifier: ^8.8.4
         version: 8.8.4
@@ -1483,8 +1483,8 @@ packages:
   builtins@5.1.0:
     resolution: {integrity: sha512-SW9lzGTLvWTP1AY8xeAMZimqDrIaSdLQUcVr9DMef51niJ022Ri87SwRRKYm4A6iHfkPaiVUu/Duw2Wc4J7kKg==}
 
-  bunchee@5.2.0:
-    resolution: {integrity: sha512-iImc0YzGbYa6I4q97OwGYPvFl20k9cN/1c/D7pW8HYpawF4eaWkkd9KlsEuTks5coM6n0O3CUTjSN7d411zVcw==}
+  bunchee@5.2.1:
+    resolution: {integrity: sha512-F4vTm9xPKyGogMpck+IkdsHXcXgg0AISHuMOjjD8IOFbm9ifOkV0z9ACd/Zqazgq0FX8SkyxCMQFQy5ijhY6hQ==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
     peerDependencies:
@@ -1897,8 +1897,8 @@ packages:
     peerDependencies:
       tailwindcss: ^3.4.0
 
-  eslint-plugin-unicorn@53.0.0:
-    resolution: {integrity: sha512-kuTcNo9IwwUCfyHGwQFOK/HjJAYzbODHN3wP0PgqbW+jbXqpNWxNVpVhj2tO9SixBwuAdmal8rVcWKBxwFnGuw==}
+  eslint-plugin-unicorn@54.0.0:
+    resolution: {integrity: sha512-XxYLRiYtAWiAjPv6z4JREby1TAE2byBC7wlh0V4vWDCpccOSU1KovWV//jqPXF6bq3WKxqX9rdjoRQ1EhdmNdQ==}
     engines: {node: '>=18.18'}
     peerDependencies:
       eslint: '>=8.56.0'
@@ -4435,7 +4435,7 @@ snapshots:
     dependencies:
       semver: 7.6.2
 
-  bunchee@5.2.0(typescript@5.4.5):
+  bunchee@5.2.1(typescript@5.4.5):
     dependencies:
       '@rollup/plugin-commonjs': 25.0.7(rollup@4.17.2)
       '@rollup/plugin-json': 6.1.0(rollup@4.17.2)
@@ -5007,7 +5007,7 @@ snapshots:
       postcss: 8.4.38
       tailwindcss: 3.4.3
 
-  eslint-plugin-unicorn@53.0.0(eslint-ts-patch@9.4.0-0):
+  eslint-plugin-unicorn@54.0.0(eslint-ts-patch@9.4.0-0):
     dependencies:
       '@babel/helper-validator-identifier': 7.24.5
       '@eslint-community/eslint-utils': 4.4.0(eslint-ts-patch@9.4.0-0)
