@@ -5,21 +5,17 @@ import type { Options } from '../option'
 
 export function unicornConfigs({ fileCase, strict }: Required<Options>) {
   return [
-    pluginUnicorn.configs['flat/recommended'] as Linter.FlatConfig,
+    pluginUnicorn.configs[strict ? 'flat/all' : 'flat/recommended'] as Linter.FlatConfig,
     [
-      strict
-        ? {
-            rules: {},
-          }
-        : {
-          /// keep-sorted
-          rules: {
-            'unicorn/no-negation-in-equality-check': 'off',
-            'unicorn/prefer-array-some': 'off',
-            'unicorn/prefer-ternary': 'off',
-            'unicorn/text-encoding-identifier-case': 'off',
-          },
-        } satisfies Linter.FlatConfig,
+      !strict && {
+        /// keep-sorted
+        rules: {
+          'unicorn/no-negation-in-equality-check': 'off',
+          'unicorn/prefer-array-some': 'off',
+          'unicorn/prefer-ternary': 'off',
+          'unicorn/text-encoding-identifier-case': 'off',
+        },
+      } satisfies Linter.FlatConfig,
       {
         name: 'unicorn/custom',
         /// keep-sorted
