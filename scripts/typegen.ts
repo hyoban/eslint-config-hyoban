@@ -3,7 +3,7 @@ import fs from 'node:fs/promises'
 import { builtinRules } from 'eslint/use-at-your-own-risk'
 import { flatConfigsToPlugins, pluginsToRulesDTS } from 'eslint-typegen/core'
 
-import hyoban from '../src'
+import { defineConfig } from '../src'
 
 const plugins = await flatConfigsToPlugins(
   [
@@ -14,7 +14,7 @@ const plugins = await flatConfigsToPlugins(
         },
       },
     },
-    ...(await hyoban({ react: 'vite', strict: true, typeChecked: true, cspell: true, tailwindCSS: true })),
+    ...(await defineConfig({ react: 'vite', strict: true, typeChecked: true, cspell: true, tailwindCSS: true })),
   ],
 )
 const dts = await pluginsToRulesDTS(plugins)
