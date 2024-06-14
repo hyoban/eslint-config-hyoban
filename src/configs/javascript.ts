@@ -109,6 +109,7 @@ export function javaScriptConfigs({
           // https://twitter.com/karlhorky/status/1773632485055680875
           'array-callback-return': 'error',
           'eqeqeq': ['error', 'smart'],
+          // eslint-disable-next-line unicorn/no-keyword-prefix
           'new-cap': ['error', { capIsNew: false, newIsCap: true, properties: true }],
           'no-console': ['error', { allow: ['warn', 'error'] }],
           // https://twitter.com/ryanflorence/status/1786394911895683512
