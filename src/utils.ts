@@ -44,7 +44,7 @@ export type ConfigArray = Array<
   | undefined
   | null
   | false
-  | MaybeArray<Awaitable<Linter.FlatConfig | undefined>>
+  | MaybeArray<Awaitable<Linter.FlatConfig | undefined | null | false>>
   | CreateFlatConfig
 >
 
@@ -91,7 +91,7 @@ export async function config(
 }
 
 async function mergeConfigs(
-  _c: MaybeArray<Awaitable<Linter.FlatConfig | undefined>>,
+  _c: MaybeArray<Awaitable<Linter.FlatConfig | undefined | null | false>>,
 ): Promise<Linter.FlatConfig | undefined> {
   const c = await _c
 
