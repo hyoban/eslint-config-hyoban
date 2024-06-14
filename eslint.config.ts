@@ -1,8 +1,8 @@
 // @eslint-ts-patch-loader jiti
 
-import hyoban from './src'
+import { defineConfig } from './src'
 
-export default hyoban(
+export default defineConfig(
   {
     react: 'vite',
     strict: true,

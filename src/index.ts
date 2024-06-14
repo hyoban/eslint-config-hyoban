@@ -20,7 +20,7 @@ import { config } from './utils'
 
 export * from './consts'
 
-export default async function hyoban(
+export async function defineConfig(
   options?: Options,
   ...args: ConfigArray
 ) {

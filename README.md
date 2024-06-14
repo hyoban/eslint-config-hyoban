@@ -28,7 +28,7 @@ ni -D eslint eslint-config-hyoban lint-staged simple-git-hooks
 
 ```ts
 // @ts-check
-import defineConfig from "eslint-config-hyoban";
+import { defineConfig } from "eslint-config-hyoban";
 
 export default defineConfig();
 ```
@@ -38,7 +38,7 @@ export default defineConfig();
 
 ```ts
 // @ts-check
-import defineConfig from "eslint-config-hyoban";
+import { defineConfig } from "eslint-config-hyoban";
 
 const isInEditor = !!(
   (process.env.VSCODE_PID ||
