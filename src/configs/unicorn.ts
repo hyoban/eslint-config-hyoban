@@ -5,7 +5,7 @@ import type { Options } from '../option'
 
 export function unicornConfigs({ fileCase, strict }: Required<Options>) {
   return [
-    pluginUnicorn.configs[strict ? 'flat/all' : 'flat/recommended'] as Linter.FlatConfig,
+    pluginUnicorn.configs[strict ? 'flat/all' : 'flat/recommended'],
     [
       !strict && {
         /// keep-sorted
