@@ -19,11 +19,8 @@ export function javaScriptConfigs({
         ecmaVersion: 2022,
         globals: {
           ...globals.browser,
-          ...globals.es2021,
+          ...globals.es2022,
           ...globals.node,
-          document: 'readonly',
-          navigator: 'readonly',
-          window: 'readonly',
         },
         parserOptions: {
           ecmaFeatures: {
