@@ -16,7 +16,6 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
     'TSTypeParameterInstantiation',
     'FunctionExpression > .params[decorators.length > 0]',
     'FunctionExpression > .params > :matches(Decorator, :not(:first-child))',
-    'ClassBody.body > PropertyDefinition[decorators.length > 0] > .key',
   ]
 
   const nonJsxIgnoreNodes = [

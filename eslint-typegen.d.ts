@@ -4967,7 +4967,7 @@ type StylisticJsxNewline = []|[{
 }]
 // ----- @stylistic/jsx-one-expression-per-line -----
 type StylisticJsxOneExpressionPerLine = []|[{
-  allow?: ("none" | "literal" | "single-child" | "single-line")
+  allow?: ("none" | "literal" | "single-child" | "single-line" | "non-jsx")
 }]
 // ----- @stylistic/jsx-pascal-case -----
 type StylisticJsxPascalCase = []|[{
@@ -5649,6 +5649,7 @@ type StylisticQuoteProps = ([]|[("always" | "as-needed" | "consistent" | "consis
 type StylisticQuotes = []|[("single" | "double" | "backtick")]|[("single" | "double" | "backtick"), ("avoid-escape" | {
   avoidEscape?: boolean
   allowTemplateLiterals?: boolean
+  ignoreStringLiterals?: boolean
 })]
 // ----- @stylistic/rest-spread-spacing -----
 type StylisticRestSpreadSpacing = []|[("always" | "never")]
