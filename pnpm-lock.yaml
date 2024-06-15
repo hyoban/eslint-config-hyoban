@@ -20,8 +20,8 @@ importers:
         specifier: ^1.5.15
         version: 1.5.15(eslint@9.5.0)(typescript@5.4.5)
       '@eslint/js':
-        specifier: ^9.4.0
-        version: 9.4.0
+        specifier: ^9.5.0
+        version: 9.5.0
       '@types/eslint':
         specifier: ^8.56.10
         version: 8.56.10
@@ -53,8 +53,8 @@ importers:
         specifier: 0.0.0-experimental-c8b3f72-20240517
         version: 0.0.0-experimental-c8b3f72-20240517(eslint@9.5.0)
       eslint-plugin-react-hooks:
-        specifier: 5.1.0-rc-f994737d14-20240522
-        version: 5.1.0-rc-f994737d14-20240522(eslint@9.5.0)
+        specifier: 5.1.0-rc-fb9a90fa48-20240614
+        version: 5.1.0-rc-fb9a90fa48-20240614(eslint@9.5.0)
       eslint-plugin-react-refresh:
         specifier: ^0.4.7
         version: 0.4.7(eslint@9.5.0)
@@ -120,8 +120,8 @@ importers:
         specifier: ^2.11.1
         version: 2.11.1
       tsx:
-        specifier: ^4.15.4
-        version: 4.15.4
+        specifier: ^4.15.5
+        version: 4.15.5
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -938,10 +938,6 @@ packages:
 
   '@eslint/eslintrc@3.1.0':
     resolution: {integrity: sha512-4Bfj15dVJdoy3RfZmmo86RK1Fwzn6SstsvK9JS+BaVKqC6QQQQyXekNaC+g+LKNgkQ+2VhGAzm6hO40AhMR3zQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@eslint/js@9.4.0':
-    resolution: {integrity: sha512-fdI7VJjP3Rvc70lC4xkFXHB0fiPeojiL1PxVG6t1ZvXQrarj893PweuBTujxDUFk0Fxj4R7PIIAZ/aiiyZPZcg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/js@9.5.0':
@@ -1863,8 +1859,8 @@ packages:
       typescript:
         optional: true
 
-  eslint-plugin-react-hooks@5.1.0-rc-f994737d14-20240522:
-    resolution: {integrity: sha512-i0vo8qO0orIDrF1/TAENznU+zMuuN+518bs+DtKJlGw3nttFQjvI7xR4v6KLfLsZo4th9s1Aq3Fzr5RY5hyiAg==}
+  eslint-plugin-react-hooks@5.1.0-rc-fb9a90fa48-20240614:
+    resolution: {integrity: sha512-xsiRwaDNF5wWNC4ZHLut+x/YcAxksUd9Rizt7LaEn3bV8VyYRpXnRJQlLOfYaVy9esk4DFP4zPPnoNVjq5Gc0w==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -2265,10 +2261,6 @@ packages:
   jackspeak@3.1.2:
     resolution: {integrity: sha512-kWmLKn2tRtfYMF/BakihVVRzBKOxz4gJMiL2Rj91WnAB5TPZumSH99R/Yf1qE1u4uRimvCSJfm6hnxohXeEXjQ==}
     engines: {node: '>=14'}
-
-  jiti@1.21.0:
-    resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
-    hasBin: true
 
   jiti@1.21.6:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
@@ -2987,8 +2979,8 @@ packages:
   tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  tsx@4.15.4:
-    resolution: {integrity: sha512-d++FLCwJLrXaBFtRcqdPBzu6FiVOJ2j+UsvUZPtoTrnYtCGU5CEW7iHXtNZfA2fcRTvJFWPqA6SWBuB0GSva9w==}
+  tsx@4.15.5:
+    resolution: {integrity: sha512-iKi8jQ2VBmZ2kU/FkGkL2OSHBHsazsUzsdC/W/RwhKIEsIoZ1alCclZHP5jGfNHEaEWUJFM1GquzCf+4db3b0w==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -3907,8 +3899,6 @@ snapshots:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
-
-  '@eslint/js@9.4.0': {}
 
   '@eslint/js@9.5.0': {}
 
@@ -4959,7 +4949,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react-hooks@5.1.0-rc-f994737d14-20240522(eslint@9.5.0):
+  eslint-plugin-react-hooks@5.1.0-rc-fb9a90fa48-20240614(eslint@9.5.0):
     dependencies:
       eslint: 9.5.0
 
@@ -5323,7 +5313,7 @@ snapshots:
       jiti: 1.21.6
       pathe: 1.1.2
       pkg-types: 1.1.1
-      tsx: 4.15.4
+      tsx: 4.15.5
     transitivePeerDependencies:
       - supports-color
 
@@ -5395,8 +5385,6 @@ snapshots:
       '@isaacs/cliui': 8.0.2
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
-
-  jiti@1.21.0: {}
 
   jiti@1.21.6: {}
 
@@ -6048,7 +6036,7 @@ snapshots:
       fast-glob: 3.3.2
       glob-parent: 6.0.2
       is-glob: 4.0.3
-      jiti: 1.21.0
+      jiti: 1.21.6
       lilconfig: 2.1.0
       micromatch: 4.0.7
       normalize-path: 3.0.0
@@ -6097,7 +6085,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  tsx@4.15.4:
+  tsx@4.15.5:
     dependencies:
       esbuild: 0.21.5
       get-tsconfig: 4.7.5
