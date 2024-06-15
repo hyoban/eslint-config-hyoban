@@ -11,6 +11,8 @@ const config = defineConfig({
     'vitepress',
     'nuxt',
     'defu',
+    'jiti',
+    'importx',
   ],
   ignorePaths: [
     ...GLOB_EXCLUDE,

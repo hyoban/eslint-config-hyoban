@@ -1,6 +1,11 @@
-// @eslint-ts-patch-loader jiti
+const { defineConfig } = await import('importx').then(x => x.import('./src/index.ts', {
+  parentURL: import.meta.url, // *required
 
-import { defineConfig } from './src'
+  // The following options are their default values
+  cache: null, // false, if you want to always get a new module
+  listDependencies: false, // true, if you need to get the list of dependencies
+  loader: 'jiti', // most of the time, you don't need to change this as they will be chosen automatically
+}))
 
 export default defineConfig(
   {

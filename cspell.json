@@ -7,7 +7,8 @@
     "vitepress",
     "nuxt",
     "defu",
-    "jiti"
+    "jiti",
+    "importx"
   ],
   "ignorePaths": [
     "**/node_modules",
