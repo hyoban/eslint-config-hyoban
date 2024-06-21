@@ -24,6 +24,9 @@ Read more about why I use ESLint for linting and formatting on [xLog](https://hy
 ni -D eslint eslint-config-hyoban lint-staged simple-git-hooks
 ```
 
+> [!TIP]
+> You may don't need lint-staged and simple-git-hooks if you don't ignore auto-fix rules in editor.
+
 `eslint.config.js` or `eslint.config.mjs`
 
 ```ts
@@ -102,21 +105,9 @@ If you need Prettier
     }
   },
 
-  // You don't need this if you use ESLint VSCode(v3.0.7+)
-  "eslint.experimental.useFlatConfig": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "jsonc"
-  ],
-
   // If you do not want to auto fix some rules on save
   // You can put this in your user settings or workspace settings
   "eslint.codeActionsOnSave.rules": [
-    "!no-var",
     "!prefer-const",
     "!unused-imports/no-unused-imports",
     "!@stylistic/jsx-self-closing-comp",
@@ -127,18 +118,29 @@ If you need Prettier
   // If you want to silent stylistic rules
   // You can put this in your user settings or workspace settings
   "eslint.rules.customizations": [
-    { "rule": "@stylistic/*", "severity": "off" },
-    { "rule": "@stylistic/no-tabs", "severity": "default" },
+    { "rule": "@stylistic/*", "severity": "off", "fixable": true },
     { "rule": "antfu/consistent-list-newline", "severity": "off" },
     { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
     { "rule": "simple-import-sort/*", "severity": "off" },
-    { "rule": "no-var", "severity": "off" },
     { "rule": "prefer-const", "severity": "off" },
     { "rule": "unused-imports/no-unused-imports", "severity": "off" }
+    { "rule": "tailwindcss/classnames-order", "severity": "off"}
   ],
+
   // You can also silent all auto fixable rules
   "eslint.rules.customizations": [
     { "rule": "*", "fixable": true, "severity": "off" }
+  ],
+
+  // You don't need this if you use ESLint VSCode(v3.0.7+)
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "jsonc"
   ]
 }
 ```
