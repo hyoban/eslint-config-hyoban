@@ -1,5 +1,5 @@
 diff --git a/dist/indent.js b/dist/indent.js
-index 8a01873cf544b4f066e624f19b8e4e80a74327ed..dfd1146c3e7e14ae34ce246ceeb18f45dc3bc861 100644
+index 7f3bec52653ce5cdf4579d30198038c6175be197..cdea878097146cd89667ca3bca4b791edcca52ba 100644
 --- a/dist/indent.js
 +++ b/dist/indent.js
 @@ -604,7 +604,7 @@ var indent = utils.createRule({

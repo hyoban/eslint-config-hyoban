@@ -4678,6 +4678,8 @@ type CspellSpellchecker = []|[{
   
   checkJSXText?: boolean
   
+  checkScope?: [string, boolean][]
+  
   checkStringTemplates?: boolean
   
   checkStrings?: boolean

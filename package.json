@@ -2,7 +2,7 @@
   "name": "eslint-config-hyoban",
   "type": "module",
   "version": "3.0.0-beta.18",
-  "packageManager": "pnpm@9.3.0",
+  "packageManager": "pnpm@9.4.0",
   "description": "Hyoban's ESLint Config",
   "author": "Stephen Zhou <hi@hyoban.cc>",
   "license": "MIT",
@@ -58,7 +58,7 @@
     }
   },
   "dependencies": {
-    "@cspell/eslint-plugin": "^8.8.4",
+    "@cspell/eslint-plugin": "^8.9.1",
     "@eslint-react/eslint-plugin": "^1.5.15",
     "@eslint/js": "^9.5.0",
     "@types/eslint": "^8.56.10",
@@ -69,7 +69,7 @@
     "eslint-plugin-hyoban": "^0.6.1",
     "eslint-plugin-import-x": "^0.5.1",
     "eslint-plugin-jsonc": "^2.16.0",
-    "eslint-plugin-package-json": "^0.14.0",
+    "eslint-plugin-package-json": "^0.15.0",
     "eslint-plugin-react-compiler": "0.0.0-experimental-c8b3f72-20240517",
     "eslint-plugin-react-hooks": "5.1.0-rc-fb9a90fa48-20240614",
     "eslint-plugin-react-refresh": "^0.4.7",
@@ -78,30 +78,30 @@
     "eslint-plugin-tailwindcss": "^3.17.3",
     "eslint-plugin-unicorn": "^54.0.0",
     "eslint-plugin-unused-imports": "^4.0.0",
-    "globals": "^15.4.0",
+    "globals": "^15.6.0",
     "jsonc-eslint-parser": "^2.4.0",
     "typescript-eslint": "8.0.0-alpha.30"
   },
   "devDependencies": {
-    "@stylistic/eslint-plugin": "2.2.0",
+    "@stylistic/eslint-plugin": "2.2.2",
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^20.14.2",
+    "@types/node": "^20.14.7",
     "@typescript-eslint/utils": "8.0.0-alpha.30",
     "bunchee": "^5.2.1",
-    "cspell": "^8.8.4",
+    "cspell": "^8.9.1",
     "eslint": "^9.5.0",
     "eslint-typegen": "^0.2.4",
-    "importx": "^0.3.6",
+    "importx": "^0.3.7",
     "lint-staged": "^15.2.7",
     "simple-git-hooks": "^2.11.1",
-    "tsx": "^4.15.5",
-    "typescript": "^5.4.5",
+    "tsx": "^4.15.7",
+    "typescript": "^5.5.2",
     "vitest": "^1.6.0"
   },
   "pnpm": {
     "patchedDependencies": {
-      "@stylistic/eslint-plugin-js@2.2.0": "patches/@stylistic__eslint-plugin-js@2.2.0.patch"
+      "@stylistic/eslint-plugin-js@2.2.2": "patches/@stylistic__eslint-plugin-js@2.2.2.patch"
     }
   },
   "simple-git-hooks": {
