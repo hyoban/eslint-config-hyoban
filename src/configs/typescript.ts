@@ -61,7 +61,6 @@ export function typeScriptConfigs({
               '@typescript-eslint/ban-ts-comment': 'warn',
               '@typescript-eslint/no-explicit-any': 'warn',
               '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
-              '@typescript-eslint/no-unused-expressions': 'warn',
             },
           },
       !preferESM && {
