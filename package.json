@@ -69,7 +69,6 @@
     "eslint-plugin-hyoban": "^0.6.1",
     "eslint-plugin-import-x": "^0.5.1",
     "eslint-plugin-jsonc": "^2.16.0",
-    "eslint-plugin-package-json": "^0.15.0",
     "eslint-plugin-react-compiler": "0.0.0-experimental-c8b3f72-20240517",
     "eslint-plugin-react-hooks": "5.1.0-rc-fb9a90fa48-20240614",
     "eslint-plugin-react-refresh": "^0.4.7",
@@ -93,6 +92,7 @@
     "bunchee": "^5.2.2",
     "cspell": "^8.9.1",
     "eslint": "^9.5.0",
+    "eslint-plugin-package-json": "0.15.0",
     "eslint-typegen": "^0.2.4",
     "importx": "^0.3.7",
     "lint-staged": "^15.2.7",
@@ -103,7 +103,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "@stylistic/eslint-plugin-js@2.2.2": "patches/@stylistic__eslint-plugin-js@2.2.2.patch"
+      "@stylistic/eslint-plugin-js@2.2.2": "patches/@stylistic__eslint-plugin-js@2.2.2.patch",
+      "package-json-validator@0.6.4": "patches/package-json-validator@0.6.4.patch"
     }
   },
   "simple-git-hooks": {
