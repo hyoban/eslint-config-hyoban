@@ -24,7 +24,7 @@ export async function defineConfig(
   options?: Options,
   ...args: ConfigArray
 ) {
-  const finalOptions = mergeDefaultOptions(options)
+  const finalOptions = await mergeDefaultOptions(options)
 
   return config(
     finalOptions,

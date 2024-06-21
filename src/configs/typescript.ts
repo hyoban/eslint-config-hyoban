@@ -11,6 +11,7 @@ export function typeScriptConfigs({
   projectService,
   tsconfigRootDir,
   filesDisableTypeChecking,
+  preferESM,
 }: Required<Options>) {
   const typescriptPreset = strict
     ? (typeChecked === true
@@ -61,6 +62,11 @@ export function typeScriptConfigs({
               '@typescript-eslint/no-unused-expressions': 'warn',
             },
           },
+      !preferESM && {
+        rules: {
+          '@typescript-eslint/no-require-imports': 'off',
+        },
+      },
       typeChecked
       && (typeChecked === 'essential'
         ? {

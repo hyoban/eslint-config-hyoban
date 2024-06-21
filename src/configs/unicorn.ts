@@ -3,7 +3,7 @@ import pluginUnicorn from 'eslint-plugin-unicorn'
 
 import type { Options } from '../option'
 
-export function unicornConfigs({ fileCase, strict }: Required<Options>) {
+export function unicornConfigs({ fileCase, strict, preferESM }: Required<Options>) {
   return [
     pluginUnicorn.configs[strict ? 'flat/all' : 'flat/recommended'],
     [
@@ -14,6 +14,11 @@ export function unicornConfigs({ fileCase, strict }: Required<Options>) {
           'unicorn/prefer-array-some': 'off',
           'unicorn/prefer-ternary': 'off',
           'unicorn/text-encoding-identifier-case': 'off',
+        },
+      } satisfies Linter.FlatConfig,
+      !preferESM && {
+        rules: {
+          'unicorn/prefer-module': 'off',
         },
       } satisfies Linter.FlatConfig,
       {

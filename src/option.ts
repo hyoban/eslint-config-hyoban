@@ -1,6 +1,8 @@
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import defu from 'defu'
 import type { Linter } from 'eslint'
+import { isPackageExists } from 'local-pkg'
+import { readPackageUp } from 'read-package-up'
 
 import type { RuleOptions } from '../eslint-typegen'
 import { DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
@@ -16,9 +18,10 @@ export type Options = {
   ignoreFiles?: string[]
   ignores?: string[]
   lessOpinionated?: boolean
+  preferESM?: boolean
   project?: string[] | string | boolean | null
   projectService?: boolean
-  react?: 'vite' | 'remix' | 'next' | false
+  react?: 'vite' | 'remix' | 'next' | boolean
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   strict?: boolean
   stylistic?: Omit<StylisticCustomizeOptions, 'flat' | 'pluginName'> & { lineBreak?: 'after' | 'before' }
@@ -27,9 +30,17 @@ export type Options = {
   typeChecked?: boolean | 'essential'
 } & Pick<Linter.FlatConfig, 'linterOptions' | 'settings'>
 
-export function mergeDefaultOptions(
+export async function mergeDefaultOptions(
   options?: Options,
-): Required<Options> {
+): Promise<Required<Options>> {
+  const packageJson = await readPackageUp()
+  const hasReact = isPackageExists('react')
+  const hasVite = isPackageExists('vite')
+  const hasRemix = isPackageExists('remix')
+  const hasNext = isPackageExists('next')
+
+  const hasTailwindCSS = isPackageExists('tailwindcss')
+
   /// keep-sorted
   const defaultOptions: Required<Options> = {
     cspell: false,
@@ -41,9 +52,10 @@ export function mergeDefaultOptions(
     linterOptions: {
       reportUnusedDisableDirectives: true,
     },
+    preferESM: packageJson?.packageJson.type === 'module',
     project: !!options?.typeChecked,
     projectService: false,
-    react: false,
+    react: hasNext ? 'next' : hasRemix ? 'remix' : (hasVite && hasReact) ? 'vite' : hasReact,
     restrictedSyntax: [
       'DebuggerStatement',
       'LabeledStatement',
@@ -59,10 +71,16 @@ export function mergeDefaultOptions(
       },
     ],
     settings: {
-      tailwindcss: {
-        // eslint-disable-next-line @cspell/spellchecker
-        callees: ['classnames', 'clsx', 'ctl', 'cn'],
-      },
+      ...(
+        hasTailwindCSS
+          ? {
+              tailwindcss: {
+                // eslint-disable-next-line @cspell/spellchecker
+                callees: ['classnames', 'clsx', 'ctl', 'cn'],
+              },
+            }
+          : {}
+      ),
     },
     strict: false,
     stylistic: {
@@ -70,7 +88,7 @@ export function mergeDefaultOptions(
       quotes: 'single',
       semi: false,
     },
-    tailwindCSS: false,
+    tailwindCSS: hasTailwindCSS,
     tsconfigRootDir: process.cwd(),
     typeChecked: false,
   }
