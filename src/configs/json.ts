@@ -62,17 +62,9 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
       files: ['**/package.json'],
       rules: {
         ...packageJson.rules,
-        'package-json/order-properties': 'off',
         'package-json/sort-collections': 'off',
-        ...jsonFormateRules as Linter.FlatConfig['rules'],
-        'jsonc/sort-array-values': [
-          'error',
-          {
-            order: { type: 'asc' },
-            pathPattern: '^files$',
-          },
-        ],
-        'jsonc/sort-keys': [
+        ...jsonFormateRules,
+        'package-json/order-properties': [
           'error',
           {
             order: [
@@ -85,6 +77,7 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
               'packageManager',
               'description',
               'author',
+              'contributors',
               'license',
               'funding',
               'homepage',
@@ -121,8 +114,17 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
               'lint-staged',
               'eslintConfig',
             ],
-            pathPattern: '^$',
           },
+        ],
+        'jsonc/sort-array-values': [
+          'error',
+          {
+            order: { type: 'asc' },
+            pathPattern: '^files$',
+          },
+        ],
+        'jsonc/sort-keys': [
+          'error',
           {
             order: { type: 'asc' },
             // eslint-disable-next-line @cspell/spellchecker
@@ -146,7 +148,7 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
             pathPattern: 'scripts',
           },
         ],
-      } as Linter.FlatConfig['rules'],
+      },
     },
   ]
 }
