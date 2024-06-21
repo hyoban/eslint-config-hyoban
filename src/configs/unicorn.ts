@@ -7,20 +7,28 @@ export function unicornConfigs({ fileCase, strict, preferESM }: Required<Options
   return [
     pluginUnicorn.configs[strict ? 'flat/all' : 'flat/recommended'],
     [
-      !strict && {
-        /// keep-sorted
-        rules: {
-          'unicorn/no-negation-in-equality-check': 'off',
-          'unicorn/prefer-array-some': 'off',
-          'unicorn/prefer-ternary': 'off',
-          'unicorn/text-encoding-identifier-case': 'off',
-        },
-      } satisfies Linter.FlatConfig,
+      strict
+        ? {
+            rules: {
+              'unicorn/no-keyword-prefix': 'off',
+            },
+          }
+        : {
+            /// keep-sorted
+            rules: {
+              'unicorn/consistent-function-scoping': 'warn',
+              'unicorn/no-negation-in-equality-check': 'off',
+              'unicorn/prefer-add-event-listener': 'off',
+              'unicorn/prefer-array-some': 'off',
+              'unicorn/prefer-ternary': 'off',
+              'unicorn/text-encoding-identifier-case': 'off',
+            },
+          },
       !preferESM && {
         rules: {
           'unicorn/prefer-module': 'off',
         },
-      } satisfies Linter.FlatConfig,
+      },
       {
         name: 'unicorn/custom',
         /// keep-sorted
@@ -35,12 +43,13 @@ export function unicornConfigs({ fileCase, strict, preferESM }: Required<Options
           'unicorn/no-nested-ternary': 'off',
           // https://github.com/sindresorhus/meta/discussions/7
           'unicorn/no-null': 'off',
+          'unicorn/no-unreadable-array-destructuring': 'off',
           'unicorn/prefer-spread': 'off',
           // https://github.com/orgs/web-infra-dev/discussions/10
           'unicorn/prefer-top-level-await': 'off',
           'unicorn/prevent-abbreviations': 'off',
         },
-      } satisfies Linter.FlatConfig,
-    ],
+      },
+    ] satisfies Array<Linter.FlatConfig | boolean>,
   ]
 }

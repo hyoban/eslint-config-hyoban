@@ -46,6 +46,8 @@ export function typeScriptConfigs({
           '@typescript-eslint/no-import-type-side-effects': 'error',
           // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
           '@typescript-eslint/method-signature-style': ['error', 'property'],
+
+          '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
         },
       },
       strict
