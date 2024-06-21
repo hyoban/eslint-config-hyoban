@@ -24,6 +24,21 @@ export interface RuleOptions {
    */
   '@eslint-react/avoid-shorthand-fragment'?: Linter.RuleEntry<[]>
   /**
+   * report all class components, including anonymous ones
+   * @see https://eslint-react.xyz/rules/debug-class-component
+   */
+  '@eslint-react/debug/class-component'?: Linter.RuleEntry<[]>
+  /**
+   * report all function components, including anonymous ones
+   * @see https://eslint-react.xyz/rules/debug-function-component
+   */
+  '@eslint-react/debug/function-component'?: Linter.RuleEntry<[]>
+  /**
+   * report all React Hooks
+   * @see https://eslint-react.xyz/rules/debug-react-hooks
+   */
+  '@eslint-react/debug/react-hooks'?: Linter.RuleEntry<[]>
+  /**
    * disallow passing 'children' to void DOM elements
    * @see https://eslint-react.xyz/rules/dom-no-children-in-void-dom-elements
    */
