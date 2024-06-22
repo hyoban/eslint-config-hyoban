@@ -17,10 +17,18 @@ export function reactConfigs({
     async () => {
       const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
       const config = strict ? eslintReact.configs.all : eslintReact.configs.recommended
+      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks')) as ESLint.Plugin
+      const reactCompiler = await interopDefault(import('eslint-plugin-react-compiler')) as ESLint.Plugin
+      const reactRefresh = await interopDefault(import('eslint-plugin-react-refresh')) as ESLint.Plugin
 
       return {
         name: `react/setup/${strict ? 'all' : 'recommended'}`,
-        plugins: config.plugins as unknown as Record<string, ESLint.Plugin>,
+        plugins: {
+          ...(config.plugins as unknown as Record<string, ESLint.Plugin>),
+          'react-compiler': reactCompiler,
+          'react-hooks': reactHooks,
+          'react-refresh': reactRefresh,
+        },
       } satisfies Linter.FlatConfig
     },
     async () => {
@@ -72,60 +80,45 @@ export function reactConfigs({
         },
       } satisfies Linter.FlatConfig
     },
-    async () => {
-      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks')) as ESLint.Plugin
-      const reactCompiler = await interopDefault(import('eslint-plugin-react-compiler')) as ESLint.Plugin
-      return {
-        name: 'react/official',
-        files: GLOB_TS_SRC,
-        /// keep-sorted
-        plugins: {
-          'react-compiler': reactCompiler,
-          'react-hooks': reactHooks,
-        },
-        /// keep-sorted
-        rules: {
-          'react-compiler/react-compiler': 'error',
-          'react-hooks/exhaustive-deps': 'warn',
-          'react-hooks/rules-of-hooks': 'error',
-        },
-      } satisfies Linter.FlatConfig
-    },
-    async () => {
-      const reactRefresh = await interopDefault(import('eslint-plugin-react-refresh')) as ESLint.Plugin
-      return {
-        name: 'react/refresh',
-        files: GLOB_JSX_SRC,
-        plugins: {
-          'react-refresh': reactRefresh,
-        },
-        rules: {
-          'react-refresh/only-export-components': [
-            'warn',
-            {
-              allowConstantExport: react === 'vite',
-              allowExportNames: react === 'next'
-                ? [
-                    'config',
-                    'generateStaticParams',
-                    'metadata',
-                    'generateMetadata',
-                    'viewport',
-                    'generateViewport',
-                  ]
-                : (react === 'remix'
-                    ? [
-                        'meta',
-                        'links',
-                        'headers',
-                        'loader',
-                        'action',
-                      ]
-                    : undefined),
-            },
-          ],
-        },
-      } satisfies Linter.FlatConfig
-    },
+    {
+      name: 'react/official',
+      files: GLOB_TS_SRC,
+      /// keep-sorted
+      rules: {
+        'react-compiler/react-compiler': 'warn',
+        'react-hooks/exhaustive-deps': 'warn',
+        'react-hooks/rules-of-hooks': 'error',
+      },
+    } satisfies Linter.FlatConfig,
+    {
+      name: 'react/refresh',
+      files: GLOB_JSX_SRC,
+      rules: {
+        'react-refresh/only-export-components': [
+          'warn',
+          {
+            allowConstantExport: react === 'vite',
+            allowExportNames: react === 'next'
+              ? [
+                  'config',
+                  'generateStaticParams',
+                  'metadata',
+                  'generateMetadata',
+                  'viewport',
+                  'generateViewport',
+                ]
+              : (react === 'remix'
+                  ? [
+                      'meta',
+                      'links',
+                      'headers',
+                      'loader',
+                      'action',
+                    ]
+                  : undefined),
+          },
+        ],
+      },
+    } satisfies Linter.FlatConfig,
   ]
 }
