@@ -61,6 +61,7 @@ export function reactConfigs({
         files: GLOB_TS_SRC,
         rules: {
           '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks': 'error',
+          '@eslint-react/no-unstable-context-value': 'warn',
         },
       } satisfies Linter.FlatConfig
     },
