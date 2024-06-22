@@ -37,9 +37,9 @@
   },
   "scripts": {
     "build": "pnpm typegen && bunchee",
-    "build:inspector": "npx @eslint/config-inspector@latest build",
+    "build:inspector": "npx @eslint/config-inspector build",
     "cpellgen": "tsx scripts/cspellgen.ts",
-    "dev": "pnpm typegen && npx @eslint/config-inspector@latest",
+    "dev": "pnpm typegen && npx @eslint/config-inspector",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prepare": "simple-git-hooks && pnpm run build",
@@ -84,10 +84,10 @@
     "typescript-eslint": "8.0.0-alpha.30"
   },
   "devDependencies": {
+    "@eslint/config-inspector": "^0.4.12",
     "@stylistic/eslint-plugin": "2.2.2",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.14.7",
-    "@typescript-eslint/utils": "8.0.0-alpha.30",
     "bunchee": "^5.2.2",
     "cspell": "^8.9.1",
     "eslint": "^9.5.0",
