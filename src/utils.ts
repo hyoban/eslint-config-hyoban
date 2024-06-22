@@ -86,7 +86,7 @@ export async function config(
           return mergeConfigs(c)
         }),
       )
-    ).filter(Boolean),
+    ).filter(i => !!i),
   ]
 }
 
