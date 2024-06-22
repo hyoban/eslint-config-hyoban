@@ -15,17 +15,21 @@ export function reactConfigs({
 
   return [
     async () => {
-      const eslintReact = await interopDefault(
-        import('@eslint-react/eslint-plugin'),
-      )
-      const config = strict
-        ? eslintReact.configs.all
-        : eslintReact.configs.recommended
+      const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
+      const config = strict ? eslintReact.configs.all : eslintReact.configs.recommended
+
+      return {
+        name: `react/setup/${strict ? 'all' : 'recommended'}`,
+        plugins: config.plugins as unknown as Record<string, ESLint.Plugin>,
+      } satisfies Linter.FlatConfig
+    },
+    async () => {
+      const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
+      const config = strict ? eslintReact.configs.all : eslintReact.configs.recommended
 
       return {
         name: `react/${strict ? 'all' : 'recommended'}`,
         files: GLOB_TS_SRC,
-        plugins: config.plugins as unknown as Record<string, ESLint.Plugin>,
         rules: config.rules,
       } satisfies Linter.FlatConfig
     },
@@ -48,8 +52,7 @@ export function reactConfigs({
         name: 'react/recommended/custom',
         files: GLOB_TS_SRC,
         rules: {
-          '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks':
-            'error',
+          '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks': 'error',
         },
       } satisfies Linter.FlatConfig
     },
