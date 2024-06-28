@@ -65,4 +65,4 @@ jobs:
 
       - name: Publish latest version
         if: ${{ matrix.os == 'ubuntu-latest' }} && ${{ matrix.node == 'lts/*' }}
-        run: pkg-pr-new
+        run: pkg-pr-new publish
