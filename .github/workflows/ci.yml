@@ -64,5 +64,5 @@ jobs:
         run: knip
 
       - name: Publish latest version
-        if: ${{ matrix.os == 'ubuntu-latest' }} && ${{ matrix.node == 'lts/*' }}
+        if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 'lts/*' }}
         run: pkg-pr-new publish
