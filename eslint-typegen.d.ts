@@ -486,8 +486,9 @@ export interface RuleOptions {
    */
   '@stylistic/jsx-function-call-newline'?: Linter.RuleEntry<StylisticJsxFunctionCallNewline>
   /**
-   * Enforce JSX indentation
+   * Enforce JSX indentation. Deprecated, use `indent` rule instead.
    * @see https://eslint.style/rules/jsx/jsx-indent
+   * @deprecated
    */
   '@stylistic/jsx-indent'?: Linter.RuleEntry<StylisticJsxIndent>
   /**
@@ -672,7 +673,7 @@ export interface RuleOptions {
   '@stylistic/nonblock-statement-body-position'?: Linter.RuleEntry<StylisticNonblockStatementBodyPosition>
   /**
    * Enforce consistent line breaks after opening and before closing braces
-   * @see https://eslint.style/rules/js/object-curly-newline
+   * @see https://eslint.style/rules/ts/object-curly-newline
    */
   '@stylistic/object-curly-newline'?: Linter.RuleEntry<StylisticObjectCurlyNewline>
   /**
@@ -682,7 +683,7 @@ export interface RuleOptions {
   '@stylistic/object-curly-spacing'?: Linter.RuleEntry<StylisticObjectCurlySpacing>
   /**
    * Enforce placing object properties on separate lines
-   * @see https://eslint.style/rules/js/object-property-newline
+   * @see https://eslint.style/rules/ts/object-property-newline
    */
   '@stylistic/object-property-newline'?: Linter.RuleEntry<StylisticObjectPropertyNewline>
   /**
@@ -1173,6 +1174,11 @@ export interface RuleOptions {
    * @see https://typescript-eslint.io/rules/no-unnecessary-type-constraint
    */
   '@typescript-eslint/no-unnecessary-type-constraint'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow type parameters that only appear once
+   * @see https://typescript-eslint.io/rules/no-unnecessary-type-parameters
+   */
+  '@typescript-eslint/no-unnecessary-type-parameters'?: Linter.RuleEntry<[]>
   /**
    * Disallow calling a function with a value with type `any`
    * @see https://typescript-eslint.io/rules/no-unsafe-argument
@@ -4798,6 +4804,7 @@ type StylisticArrayElementNewline = []|[(_StylisticArrayElementNewlineBasicConfi
   ArrayPattern?: _StylisticArrayElementNewlineBasicConfig
 })]
 type _StylisticArrayElementNewlineBasicConfig = (("always" | "never" | "consistent") | {
+  consistent?: boolean
   multiline?: boolean
   minItems?: (number | null)
 })
@@ -5623,6 +5630,16 @@ type StylisticObjectCurlyNewline = []|[((("always" | "never") | {
     consistent?: boolean
   })
   ExportDeclaration?: (("always" | "never") | {
+    multiline?: boolean
+    minProperties?: number
+    consistent?: boolean
+  })
+  TSTypeLiteral?: (("always" | "never") | {
+    multiline?: boolean
+    minProperties?: number
+    consistent?: boolean
+  })
+  TSInterfaceBody?: (("always" | "never") | {
     multiline?: boolean
     minProperties?: number
     consistent?: boolean
