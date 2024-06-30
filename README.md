@@ -27,7 +27,7 @@ ni -D eslint eslint-config-hyoban lint-staged simple-git-hooks
 > [!TIP]
 > You may don't need lint-staged and simple-git-hooks if you don't ignore auto-fix rules in editor.
 >
-> You can install nightly version from `pkg.pr.new`, for example `ni -D https://pkg.pr.new/hyoban/eslint-config-hyoban@{commit}`.
+> You can install nightly version from [pkg.pr.new](https://github.com/stackblitz-labs/pkg.pr.new), for example `ni -D https://pkg.pr.new/hyoban/eslint-config-hyoban@{commit}`.
 
 `eslint.config.js` or `eslint.config.mjs`
 
