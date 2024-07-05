@@ -1,0 +1,50 @@
+diff --git a/lib/rules/valid-name.js b/lib/rules/valid-name.js
+index 9f8f7a4b4300f5965912bb4676edaecbe7724911..c5d468bc1b17dc155636c4cd6d395a0bd8463065 100644
+--- a/lib/rules/valid-name.js
++++ b/lib/rules/valid-name.js
+@@ -44,6 +44,20 @@ const rule = (0, import_createRule.createRule)({
+           });
+           return;
+         }
++
++        // lookup check ket 'private' is true
++        if (
++          node.parent.properties.some(
++            (p) =>
++              p.key.type === "JSONLiteral" &&
++              p.key.value === "private" &&
++              p.value.type === "JSONLiteral" &&
++              p.value.value === true,
++          )
++        ) {
++          return;
++        }
++
+         const { errors, warnings } = (0, import_validate_npm_package_name.default)(node.value.value);
+         const complaints = [...errors ?? [], ...warnings ?? []];
+         if (!complaints.length) {
+diff --git a/lib/rules/valid-name.mjs b/lib/rules/valid-name.mjs
+index 7dca0b38d32329e04d0732f39e86844004621ab8..ceb97d5dbd1b6e1c1d2f32d8e7c804ee1f9f5ca2 100644
+--- a/lib/rules/valid-name.mjs
++++ b/lib/rules/valid-name.mjs
+@@ -11,6 +11,20 @@ const rule = createRule({
+           });
+           return;
+         }
++
++        // lookup check ket 'private' is true
++        if (
++          node.parent.properties.some(
++            (p) =>
++              p.key.type === "JSONLiteral" &&
++              p.key.value === "private" &&
++              p.value.type === "JSONLiteral" &&
++              p.value.value === true,
++          )
++        ) {
++          return;
++        }
++
+         const { errors, warnings } = validate(node.value.value);
+         const complaints = [...errors ?? [], ...warnings ?? []];
+         if (!complaints.length) {

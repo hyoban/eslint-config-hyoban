@@ -104,7 +104,8 @@
   "pnpm": {
     "patchedDependencies": {
       "package-json-validator@0.6.4": "patches/package-json-validator@0.6.4.patch",
-      "@stylistic/eslint-plugin-js@2.6.0-beta.0": "patches/@stylistic__eslint-plugin-js@2.6.0-beta.0.patch"
+      "@stylistic/eslint-plugin-js@2.6.0-beta.0": "patches/@stylistic__eslint-plugin-js@2.6.0-beta.0.patch",
+      "eslint-plugin-package-json@0.15.0": "patches/eslint-plugin-package-json@0.15.0.patch"
     }
   },
   "simple-git-hooks": {
