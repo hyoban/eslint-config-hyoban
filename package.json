@@ -44,6 +44,7 @@
     "lint:fix": "eslint --fix",
     "prepare": "simple-git-hooks && pnpm run build",
     "prepublishOnly": "pnpm run build",
+    "release": "release-it",
     "test": "vitest",
     "typecheck": "tsc",
     "typegen": "tsx scripts/typegen.ts"
@@ -95,6 +96,8 @@
     "eslint-typegen": "^0.2.4",
     "importx": "^0.3.11",
     "lint-staged": "^15.2.7",
+    "release-it": "^17.5.0",
+    "release-it-pnpm": "^4.6.2",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.1.0",
     "tsx": "^4.16.2",
