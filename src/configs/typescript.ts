@@ -48,6 +48,7 @@ export function typeScriptConfigs({
           '@typescript-eslint/method-signature-style': ['error', 'property'],
 
           '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
+          '@typescript-eslint/no-dynamic-delete': 'off',
         },
       },
       strict
@@ -59,7 +60,7 @@ export function typeScriptConfigs({
         : {
             rules: {
               '@typescript-eslint/ban-ts-comment': 'warn',
-              '@typescript-eslint/no-explicit-any': 'warn',
+              '@typescript-eslint/no-explicit-any': 'off',
               '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
             },
           },

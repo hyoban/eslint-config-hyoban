@@ -107,7 +107,8 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
         'antfu/consistent-list-newline': 'error',
         'hyoban/jsx-attribute-spacing': 'error',
 
-        '@stylistic/jsx-indent': 'off',
+        '@stylistic/no-tabs': 'off',
+        '@stylistic/jsx-indent-props': 'off',
         '@stylistic/indent': [
           'error',
           stylistic.indent,

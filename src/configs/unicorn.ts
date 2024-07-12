@@ -44,7 +44,9 @@ export function unicornConfigs({ fileCase, strict, preferESM }: Required<Options
           // https://github.com/sindresorhus/meta/discussions/7
           'unicorn/no-null': 'off',
           'unicorn/no-unreadable-array-destructuring': 'off',
+          'unicorn/numeric-separators-style': 'off',
           'unicorn/prefer-spread': 'off',
+          'unicorn/prefer-string-raw': 'off',
           // https://github.com/orgs/web-infra-dev/discussions/10
           'unicorn/prefer-top-level-await': 'off',
           'unicorn/prevent-abbreviations': 'off',

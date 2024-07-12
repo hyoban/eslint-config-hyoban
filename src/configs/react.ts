@@ -60,8 +60,10 @@ export function reactConfigs({
         name: 'react/recommended/custom',
         files: GLOB_TS_SRC,
         rules: {
-          '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks': 'error',
+          '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks': 'warn',
           '@eslint-react/no-unstable-context-value': 'warn',
+          // eslint-disable-next-line @cspell/spellchecker
+          '@eslint-react/dom/no-dangerously-set-innerhtml': 'off',
         },
       } satisfies Linter.FlatConfig
     },
