@@ -62,7 +62,6 @@ export function reactConfigs({
         rules: {
           '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks': 'warn',
           '@eslint-react/no-unstable-context-value': 'warn',
-          // eslint-disable-next-line @cspell/spellchecker
           '@eslint-react/dom/no-dangerously-set-innerhtml': 'off',
         },
       } satisfies Linter.FlatConfig

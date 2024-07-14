@@ -2,7 +2,6 @@ import '../eslint-typegen.d.ts'
 
 import commandConfig from 'eslint-plugin-command/config'
 
-import { cspellConfig } from './configs/cspell'
 import { importConfig } from './configs/imports'
 import { javaScriptConfigs } from './configs/javascript'
 import { jsonConfigs } from './configs/json'
@@ -35,7 +34,6 @@ export async function defineConfig(
     unusedConfig(),
     regexConfig(),
     commandConfig(),
-    cspellConfig(finalOptions),
     ...stylisticConfigs(finalOptions),
     ...jsonConfigs(finalOptions),
     ...reactConfigs(finalOptions),

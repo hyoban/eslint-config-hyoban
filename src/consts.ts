@@ -39,7 +39,6 @@ export const GLOB_EXCLUDE = [
   '**/package-lock.json',
   '**/yarn.lock',
   '**/pnpm-lock.yaml',
-  // eslint-disable-next-line @cspell/spellchecker
   '**/bun.lockb',
 
   '**/output',

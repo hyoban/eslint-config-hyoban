@@ -4,15 +4,10 @@ import type { Linter } from 'eslint'
 import { isPackageExists } from 'local-pkg'
 import { readPackageUp } from 'read-package-up'
 
-import type { RuleOptions } from '../eslint-typegen'
 import { DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
-
-type ExtractGeneric<Type> = Type extends Array<infer X> ? X : never
-export type CSpellOption = Exclude<ExtractGeneric<RuleOptions['@cspell/spellchecker']>, Linter.RuleLevel | undefined>
 
 /// keep-sorted
 export type Options = {
-  cspell?: Partial<CSpellOption> | boolean
   fileCase?: 'camelCase' | 'snakeCase' | 'kebabCase' | 'pascalCase' | false
   filesDisableTypeChecking?: string[]
   ignoreFiles?: string[]
@@ -43,7 +38,6 @@ export async function mergeDefaultOptions(
 
   /// keep-sorted
   const defaultOptions: Required<Options> = {
-    cspell: false,
     fileCase: false,
     filesDisableTypeChecking: [],
     ignoreFiles: DEFAULT_IGNORE_FILES,
@@ -75,7 +69,6 @@ export async function mergeDefaultOptions(
         hasTailwindCSS
           ? {
               tailwindcss: {
-                // eslint-disable-next-line @cspell/spellchecker
                 callees: ['classnames', 'clsx', 'ctl', 'cn'],
               },
             }
