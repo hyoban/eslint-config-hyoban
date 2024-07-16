@@ -14,7 +14,7 @@ const plugins = await flatConfigsToPlugins(
         },
       },
     },
-    ...(await defineConfig({ react: 'vite', strict: true, typeChecked: true, cspell: true, tailwindCSS: true })),
+    ...(await defineConfig({ react: 'vite', strict: true, typeChecked: true, tailwindCSS: true })),
   ],
 )
 const dts = await pluginsToRulesDTS(plugins)
