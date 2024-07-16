@@ -3,7 +3,7 @@ import pluginUnicorn from 'eslint-plugin-unicorn'
 
 import type { Options } from '../option'
 
-export function unicornConfigs({ fileCase, strict, preferESM }: Required<Options>) {
+export function unicornConfigs({ fileCase, strict, preferESM, formatting }: Required<Options>) {
   return [
     pluginUnicorn.configs[strict ? 'flat/all' : 'flat/recommended'],
     [
@@ -27,6 +27,14 @@ export function unicornConfigs({ fileCase, strict, preferESM }: Required<Options
       !preferESM && {
         rules: {
           'unicorn/prefer-module': 'off',
+        },
+      },
+      !formatting && {
+        rules: {
+          'unicorn/template-indent': 'off',
+          'unicorn/empty-brace-spaces': 'off',
+          'unicorn/no-nested-ternary': 'off',
+          'unicorn/number-literal-case': 'off',
         },
       },
       {
