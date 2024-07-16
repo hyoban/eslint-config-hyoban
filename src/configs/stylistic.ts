@@ -4,13 +4,43 @@ import pluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
 import typescriptEslint from 'typescript-eslint'
 
-import { GLOB_TS_SRC } from '../consts'
+import { GLOB_JSX_SRC, GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
 import type { ConfigArray } from '../utils'
 
 function formattingConfigs({ formatting, lessOpinionated }: Required<Options>): ConfigArray {
   if (!formatting) {
     return []
+  }
+
+  const jsxIgnoreNodes = [
+    'TemplateLiteral *',
+    'TSUnionType',
+    'TSIntersectionType',
+    'TSTypeParameterInstantiation',
+    'FunctionExpression > .params[decorators.length > 0]',
+    'FunctionExpression > .params > :matches(Decorator, :not(:first-child))',
+  ]
+
+  const nonJsxIgnoreNodes = [
+    'JSXOpeningElement',
+    'JSXClosingElement',
+  ]
+
+  const basicIndentRuleOptions = {
+    ArrayExpression: 1,
+    CallExpression: { arguments: 1 },
+    flatTernaryExpressions: false,
+    FunctionDeclaration: { body: 1, parameters: 1 },
+    FunctionExpression: { body: 1, parameters: 1 },
+    ignoreComments: false,
+    ImportDeclaration: 1,
+    MemberExpression: 1,
+    ObjectExpression: 1,
+    offsetTernaryExpressions: true,
+    outerIIFEBody: 1,
+    SwitchCase: 1,
+    VariableDeclarator: 1,
   }
 
   return [
@@ -36,6 +66,14 @@ function formattingConfigs({ formatting, lessOpinionated }: Required<Options>): 
 
         '@stylistic/no-tabs': 'off',
         '@stylistic/jsx-indent-props': 'off',
+        '@stylistic/indent': [
+          'error',
+          formatting.indent,
+          {
+            ...basicIndentRuleOptions,
+            ignoredNodes: [...jsxIgnoreNodes, ...nonJsxIgnoreNodes],
+          },
+        ],
 
         ...(lessOpinionated
           ? {
@@ -46,6 +84,19 @@ function formattingConfigs({ formatting, lessOpinionated }: Required<Options>): 
               'antfu/if-newline': 'error',
             }
         ),
+      },
+    },
+    {
+      files: GLOB_JSX_SRC,
+      rules: {
+        '@stylistic/indent': [
+          'error',
+          formatting.indent,
+          {
+            ...basicIndentRuleOptions,
+            ignoredNodes: jsxIgnoreNodes,
+          },
+        ],
       },
     },
   ]
