@@ -6,12 +6,15 @@ import * as parserJsonc from 'jsonc-eslint-parser'
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC, GLOB_SHOULD_BE_JSONC } from '../consts'
 import type { Options } from '../option'
 
-export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig[] {
+function formattingConfigs({ formatting }: Required<Options>): Linter.FlatConfig[] {
+  if (!formatting)
+    return []
+
   const jsonFormateRules: Linter.RulesRecord = {
     'jsonc/array-bracket-spacing': ['error', 'never'],
     'jsonc/comma-dangle': ['error', 'never'],
     'jsonc/comma-style': ['error', 'last'],
-    'jsonc/indent': ['error', stylistic.indent ?? 2],
+    'jsonc/indent': ['error', formatting.indent ?? 2],
     'jsonc/key-spacing': ['error', { afterColon: true, beforeColon: false }],
     'jsonc/object-curly-spacing': ['error', 'always'],
     'jsonc/quote-props': 'error',
@@ -20,18 +23,6 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
   }
 
   return [
-    {
-      name: 'json/setup',
-      files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
-      /// keep-sorted
-      plugins: {
-        'jsonc': pluginJsonc as unknown as ESLint.Plugin,
-        'package-json': packageJson.plugins['package-json'] as ESLint.Plugin,
-      },
-      languageOptions: {
-        parser: parserJsonc,
-      },
-    },
     {
       name: 'json/json',
       files: [GLOB_JSON],
@@ -57,6 +48,24 @@ export function jsonConfigs({ stylistic }: Required<Options>): Linter.FlatConfig
         ...jsonFormateRules,
       } as Linter.FlatConfig['rules'],
     },
+  ]
+}
+
+export function jsonConfigs(options: Required<Options>): Linter.FlatConfig[] {
+  return [
+    {
+      name: 'json/setup',
+      files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
+      /// keep-sorted
+      plugins: {
+        'jsonc': pluginJsonc as unknown as ESLint.Plugin,
+        'package-json': packageJson.plugins['package-json'] as ESLint.Plugin,
+      },
+      languageOptions: {
+        parser: parserJsonc,
+      },
+    },
+    ...formattingConfigs(options),
     {
       ...packageJson,
       rules: {

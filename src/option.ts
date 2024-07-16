@@ -10,6 +10,7 @@ import { DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
 export type Options = {
   fileCase?: 'camelCase' | 'snakeCase' | 'kebabCase' | 'pascalCase' | false
   filesDisableTypeChecking?: string[]
+  formatting?: false | Omit<StylisticCustomizeOptions, 'flat' | 'pluginName'> & { lineBreak?: 'after' | 'before' }
   ignoreFiles?: string[]
   ignores?: string[]
   lessOpinionated?: boolean
@@ -19,7 +20,6 @@ export type Options = {
   react?: 'vite' | 'remix' | 'next' | boolean
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   strict?: boolean
-  stylistic?: Omit<StylisticCustomizeOptions, 'flat' | 'pluginName'> & { lineBreak?: 'after' | 'before' }
   tailwindCSS?: boolean | { order: boolean }
   tsconfigRootDir?: string
   typeChecked?: boolean | 'essential'
@@ -40,6 +40,11 @@ export async function mergeDefaultOptions(
   const defaultOptions: Required<Options> = {
     fileCase: false,
     filesDisableTypeChecking: [],
+    formatting: {
+      indent: 2,
+      quotes: 'single',
+      semi: false,
+    },
     ignoreFiles: DEFAULT_IGNORE_FILES,
     ignores: GLOB_EXCLUDE,
     lessOpinionated: false,
@@ -76,11 +81,6 @@ export async function mergeDefaultOptions(
       ),
     },
     strict: false,
-    stylistic: {
-      indent: 2,
-      quotes: 'single',
-      semi: false,
-    },
     tailwindCSS: hasTailwindCSS,
     tsconfigRootDir: process.cwd(),
     typeChecked: false,

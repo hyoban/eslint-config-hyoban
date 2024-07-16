@@ -8,7 +8,11 @@ import { GLOB_JSX_SRC, GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
 import type { ConfigArray } from '../utils'
 
-export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Required<Options>): ConfigArray {
+function formattingConfigs({ formatting, lessOpinionated }: Required<Options>): ConfigArray {
+  if (!formatting) {
+    return []
+  }
+
   const jsxIgnoreNodes = [
     'TemplateLiteral *',
     'TSUnionType',
@@ -40,6 +44,68 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
   }
 
   return [
+    {
+      name: '@stylistic/shared',
+      files: undefined,
+      ...pluginStylistic.configs.customize(formatting) as Linter.FlatConfig,
+    },
+    {
+      name: '@stylistic/customize',
+      files: undefined,
+      plugins: {
+        'antfu': pluginAntfu,
+        'hyoban': pluginHyoban as unknown as ESLint.Plugin,
+        '@stylistic': pluginStylistic as unknown as ESLint.Plugin,
+      },
+      rules: {
+        '@stylistic/max-statements-per-line': 'off',
+        '@stylistic/multiline-ternary': ['error', 'always-multiline', { ignoreJSX: true }],
+        '@stylistic/operator-linebreak': ['error', formatting.lineBreak ?? 'before'],
+        'antfu/consistent-list-newline': 'error',
+        'hyoban/jsx-attribute-spacing': 'error',
+
+        '@stylistic/no-tabs': 'off',
+        '@stylistic/jsx-indent-props': 'off',
+        '@stylistic/indent': [
+          'error',
+          formatting.indent,
+          {
+            ...basicIndentRuleOptions,
+            ignoredNodes: [...jsxIgnoreNodes, ...nonJsxIgnoreNodes],
+          },
+        ],
+
+        ...(lessOpinionated
+          ? {
+              curly: ['error', 'multi-line', 'consistent'],
+            }
+          : {
+              'antfu/curly': 'error',
+              'antfu/if-newline': 'error',
+            }
+        ),
+      },
+    },
+    {
+      files: GLOB_JSX_SRC,
+      rules: {
+        '@stylistic/indent': [
+          'error',
+          formatting.indent,
+          {
+            ...basicIndentRuleOptions,
+            ignoredNodes: jsxIgnoreNodes,
+          },
+        ],
+      },
+    },
+  ]
+}
+
+export function stylisticConfigs(options: Required<Options>): ConfigArray {
+  const { typeChecked, lessOpinionated } = options
+  return [
+    ...formattingConfigs(options),
     (typeChecked === true
       ? typescriptEslint.configs.stylisticTypeChecked
       : typescriptEslint.configs.stylistic) as Linter.FlatConfig,
@@ -48,11 +114,11 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
       files: GLOB_TS_SRC,
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/consistent-type-definitions': 'off',
 
         ...(lessOpinionated
           ? {
               '@typescript-eslint/array-type': 'off',
-              '@typescript-eslint/consistent-type-definitions': 'off',
             }
           : {
               '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
@@ -66,11 +132,6 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
       rules: {
         '@typescript-eslint/prefer-nullish-coalescing': 'off',
       },
-    },
-    {
-      name: '@stylistic/shared',
-      files: undefined,
-      ...pluginStylistic.configs.customize(stylistic) as Linter.FlatConfig,
     },
     {
       name: '@stylistic/customize',
@@ -101,47 +162,13 @@ export function stylisticConfigs({ stylistic, typeChecked, lessOpinionated }: Re
         ],
         'prefer-template': 'error',
         '@stylistic/jsx-self-closing-comp': ['error', { component: true, html: true }],
-        '@stylistic/max-statements-per-line': 'off',
-        '@stylistic/multiline-ternary': ['error', 'always-multiline', { ignoreJSX: true }],
-        '@stylistic/operator-linebreak': ['error', stylistic.lineBreak ?? 'before'],
-        'antfu/consistent-list-newline': 'error',
-        'hyoban/jsx-attribute-spacing': 'error',
-
-        '@stylistic/no-tabs': 'off',
-        '@stylistic/jsx-indent-props': 'off',
-        '@stylistic/indent': [
-          'error',
-          stylistic.indent,
-          {
-            ...basicIndentRuleOptions,
-            ignoredNodes: [...jsxIgnoreNodes, ...nonJsxIgnoreNodes],
-          },
-        ],
-
         ...(lessOpinionated
-          ? {
-              curly: ['error', 'multi-line', 'consistent'],
-            }
+          ? {}
           : {
-              'antfu/curly': 'error',
-              'antfu/if-newline': 'error',
               'antfu/top-level-function': 'error',
               'hyoban/prefer-early-return': 'error',
             }
         ),
-      },
-    },
-    {
-      files: GLOB_JSX_SRC,
-      rules: {
-        '@stylistic/indent': [
-          'error',
-          stylistic.indent,
-          {
-            ...basicIndentRuleOptions,
-            ignoredNodes: jsxIgnoreNodes,
-          },
-        ],
       },
     },
   ]
