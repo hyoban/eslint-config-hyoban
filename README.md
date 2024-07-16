@@ -16,7 +16,7 @@ Read more about why I use ESLint for linting and formatting on [xLog](https://hy
 | [import-x] ✅      | [jsonc] ✅       | [compiler] ✅ | [command] ✅        | [@antfu/eslint-config] |
 | [unused-import] ✅ | [yml]            | [jsx-a11y]    | [regexp] ✅         |                        |
 | [n]                | [perfectionist]  | [next]        | [package-json] ✅   |                        |
-| [compat]           | [format]         | [jsx-nesting] | [cspell] ✅         |                        |
+| [compat]           | [format]         | [jsx-nesting] | [cspell]            |                        |
 
 ## Usage
 
@@ -125,8 +125,8 @@ If you need Prettier
     { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
     { "rule": "simple-import-sort/*", "severity": "off" },
     { "rule": "prefer-const", "severity": "off" },
-    { "rule": "unused-imports/no-unused-imports", "severity": "off" }
-    { "rule": "tailwindcss/classnames-order", "severity": "off"}
+    { "rule": "unused-imports/no-unused-imports", "severity": "off" },
+    { "rule": "tailwindcss/classnames-order", "severity": "off" }
   ],
 
   // You can also silent all auto fixable rules
