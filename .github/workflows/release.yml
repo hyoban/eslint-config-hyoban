@@ -29,12 +29,10 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
-          run_install: |
-            - args: [--frozen-lockfile]
-            - args: [--global, release-it, release-it-pnpm]
+          run_install: true
 
       - name: Release
-        run: release-it --verbose
+        run: pnpm run release --verbose
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
