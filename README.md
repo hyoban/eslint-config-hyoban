@@ -52,7 +52,7 @@ export default defineConfig()
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "*": "eslint --fix"
