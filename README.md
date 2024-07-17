@@ -119,17 +119,6 @@ export default defineConfig({
   // You can also silent all auto fixable rules
   "eslint.rules.customizations": [
     { "rule": "*", "fixable": true, "severity": "off" }
-  ],
-
-  // You don't need this if you use ESLint VSCode(v3.0.7+)
-  "eslint.experimental.useFlatConfig": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "jsonc"
   ]
 }
 ```
