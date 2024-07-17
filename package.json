@@ -4,7 +4,11 @@
   "version": "3.0.0-beta.29",
   "packageManager": "pnpm@9.5.0",
   "description": "Hyoban's ESLint Config",
-  "author": "Stephen Zhou <hi@hyoban.cc>",
+  "author": {
+    "name": "Stephen Zhou",
+    "email": "hi@hyoban.cc",
+    "url": "https://hyoban.cc"
+  },
   "license": "MIT",
   "homepage": "https://github.com/hyoban/eslint-config-hyoban#readme",
   "repository": {
@@ -12,7 +16,9 @@
     "url": "git+https://github.com/hyoban/eslint-config-hyoban.git"
   },
   "bugs": "https://github.com/hyoban/eslint-config-hyoban/issues",
-  "keywords": [],
+  "keywords": [
+    "eslint-config"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
