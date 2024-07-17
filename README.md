@@ -40,26 +40,6 @@ export default defineConfig()
 ```
 
 > [!TIP]
-> If you find that saving files in the editor is a bit laggy, try turning off rules that require type-checking while in the editor.
-
-```ts
-// @ts-check
-import { defineConfig } from 'eslint-config-hyoban'
-
-const isInEditor = !!(
-  (process.env.VSCODE_PID ||
-    process.env.VSCODE_CWD ||
-    process.env.JETBRAINS_IDE ||
-    process.env.VIM) &&
-  !process.env.CI
-)
-
-export default defineConfig({
-  typeChecked: isInEditor ? false : 'essential',
-})
-```
-
-> [!TIP]
 > You can customize the preset by passing options according to [available options](https://github.com/hyoban/eslint-config-hyoban/blob/main/src/option.ts)
 
 `package.json`
