@@ -38,7 +38,6 @@
   "scripts": {
     "build": "pnpm typegen && bunchee --no-dts && tsup --dts-resolve --dts-only",
     "build:inspector": "npx @eslint/config-inspector build",
-    "cpellgen": "tsx scripts/cspellgen.ts",
     "dev": "pnpm typegen && npx @eslint/config-inspector",
     "lint": "eslint",
     "lint:fix": "eslint --fix",

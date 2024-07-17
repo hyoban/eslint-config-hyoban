@@ -1,5 +1,5 @@
 import type { Linter } from 'eslint'
-import pluginUnicorn from 'eslint-plugin-unicorn'
+import * as pluginUnicorn from 'eslint-plugin-unicorn'
 
 import type { Options } from '../option'
 
@@ -8,15 +8,10 @@ export function unicornConfigs({ fileCase, strict, preferESM, formatting }: Requ
     pluginUnicorn.configs[strict ? 'flat/all' : 'flat/recommended'],
     [
       strict
-        ? {
-            rules: {
-              'unicorn/no-keyword-prefix': 'off',
-            },
-          }
+        ? {}
         : {
             /// keep-sorted
             rules: {
-              'unicorn/consistent-function-scoping': 'warn',
               'unicorn/no-negation-in-equality-check': 'off',
               'unicorn/prefer-add-event-listener': 'off',
               'unicorn/prefer-array-some': 'off',
@@ -39,8 +34,18 @@ export function unicornConfigs({ fileCase, strict, preferESM, formatting }: Requ
       },
       {
         name: 'unicorn/custom',
-        /// keep-sorted
         rules: {
+          // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1109#issuecomment-782689255
+          'unicorn/consistent-destructuring': 'off',
+          // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2341
+          'unicorn/escape-case': 'off',
+          'unicorn/no-hex-escape': 'off',
+          // Buggy
+          'unicorn/custom-error-definition': 'off',
+          'unicorn/consistent-function-scoping': 'off',
+          // Annoying
+          'unicorn/no-keyword-prefix': 'off',
+
           'unicorn/catch-error-name': 'off',
           'unicorn/filename-case': !fileCase ? 'off' : ['error', { case: fileCase }],
           'unicorn/import-style': 'off',
