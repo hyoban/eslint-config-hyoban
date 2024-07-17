@@ -21,14 +21,14 @@ Read more about why I use ESLint for linting and formatting on [xLog](https://hy
 ## Usage
 
 > [!TIP]
-> You may don't need lint-staged and simple-git-hooks if you don't ignore auto-fix rules in editor.
+> You may not need `lint-staged` and `simple-git-hooks` if you don't ignore auto-fix for rules in the editor.
 
 ```sh
 ni -D eslint eslint-config-hyoban lint-staged simple-git-hooks
 ```
 
 > [!TIP]
-> You can install nightly version from [pkg.pr.new](https://github.com/stackblitz-labs/pkg.pr.new), for example `ni -D https://pkg.pr.new/hyoban/eslint-config-hyoban@{commit}`.
+> You can install the nightly version from [pkg.pr.new](https://github.com/stackblitz-labs/pkg.pr.new), for example, `ni -D https://pkg.pr.new/hyoban/eslint-config-hyoban@{commit}`.
 
 `eslint.config.js` or `eslint.config.mjs`
 
@@ -40,7 +40,7 @@ export default defineConfig()
 ```
 
 > [!TIP]
-> If you find that saving files in the editor is a bit laggy, try turning off rules that require type checking while in the editor.
+> If you find that saving files in the editor is a bit laggy, try turning off rules that require type-checking while in the editor.
 
 ```ts
 // @ts-check
@@ -81,7 +81,7 @@ export default defineConfig({
 ```
 
 > [!WARNING]
-> If your ESLint version is less than `9.0.0`, you have to use `eslint .` instead of `eslint`.
+> If your ESLint version is less than `9.0.0`, use `eslint .` instead of `eslint`.
 
 `.vscode/settings.json` for VSCode.
 
