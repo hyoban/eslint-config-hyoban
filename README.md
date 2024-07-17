@@ -82,24 +82,11 @@ export default defineConfig({
 > [!WARNING]
 > If your ESLint version is less than `9.0.0`, you have to use `eslint .` instead of `eslint`.
 
-If you need Prettier
-
-```json
-{
-  "scripts": {
-    "lint": "prettier --list-different . && eslint",
-    "lint:fix": "prettier --list-different --write . && eslint --fix"
-  }
-}
-```
-
-> [!TIP]
-> You can use [prettier-config-hyoban](https://github.com/hyoban/prettier-config-hyoban) for Prettier to avoid conflicts.
-
 `.vscode/settings.json` for VSCode.
 
 ```jsonc
 {
+  // You shouldn't use formatter with this ESLint config
   "[javascript][javascriptreact][typescript][typescriptreact][json][jsonc]": {
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
@@ -146,22 +133,6 @@ If you need Prettier
   ]
 }
 ```
-
-`.zed/settings.json` for Zed, read more at [Zed's documentation](https://zed.dev/docs/configuring-zed#formatter) and [related PR](https://github.com/zed-industries/zed/pull/10121).
-
-```jsonc
-{
-  "formatter": {
-    "code_actions": {
-      "source.fixAll.eslint": true
-    }
-  }
-}
-```
-
-## Tips
-
-- [Auto fix for Pull Request](https://github.com/hyoban/eslint-config-hyoban/blob/main/.github/workflows/format.yml)
 
 [npm-version-src]: https://img.shields.io/npm/v/eslint-config-hyoban?style=flat&colorA=080f12&colorB=1fa669
 [npm-version-href]: https://npmjs.com/package/eslint-config-hyoban
