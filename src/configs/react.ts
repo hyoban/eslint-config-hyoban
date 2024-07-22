@@ -117,7 +117,11 @@ export function reactConfigs({
                       'loader',
                       'action',
                     ]
-                  : undefined),
+                  : react === 'expo'
+                    ? [
+                        'unstable_settings',
+                      ]
+                    : undefined),
           },
         ],
       },

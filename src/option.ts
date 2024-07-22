@@ -17,7 +17,7 @@ export type Options = {
   preferESM?: boolean
   project?: string[] | string | boolean | null
   projectService?: boolean
-  react?: 'vite' | 'remix' | 'next' | boolean
+  react?: 'vite' | 'remix' | 'next' | 'expo' | boolean
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   strict?: boolean
   tailwindCSS?: boolean | { order: boolean }
@@ -33,6 +33,7 @@ export async function mergeDefaultOptions(
   const hasVite = isPackageExists('vite')
   const hasRemix = isPackageExists('remix')
   const hasNext = isPackageExists('next')
+  const hasExpo = isPackageExists('expo')
 
   const hasTailwindCSS = isPackageExists('tailwindcss')
 
@@ -54,7 +55,7 @@ export async function mergeDefaultOptions(
     preferESM: packageJson?.packageJson.type === 'module',
     project: !!options?.typeChecked,
     projectService: false,
-    react: hasNext ? 'next' : hasRemix ? 'remix' : (hasVite && hasReact) ? 'vite' : hasReact,
+    react: hasNext ? 'next' : hasRemix ? 'remix' : hasExpo ? 'expo' : (hasVite && hasReact) ? 'vite' : hasReact,
     restrictedSyntax: [
       'DebuggerStatement',
       'LabeledStatement',
