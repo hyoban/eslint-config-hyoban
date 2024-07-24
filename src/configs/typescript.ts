@@ -42,7 +42,7 @@ export function typeScriptConfigs({
         rules: {
           'no-use-before-define': 'off',
 
-          '@typescript-eslint/consistent-type-imports': 'error',
+          '@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
           '@typescript-eslint/no-import-type-side-effects': 'error',
           // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
           '@typescript-eslint/method-signature-style': ['error', 'property'],
