@@ -38,20 +38,20 @@ export const defu = createDefu((obj, key, value) => {
   }
 })
 
-type CreateFlatConfig = () => Awaitable<MaybeArray<Linter.FlatConfig> | undefined>
+type CreateFlatConfig = () => Awaitable<MaybeArray<Linter.Config> | undefined>
 
 export type ConfigArray = Array<
   | undefined
   | null
   | false
-  | MaybeArray<Awaitable<Linter.FlatConfig | undefined | null | false>>
+  | MaybeArray<Awaitable<Linter.Config | undefined | null | false>>
   | CreateFlatConfig
 >
 
 export async function config(
   options: Required<Options>,
   ...configs: ConfigArray
-): Promise<Linter.FlatConfig[]> {
+): Promise<Linter.Config[]> {
   const { ignoreFiles, ignores } = options
   const gitignore = await interopDefault(import('eslint-config-flat-gitignore'))
   const globalIgnores = defu(
@@ -91,8 +91,8 @@ export async function config(
 }
 
 async function mergeConfigs(
-  _c: MaybeArray<Awaitable<Linter.FlatConfig | undefined | null | false>>,
-): Promise<Linter.FlatConfig | undefined> {
+  _c: MaybeArray<Awaitable<Linter.Config | undefined | null | false>>,
+): Promise<Linter.Config | undefined> {
   const c = await _c
 
   if (!c)
@@ -105,9 +105,9 @@ async function mergeConfigs(
 }
 
 function withFiles(
-  config: Linter.FlatConfig,
-): Linter.FlatConfig {
-  return defu<Linter.FlatConfig, Linter.FlatConfig[]>(
+  config: Linter.Config,
+): Linter.Config {
+  return defu<Linter.Config, Linter.Config[]>(
     config,
     'files' in config ? {} : { files: GLOB_SRC },
   )

@@ -65,6 +65,6 @@ export function unicornConfigs({ fileCase, strict, preferESM, formatting }: Requ
           'unicorn/prevent-abbreviations': 'off',
         },
       },
-    ] satisfies Array<Linter.FlatConfig | boolean>,
+    ] satisfies Array<Linter.Config | boolean>,
   ]
 }

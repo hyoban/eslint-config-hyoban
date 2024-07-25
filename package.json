@@ -55,7 +55,7 @@
     "typegen": "tsx scripts/typegen.ts"
   },
   "peerDependencies": {
-    "eslint": "^8.57.0 || ^9.0.0",
+    "eslint": "^9.0.0",
     "typescript": ">=4.8.4"
   },
   "peerDependenciesMeta": {
@@ -66,7 +66,7 @@
   "dependencies": {
     "@eslint-react/eslint-plugin": "^1.5.30",
     "@eslint/js": "^9.7.0",
-    "@types/eslint": "^8.56.11",
+    "@types/eslint": "^9.6.0",
     "defu": "^6.1.4",
     "eslint-config-flat-gitignore": "^0.1.8",
     "eslint-plugin-antfu": "^2.3.4",
@@ -81,7 +81,7 @@
     "eslint-plugin-regexp": "^2.6.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-tailwindcss": "^3.17.4",
-    "eslint-plugin-unicorn": "^54.0.0",
+    "eslint-plugin-unicorn": "^55.0.0",
     "eslint-plugin-unused-imports": "^4.0.1",
     "globals": "^15.8.0",
     "jsonc-eslint-parser": "^2.4.0",
@@ -102,7 +102,7 @@
     "release-it": "^17.6.0",
     "release-it-pnpm": "^4.6.3",
     "simple-git-hooks": "^2.11.1",
-    "tsup": "^8.2.2",
+    "tsup": "^8.2.3",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4",
     "vitest": "^2.0.4"

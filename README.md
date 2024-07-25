@@ -30,7 +30,7 @@ ni -D eslint eslint-config-hyoban lint-staged simple-git-hooks
 > [!TIP]
 > You can install the nightly version from [pkg.pr.new](https://github.com/stackblitz-labs/pkg.pr.new), for example, `ni -D https://pkg.pr.new/hyoban/eslint-config-hyoban@{commit}`.
 
-`eslint.config.js` or `eslint.config.mjs`
+`eslint.config.mjs`
 
 ```ts
 // @ts-check
@@ -59,9 +59,6 @@ export default defineConfig()
   }
 }
 ```
-
-> [!WARNING]
-> If your ESLint version is less than `9.0.0`, use `eslint .` instead of `eslint`.
 
 `.vscode/settings.json` for VSCode.
 

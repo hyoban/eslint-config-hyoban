@@ -3,7 +3,7 @@ import pluginAntfu from 'eslint-plugin-antfu'
 import * as pluginImport from 'eslint-plugin-import-x'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
-export function importConfig(): Linter.FlatConfig {
+export function importConfig(): Linter.Config {
   return {
     name: 'extend/import',
     plugins: {

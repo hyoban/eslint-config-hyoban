@@ -21,6 +21,6 @@ export function tailwindCSSConfig({ tailwindCSS }: Required<Options>) {
           'tailwindcss/classnames-order': 'off',
         },
       },
-    ] as Linter.FlatConfig[]
+    ] as Linter.Config[]
   }
 }

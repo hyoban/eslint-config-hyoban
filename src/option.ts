@@ -23,7 +23,7 @@ export type Options = {
   tailwindCSS?: boolean | { order: boolean }
   tsconfigRootDir?: string
   typeChecked?: boolean | 'essential'
-} & Pick<Linter.FlatConfig, 'linterOptions' | 'settings'>
+} & Pick<Linter.Config, 'linterOptions' | 'settings'>
 
 export async function mergeDefaultOptions(
   options?: Options,

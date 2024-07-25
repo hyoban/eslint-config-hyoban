@@ -6,7 +6,7 @@ import * as parserJsonc from 'jsonc-eslint-parser'
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC, GLOB_SHOULD_BE_JSONC } from '../consts'
 import type { Options } from '../option'
 
-function formattingConfigs({ formatting }: Required<Options>): Linter.FlatConfig[] {
+function formattingConfigs({ formatting }: Required<Options>): Linter.Config[] {
   if (!formatting)
     return []
 
@@ -30,7 +30,7 @@ function formattingConfigs({ formatting }: Required<Options>): Linter.FlatConfig
       rules: {
         ...pluginJsonc.configs['recommended-with-json'].rules,
         ...jsonFormateRules,
-      } as Linter.FlatConfig['rules'],
+      } as Linter.Config['rules'],
     },
     {
       name: 'json/jsonc',
@@ -38,7 +38,7 @@ function formattingConfigs({ formatting }: Required<Options>): Linter.FlatConfig
       rules: {
         ...pluginJsonc.configs['recommended-with-jsonc'].rules,
         ...jsonFormateRules,
-      } as Linter.FlatConfig['rules'],
+      } as Linter.Config['rules'],
     },
     {
       name: 'json/json5',
@@ -46,12 +46,12 @@ function formattingConfigs({ formatting }: Required<Options>): Linter.FlatConfig
       rules: {
         ...pluginJsonc.configs['recommended-with-json5'].rules,
         ...jsonFormateRules,
-      } as Linter.FlatConfig['rules'],
+      } as Linter.Config['rules'],
     },
   ]
 }
 
-export function jsonConfigs(options: Required<Options>): Linter.FlatConfig[] {
+export function jsonConfigs(options: Required<Options>): Linter.Config[] {
   return [
     {
       name: 'json/setup',
@@ -123,6 +123,6 @@ export function jsonConfigs(options: Required<Options>): Linter.FlatConfig[] {
           },
         ],
       },
-    } as Linter.FlatConfig,
+    } as Linter.Config,
   ]
 }

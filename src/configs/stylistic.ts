@@ -47,7 +47,7 @@ function formattingConfigs({ formatting, lessOpinionated }: Required<Options>): 
     {
       name: '@stylistic/shared',
       files: undefined,
-      ...pluginStylistic.configs.customize(formatting) as Linter.FlatConfig,
+      ...pluginStylistic.configs.customize(formatting) as Linter.Config,
     },
     {
       name: '@stylistic/customize',
@@ -108,7 +108,7 @@ export function stylisticConfigs(options: Required<Options>): ConfigArray {
     ...formattingConfigs(options),
     (typeChecked === true
       ? typescriptEslint.configs.stylisticTypeChecked
-      : typescriptEslint.configs.stylistic) as Linter.FlatConfig,
+      : typescriptEslint.configs.stylistic) as Linter.Config,
     {
       name: 'typescript-eslint/stylistic/custom',
       files: GLOB_TS_SRC,

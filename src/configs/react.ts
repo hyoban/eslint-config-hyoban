@@ -29,7 +29,7 @@ export function reactConfigs({
           'react-hooks': reactHooks,
           'react-refresh': reactRefresh,
         },
-      } satisfies Linter.FlatConfig
+      } satisfies Linter.Config
     },
     async () => {
       const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
@@ -39,7 +39,7 @@ export function reactConfigs({
         name: `react/${strict ? 'all' : 'recommended'}`,
         files: GLOB_TS_SRC,
         rules: config.rules,
-      } satisfies Linter.FlatConfig
+      } satisfies Linter.Config
     },
     () => {
       if (strict) {
@@ -54,7 +54,7 @@ export function reactConfigs({
             '@eslint-react/avoid-shorthand-boolean': 'off',
             '@eslint-react/avoid-shorthand-fragment': 'off',
           },
-        } satisfies Linter.FlatConfig
+        } satisfies Linter.Config
       }
       return {
         name: 'react/recommended/custom',
@@ -64,7 +64,7 @@ export function reactConfigs({
           '@eslint-react/no-unstable-context-value': 'warn',
           '@eslint-react/dom/no-dangerously-set-innerhtml': 'off',
         },
-      } satisfies Linter.FlatConfig
+      } satisfies Linter.Config
     },
     () => {
       if (!typeChecked)
@@ -80,7 +80,7 @@ export function reactConfigs({
         rules: {
           '@eslint-react/no-leaked-conditional-rendering': 'error',
         },
-      } satisfies Linter.FlatConfig
+      } satisfies Linter.Config
     },
     {
       name: 'react/official',
@@ -91,7 +91,7 @@ export function reactConfigs({
         'react-hooks/exhaustive-deps': 'warn',
         'react-hooks/rules-of-hooks': 'error',
       },
-    } satisfies Linter.FlatConfig,
+    } satisfies Linter.Config,
     {
       name: 'react/refresh',
       files: GLOB_JSX_SRC,
@@ -125,6 +125,6 @@ export function reactConfigs({
           },
         ],
       },
-    } satisfies Linter.FlatConfig,
+    } satisfies Linter.Config,
   ]
 }

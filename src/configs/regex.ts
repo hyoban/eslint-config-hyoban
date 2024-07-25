@@ -1,12 +1,12 @@
 import type { Linter } from 'eslint'
 import * as regexpPlugin from 'eslint-plugin-regexp'
 
-export function regexConfig(): Linter.FlatConfig[] {
+export function regexConfig(): Linter.Config[] {
   return [
-    regexpPlugin.configs['flat/recommended'] as Linter.FlatConfig,
+    regexpPlugin.configs['flat/recommended'] as Linter.Config,
     {
       name: 'regexp/recommended',
       rules: { 'unicorn/better-regex': 'off' },
-    } satisfies Linter.FlatConfig,
+    } satisfies Linter.Config,
   ]
 }

@@ -10,7 +10,7 @@ export function javaScriptConfigs({
   restrictedSyntax,
   linterOptions,
   settings,
-}: Required<Options>): [Linter.FlatConfig, Linter.FlatConfig[]] {
+}: Required<Options>): [Linter.Config, Linter.Config[]] {
   return [
     /// keep-sorted
     {

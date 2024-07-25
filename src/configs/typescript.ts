@@ -22,7 +22,7 @@ export function typeScriptConfigs({
         : typescriptEslint.configs.recommended)
 
   return [
-    typescriptEslint.configs.base as Linter.FlatConfig,
+    typescriptEslint.configs.base as Linter.Config,
     [
       ...typescriptPreset,
       typeChecked && {
@@ -34,7 +34,7 @@ export function typeScriptConfigs({
           },
         },
       },
-    ] as Linter.FlatConfig[],
+    ] as Linter.Config[],
     [
       {
         name: 'typescript-eslint/custom',
@@ -105,7 +105,7 @@ export function typeScriptConfigs({
               '@typescript-eslint/restrict-template-expressions': ['error', {}],
             },
           }),
-    ] as Linter.FlatConfig[],
+    ] as Linter.Config[],
     () => {
       if (filesDisableTypeChecking.length === 0)
         return
@@ -113,7 +113,7 @@ export function typeScriptConfigs({
       return {
         files: filesDisableTypeChecking,
         ...typescriptEslint.configs.disableTypeChecked,
-      } as Linter.FlatConfig
+      } as Linter.Config
     },
   ]
 }
