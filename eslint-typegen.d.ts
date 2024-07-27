@@ -10,12 +10,12 @@ declare module 'eslint' {
 
 export interface RuleOptions {
   /**
-   * enforce boolean attributes notation in JSX
+   * avoid using shorthand boolean attribute
    * @see https://eslint-react.xyz/docs/rules/avoid-shorthand-boolean
    */
   '@eslint-react/avoid-shorthand-boolean'?: Linter.RuleEntry<[]>
   /**
-   * enforce using fragment component instead of shorthand fragment syntax
+   * avoid using shorthand fragment syntax
    * @see https://eslint-react.xyz/docs/rules/avoid-shorthand-fragment
    */
   '@eslint-react/avoid-shorthand-fragment'?: Linter.RuleEntry<[]>
@@ -90,7 +90,7 @@ export interface RuleOptions {
    */
   '@eslint-react/dom/no-unsafe-target-blank'?: Linter.RuleEntry<[]>
   /**
-   * require all 'forwardRef' components include a 'ref' parameter
+   * require a 'ref' parameter to be set when using 'forwardRef'
    * @see https://eslint-react.xyz/docs/rules/ensure-forward-ref-using-ref
    */
   '@eslint-react/ensure-forward-ref-using-ref'?: Linter.RuleEntry<[]>
@@ -150,47 +150,47 @@ export interface RuleOptions {
    */
   '@eslint-react/no-access-state-in-setstate'?: Linter.RuleEntry<[]>
   /**
-   * disallow using Array index as key
+   * disallow using Array index as 'key'
    * @see https://eslint-react.xyz/docs/rules/no-array-index-key
    */
   '@eslint-react/no-array-index-key'?: Linter.RuleEntry<[]>
   /**
-   * disallow 'Children.count'
+   * disallow using 'Children.count'
    * @see https://eslint-react.xyz/docs/rules/no-children-count
    */
   '@eslint-react/no-children-count'?: Linter.RuleEntry<[]>
   /**
-   * disallow 'Children.forEach'
+   * disallow using 'Children.forEach'
    * @see https://eslint-react.xyz/docs/rules/no-children-for-each
    */
   '@eslint-react/no-children-for-each'?: Linter.RuleEntry<[]>
   /**
-   * disallow 'Children.map'
+   * disallow using 'Children.map'
    * @see https://eslint-react.xyz/docs/rules/no-children-map
    */
   '@eslint-react/no-children-map'?: Linter.RuleEntry<[]>
   /**
-   * disallow 'Children.only'
+   * disallow using 'Children.only'
    * @see https://eslint-react.xyz/docs/rules/no-children-only
    */
   '@eslint-react/no-children-only'?: Linter.RuleEntry<[]>
   /**
-   * disallow passing of 'children' as props
+   * disallow passing 'children' as props
    * @see https://eslint-react.xyz/docs/rules/no-children-prop
    */
   '@eslint-react/no-children-prop'?: Linter.RuleEntry<[]>
   /**
-   * disallow 'Children.toArray'
+   * disallow using 'Children.toArray'
    * @see https://eslint-react.xyz/docs/rules/no-children-to-array
    */
   '@eslint-react/no-children-to-array'?: Linter.RuleEntry<[]>
   /**
-   * disallow class component
+   * disallow using class components
    * @see https://eslint-react.xyz/docs/rules/no-class-component
    */
   '@eslint-react/no-class-component'?: Linter.RuleEntry<[]>
   /**
-   * disallow 'cloneElement'
+   * disallow using 'cloneElement'
    * @see https://eslint-react.xyz/docs/rules/no-clone-element
    */
   '@eslint-react/no-clone-element'?: Linter.RuleEntry<[]>
@@ -200,33 +200,39 @@ export interface RuleOptions {
    */
   '@eslint-react/no-comment-textnodes'?: Linter.RuleEntry<[]>
   /**
-   * disallow complicated conditional rendering
-   * @see https://eslint-react.xyz/docs/rules/no-complicated-conditional-rendering
+   * disallow complex conditional rendering
+   * @see https://eslint-react.xyz/docs/rules/no-complex-conditional-rendering
+   * @deprecated
+   */
+  '@eslint-react/no-complex-conditional-rendering'?: Linter.RuleEntry<[]>
+  /**
+   * disallow complex conditional rendering
+   * @see https://eslint-react.xyz/docs/rules/no-complex-conditional-rendering
    * @deprecated
    */
   '@eslint-react/no-complicated-conditional-rendering'?: Linter.RuleEntry<[]>
   /**
-   * disallow usage of 'componentWillMount'
+   * disallow using 'componentWillMount'
    * @see https://eslint-react.xyz/docs/rules/no-component-will-mount
    */
   '@eslint-react/no-component-will-mount'?: Linter.RuleEntry<[]>
   /**
-   * disallow usage of 'componentWillReceiveProps'
+   * disallow using 'componentWillReceiveProps'
    * @see https://eslint-react.xyz/docs/rules/no-component-will-receive-props
    */
   '@eslint-react/no-component-will-receive-props'?: Linter.RuleEntry<[]>
   /**
-   * disallow usage of 'componentWillUpdate'
+   * disallow using 'componentWillReceiveProps'
    * @see https://eslint-react.xyz/docs/rules/no-component-will-update
    */
   '@eslint-react/no-component-will-update'?: Linter.RuleEntry<[]>
   /**
-   * disallow 'createRef' in function components
+   * disallow using 'createRef' in function components
    * @see https://eslint-react.xyz/docs/rules/no-create-ref
    */
   '@eslint-react/no-create-ref'?: Linter.RuleEntry<[]>
   /**
-   * disallow the use of 'defaultProps' property in components
+   * disallow using 'defaultProps' property in components
    * @see https://eslint-react.xyz/docs/rules/no-default-props
    */
   '@eslint-react/no-default-props'?: Linter.RuleEntry<[]>
@@ -241,9 +247,8 @@ export interface RuleOptions {
    */
   '@eslint-react/no-duplicate-key'?: Linter.RuleEntry<[]>
   /**
-   * disallow spreading 'key' from objects.
+   * disallow implicit 'key' props
    * @see https://eslint-react.xyz/docs/rules/no-implicit-key
-   * @deprecated
    */
   '@eslint-react/no-implicit-key'?: Linter.RuleEntry<[]>
   /**
@@ -252,7 +257,7 @@ export interface RuleOptions {
    */
   '@eslint-react/no-leaked-conditional-rendering'?: Linter.RuleEntry<[]>
   /**
-   * require 'displayName' for memo and forwardRef components
+   * require 'displayName' for 'memo' and 'forwardRef' components
    * @see https://eslint-react.xyz/docs/rules/no-missing-component-display-name
    */
   '@eslint-react/no-missing-component-display-name'?: Linter.RuleEntry<[]>
@@ -262,32 +267,32 @@ export interface RuleOptions {
    */
   '@eslint-react/no-missing-key'?: Linter.RuleEntry<[]>
   /**
-   * disallow usage of unstable nested components
+   * disallow using unstable nested components
    * @see https://eslint-react.xyz/docs/rules/no-nested-components
    */
   '@eslint-react/no-nested-components'?: Linter.RuleEntry<[]>
   /**
-   * disallow the use of 'propTypes' property in components
+   * disallow using 'propTypes' property in components
    * @see https://eslint-react.xyz/docs/rules/no-prop-types
    */
   '@eslint-react/no-prop-types'?: Linter.RuleEntry<[]>
   /**
-   * disallow usage of 'shouldComponentUpdate' in class component extends 'React.PureComponent'
+   * disallow using 'shouldComponentUpdate' in class component extends 'React.PureComponent'
    * @see https://eslint-react.xyz/docs/rules/no-redundant-should-component-update
    */
   '@eslint-react/no-redundant-should-component-update'?: Linter.RuleEntry<[]>
   /**
-   * disallow 'setState' in 'componentDidMount'
+   * disallow using 'setState' in 'componentDidMount'
    * @see https://eslint-react.xyz/docs/rules/no-set-state-in-component-did-mount
    */
   '@eslint-react/no-set-state-in-component-did-mount'?: Linter.RuleEntry<[]>
   /**
-   * disallow 'setState' in 'componentDidUpdate'
+   * disallow using 'setState' in 'componentDidUpdate'
    * @see https://eslint-react.xyz/docs/rules/no-set-state-in-component-did-update
    */
   '@eslint-react/no-set-state-in-component-did-update'?: Linter.RuleEntry<[]>
   /**
-   * disallow 'setState' in 'componentWillUpdate'
+   * disallow using 'setState' in 'componentWillUpdate'
    * @see https://eslint-react.xyz/docs/rules/no-set-state-in-component-will-update
    */
   '@eslint-react/no-set-state-in-component-will-update'?: Linter.RuleEntry<[]>
@@ -297,17 +302,17 @@ export interface RuleOptions {
    */
   '@eslint-react/no-string-refs'?: Linter.RuleEntry<[]>
   /**
-   * disallow usage of 'UNSAFE_componentWillMount'
+   * disallow using 'UNSAFE_componentWillMount'
    * @see https://eslint-react.xyz/docs/rules/no-unsafe-component-will-mount
    */
   '@eslint-react/no-unsafe-component-will-mount'?: Linter.RuleEntry<[]>
   /**
-   * disallow usage of 'UNSAFE_componentWillReceiveProps'
+   * disallow using 'UNSAFE_componentWillReceiveProps'
    * @see https://eslint-react.xyz/docs/rules/no-unsafe-component-will-receive-props
    */
   '@eslint-react/no-unsafe-component-will-receive-props'?: Linter.RuleEntry<[]>
   /**
-   * disallow usage of 'UNSAFE_componentWillUpdate'
+   * disallow using 'UNSAFE_componentWillUpdate'
    * @see https://eslint-react.xyz/docs/rules/no-unsafe-component-will-update
    */
   '@eslint-react/no-unsafe-component-will-update'?: Linter.RuleEntry<[]>
@@ -317,7 +322,7 @@ export interface RuleOptions {
    */
   '@eslint-react/no-unstable-context-value'?: Linter.RuleEntry<[]>
   /**
-   * disallow usage of unstable value as default param in function component
+   * disallow using unstable value as default param in function component
    * @see https://eslint-react.xyz/docs/rules/no-unstable-default-props
    */
   '@eslint-react/no-unstable-default-props'?: Linter.RuleEntry<[]>
@@ -327,7 +332,7 @@ export interface RuleOptions {
    */
   '@eslint-react/no-unused-class-component-members'?: Linter.RuleEntry<[]>
   /**
-   * Prevents unused state of class component
+   * disallow unused state of class component
    * @see https://eslint-react.xyz/docs/rules/no-unused-state
    */
   '@eslint-react/no-unused-state'?: Linter.RuleEntry<[]>
@@ -342,17 +347,17 @@ export interface RuleOptions {
    */
   '@eslint-react/prefer-destructuring-assignment'?: Linter.RuleEntry<[]>
   /**
-   * enforce that component props are read-only
+   * enforce read-only props in components
    * @see https://eslint-react.xyz/docs/rules/prefer-read-only-props
    */
   '@eslint-react/prefer-read-only-props'?: Linter.RuleEntry<[]>
   /**
-   * enforce boolean attributes notation in JSX
+   * enforce using shorthand boolean attributes
    * @see https://eslint-react.xyz/docs/rules/prefer-shorthand-boolean
    */
   '@eslint-react/prefer-shorthand-boolean'?: Linter.RuleEntry<[]>
   /**
-   * enforce using fragment syntax instead of Fragment component
+   * enforce using fragment syntax instead of 'Fragment' component
    * @see https://eslint-react.xyz/docs/rules/prefer-shorthand-fragment
    */
   '@eslint-react/prefer-shorthand-fragment'?: Linter.RuleEntry<[]>
@@ -5637,7 +5642,7 @@ type StylisticPaddedBlocks = []|[(("always" | "never") | {
 }]
 // ----- @stylistic/padding-line-between-statements -----
 type _StylisticPaddingLineBetweenStatementsPaddingType = ("any" | "never" | "always")
-type _StylisticPaddingLineBetweenStatementsStatementType = (("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "interface" | "type" | "function-overload") | [("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "interface" | "type" | "function-overload"), ...(("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "interface" | "type" | "function-overload"))[]])
+type _StylisticPaddingLineBetweenStatementsStatementType = (("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "enum" | "interface" | "type" | "function-overload") | [("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "enum" | "interface" | "type" | "function-overload"), ...(("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "enum" | "interface" | "type" | "function-overload"))[]])
 type StylisticPaddingLineBetweenStatements = {
   blankLine: _StylisticPaddingLineBetweenStatementsPaddingType
   prev: _StylisticPaddingLineBetweenStatementsStatementType
