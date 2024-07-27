@@ -4,7 +4,7 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 
-Hyoban's ESLint Config, enable most of the recommended rules for `js`, `ts`, and `react`, use ESLint for formatting, and provide a lot of useful plugins.
+Hyoban's ESLint Config enables most of the recommended rules for `js`, `ts`, and `react`, uses ESLint for formatting, and provides a lot of useful plugins.
 
 Read more about why I use ESLint for linting and formatting on [xLog](https://hyoban.xlog.app/why-eslint).
 
