@@ -10,12 +10,10 @@ const plugins = await flatConfigsToPlugins(
     {
       plugins: {
         '': {
-          // @ts-expect-error - wait for type to be updated
           rules: Object.fromEntries(builtinRules.entries()),
         },
       },
     },
-    // @ts-expect-error - wait for type to be updated
     ...(await defineConfig({ react: 'vite', strict: true, typeChecked: true, tailwindCSS: true })),
   ],
 )
