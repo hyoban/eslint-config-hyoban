@@ -93,19 +93,19 @@
   "devDependencies": {
     "@eslint/config-inspector": "^0.5.2",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^20.14.12",
-    "bunchee": "^5.2.2",
+    "@types/node": "^20.14.14",
+    "bunchee": "^5.3.1",
     "eslint": "^9.8.0",
     "eslint-typegen": "^0.3.0",
-    "importx": "^0.3.11",
+    "importx": "^0.4.3",
     "lint-staged": "^15.2.7",
     "release-it": "^17.6.0",
     "release-it-pnpm": "^4.6.3",
     "simple-git-hooks": "^2.11.1",
-    "tsup": "^8.2.3",
-    "tsx": "^4.16.2",
+    "tsup": "^8.2.4",
+    "tsx": "^4.16.5",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.4"
+    "vitest": "^2.0.5"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

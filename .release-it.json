@@ -1,8 +1,6 @@
 {
   "plugins": {
-    "release-it-pnpm": {
-      "disableRelease": true
-    }
+    "release-it-pnpm": {}
   },
   "git": {
     "commitMessage": "chore: release v${version}",
