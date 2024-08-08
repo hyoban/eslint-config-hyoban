@@ -59,10 +59,6 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: attw --pack .
 
-      - name: Knip
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: knip
-
       - name: Publish latest version
         if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 'lts/*' }}
         run: pkg-pr-new publish
