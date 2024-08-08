@@ -11,7 +11,7 @@ Read more about why I use ESLint for linting and formatting on [xLog](https://hy
 | Basic              | Style            | React         | Others              | Tools                  |
 | ------------------ | ---------------- | ------------- | ------------------- | ---------------------- |
 | [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS] ✅   | [config-inspector] ✅  |
-| [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS]            | [eslint-types]         |
+| [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS] ✅         | [eslint-types]         |
 | [unicorn] ✅       | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅ | [eslint-typegen] ✅    |
 | [import-x] ✅      | [jsonc] ✅       | [compiler] ✅ | [command] ✅        | [@antfu/eslint-config] |
 | [unused-import] ✅ | [yml]            | [jsx-a11y]    | [regexp] ✅         |                        |

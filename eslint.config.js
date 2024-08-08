@@ -8,6 +8,7 @@ export default defineConfig(
     cspell: true,
     fileCase: 'kebabCase',
     tailwindCSS: { order: false },
+    unoCSS: true,
   },
   {
     name: 'project/disable',

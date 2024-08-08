@@ -4686,6 +4686,26 @@ export interface RuleOptions {
    */
   'unicorn/throw-new-error'?: Linter.RuleEntry<[]>
   /**
+   * Utilities in UnoCSS blocklist
+   * @see https://unocss.dev/integrations/eslint#rules
+   */
+  'unocss/blocklist'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce class compilation
+   * @see https://unocss.dev/integrations/eslint#rules
+   */
+  'unocss/enforce-class-compile'?: Linter.RuleEntry<UnocssEnforceClassCompile>
+  /**
+   * Order of UnoCSS utilities in class attribute
+   * @see https://unocss.dev/integrations/eslint#rules
+   */
+  'unocss/order'?: Linter.RuleEntry<[]>
+  /**
+   * Order of UnoCSS attributes
+   * @see https://unocss.dev/integrations/eslint#rules
+   */
+  'unocss/order-attributify'?: Linter.RuleEntry<[]>
+  /**
    * Disallow unused variables
    * @see https://github.com/sweepline/eslint-plugin-unused-imports/blob/master/docs/rules/no-unused-imports.md
    */
@@ -9081,6 +9101,11 @@ type UnicornTemplateIndent = []|[{
   functions?: string[]
   selectors?: string[]
   comments?: string[]
+}]
+// ----- unocss/enforce-class-compile -----
+type UnocssEnforceClassCompile = []|[{
+  prefix?: string
+  enableFix?: boolean
 }]
 // ----- unused-imports/no-unused-imports -----
 type UnusedImportsNoUnusedImports = []|[(("all" | "local") | {
