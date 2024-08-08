@@ -202,13 +202,11 @@ export interface RuleOptions {
   /**
    * disallow complex conditional rendering
    * @see https://eslint-react.xyz/docs/rules/no-complex-conditional-rendering
-   * @deprecated
    */
   '@eslint-react/no-complex-conditional-rendering'?: Linter.RuleEntry<[]>
   /**
    * disallow complex conditional rendering
    * @see https://eslint-react.xyz/docs/rules/no-complex-conditional-rendering
-   * @deprecated
    */
   '@eslint-react/no-complicated-conditional-rendering'?: Linter.RuleEntry<[]>
   /**
@@ -242,7 +240,7 @@ export interface RuleOptions {
    */
   '@eslint-react/no-direct-mutation-state'?: Linter.RuleEntry<[]>
   /**
-   * disallow duplicate keys in 'key' prop when rendering list
+   * disallow duplicate keys when rendering list
    * @see https://eslint-react.xyz/docs/rules/no-duplicate-key
    */
   '@eslint-react/no-duplicate-key'?: Linter.RuleEntry<[]>
@@ -262,7 +260,7 @@ export interface RuleOptions {
    */
   '@eslint-react/no-missing-component-display-name'?: Linter.RuleEntry<[]>
   /**
-   * require 'key' prop when rendering list
+   * require 'key' when rendering list
    * @see https://eslint-react.xyz/docs/rules/no-missing-key
    */
   '@eslint-react/no-missing-key'?: Linter.RuleEntry<[]>
