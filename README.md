@@ -103,8 +103,9 @@ export default defineConfig()
 
 ## Who is using?
 
-- [follow](https://github.com/RSSNext/follow)
+- [Follow](https://github.com/RSSNext/Follow)
 - [fisand](https://github.com/fisand)
+- [Shiro](https://github.com/Innei/Shiro)
 
 [npm-version-src]: https://img.shields.io/npm/v/eslint-config-hyoban?style=flat&colorA=080f12&colorB=1fa669
 [npm-version-href]: https://npmjs.com/package/eslint-config-hyoban
