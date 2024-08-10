@@ -1,14 +1,13 @@
-const { defineConfig } = await import('importx').then(x => x.import('./src/index.ts', import.meta.url))
+import { defineConfig } from './src/index'
 
 export default defineConfig(
   {
     react: 'vite',
     strict: true,
     typeChecked: true,
-    cspell: true,
     fileCase: 'kebabCase',
     tailwindCSS: { order: false },
-    unoCSS: true,
+    unocss: true,
   },
   {
     name: 'project/disable',

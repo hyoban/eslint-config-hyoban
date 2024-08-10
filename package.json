@@ -45,8 +45,8 @@
     "build": "pnpm typegen && bunchee --no-dts && tsup --dts-resolve --dts-only",
     "build:inspector": "npx @eslint/config-inspector build",
     "dev": "pnpm typegen && npx @eslint/config-inspector",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
+    "lint": "eslint --flag unstable_ts_config",
+    "lint:fix": "eslint --flag unstable_ts_config --fix",
     "prepare": "simple-git-hooks && pnpm run build",
     "prepublishOnly": "pnpm run build",
     "release": "release-it",
@@ -94,12 +94,12 @@
   "devDependencies": {
     "@eslint/config-inspector": "^0.5.2",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^20.14.14",
+    "@types/node": "^20.14.15",
     "@types/react": "^18.3.3",
     "bunchee": "^5.3.1",
-    "eslint": "^9.8.0",
+    "eslint": "^9.9.0",
     "eslint-typegen": "^0.3.0",
-    "importx": "^0.4.3",
+    "jiti": "^1.21.6",
     "lint-staged": "^15.2.8",
     "release-it": "^17.6.0",
     "release-it-pnpm": "^4.6.3",
@@ -114,6 +114,6 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*": "eslint --fix"
+    "*": "eslint --flag unstable_ts_config --fix"
   }
 }

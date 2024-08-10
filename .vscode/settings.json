@@ -6,18 +6,10 @@
     }
   },
 
-  "eslint.codeActionsOnSave.rules": [
-    "!prefer-const",
-    "!unused-imports/no-unused-imports",
-    "!@stylistic/jsx-self-closing-comp",
-    "!tailwindcss/classnames-order",
-    "*"
-  ],
-
-  "eslint.rules.customizations": [
-    { "rule": "*", "fixable": true, "severity": "off" }
-  ],
-
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  "eslint.options": {
+    "flags": ["unstable_ts_config"]
+  }
 }
