@@ -27,10 +27,16 @@ Read more about why I use ESLint for linting and formatting on [xLog](https://hy
 ni -D eslint eslint-config-hyoban lint-staged simple-git-hooks
 ```
 
+If you are using ESLint 9.9.0 and `eslint.config.ts`, you need to install `jiti`.
+
+```sh
+ni -D jiti
+```
+
 > [!TIP]
 > You can install the nightly version from [pkg.pr.new](https://github.com/stackblitz-labs/pkg.pr.new), for example, `ni -D https://pkg.pr.new/hyoban/eslint-config-hyoban@{commit}`.
 
-`eslint.config.mjs`
+`eslint.config.mjs` or `eslint.config.ts` if you are using ESLint 9.9.0.
 
 ```ts
 // @ts-check
@@ -60,6 +66,8 @@ export default defineConfig()
 }
 ```
 
+Use `eslint --flag unstable_ts_config` if you are using ESLint 9.9.0 and `eslint.config.ts`.
+
 `.vscode/settings.json` for VSCode.
 
 ```jsonc
@@ -70,6 +78,11 @@ export default defineConfig()
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     }
+  },
+
+  // If you are using ESLint 9.9.0 and eslint.config.ts
+  "eslint.options": {
+    "flags": ["unstable_ts_config"]
   },
 
   // If you do not want to auto fix some rules on save
