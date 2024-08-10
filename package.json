@@ -42,7 +42,7 @@
     "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
   },
   "scripts": {
-    "build": "pnpm typegen && bunchee --no-dts && tsup --dts-resolve --dts-only",
+    "build": "pnpm typegen && bunchee",
     "build:inspector": "npx @eslint/config-inspector build",
     "dev": "pnpm typegen && npx @eslint/config-inspector",
     "lint": "eslint --flag unstable_ts_config",
@@ -104,7 +104,6 @@
     "release-it": "^17.6.0",
     "release-it-pnpm": "^4.6.3",
     "simple-git-hooks": "^2.11.1",
-    "tsup": "^8.2.4",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4",
     "unocss": "^0.61.9",
