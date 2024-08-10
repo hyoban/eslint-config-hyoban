@@ -63,6 +63,8 @@ export function unicornConfigs({ fileCase, strict, preferESM, formatting }: Requ
           // https://github.com/orgs/web-infra-dev/discussions/10
           'unicorn/prefer-top-level-await': 'off',
           'unicorn/prevent-abbreviations': 'off',
+          // this is common in config files
+          'unicorn/no-anonymous-default-export': 'off',
         },
       },
     ] satisfies Array<Linter.Config | boolean>,
