@@ -61,6 +61,7 @@ function formattingConfigs({ formatting, lessOpinionated }: Required<Options>): 
         '@stylistic/max-statements-per-line': 'off',
         '@stylistic/multiline-ternary': ['error', 'always-multiline', { ignoreJSX: true }],
         '@stylistic/operator-linebreak': ['error', formatting.lineBreak ?? 'before'],
+        '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-line' }],
         'antfu/consistent-list-newline': 'error',
         'hyoban/jsx-attribute-spacing': 'error',
 

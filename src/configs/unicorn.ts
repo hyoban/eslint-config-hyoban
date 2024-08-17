@@ -15,6 +15,7 @@ export function unicornConfigs({ fileCase, strict, preferESM, formatting }: Requ
               'unicorn/no-negation-in-equality-check': 'off',
               'unicorn/prefer-add-event-listener': 'off',
               'unicorn/prefer-array-some': 'off',
+              'unicorn/prefer-math-trunc': 'off',
               'unicorn/prefer-ternary': 'off',
               'unicorn/text-encoding-identifier-case': 'off',
             },
