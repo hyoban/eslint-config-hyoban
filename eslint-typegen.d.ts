@@ -30,6 +30,11 @@ export interface RuleOptions {
    */
   '@eslint-react/debug/function-component'?: Linter.RuleEntry<[]>
   /**
+   * report all identifiers that are initialized from React.
+   * @see https://eslint-react.xyz/docs/rules/debug-is-from-react
+   */
+  '@eslint-react/debug/is-from-react'?: Linter.RuleEntry<[]>
+  /**
    * report all React Hooks
    * @see https://eslint-react.xyz/docs/rules/debug-react-hooks
    */
@@ -1204,7 +1209,7 @@ export interface RuleOptions {
    */
   '@typescript-eslint/no-unnecessary-type-constraint'?: Linter.RuleEntry<[]>
   /**
-   * Disallow type parameters that only appear once
+   * Disallow type parameters that aren't used multiple times
    * @see https://typescript-eslint.io/rules/no-unnecessary-type-parameters
    */
   '@typescript-eslint/no-unnecessary-type-parameters'?: Linter.RuleEntry<[]>
@@ -5660,7 +5665,7 @@ type StylisticPaddedBlocks = []|[(("always" | "never") | {
 }]
 // ----- @stylistic/padding-line-between-statements -----
 type _StylisticPaddingLineBetweenStatementsPaddingType = ("any" | "never" | "always")
-type _StylisticPaddingLineBetweenStatementsStatementType = (("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "enum" | "interface" | "type" | "function-overload") | [("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "enum" | "interface" | "type" | "function-overload"), ...(("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "enum" | "interface" | "type" | "function-overload"))[]])
+type _StylisticPaddingLineBetweenStatementsStatementType = (("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "ts-method" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "enum" | "interface" | "type" | "function-overload") | [("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "ts-method" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "enum" | "interface" | "type" | "function-overload"), ...(("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "ts-method" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "cjs-export" | "cjs-import" | "enum" | "interface" | "type" | "function-overload"))[]])
 type StylisticPaddingLineBetweenStatements = {
   blankLine: _StylisticPaddingLineBetweenStatementsPaddingType
   prev: _StylisticPaddingLineBetweenStatementsStatementType
@@ -6361,6 +6366,7 @@ type TypescriptEslintNoMisusedPromises = []|[{
   checksVoidReturn?: (boolean | {
     arguments?: boolean
     attributes?: boolean
+    inheritedMethods?: boolean
     properties?: boolean
     returns?: boolean
     variables?: boolean
