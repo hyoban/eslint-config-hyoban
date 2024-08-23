@@ -10,12 +10,12 @@ declare module 'eslint' {
 
 export interface RuleOptions {
   /**
-   * avoid using shorthand boolean attribute
+   * disallow using shorthand boolean attributes
    * @see https://eslint-react.xyz/docs/rules/avoid-shorthand-boolean
    */
   '@eslint-react/avoid-shorthand-boolean'?: Linter.RuleEntry<[]>
   /**
-   * avoid using shorthand fragment syntax
+   * disallow using shorthand fragment syntax
    * @see https://eslint-react.xyz/docs/rules/avoid-shorthand-fragment
    */
   '@eslint-react/avoid-shorthand-fragment'?: Linter.RuleEntry<[]>
@@ -364,6 +364,21 @@ export interface RuleOptions {
    * @see https://eslint-react.xyz/docs/rules/prefer-shorthand-fragment
    */
   '@eslint-react/prefer-shorthand-fragment'?: Linter.RuleEntry<[]>
+  /**
+   * enforce that every 'addEventListener' in a component or custom hook has a corresponding 'removeEventListener'.
+   * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-event-listener
+   */
+  '@eslint-react/web-api/no-leaked-event-listener'?: Linter.RuleEntry<[]>
+  /**
+   * enforce that every 'setInterval' in a component or custom hook has a corresponding 'clearInterval'.
+   * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-interval
+   */
+  '@eslint-react/web-api/no-leaked-interval'?: Linter.RuleEntry<[]>
+  /**
+   * enforce that every 'setTimeout' in a component or custom hook has a corresponding 'clearTimeout'.
+   * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-timeout
+   */
+  '@eslint-react/web-api/no-leaked-timeout'?: Linter.RuleEntry<[]>
   /**
    * Enforce linebreaks after opening and before closing array brackets
    * @see https://eslint.style/rules/js/array-bracket-newline
@@ -1472,7 +1487,7 @@ export interface RuleOptions {
    */
   '@typescript-eslint/unified-signatures'?: Linter.RuleEntry<TypescriptEslintUnifiedSignatures>
   /**
-   * Enforce typing arguments in `.catch()` callbacks as `unknown`
+   * Enforce typing arguments in Promise rejection callbacks as `unknown`
    * @see https://typescript-eslint.io/rules/use-unknown-in-catch-callback-variable
    */
   '@typescript-eslint/use-unknown-in-catch-callback-variable'?: Linter.RuleEntry<[]>
@@ -4761,6 +4776,9 @@ export interface RuleOptions {
 /* ======= Declarations ======= */
 // ----- @eslint-react/naming-convention/component-name -----
 type EslintReactNamingConventionComponentName = []|[(("PascalCase" | "CONSTANT_CASE") | {
+  allowAllCaps?: boolean
+  allowLeadingUnderscore?: boolean
+  allowNamespace?: boolean
   excepts?: string[]
   rule?: ("PascalCase" | "CONSTANT_CASE")
 })]
@@ -6751,24 +6769,25 @@ type AccessorPairs = []|[{
 // ----- antfu/consistent-list-newline -----
 type AntfuConsistentListNewline = []|[{
   ArrayExpression?: boolean
+  ArrayPattern?: boolean
   ArrowFunctionExpression?: boolean
   CallExpression?: boolean
   ExportNamedDeclaration?: boolean
   FunctionDeclaration?: boolean
   FunctionExpression?: boolean
   ImportDeclaration?: boolean
+  JSONArrayExpression?: boolean
+  JSONObjectExpression?: boolean
+  JSXOpeningElement?: boolean
   NewExpression?: boolean
   ObjectExpression?: boolean
+  ObjectPattern?: boolean
+  TSFunctionType?: boolean
   TSInterfaceDeclaration?: boolean
   TSTupleType?: boolean
   TSTypeLiteral?: boolean
   TSTypeParameterDeclaration?: boolean
   TSTypeParameterInstantiation?: boolean
-  ObjectPattern?: boolean
-  ArrayPattern?: boolean
-  JSXOpeningElement?: boolean
-  JSONArrayExpression?: boolean
-  JSONObjectExpression?: boolean
 }]
 // ----- antfu/indent-unindent -----
 type AntfuIndentUnindent = []|[{
