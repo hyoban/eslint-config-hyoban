@@ -143,7 +143,6 @@ export function stylisticConfigs(options: Required<Options>): ConfigArray {
         '@stylistic': pluginStylistic as unknown as ESLint.Plugin,
       },
       rules: {
-        'arrow-body-style': 'error',
         'object-shorthand': 'error',
         'prefer-destructuring': [
           'error',
