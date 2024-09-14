@@ -4960,6 +4960,7 @@ type StylisticIndent = []|[("tab" | number)]|[("tab" | number), {
   offsetTernaryExpressions?: boolean
   ignoredNodes?: string[]
   ignoreComments?: boolean
+  tabLength?: number
 }]
 // ----- @stylistic/indent-binary-ops -----
 type StylisticIndentBinaryOps = []|[(number | "tab")]
@@ -5331,6 +5332,10 @@ type StylisticKeywordSpacing = []|[{
       after?: boolean
     }
     return?: {
+      before?: boolean
+      after?: boolean
+    }
+    satisfies?: {
       before?: boolean
       after?: boolean
     }
@@ -5814,7 +5819,6 @@ type StylisticTypeAnnotationSpacing = []|[{
     parameter?: _StylisticTypeAnnotationSpacing_SpacingConfig
     property?: _StylisticTypeAnnotationSpacing_SpacingConfig
     returnType?: _StylisticTypeAnnotationSpacing_SpacingConfig
-    operator?: _StylisticTypeAnnotationSpacing_SpacingConfig
   }
 }]
 interface _StylisticTypeAnnotationSpacing_SpacingConfig {
@@ -6913,7 +6917,7 @@ type AccessorPairs = []|[{
 // ----- antfu/consistent-chaining -----
 type AntfuConsistentChaining = []|[{
   
-  allowFirstPropertyAccess?: boolean
+  allowLeadingPropertyAccess?: boolean
 }]
 // ----- antfu/consistent-list-newline -----
 type AntfuConsistentListNewline = []|[{
