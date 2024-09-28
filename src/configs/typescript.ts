@@ -71,6 +71,7 @@ export function typeScriptConfigs({
               '@typescript-eslint/ban-ts-comment': 'off',
               '@typescript-eslint/no-explicit-any': 'off',
               '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
+              '@typescript-eslint/no-deprecated': 'warn',
             },
           },
       !preferESM && {
