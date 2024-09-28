@@ -71,7 +71,6 @@ export function typeScriptConfigs({
               '@typescript-eslint/ban-ts-comment': 'off',
               '@typescript-eslint/no-explicit-any': 'off',
               '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
-              '@typescript-eslint/no-deprecated': 'warn',
             },
           },
       !preferESM && {
@@ -104,6 +103,7 @@ export function typeScriptConfigs({
                 },
               ],
               '@typescript-eslint/restrict-template-expressions': ['error', {}],
+              '@typescript-eslint/no-deprecated': 'warn',
             },
           }),
     ] as Linter.Config[],
