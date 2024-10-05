@@ -6,7 +6,6 @@ export function regexConfig(): Linter.Config[] {
     regexpPlugin.configs['flat/recommended'] as Linter.Config,
     {
       name: 'regexp/recommended',
-      rules: { 'unicorn/better-regex': 'off' },
     } satisfies Linter.Config,
   ]
 }

@@ -5,7 +5,7 @@ import type { Options } from '../option'
 
 export function unicornConfigs({ fileCase, strict, preferESM, formatting }: Required<Options>) {
   return [
-    pluginUnicorn.configs[strict ? 'flat/all' : 'flat/recommended'],
+    pluginUnicorn.configs['flat/recommended'],
     [
       strict
         ? {}
