@@ -1,4 +1,5 @@
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
+import type { ParserOptions } from '@typescript-eslint/types'
 import defu from 'defu'
 import type { Linter } from 'eslint'
 import { isPackageExists } from 'local-pkg'
@@ -15,8 +16,8 @@ export type Options = {
   ignores?: string[]
   lessOpinionated?: boolean
   preferESM?: boolean
-  project?: string[] | string | boolean | null
-  projectService?: boolean
+  project?: ParserOptions['project']
+  projectService?: ParserOptions['projectService']
   react?: 'vite' | 'remix' | 'next' | 'expo' | boolean
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   strict?: boolean

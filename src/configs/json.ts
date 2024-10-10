@@ -70,6 +70,7 @@ export function jsonConfigs(options: Required<Options>): Linter.Config[] {
       ...packageJson,
       rules: {
         ...packageJson.rules,
+        'package-json/valid-package-def': 'off',
         'package-json/order-properties': [
           'error',
           {

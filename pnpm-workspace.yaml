@@ -1,3 +1,8 @@
 packages:
   - playground
   - examples/*
+
+catalogs:
+  ts-eslint:
+    "@typescript-eslint/types": ^8.8.1
+    typescript-eslint: ^8.8.1
