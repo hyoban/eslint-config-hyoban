@@ -47,6 +47,7 @@ export function unicornConfigs({ fileCase, strict, preferESM, formatting }: Requ
           // Annoying
           'unicorn/no-keyword-prefix': 'off',
 
+          'unicorn/prefer-global-this': 'off',
           'unicorn/catch-error-name': 'off',
           'unicorn/filename-case': !fileCase ? 'off' : ['error', { case: fileCase }],
           'unicorn/import-style': 'off',
