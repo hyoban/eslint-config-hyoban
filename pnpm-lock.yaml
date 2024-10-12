@@ -4,15 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-catalogs:
-  ts-eslint:
-    '@typescript-eslint/types':
-      specifier: ^8.8.1
-      version: 8.8.1
-    typescript-eslint:
-      specifier: ^8.8.1
-      version: 8.8.1
-
 importers:
 
   .:
@@ -27,7 +18,7 @@ importers:
         specifier: ^2.9.0
         version: 2.9.0(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.3)
       '@typescript-eslint/types':
-        specifier: catalog:ts-eslint
+        specifier: ^8.8.1
         version: 8.8.1
       '@unocss/eslint-config':
         specifier: ^0.63.4
@@ -93,7 +84,7 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0
       typescript-eslint:
-        specifier: catalog:ts-eslint
+        specifier: ^8.8.1
         version: 8.8.1(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.3)
     devDependencies:
       '@eslint/config-inspector':
