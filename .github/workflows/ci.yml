@@ -35,7 +35,7 @@ jobs:
 
       - name: Install Global Packages
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: pnpm install -g publint @arethetypeswrong/cli knip pkg-pr-new
+        run: pnpm install -g publint @arethetypeswrong/cli knip
 
       - name: Lint
         if: ${{ matrix.os == 'ubuntu-latest' }}
@@ -58,7 +58,3 @@ jobs:
       - name: Are The Types Wrong
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: attw --pack .
-
-      - name: Publish latest version
-        if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 'lts/*' }}
-        run: pkg-pr-new publish
