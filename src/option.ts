@@ -67,11 +67,6 @@ export async function mergeDefaultOptions(
       // https://youtu.be/XTXPKbPcvl4?si=J_2E9dM25sAEXM2x
       'TSEnumDeclaration[const=true]',
       'TSExportAssignment',
-      // https://github.com/jsx-eslint/eslint-plugin-react/issues/2628#issuecomment-984160944
-      {
-        selector: 'ImportDeclaration[source.value=\'react\'][specifiers.0.type=\'ImportDefaultSpecifier\']',
-        message: 'Default React import not allowed, use import * as React from \'react\'',
-      },
     ],
     settings: {
       ...(

@@ -120,8 +120,8 @@ export interface RuleOptions {
    */
   '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect'?: Linter.RuleEntry<[]>
   /**
-   * disallow direct calls to the 'set' function of 'useState' in 'useEffect'
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-direct-set-state-in-use-effect
+   * disallow direct calls to the 'set' function of 'useState' in 'useLayoutEffect'
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-direct-set-state-in-use-layout-effect
    */
   '@eslint-react/hooks-extra/no-direct-set-state-in-use-layout-effect'?: Linter.RuleEntry<[]>
   /**
@@ -358,12 +358,17 @@ export interface RuleOptions {
    * disallow unnecessary fragments
    * @see https://eslint-react.xyz/docs/rules/no-useless-fragment
    */
-  '@eslint-react/no-useless-fragment'?: Linter.RuleEntry<[]>
+  '@eslint-react/no-useless-fragment'?: Linter.RuleEntry<EslintReactNoUselessFragment>
   /**
    * enforce using destructuring assignment in component props and context
    * @see https://eslint-react.xyz/docs/rules/prefer-destructuring-assignment
    */
   '@eslint-react/prefer-destructuring-assignment'?: Linter.RuleEntry<[]>
+  /**
+   * enforce React is imported via a namespace import
+   * @see https://eslint-react.xyz/docs/rules/prefer-react-namespace-import
+   */
+  '@eslint-react/prefer-react-namespace-import'?: Linter.RuleEntry<[]>
   /**
    * enforce read-only props in components
    * @see https://eslint-react.xyz/docs/rules/prefer-read-only-props
@@ -4853,6 +4858,10 @@ type EslintReactNamingConventionFilenameExtension = []|[(("always" | "as-needed"
   allow?: ("always" | "as-needed")
   extensions?: string[]
 })]
+// ----- @eslint-react/no-useless-fragment -----
+type EslintReactNoUselessFragment = []|[{
+  allowExpressions?: boolean
+}]
 // ----- @stylistic/array-bracket-newline -----
 type StylisticArrayBracketNewline = []|[(("always" | "never" | "consistent") | {
   multiline?: boolean

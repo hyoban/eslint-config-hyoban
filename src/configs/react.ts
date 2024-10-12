@@ -53,6 +53,7 @@ export function reactConfigs({
             '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps': 'off',
             '@eslint-react/avoid-shorthand-boolean': 'off',
             '@eslint-react/avoid-shorthand-fragment': 'off',
+            '@eslint-react/prefer-react-namespace-import': 'warn',
           },
         } satisfies Linter.Config
       }
@@ -63,6 +64,12 @@ export function reactConfigs({
           '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks': 'warn',
           '@eslint-react/no-unstable-context-value': 'warn',
           '@eslint-react/dom/no-dangerously-set-innerhtml': 'off',
+          // https://github.com/jsx-eslint/eslint-plugin-react/issues/2628#issuecomment-984160944
+          // {
+          //   selector: 'ImportDeclaration[source.value=\'react\'][specifiers.0.type=\'ImportDefaultSpecifier\']',
+          //   message: 'Default React import not allowed, use import * as React from \'react\'',
+          // },
+          '@eslint-react/prefer-react-namespace-import': 'warn',
         },
       } satisfies Linter.Config
     },
