@@ -6000,6 +6000,11 @@ type TypescriptEslintArrayType = []|[{
 }]
 // ----- @typescript-eslint/ban-ts-comment -----
 type TypescriptEslintBanTsComment = []|[{
+  
+  minimumDescriptionLength?: number
+  "ts-check"?: (boolean | "allow-with-description" | {
+    descriptionFormat?: string
+  })
   "ts-expect-error"?: (boolean | "allow-with-description" | {
     descriptionFormat?: string
   })
@@ -6009,24 +6014,19 @@ type TypescriptEslintBanTsComment = []|[{
   "ts-nocheck"?: (boolean | "allow-with-description" | {
     descriptionFormat?: string
   })
-  "ts-check"?: (boolean | "allow-with-description" | {
-    descriptionFormat?: string
-  })
-  
-  minimumDescriptionLength?: number
 }]
 // ----- @typescript-eslint/class-literal-property-style -----
 type TypescriptEslintClassLiteralPropertyStyle = []|[("fields" | "getters")]
 // ----- @typescript-eslint/class-methods-use-this -----
 type TypescriptEslintClassMethodsUseThis = []|[{
   
-  exceptMethods?: string[]
-  
   enforceForClassFields?: boolean
   
-  ignoreOverrideMethods?: boolean
+  exceptMethods?: string[]
   
   ignoreClassesThatImplementAnInterface?: (boolean | "public-fields")
+  
+  ignoreOverrideMethods?: boolean
 }]
 // ----- @typescript-eslint/consistent-generic-constructors -----
 type TypescriptEslintConsistentGenericConstructors = []|[("type-annotation" | "constructor")]
@@ -6065,6 +6065,8 @@ type TypescriptEslintConsistentTypeImports = []|[{
 // ----- @typescript-eslint/dot-notation -----
 type TypescriptEslintDotNotation = []|[{
   
+  allowIndexSignaturePropertyAccess?: boolean
+  
   allowKeywords?: boolean
   
   allowPattern?: string
@@ -6072,40 +6074,38 @@ type TypescriptEslintDotNotation = []|[{
   allowPrivateClassPropertyAccess?: boolean
   
   allowProtectedClassPropertyAccess?: boolean
-  
-  allowIndexSignaturePropertyAccess?: boolean
 }]
 // ----- @typescript-eslint/explicit-function-return-type -----
 type TypescriptEslintExplicitFunctionReturnType = []|[{
   
   allowConciseArrowFunctionExpressionsStartingWithVoid?: boolean
   
-  allowExpressions?: boolean
-  
-  allowHigherOrderFunctions?: boolean
-  
-  allowTypedFunctionExpressions?: boolean
-  
   allowDirectConstAssertionInArrowFunctions?: boolean
-  
-  allowFunctionsWithoutTypeParameters?: boolean
   
   allowedNames?: string[]
   
+  allowExpressions?: boolean
+  
+  allowFunctionsWithoutTypeParameters?: boolean
+  
+  allowHigherOrderFunctions?: boolean
+  
   allowIIFEs?: boolean
+  
+  allowTypedFunctionExpressions?: boolean
 }]
 // ----- @typescript-eslint/explicit-member-accessibility -----
 type TypescriptEslintExplicitMemberAccessibility = []|[{
   accessibility?: ("explicit" | "no-public" | "off")
+  
+  ignoredMethodNames?: string[]
   overrides?: {
     accessors?: ("explicit" | "no-public" | "off")
     constructors?: ("explicit" | "no-public" | "off")
     methods?: ("explicit" | "no-public" | "off")
-    properties?: ("explicit" | "no-public" | "off")
     parameterProperties?: ("explicit" | "no-public" | "off")
+    properties?: ("explicit" | "no-public" | "off")
   }
-  
-  ignoredMethodNames?: string[]
 }]
 // ----- @typescript-eslint/explicit-module-boundary-types -----
 type TypescriptEslintExplicitModuleBoundaryTypes = []|[{
@@ -6127,38 +6127,38 @@ type TypescriptEslintInitDeclarations = ([]|["always"] | []|["never"]|["never", 
 // ----- @typescript-eslint/max-params -----
 type TypescriptEslintMaxParams = []|[{
   
+  countVoidThis?: boolean
+  
   max?: number
   
   maximum?: number
-  
-  countVoidThis?: boolean
 }]
 // ----- @typescript-eslint/member-ordering -----
 type TypescriptEslintMemberOrdering = []|[{
-  default?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
-    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
-    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
-    optionalityOrder?: ("optional-first" | "required-first")
-  })
   classes?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
-    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
     optionalityOrder?: ("optional-first" | "required-first")
+    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
   classExpressions?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
-    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
     optionalityOrder?: ("optional-first" | "required-first")
+    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
+  })
+  default?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
+    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
+    optionalityOrder?: ("optional-first" | "required-first")
+    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
   interfaces?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | "never")
-    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
     optionalityOrder?: ("optional-first" | "required-first")
+    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
   typeLiterals?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | "never")
-    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
     optionalityOrder?: ("optional-first" | "required-first")
+    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
 }]
 // ----- @typescript-eslint/method-signature-style -----
@@ -6170,310 +6170,310 @@ type _TypescriptEslintNamingConventionUnderscoreOptions = ("forbid" | "allow" | 
 type _TypescriptEslintNamingConvention_PrefixSuffixConfig = string[]
 type _TypescriptEslintNamingConventionTypeModifiers = ("boolean" | "string" | "number" | "function" | "array")
 type TypescriptEslintNamingConvention = ({
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: ("default" | "variableLike" | "memberLike" | "typeLike" | "method" | "property" | "accessor" | "variable" | "function" | "parameter" | "parameterProperty" | "classicAccessor" | "enumMember" | "classMethod" | "objectLiteralMethod" | "typeMethod" | "classProperty" | "objectLiteralProperty" | "typeProperty" | "autoAccessor" | "class" | "interface" | "typeAlias" | "enum" | "typeParameter" | "import")[]
   modifiers?: ("const" | "readonly" | "static" | "public" | "protected" | "private" | "#private" | "abstract" | "destructured" | "global" | "exported" | "unused" | "requiresQuotes" | "override" | "async" | "default" | "namespace")[]
+  selector: ("default" | "variableLike" | "memberLike" | "typeLike" | "method" | "property" | "accessor" | "variable" | "function" | "parameter" | "parameterProperty" | "classicAccessor" | "enumMember" | "classMethod" | "objectLiteralMethod" | "typeMethod" | "classProperty" | "objectLiteralProperty" | "typeProperty" | "autoAccessor" | "class" | "interface" | "typeAlias" | "enum" | "typeParameter" | "import")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "default"
   modifiers?: ("const" | "readonly" | "static" | "public" | "protected" | "private" | "#private" | "abstract" | "destructured" | "global" | "exported" | "unused" | "requiresQuotes" | "override" | "async" | "default" | "namespace")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "variableLike"
   modifiers?: ("unused" | "async")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "variable"
   modifiers?: ("const" | "destructured" | "exported" | "global" | "unused" | "async")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "function"
   modifiers?: ("exported" | "global" | "unused" | "async")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "parameter"
   modifiers?: ("destructured" | "unused")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "memberLike"
   modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "readonly" | "requiresQuotes" | "static" | "override" | "async")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "classProperty"
   modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "readonly" | "requiresQuotes" | "static" | "override")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "objectLiteralProperty"
   modifiers?: ("public" | "requiresQuotes")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "typeProperty"
   modifiers?: ("public" | "readonly" | "requiresQuotes")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "parameterProperty"
   modifiers?: ("private" | "protected" | "public" | "readonly")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "property"
   modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "readonly" | "requiresQuotes" | "static" | "override" | "async")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "classMethod"
   modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "requiresQuotes" | "static" | "override" | "async")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "objectLiteralMethod"
   modifiers?: ("public" | "requiresQuotes" | "async")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "typeMethod"
   modifiers?: ("public" | "requiresQuotes")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "method"
   modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "requiresQuotes" | "static" | "override" | "async")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "classicAccessor"
   modifiers?: ("abstract" | "private" | "protected" | "public" | "requiresQuotes" | "static" | "override")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "autoAccessor"
   modifiers?: ("abstract" | "private" | "protected" | "public" | "requiresQuotes" | "static" | "override")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "accessor"
   modifiers?: ("abstract" | "private" | "protected" | "public" | "requiresQuotes" | "static" | "override")[]
   types?: _TypescriptEslintNamingConventionTypeModifiers[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "enumMember"
   modifiers?: ("requiresQuotes")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "typeLike"
   modifiers?: ("abstract" | "exported" | "unused")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "class"
   modifiers?: ("abstract" | "exported" | "unused")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "interface"
   modifiers?: ("exported" | "unused")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "typeAlias"
   modifiers?: ("exported" | "unused")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "enum"
   modifiers?: ("exported" | "unused")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "typeParameter"
   modifiers?: ("unused")[]
 } | {
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TypescriptEslintNamingConventionFormatOptionsConfig
   leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
   suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  failureMessage?: string
+  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
   filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
   selector: "import"
   modifiers?: ("default" | "namespace")[]
@@ -6541,7 +6541,7 @@ type TypescriptEslintNoExtraneousClass = []|[{
 // ----- @typescript-eslint/no-floating-promises -----
 type TypescriptEslintNoFloatingPromises = []|[{
   
-  allowForKnownSafePromises?: (string | {
+  allowForKnownSafeCalls?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
     path?: string
@@ -6554,7 +6554,7 @@ type TypescriptEslintNoFloatingPromises = []|[{
     package: string
   })[]
   
-  allowForKnownSafeCalls?: (string | {
+  allowForKnownSafePromises?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
     path?: string
@@ -6569,9 +6569,9 @@ type TypescriptEslintNoFloatingPromises = []|[{
   
   checkThenables?: boolean
   
-  ignoreVoid?: boolean
-  
   ignoreIIFE?: boolean
+  
+  ignoreVoid?: boolean
 }]
 // ----- @typescript-eslint/no-inferrable-types -----
 type TypescriptEslintNoInferrableTypes = []|[{
@@ -6587,9 +6587,9 @@ type TypescriptEslintNoInvalidThis = []|[{
 // ----- @typescript-eslint/no-invalid-void-type -----
 type TypescriptEslintNoInvalidVoidType = []|[{
   
-  allowInGenericTypeArguments?: (boolean | [string, ...(string)[]])
-  
   allowAsThisParameter?: boolean
+  
+  allowInGenericTypeArguments?: (boolean | [string, ...(string)[]])
 }]
 // ----- @typescript-eslint/no-magic-numbers -----
 type TypescriptEslintNoMagicNumbers = []|[{
@@ -6600,9 +6600,9 @@ type TypescriptEslintNoMagicNumbers = []|[{
   ignoreDefaultValues?: boolean
   ignoreClassFieldInitialValues?: boolean
   
-  ignoreNumericLiteralTypes?: boolean
-  
   ignoreEnums?: boolean
+  
+  ignoreNumericLiteralTypes?: boolean
   
   ignoreReadonlyClassProperties?: boolean
   
@@ -6616,6 +6616,8 @@ type TypescriptEslintNoMeaninglessVoidOperator = []|[{
 // ----- @typescript-eslint/no-misused-promises -----
 type TypescriptEslintNoMisusedPromises = []|[{
   checksConditionals?: boolean
+  
+  checksSpreads?: boolean
   checksVoidReturn?: (boolean | {
     
     arguments?: boolean
@@ -6630,8 +6632,6 @@ type TypescriptEslintNoMisusedPromises = []|[{
     
     variables?: boolean
   })
-  
-  checksSpreads?: boolean
 }]
 // ----- @typescript-eslint/no-namespace -----
 type TypescriptEslintNoNamespace = []|[{
@@ -6692,9 +6692,9 @@ type TypescriptEslintNoRestrictedTypes = []|[{
   types?: {
     [k: string]: (true | string | {
       
-      message?: string
-      
       fixWith?: string
+      
+      message?: string
       
       suggest?: string[]
     }) | undefined
@@ -6703,17 +6703,17 @@ type TypescriptEslintNoRestrictedTypes = []|[{
 // ----- @typescript-eslint/no-shadow -----
 type TypescriptEslintNoShadow = []|[{
   
+  allow?: string[]
+  
   builtinGlobals?: boolean
   
   hoist?: ("all" | "functions" | "never")
   
-  allow?: string[]
+  ignoreFunctionTypeParameterNameValueShadow?: boolean
   
   ignoreOnInitialization?: boolean
   
   ignoreTypeValueShadow?: boolean
-  
-  ignoreFunctionTypeParameterNameValueShadow?: boolean
 }]
 // ----- @typescript-eslint/no-this-alias -----
 type TypescriptEslintNoThisAlias = []|[{
@@ -6733,20 +6733,20 @@ type TypescriptEslintNoTypeAlias = []|[{
   
   allowConstructors?: ("always" | "never")
   
+  allowGenerics?: ("always" | "never")
+  
   allowLiterals?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
   
   allowMappedTypes?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
   
   allowTupleTypes?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
-  
-  allowGenerics?: ("always" | "never")
 }]
 // ----- @typescript-eslint/no-unnecessary-boolean-literal-compare -----
 type TypescriptEslintNoUnnecessaryBooleanLiteralCompare = []|[{
   
-  allowComparingNullableBooleansToTrue?: boolean
-  
   allowComparingNullableBooleansToFalse?: boolean
+  
+  allowComparingNullableBooleansToTrue?: boolean
 }]
 // ----- @typescript-eslint/no-unnecessary-condition -----
 type TypescriptEslintNoUnnecessaryCondition = []|[{
@@ -6772,10 +6772,6 @@ type TypescriptEslintNoUnusedExpressions = []|[{
 // ----- @typescript-eslint/no-unused-vars -----
 type TypescriptEslintNoUnusedVars = []|[(("all" | "local") | {
   
-  vars?: ("all" | "local")
-  
-  varsIgnorePattern?: string
-  
   args?: ("all" | "after-used" | "none")
   
   argsIgnorePattern?: string
@@ -6791,22 +6787,26 @@ type TypescriptEslintNoUnusedVars = []|[(("all" | "local") | {
   ignoreRestSiblings?: boolean
   
   reportUsedIgnorePattern?: boolean
+  
+  vars?: ("all" | "local")
+  
+  varsIgnorePattern?: string
 })]
 // ----- @typescript-eslint/no-use-before-define -----
 type TypescriptEslintNoUseBeforeDefine = []|[("nofunc" | {
-  
-  functions?: boolean
+  allowNamedExports?: boolean
   
   classes?: boolean
   
   enums?: boolean
   
-  variables?: boolean
+  functions?: boolean
+  
+  ignoreTypeReferences?: boolean
   
   typedefs?: boolean
   
-  ignoreTypeReferences?: boolean
-  allowNamedExports?: boolean
+  variables?: boolean
 })]
 // ----- @typescript-eslint/no-var-requires -----
 type TypescriptEslintNoVarRequires = []|[{
@@ -6829,11 +6829,11 @@ type TypescriptEslintParameterProperties = []|[{
 }]
 // ----- @typescript-eslint/prefer-destructuring -----
 type TypescriptEslintPreferDestructuring = []|[({
-  VariableDeclarator?: {
+  AssignmentExpression?: {
     array?: boolean
     object?: boolean
   }
-  AssignmentExpression?: {
+  VariableDeclarator?: {
     array?: boolean
     object?: boolean
   }
@@ -6841,11 +6841,11 @@ type TypescriptEslintPreferDestructuring = []|[({
   array?: boolean
   object?: boolean
 })]|[({
-  VariableDeclarator?: {
+  AssignmentExpression?: {
     array?: boolean
     object?: boolean
   }
-  AssignmentExpression?: {
+  VariableDeclarator?: {
     array?: boolean
     object?: boolean
   }
@@ -6853,8 +6853,8 @@ type TypescriptEslintPreferDestructuring = []|[({
   array?: boolean
   object?: boolean
 }), {
-  enforceForRenamedProperties?: boolean
   enforceForDeclarationWithTypeAnnotation?: boolean
+  enforceForRenamedProperties?: boolean
   [k: string]: unknown | undefined
 }]
 // ----- @typescript-eslint/prefer-literal-enum-member -----
@@ -6884,21 +6884,21 @@ type TypescriptEslintPreferNullishCoalescing = []|[{
 // ----- @typescript-eslint/prefer-optional-chain -----
 type TypescriptEslintPreferOptionalChain = []|[{
   
+  allowPotentiallyUnsafeFixesThatModifyTheReturnTypeIKnowWhatImDoing?: boolean
+  
   checkAny?: boolean
-  
-  checkUnknown?: boolean
-  
-  checkString?: boolean
-  
-  checkNumber?: boolean
-  
-  checkBoolean?: boolean
   
   checkBigInt?: boolean
   
-  requireNullish?: boolean
+  checkBoolean?: boolean
   
-  allowPotentiallyUnsafeFixesThatModifyTheReturnTypeIKnowWhatImDoing?: boolean
+  checkNumber?: boolean
+  
+  checkString?: boolean
+  
+  checkUnknown?: boolean
+  
+  requireNullish?: boolean
 }]
 // ----- @typescript-eslint/prefer-promise-reject-errors -----
 type TypescriptEslintPreferPromiseRejectErrors = []|[{
@@ -7007,33 +7007,33 @@ type TypescriptEslintReturnAwait = []|[(("always" | "error-handling-correctness-
 // ----- @typescript-eslint/sort-type-constituents -----
 type TypescriptEslintSortTypeConstituents = []|[{
   
+  caseSensitive?: boolean
+  
   checkIntersections?: boolean
   
   checkUnions?: boolean
-  
-  caseSensitive?: boolean
   
   groupOrder?: ("conditional" | "function" | "import" | "intersection" | "keyword" | "nullish" | "literal" | "named" | "object" | "operator" | "tuple" | "union")[]
 }]
 // ----- @typescript-eslint/strict-boolean-expressions -----
 type TypescriptEslintStrictBooleanExpressions = []|[{
   
-  allowString?: boolean
-  
-  allowNumber?: boolean
-  
-  allowNullableObject?: boolean
+  allowAny?: boolean
   
   allowNullableBoolean?: boolean
   
-  allowNullableString?: boolean
+  allowNullableEnum?: boolean
   
   allowNullableNumber?: boolean
   
-  allowNullableEnum?: boolean
+  allowNullableObject?: boolean
   
-  allowAny?: boolean
+  allowNullableString?: boolean
+  
+  allowNumber?: boolean
   allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
+  
+  allowString?: boolean
 }]
 // ----- @typescript-eslint/switch-exhaustiveness-check -----
 type TypescriptEslintSwitchExhaustivenessCheck = []|[{
@@ -9469,10 +9469,6 @@ type UnocssEnforceClassCompile = []|[{
 // ----- unused-imports/no-unused-imports -----
 type UnusedImportsNoUnusedImports = []|[(("all" | "local") | {
   
-  vars?: ("all" | "local")
-  
-  varsIgnorePattern?: string
-  
   args?: ("all" | "after-used" | "none")
   
   argsIgnorePattern?: string
@@ -9488,14 +9484,14 @@ type UnusedImportsNoUnusedImports = []|[(("all" | "local") | {
   ignoreRestSiblings?: boolean
   
   reportUsedIgnorePattern?: boolean
+  
+  vars?: ("all" | "local")
+  
+  varsIgnorePattern?: string
 })]
 // ----- unused-imports/no-unused-vars -----
 type UnusedImportsNoUnusedVars = []|[(("all" | "local") | {
   
-  vars?: ("all" | "local")
-  
-  varsIgnorePattern?: string
-  
   args?: ("all" | "after-used" | "none")
   
   argsIgnorePattern?: string
@@ -9511,6 +9507,10 @@ type UnusedImportsNoUnusedVars = []|[(("all" | "local") | {
   ignoreRestSiblings?: boolean
   
   reportUsedIgnorePattern?: boolean
+  
+  vars?: ("all" | "local")
+  
+  varsIgnorePattern?: string
 })]
 // ----- use-isnan -----
 type UseIsnan = []|[{
