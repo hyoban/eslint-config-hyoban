@@ -6096,9 +6096,11 @@ type TypescriptEslintExplicitFunctionReturnType = []|[{
 }]
 // ----- @typescript-eslint/explicit-member-accessibility -----
 type TypescriptEslintExplicitMemberAccessibility = []|[{
+  
   accessibility?: ("explicit" | "no-public" | "off")
   
   ignoredMethodNames?: string[]
+  
   overrides?: {
     accessors?: ("explicit" | "no-public" | "off")
     constructors?: ("explicit" | "no-public" | "off")
@@ -6615,9 +6617,11 @@ type TypescriptEslintNoMeaninglessVoidOperator = []|[{
 }]
 // ----- @typescript-eslint/no-misused-promises -----
 type TypescriptEslintNoMisusedPromises = []|[{
+  
   checksConditionals?: boolean
   
   checksSpreads?: boolean
+  
   checksVoidReturn?: (boolean | {
     
     arguments?: boolean
@@ -6689,6 +6693,7 @@ type TypescriptEslintNoRestrictedImports = ((string | {
 }])
 // ----- @typescript-eslint/no-restricted-types -----
 type TypescriptEslintNoRestrictedTypes = []|[{
+  
   types?: {
     [k: string]: (true | string | {
       
@@ -6794,6 +6799,7 @@ type TypescriptEslintNoUnusedVars = []|[(("all" | "local") | {
 })]
 // ----- @typescript-eslint/no-use-before-define -----
 type TypescriptEslintNoUseBeforeDefine = []|[("nofunc" | {
+  
   allowNamedExports?: boolean
   
   classes?: boolean
@@ -6853,7 +6859,9 @@ type TypescriptEslintPreferDestructuring = []|[({
   array?: boolean
   object?: boolean
 }), {
+  
   enforceForDeclarationWithTypeAnnotation?: boolean
+  
   enforceForRenamedProperties?: boolean
   [k: string]: unknown | undefined
 }]
@@ -6872,9 +6880,13 @@ type TypescriptEslintPreferNullishCoalescing = []|[{
   ignoreMixedLogicalExpressions?: boolean
   
   ignorePrimitives?: ({
+    
     bigint?: boolean
+    
     boolean?: boolean
+    
     number?: boolean
+    
     string?: boolean
     [k: string]: unknown | undefined
   } | true)
@@ -7031,6 +7043,7 @@ type TypescriptEslintStrictBooleanExpressions = []|[{
   allowNullableString?: boolean
   
   allowNumber?: boolean
+  
   allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
   
   allowString?: boolean
