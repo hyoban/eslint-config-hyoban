@@ -45,8 +45,8 @@ export interface RuleOptions {
    */
   '@eslint-react/debug/react-hooks'?: Linter.RuleEntry<[]>
   /**
-   * disallow passing 'children' to void DOM elements
-   * @see https://eslint-react.xyz/docs/rules/dom-no-children-in-void-dom-elements
+   * disallow void elements (AKA self-closing elements) from having children
+   * @see https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
    */
   '@eslint-react/dom/no-children-in-void-dom-elements'?: Linter.RuleEntry<[]>
   /**
@@ -105,15 +105,25 @@ export interface RuleOptions {
    */
   '@eslint-react/dom/no-unsafe-target-blank'?: Linter.RuleEntry<[]>
   /**
+   * disallow void elements (AKA self-closing elements) from having children
+   * @see https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
+   */
+  '@eslint-react/dom/no-void-elements-with-children'?: Linter.RuleEntry<[]>
+  /**
    * require a 'ref' parameter to be set when using 'forwardRef'
    * @see https://eslint-react.xyz/docs/rules/ensure-forward-ref-using-ref
    */
   '@eslint-react/ensure-forward-ref-using-ref'?: Linter.RuleEntry<[]>
   /**
-   * enforce custom hooks to use at least one other hook inside
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-redundant-custom-hook
+   * enforce custom Hooks to use at least one other hook inside
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-useless-custom-hooks
    */
   '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks'?: Linter.RuleEntry<[]>
+  /**
+   * disallow unnecessary usage of 'useCallback'
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-callback
+   */
+  '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps'?: Linter.RuleEntry<[]>
   /**
    * disallow unnecessary usage of 'useMemo'
    * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-memo
@@ -130,8 +140,8 @@ export interface RuleOptions {
    */
   '@eslint-react/hooks-extra/no-direct-set-state-in-use-layout-effect'?: Linter.RuleEntry<[]>
   /**
-   * enforce custom hooks to use at least one other hook inside
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-redundant-custom-hook
+   * enforce custom Hooks to use at least one other hook inside
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-useless-custom-hooks
    */
   '@eslint-react/hooks-extra/no-redundant-custom-hook'?: Linter.RuleEntry<[]>
   /**
@@ -145,18 +155,23 @@ export interface RuleOptions {
    */
   '@eslint-react/hooks-extra/no-unnecessary-use-memo'?: Linter.RuleEntry<[]>
   /**
+   * enforce custom Hooks to use at least one other hook inside
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-useless-custom-hooks
+   */
+  '@eslint-react/hooks-extra/no-useless-custom-hooks'?: Linter.RuleEntry<[]>
+  /**
    * disallow function calls in 'useState' that aren't wrapped in an initializer function
    * @see https://eslint-react.xyz/docs/rules/hooks-extra-prefer-use-state-lazy-initialization
    */
   '@eslint-react/hooks-extra/prefer-use-state-lazy-initialization'?: Linter.RuleEntry<[]>
   /**
    * disallow duplicate props
-   * @see https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
+   * @see https://eslint-react.xyz/docs/rules/no-duplicate-jsx-props
    */
   '@eslint-react/jsx-no-duplicate-props'?: Linter.RuleEntry<[]>
   /**
-   * a helper rule to mark variables as used
-   * @see https://eslint-react.xyz/docs/rules/jsx-uses-vars
+   * helpes `eslint/no-unused-vars` to correctly mark JSX variables as used.
+   * @see https://eslint-react.xyz/docs/rules/use-jsx-vars
    */
   '@eslint-react/jsx-uses-vars'?: Linter.RuleEntry<[]>
   /**
@@ -260,6 +275,11 @@ export interface RuleOptions {
    */
   '@eslint-react/no-component-will-update'?: Linter.RuleEntry<[]>
   /**
+   * disallow the use of '<Context.Provider>'
+   * @see https://eslint-react.xyz/docs/rules/no-context-provider
+   */
+  '@eslint-react/no-context-provider'?: Linter.RuleEntry<[]>
+  /**
    * disallow using 'createRef' in function components
    * @see https://eslint-react.xyz/docs/rules/no-create-ref
    */
@@ -275,10 +295,20 @@ export interface RuleOptions {
    */
   '@eslint-react/no-direct-mutation-state'?: Linter.RuleEntry<[]>
   /**
+   * disallow duplicate props
+   * @see https://eslint-react.xyz/docs/rules/no-duplicate-jsx-props
+   */
+  '@eslint-react/no-duplicate-jsx-props'?: Linter.RuleEntry<[]>
+  /**
    * disallow duplicate keys when rendering list
    * @see https://eslint-react.xyz/docs/rules/no-duplicate-key
    */
   '@eslint-react/no-duplicate-key'?: Linter.RuleEntry<[]>
+  /**
+   * disallow the use of 'forwardRef'
+   * @see https://eslint-react.xyz/docs/rules/no-forward-ref
+   */
+  '@eslint-react/no-forward-ref'?: Linter.RuleEntry<[]>
   /**
    * disallow implicit 'key' props
    * @see https://eslint-react.xyz/docs/rules/no-implicit-key
@@ -400,22 +430,27 @@ export interface RuleOptions {
    */
   '@eslint-react/prefer-shorthand-fragment'?: Linter.RuleEntry<[]>
   /**
-   * enforce that every 'addEventListener' in a component or custom hook has a corresponding 'removeEventListener'.
+   * helpes `eslint/no-unused-vars` to correctly mark JSX variables as used.
+   * @see https://eslint-react.xyz/docs/rules/use-jsx-vars
+   */
+  '@eslint-react/use-jsx-vars'?: Linter.RuleEntry<[]>
+  /**
+   * enforce that every 'addEventListener' in a component or custom Hook has a corresponding 'removeEventListener'.
    * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-event-listener
    */
   '@eslint-react/web-api/no-leaked-event-listener'?: Linter.RuleEntry<[]>
   /**
-   * enforce that every 'setInterval' in a component or custom hook has a corresponding 'clearInterval'.
+   * enforce that every 'setInterval' in a component or custom Hook has a corresponding 'clearInterval'.
    * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-interval
    */
   '@eslint-react/web-api/no-leaked-interval'?: Linter.RuleEntry<[]>
   /**
-   * enforce cleanup of 'ResizeObserver' instances in components and custom hooks.
+   * enforce cleanup of 'ResizeObserver' instances in components and custom Hooks.
    * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-resize-observer
    */
   '@eslint-react/web-api/no-leaked-resize-observer'?: Linter.RuleEntry<[]>
   /**
-   * enforce that every 'setTimeout' in a component or custom hook has a corresponding 'clearTimeout'.
+   * enforce that every 'setTimeout' in a component or custom Hook has a corresponding 'clearTimeout'.
    * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-timeout
    */
   '@eslint-react/web-api/no-leaked-timeout'?: Linter.RuleEntry<[]>
@@ -1365,7 +1400,7 @@ export interface RuleOptions {
    */
   '@typescript-eslint/no-wrapper-object-types'?: Linter.RuleEntry<[]>
   /**
-   * Enforce non-null assertions over explicit type casts
+   * Enforce non-null assertions over explicit type assertions
    * @see https://typescript-eslint.io/rules/non-nullable-type-assertion-style
    */
   '@typescript-eslint/non-nullable-type-assertion-style'?: Linter.RuleEntry<[]>
@@ -1450,7 +1485,7 @@ export interface RuleOptions {
    */
   '@typescript-eslint/prefer-readonly-parameter-types'?: Linter.RuleEntry<TypescriptEslintPreferReadonlyParameterTypes>
   /**
-   * Enforce using type parameter when calling `Array#reduce` instead of casting
+   * Enforce using type parameter when calling `Array#reduce` instead of using a type assertion
    * @see https://typescript-eslint.io/rules/prefer-reduce-type-parameter
    */
   '@typescript-eslint/prefer-reduce-type-parameter'?: Linter.RuleEntry<[]>
@@ -1749,7 +1784,7 @@ export interface RuleOptions {
    */
   'default-case'?: Linter.RuleEntry<DefaultCase>
   /**
-   * Enforce default clauses in switch statements to be last
+   * Enforce `default` clauses in switch statements to be last
    * @see https://eslint.org/docs/latest/rules/default-case-last
    */
   'default-case-last'?: Linter.RuleEntry<[]>
@@ -1781,7 +1816,7 @@ export interface RuleOptions {
    */
   'eqeqeq'?: Linter.RuleEntry<Eqeqeq>
   /**
-   * Enforce "for" loop update clause moving the counter in the right direction
+   * Enforce `for` loop update clause moving the counter in the right direction
    * @see https://eslint.org/docs/latest/rules/for-direction
    */
   'for-direction'?: Linter.RuleEntry<[]>
@@ -1895,233 +1930,233 @@ export interface RuleOptions {
   'implicit-arrow-linebreak'?: Linter.RuleEntry<ImplicitArrowLinebreak>
   /**
    * Enforce or ban the use of inline type-only markers for named imports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/consistent-type-specifier-style.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/consistent-type-specifier-style.md
    */
   'import-x/consistent-type-specifier-style'?: Linter.RuleEntry<ImportXConsistentTypeSpecifierStyle>
   /**
    * Ensure a default export is present, given a default import.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/default.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/default.md
    */
   'import-x/default'?: Linter.RuleEntry<[]>
   /**
    * Enforce a leading comment with the webpackChunkName for dynamic imports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/dynamic-import-chunkname.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/dynamic-import-chunkname.md
    */
   'import-x/dynamic-import-chunkname'?: Linter.RuleEntry<ImportXDynamicImportChunkname>
   /**
    * Forbid any invalid exports, i.e. re-export of the same name.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/export.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/export.md
    */
   'import-x/export'?: Linter.RuleEntry<[]>
   /**
    * Ensure all exports appear after other statements.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/exports-last.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/exports-last.md
    */
   'import-x/exports-last'?: Linter.RuleEntry<[]>
   /**
    * Ensure consistent use of file extension within the import path.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/extensions.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/extensions.md
    */
   'import-x/extensions'?: Linter.RuleEntry<ImportXExtensions>
   /**
    * Ensure all imports appear before other statements.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/first.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/first.md
    */
   'import-x/first'?: Linter.RuleEntry<ImportXFirst>
   /**
    * Prefer named exports to be grouped together in a single export declaration.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/group-exports.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/group-exports.md
    */
   'import-x/group-exports'?: Linter.RuleEntry<[]>
   /**
    * Replaced by `import-x/first`.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/imports-first.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/imports-first.md
    * @deprecated
    */
   'import-x/imports-first'?: Linter.RuleEntry<ImportXImportsFirst>
   /**
    * Enforce the maximum number of dependencies a module can have.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/max-dependencies.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/max-dependencies.md
    */
   'import-x/max-dependencies'?: Linter.RuleEntry<ImportXMaxDependencies>
   /**
    * Ensure named imports correspond to a named export in the remote file.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/named.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/named.md
    */
   'import-x/named'?: Linter.RuleEntry<ImportXNamed>
   /**
    * Ensure imported namespaces contain dereferenced properties as they are dereferenced.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/namespace.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/namespace.md
    */
   'import-x/namespace'?: Linter.RuleEntry<ImportXNamespace>
   /**
    * Enforce a newline after import statements.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/newline-after-import.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/newline-after-import.md
    */
   'import-x/newline-after-import'?: Linter.RuleEntry<ImportXNewlineAfterImport>
   /**
    * Forbid import of modules using absolute paths.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-absolute-path.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-absolute-path.md
    */
   'import-x/no-absolute-path'?: Linter.RuleEntry<ImportXNoAbsolutePath>
   /**
    * Forbid AMD `require` and `define` calls.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-amd.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-amd.md
    */
   'import-x/no-amd'?: Linter.RuleEntry<[]>
   /**
    * Forbid anonymous values as default exports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-anonymous-default-export.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-anonymous-default-export.md
    */
   'import-x/no-anonymous-default-export'?: Linter.RuleEntry<ImportXNoAnonymousDefaultExport>
   /**
    * Forbid CommonJS `require` calls and `module.exports` or `exports.*`.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-commonjs.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-commonjs.md
    */
   'import-x/no-commonjs'?: Linter.RuleEntry<ImportXNoCommonjs>
   /**
    * Forbid a module from importing a module with a dependency path back to itself.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-cycle.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-cycle.md
    */
   'import-x/no-cycle'?: Linter.RuleEntry<ImportXNoCycle>
   /**
    * Forbid default exports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-default-export.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-default-export.md
    */
   'import-x/no-default-export'?: Linter.RuleEntry<[]>
   /**
    * Forbid imported names marked with `@deprecated` documentation tag.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-deprecated.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-deprecated.md
    */
   'import-x/no-deprecated'?: Linter.RuleEntry<[]>
   /**
    * Forbid repeated import of the same module in multiple places.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-duplicates.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-duplicates.md
    */
   'import-x/no-duplicates'?: Linter.RuleEntry<ImportXNoDuplicates>
   /**
    * Forbid `require()` calls with expressions.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-dynamic-require.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-dynamic-require.md
    */
   'import-x/no-dynamic-require'?: Linter.RuleEntry<ImportXNoDynamicRequire>
   /**
    * Forbid empty named import blocks.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-empty-named-blocks.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-empty-named-blocks.md
    */
   'import-x/no-empty-named-blocks'?: Linter.RuleEntry<[]>
   /**
    * Forbid the use of extraneous packages.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-extraneous-dependencies.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-extraneous-dependencies.md
    */
   'import-x/no-extraneous-dependencies'?: Linter.RuleEntry<ImportXNoExtraneousDependencies>
   /**
    * Forbid import statements with CommonJS module.exports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-import-module-exports.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-import-module-exports.md
    */
   'import-x/no-import-module-exports'?: Linter.RuleEntry<ImportXNoImportModuleExports>
   /**
    * Forbid importing the submodules of other modules.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-internal-modules.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-internal-modules.md
    */
   'import-x/no-internal-modules'?: Linter.RuleEntry<ImportXNoInternalModules>
   /**
    * Forbid the use of mutable exports with `var` or `let`.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-mutable-exports.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-mutable-exports.md
    */
   'import-x/no-mutable-exports'?: Linter.RuleEntry<[]>
   /**
    * Forbid use of exported name as identifier of default export.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-named-as-default.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-named-as-default.md
    */
   'import-x/no-named-as-default'?: Linter.RuleEntry<[]>
   /**
    * Forbid use of exported name as property of default export.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-named-as-default-member.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-named-as-default-member.md
    */
   'import-x/no-named-as-default-member'?: Linter.RuleEntry<[]>
   /**
    * Forbid named default exports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-named-default.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-named-default.md
    */
   'import-x/no-named-default'?: Linter.RuleEntry<[]>
   /**
    * Forbid named exports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-named-export.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-named-export.md
    */
   'import-x/no-named-export'?: Linter.RuleEntry<[]>
   /**
    * Forbid namespace (a.k.a. "wildcard" `*`) imports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-namespace.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-namespace.md
    */
   'import-x/no-namespace'?: Linter.RuleEntry<ImportXNoNamespace>
   /**
    * Forbid Node.js builtin modules.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-nodejs-modules.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-nodejs-modules.md
    */
   'import-x/no-nodejs-modules'?: Linter.RuleEntry<ImportXNoNodejsModules>
   /**
    * Forbid importing packages through relative paths.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-relative-packages.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-relative-packages.md
    */
   'import-x/no-relative-packages'?: Linter.RuleEntry<ImportXNoRelativePackages>
   /**
    * Forbid importing modules from parent directories.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-relative-parent-imports.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-relative-parent-imports.md
    */
   'import-x/no-relative-parent-imports'?: Linter.RuleEntry<ImportXNoRelativeParentImports>
   /**
    * Forbid importing a default export by a different name.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-rename-default.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-rename-default.md
    */
   'import-x/no-rename-default'?: Linter.RuleEntry<ImportXNoRenameDefault>
   /**
    * Enforce which files can be imported in a given folder.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-restricted-paths.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-restricted-paths.md
    */
   'import-x/no-restricted-paths'?: Linter.RuleEntry<ImportXNoRestrictedPaths>
   /**
    * Forbid a module from importing itself.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-self-import.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-self-import.md
    */
   'import-x/no-self-import'?: Linter.RuleEntry<[]>
   /**
    * Forbid unassigned imports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-unassigned-import.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-unassigned-import.md
    */
   'import-x/no-unassigned-import'?: Linter.RuleEntry<ImportXNoUnassignedImport>
   /**
    * Ensure imports point to a file/module that can be resolved.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-unresolved.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-unresolved.md
    */
   'import-x/no-unresolved'?: Linter.RuleEntry<ImportXNoUnresolved>
   /**
    * Forbid modules without exports, or exports without matching import in another module.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-unused-modules.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-unused-modules.md
    */
   'import-x/no-unused-modules'?: Linter.RuleEntry<ImportXNoUnusedModules>
   /**
    * Forbid unnecessary path segments in import and require statements.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-useless-path-segments.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-useless-path-segments.md
    */
   'import-x/no-useless-path-segments'?: Linter.RuleEntry<ImportXNoUselessPathSegments>
   /**
    * Forbid webpack loader syntax in imports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/no-webpack-loader-syntax.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/no-webpack-loader-syntax.md
    */
   'import-x/no-webpack-loader-syntax'?: Linter.RuleEntry<[]>
   /**
    * Enforce a convention in module import order.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/order.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/order.md
    */
   'import-x/order'?: Linter.RuleEntry<ImportXOrder>
   /**
    * Prefer a default export if module exports a single name or multiple names.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/prefer-default-export.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/prefer-default-export.md
    */
   'import-x/prefer-default-export'?: Linter.RuleEntry<ImportXPreferDefaultExport>
   /**
    * Forbid potentially ambiguous parse goal (`script` vs. `module`).
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.5.0/docs/rules/unambiguous.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v4.6.1/docs/rules/unambiguous.md
    */
   'import-x/unambiguous'?: Linter.RuleEntry<[]>
   /**
@@ -2964,7 +2999,7 @@ export interface RuleOptions {
    */
   'no-octal-escape'?: Linter.RuleEntry<[]>
   /**
-   * Disallow reassigning `function` parameters
+   * Disallow reassigning function parameters
    * @see https://eslint.org/docs/latest/rules/no-param-reassign
    */
   'no-param-reassign'?: Linter.RuleEntry<NoParamReassign>
@@ -3059,7 +3094,7 @@ export interface RuleOptions {
    */
   'no-return-await'?: Linter.RuleEntry<[]>
   /**
-   * Disallow `javascript:` urls
+   * Disallow `javascript:` URLs
    * @see https://eslint.org/docs/latest/rules/no-script-url
    */
   'no-script-url'?: Linter.RuleEntry<[]>
@@ -3380,8 +3415,13 @@ export interface RuleOptions {
   'package-json/valid-name'?: Linter.RuleEntry<[]>
   /**
    * Enforce that package.json has all properties required by the npm spec
+   * @deprecated
    */
   'package-json/valid-package-def'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that package.json has all properties required by the npm spec
+   */
+  'package-json/valid-package-definition'?: Linter.RuleEntry<[]>
   /**
    * Enforce that if repository directory is specified, it matches the path to the package.json file
    */
@@ -3438,7 +3478,7 @@ export interface RuleOptions {
    */
   'prefer-object-has-own'?: Linter.RuleEntry<[]>
   /**
-   * Disallow using Object.assign with an object literal as the first argument and prefer the use of object spread instead
+   * Disallow using `Object.assign` with an object literal as the first argument and prefer the use of object spread instead
    * @see https://eslint.org/docs/latest/rules/prefer-object-spread
    */
   'prefer-object-spread'?: Linter.RuleEntry<[]>
@@ -3926,7 +3966,7 @@ export interface RuleOptions {
    */
   'require-await'?: Linter.RuleEntry<[]>
   /**
-   * Enforce the use of `u` or `v` flag on RegExp
+   * Enforce the use of `u` or `v` flag on regular expressions
    * @see https://eslint.org/docs/latest/rules/require-unicode-regexp
    */
   'require-unicode-regexp'?: Linter.RuleEntry<RequireUnicodeRegexp>
@@ -5155,6 +5195,7 @@ type StylisticIndent = []|[("tab" | number)]|[("tab" | number), {
   ImportDeclaration?: (number | ("first" | "off"))
   flatTernaryExpressions?: boolean
   offsetTernaryExpressions?: boolean
+  offsetTernaryExpressionsOffsetCallExpressions?: boolean
   ignoredNodes?: string[]
   ignoreComments?: boolean
   tabLength?: number
@@ -6085,7 +6126,7 @@ type TypescriptEslintConsistentTypeAssertions = []|[({
   assertionStyle: "never"
 } | {
   
-  assertionStyle: ("as" | "angle-bracket")
+  assertionStyle?: ("as" | "angle-bracket")
   
   objectLiteralTypeAssertions?: ("allow" | "allow-as-parameter" | "never")
 })]
@@ -7118,6 +7159,8 @@ type TypescriptEslintSwitchExhaustivenessCheck = []|[{
   allowDefaultCaseForExhaustiveSwitch?: boolean
   
   considerDefaultExhaustiveForUnions?: boolean
+  
+  defaultCaseCommentPattern?: string
   
   requireDefaultForNonUnion?: boolean
 }]
