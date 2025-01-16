@@ -3535,6 +3535,14 @@ export interface RuleOptions {
    */
   'react-compiler/react-compiler'?: Linter.RuleEntry<ReactCompilerReactCompiler>
   /**
+   * Conditionally rendered text nodes should be wrapped in an element (for example, a <span>), otherwise Google Translate can cause a browser error.
+   */
+  'react-google-translate/no-conditional-text-nodes-with-siblings'?: Linter.RuleEntry<[]>
+  /**
+   * React components should avoid returning text nodes directly (or numerical values which will be rendered as text). When a React component returns values other than JSX / null, Google Translate can continue to display stale values after state changes, without any error being thrown. Since this is very hard to debug it is better to avoid it altogether.
+   */
+  'react-google-translate/no-return-text-nodes'?: Linter.RuleEntry<[]>
+  /**
    * verifies the list of dependencies for Hooks like useEffect and similar
    * @see https://github.com/facebook/react/issues/14920
    */

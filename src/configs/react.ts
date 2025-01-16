@@ -20,6 +20,7 @@ export function reactConfigs({
       const reactHooks = await interopDefault(import('eslint-plugin-react-hooks')) as ESLint.Plugin
       const reactCompiler = await interopDefault(import('eslint-plugin-react-compiler')) as ESLint.Plugin
       const reactRefresh = await interopDefault(import('eslint-plugin-react-refresh')) as ESLint.Plugin
+      const reactGoogleTranslate = await interopDefault(import('eslint-plugin-react-google-translate')) as ESLint.Plugin
 
       return {
         name: `react/setup/${strict ? 'all' : 'recommended'}`,
@@ -28,6 +29,7 @@ export function reactConfigs({
           'react-compiler': reactCompiler,
           'react-hooks': reactHooks,
           'react-refresh': reactRefresh,
+          'react-google-translate': reactGoogleTranslate,
         },
       } satisfies Linter.Config
     },
@@ -115,6 +117,7 @@ export function reactConfigs({
                   'generateMetadata',
                   'viewport',
                   'generateViewport',
+                  'dynamic',
                 ]
               : (react === 'remix'
                   ? [
@@ -131,6 +134,14 @@ export function reactConfigs({
                     : undefined),
           },
         ],
+      },
+    } satisfies Linter.Config,
+    {
+      name: 'react/google-translate',
+      files: GLOB_JSX_SRC,
+      rules: {
+        'react-google-translate/no-conditional-text-nodes-with-siblings': 'warn',
+        'react-google-translate/no-return-text-nodes': 'warn',
       },
     } satisfies Linter.Config,
   ]
