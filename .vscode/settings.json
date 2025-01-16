@@ -7,9 +7,5 @@
   },
 
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-
-  "eslint.options": {
-    "flags": ["unstable_ts_config"]
-  }
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

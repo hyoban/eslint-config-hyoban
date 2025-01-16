@@ -1084,7 +1084,7 @@ export interface RuleOptions {
    * Disallow using code marked as `@deprecated`
    * @see https://typescript-eslint.io/rules/no-deprecated
    */
-  '@typescript-eslint/no-deprecated'?: Linter.RuleEntry<[]>
+  '@typescript-eslint/no-deprecated'?: Linter.RuleEntry<TypescriptEslintNoDeprecated>
   /**
    * Disallow duplicate class members
    * @see https://typescript-eslint.io/rules/no-dupe-class-members
@@ -1202,6 +1202,11 @@ export interface RuleOptions {
    * @see https://typescript-eslint.io/rules/no-misused-promises
    */
   '@typescript-eslint/no-misused-promises'?: Linter.RuleEntry<TypescriptEslintNoMisusedPromises>
+  /**
+   * Disallow using the spread operator when it might cause unexpected behavior
+   * @see https://typescript-eslint.io/rules/no-misused-spread
+   */
+  '@typescript-eslint/no-misused-spread'?: Linter.RuleEntry<TypescriptEslintNoMisusedSpread>
   /**
    * Disallow enums from having both number and string members
    * @see https://typescript-eslint.io/rules/no-mixed-enums
@@ -1784,7 +1789,7 @@ export interface RuleOptions {
    */
   'default-case'?: Linter.RuleEntry<DefaultCase>
   /**
-   * Enforce `default` clauses in switch statements to be last
+   * Enforce `default` clauses in `switch` statements to be last
    * @see https://eslint.org/docs/latest/rules/default-case-last
    */
   'default-case-last'?: Linter.RuleEntry<[]>
@@ -4018,7 +4023,7 @@ export interface RuleOptions {
    */
   'simple-import-sort/imports'?: Linter.RuleEntry<SimpleImportSortImports>
   /**
-   * Enforce sorted import declarations within modules
+   * Enforce sorted `import` declarations within modules
    * @see https://eslint.org/docs/latest/rules/sort-imports
    */
   'sort-imports'?: Linter.RuleEntry<SortImports>
@@ -5347,6 +5352,7 @@ type StylisticKeySpacing = []|[({
   mode?: ("strict" | "minimum")
   beforeColon?: boolean
   afterColon?: boolean
+  ignoredNodes?: ("ObjectExpression" | "ObjectPattern" | "ImportDeclaration" | "ExportNamedDeclaration" | "ExportAllDeclaration" | "TSTypeLiteral" | "TSInterfaceBody" | "ClassBody")[]
 } | {
   singleLine?: {
     mode?: ("strict" | "minimum")
@@ -5862,6 +5868,7 @@ type StylisticNoExtraParens = ([]|["functions"] | []|["all"]|["all", {
   enforceForNewInMemberExpressions?: boolean
   enforceForFunctionPrototypeMethods?: boolean
   allowParensAfterCommentPattern?: string
+  nestedConditionalExpressions?: boolean
 }])
 // ----- @stylistic/no-mixed-operators -----
 type StylisticNoMixedOperators = []|[{
@@ -5959,14 +5966,14 @@ type StylisticOperatorLinebreak = []|[(("after" | "before" | "none") | null)]|[(
   }
 }]
 // ----- @stylistic/padded-blocks -----
-type StylisticPaddedBlocks = []|[(("always" | "never") | {
-  blocks?: ("always" | "never")
-  switches?: ("always" | "never")
-  classes?: ("always" | "never")
-})]|[(("always" | "never") | {
-  blocks?: ("always" | "never")
-  switches?: ("always" | "never")
-  classes?: ("always" | "never")
+type StylisticPaddedBlocks = []|[(("always" | "never" | "start" | "end") | {
+  blocks?: ("always" | "never" | "start" | "end")
+  switches?: ("always" | "never" | "start" | "end")
+  classes?: ("always" | "never" | "start" | "end")
+})]|[(("always" | "never" | "start" | "end") | {
+  blocks?: ("always" | "never" | "start" | "end")
+  switches?: ("always" | "never" | "start" | "end")
+  classes?: ("always" | "never" | "start" | "end")
 }), {
   allowSingleLineBlocks?: boolean
 }]
@@ -6133,6 +6140,8 @@ type TypescriptEslintConsistentTypeAssertions = []|[({
   
   assertionStyle: "never"
 } | {
+  
+  arrayLiteralTypeAssertions?: ("allow" | "allow-as-parameter" | "never")
   
   assertionStyle?: ("as" | "angle-bracket")
   
@@ -6590,6 +6599,22 @@ type TypescriptEslintNoConfusingVoidExpression = []|[{
   
   ignoreVoidReturningFunctions?: boolean
 }]
+// ----- @typescript-eslint/no-deprecated -----
+type TypescriptEslintNoDeprecated = []|[{
+  
+  allow?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+}]
 // ----- @typescript-eslint/no-duplicate-type-constituents -----
 type TypescriptEslintNoDuplicateTypeConstituents = []|[{
   
@@ -6731,6 +6756,22 @@ type TypescriptEslintNoMisusedPromises = []|[{
     variables?: boolean
   })
 }]
+// ----- @typescript-eslint/no-misused-spread -----
+type TypescriptEslintNoMisusedSpread = []|[{
+  
+  allow?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+}]
 // ----- @typescript-eslint/no-namespace -----
 type TypescriptEslintNoNamespace = []|[{
   
@@ -6806,7 +6847,7 @@ type TypescriptEslintNoShadow = []|[{
   
   builtinGlobals?: boolean
   
-  hoist?: ("all" | "functions" | "never")
+  hoist?: ("all" | "functions" | "functions-and-types" | "never" | "types")
   
   ignoreFunctionTypeParameterNameValueShadow?: boolean
   
