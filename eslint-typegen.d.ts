@@ -400,6 +400,11 @@ export interface RuleOptions {
    */
   '@eslint-react/no-unused-state'?: Linter.RuleEntry<[]>
   /**
+   * disallow the use of 'useContext'
+   * @see https://eslint-react.xyz/docs/rules/no-use-context
+   */
+  '@eslint-react/no-use-context'?: Linter.RuleEntry<[]>
+  /**
    * disallow unnecessary fragments
    * @see https://eslint-react.xyz/docs/rules/no-useless-fragment
    */
@@ -3395,6 +3400,14 @@ export interface RuleOptions {
    */
   'operator-linebreak'?: Linter.RuleEntry<OperatorLinebreak>
   /**
+   * Reports on unnecessary empty arrays and objects.
+   */
+  'package-json/no-empty-fields'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents adding unnecessary / redundant files.
+   */
+  'package-json/no-redundant-files'?: Linter.RuleEntry<[]>
+  /**
    * Package properties must be declared in standard order
    */
   'package-json/order-properties'?: Linter.RuleEntry<PackageJsonOrderProperties>
@@ -3402,6 +3415,14 @@ export interface RuleOptions {
    * Enforce either object or shorthand declaration for repository.
    */
   'package-json/repository-shorthand'?: Linter.RuleEntry<PackageJsonRepositoryShorthand>
+  /**
+   * Requires the `author` property to be present.
+   */
+  'package-json/require-author'?: Linter.RuleEntry<[]>
+  /**
+   * Requires the `version` property to be present.
+   */
+  'package-json/require-version'?: Linter.RuleEntry<[]>
   /**
    * Dependencies, scripts, and configuration values must be declared in alphabetical order.
    */
@@ -5994,7 +6015,7 @@ type StylisticQuoteProps = ([]|[("always" | "as-needed" | "consistent" | "consis
 // ----- @stylistic/quotes -----
 type StylisticQuotes = []|[("single" | "double" | "backtick")]|[("single" | "double" | "backtick"), ("avoid-escape" | {
   avoidEscape?: boolean
-  allowTemplateLiterals?: boolean
+  allowTemplateLiterals?: (boolean | ("never" | "avoidEscape" | "always"))
   ignoreStringLiterals?: boolean
 })]
 // ----- @stylistic/rest-spread-spacing -----
@@ -6887,6 +6908,8 @@ type TypescriptEslintNoUnnecessaryBooleanLiteralCompare = []|[{
   allowComparingNullableBooleansToFalse?: boolean
   
   allowComparingNullableBooleansToTrue?: boolean
+  
+  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
 }]
 // ----- @typescript-eslint/no-unnecessary-condition -----
 type TypescriptEslintNoUnnecessaryCondition = []|[{
