@@ -1,11 +1,11 @@
 import type { Linter } from 'eslint'
-import * as pluginUnicorn from 'eslint-plugin-unicorn'
+import pluginUnicorn from 'eslint-plugin-unicorn'
 
 import type { Options } from '../option'
 
 export function unicornConfigs({ fileCase, strict, preferESM, formatting }: Required<Options>) {
   return [
-    pluginUnicorn.configs['flat/recommended'],
+    pluginUnicorn.configs.recommended,
     [
       strict
         ? {}

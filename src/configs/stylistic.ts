@@ -47,7 +47,7 @@ function formattingConfigs({ formatting, lessOpinionated }: Required<Options>): 
     {
       name: '@stylistic/shared',
       files: undefined,
-      ...pluginStylistic.configs.customize(formatting) as Linter.Config,
+      ...pluginStylistic.configs.customize(formatting),
     },
     {
       name: '@stylistic/customize',
