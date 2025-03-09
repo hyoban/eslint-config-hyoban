@@ -7,6 +7,7 @@ import { interopDefault } from '../utils'
 export function tailwindCSSConfig({ tailwindCSS }: Required<Options>) {
   if (!tailwindCSS)
     return
+  process.env.TAILWIND_MODE = 'build'
 
   return async () => {
     const tailwind = await interopDefault(import ('eslint-plugin-tailwindcss'))

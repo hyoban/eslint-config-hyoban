@@ -66,8 +66,8 @@ importers:
         specifier: ^12.1.1
         version: 12.1.1(eslint@9.22.0(jiti@2.4.2))
       eslint-plugin-tailwindcss:
-        specifier: ^3.18.0
-        version: 3.18.0(tailwindcss@3.4.3)
+        specifier: npm:@hyoban/eslint-plugin-tailwindcss@^3.18.0
+        version: '@hyoban/eslint-plugin-tailwindcss@3.18.0(tailwindcss@3.4.3)'
       eslint-plugin-unicorn:
         specifier: ^57.0.0
         version: 57.0.0(eslint@9.22.0(jiti@2.4.2))
@@ -687,6 +687,12 @@ packages:
   '@humanwhocodes/retry@0.4.2':
     resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
+
+  '@hyoban/eslint-plugin-tailwindcss@3.18.0':
+    resolution: {integrity: sha512-8Ng4zLmsK08u3ECIKABApgp+/QMZDgBZ3pw/QkvEE5ImdYIAZV7J16nj0NrI3Sa8ia7UY+oO8UYT5PcjmMe7Fw==}
+    engines: {node: '>=18.12.0'}
+    peerDependencies:
+      tailwindcss: ^3.4.0
 
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
@@ -2099,12 +2105,6 @@ packages:
     resolution: {integrity: sha512-6nuzu4xwQtE3332Uz0to+TxDQYRLTKRESSc2hefVT48Zc8JthmN23Gx9lnYhu0FtkRSL1oxny3kJ2aveVhmOVA==}
     peerDependencies:
       eslint: '>=5.0.0'
-
-  eslint-plugin-tailwindcss@3.18.0:
-    resolution: {integrity: sha512-PQDU4ZMzFH0eb2DrfHPpbgo87Zgg2EXSMOj1NSfzdZm+aJzpuwGerfowMIaVehSREEa0idbf/eoNYAOHSJoDAQ==}
-    engines: {node: '>=18.12.0'}
-    peerDependencies:
-      tailwindcss: ^3.4.0
 
   eslint-plugin-unicorn@57.0.0:
     resolution: {integrity: sha512-zUYYa6zfNdTeG9BISWDlcLmz16c+2Ck2o5ZDHh0UzXJz3DEP7xjmlVDTzbyV0W+XksgZ0q37WEWzN2D2Ze+g9Q==}
@@ -4453,6 +4453,12 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.2': {}
 
+  '@hyoban/eslint-plugin-tailwindcss@3.18.0(tailwindcss@3.4.3)':
+    dependencies:
+      fast-glob: 3.3.3
+      postcss: 8.4.47
+      tailwindcss: 3.4.3
+
   '@iarna/toml@2.2.5': {}
 
   '@iconify/types@2.0.0': {}
@@ -6105,12 +6111,6 @@ snapshots:
   eslint-plugin-simple-import-sort@12.1.1(eslint@9.22.0(jiti@2.4.2)):
     dependencies:
       eslint: 9.22.0(jiti@2.4.2)
-
-  eslint-plugin-tailwindcss@3.18.0(tailwindcss@3.4.3):
-    dependencies:
-      fast-glob: 3.3.3
-      postcss: 8.4.47
-      tailwindcss: 3.4.3
 
   eslint-plugin-unicorn@57.0.0(eslint@9.22.0(jiti@2.4.2)):
     dependencies:
