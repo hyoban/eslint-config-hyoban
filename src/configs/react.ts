@@ -66,6 +66,7 @@ export function reactConfigs({
           '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks': 'warn',
           '@eslint-react/no-unstable-context-value': 'warn',
           '@eslint-react/dom/no-dangerously-set-innerhtml': 'off',
+          '@eslint-react/naming-convention/use-state': 'off',
           // https://github.com/jsx-eslint/eslint-plugin-react/issues/2628#issuecomment-984160944
           // {
           //   selector: 'ImportDeclaration[source.value=\'react\'][specifiers.0.type=\'ImportDefaultSpecifier\']',
