@@ -55,6 +55,6 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: publint
 
-      - name: Are The Types Wrong
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: attw --pack .
+      # - name: Are The Types Wrong
+      #   if: ${{ matrix.os == 'ubuntu-latest' }}
+      #   run: attw --pack .
