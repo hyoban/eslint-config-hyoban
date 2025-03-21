@@ -1,3 +1,7 @@
 packages:
   - playground
   - examples/*
+onlyBuiltDependencies:
+  - '@swc/core'
+  - esbuild
+  - simple-git-hooks

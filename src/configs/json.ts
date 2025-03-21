@@ -1,6 +1,6 @@
 import type { ESLint, Linter } from 'eslint'
 import pluginJsonc from 'eslint-plugin-jsonc'
-import packageJson from 'eslint-plugin-package-json/configs/recommended'
+import packageJson from 'eslint-plugin-package-json'
 import * as parserJsonc from 'jsonc-eslint-parser'
 
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC, GLOB_SHOULD_BE_JSONC } from '../consts'
@@ -51,7 +51,7 @@ function formattingConfigs({ formatting }: Required<Options>): Linter.Config[] {
   ]
 }
 
-export function jsonConfigs(options: Required<Options>): Linter.Config[] {
+export function jsonConfigs(options: Required<Options>): Array<Linter.Config | Linter.Config[]> {
   return [
     {
       name: 'json/setup',
@@ -59,71 +59,72 @@ export function jsonConfigs(options: Required<Options>): Linter.Config[] {
       /// keep-sorted
       plugins: {
         'jsonc': pluginJsonc as unknown as ESLint.Plugin,
-        'package-json': packageJson.plugins['package-json'] as ESLint.Plugin,
+        'package-json': packageJson as ESLint.Plugin,
       },
       languageOptions: {
         parser: parserJsonc,
       },
     },
     ...formattingConfigs(options),
-    {
-      ...packageJson,
-      rules: {
-        ...packageJson.rules,
-        'package-json/require-version': 'off',
-        'package-json/order-properties': [
-          'error',
-          {
-            order: [
-              'publisher',
-              'name',
-              'displayName',
-              'type',
-              'version',
-              'private',
-              'packageManager',
-              'description',
-              'author',
-              'contributors',
-              'license',
-              'funding',
-              'homepage',
-              'repository',
-              'bugs',
-              'keywords',
-              'categories',
-              'sideEffects',
-              'exports',
-              'main',
-              'module',
-              'unpkg',
-              'jsdelivr',
-              'types',
-              'typesVersions',
-              'bin',
-              'icon',
-              'files',
-              'engines',
-              'activationEvents',
-              'contributes',
-              'scripts',
-              'release-it',
-              'peerDependencies',
-              'peerDependenciesMeta',
-              'dependencies',
-              'optionalDependencies',
-              'devDependencies',
-              'pnpm',
-              'overrides',
-              'resolutions',
-              'husky',
-              'simple-git-hooks',
-              'lint-staged',
-              'eslintConfig',
-            ],
-          },
-        ],
+    [
+      packageJson.configs.recommended,
+      {
+        rules: {
+          'package-json/require-version': 'off',
+          'package-json/order-properties': [
+            'error',
+            {
+              order: [
+                'publisher',
+                'name',
+                'displayName',
+                'type',
+                'version',
+                'private',
+                'packageManager',
+                'description',
+                'author',
+                'contributors',
+                'license',
+                'funding',
+                'homepage',
+                'repository',
+                'bugs',
+                'keywords',
+                'categories',
+                'sideEffects',
+                'exports',
+                'main',
+                'module',
+                'unpkg',
+                'jsdelivr',
+                'types',
+                'typesVersions',
+                'bin',
+                'icon',
+                'files',
+                'engines',
+                'activationEvents',
+                'contributes',
+                'scripts',
+                'release-it',
+                'peerDependencies',
+                'peerDependenciesMeta',
+                'dependencies',
+                'optionalDependencies',
+                'devDependencies',
+                'pnpm',
+                'overrides',
+                'resolutions',
+                'husky',
+                'simple-git-hooks',
+                'lint-staged',
+                'eslintConfig',
+              ],
+            },
+          ],
+        },
       },
-    } as Linter.Config,
+    ] as Linter.Config[],
   ]
 }
