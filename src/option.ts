@@ -2,7 +2,7 @@ import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { ParserOptions } from '@typescript-eslint/types'
 import defu from 'defu'
 import type { Linter } from 'eslint'
-import { isPackageExists } from 'local-pkg'
+import { getPackageInfo, isPackageExists } from 'local-pkg'
 import { readPackageUp } from 'read-package-up'
 
 import { DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
@@ -38,7 +38,8 @@ export async function mergeDefaultOptions(
   const hasExpo = isPackageExists('expo')
   const hasUnocss = isPackageExists('unocss')
 
-  const hasTailwindCSS = isPackageExists('tailwindcss')
+  const tailwindPackageInfo = await getPackageInfo('tailwindcss')
+  const hasTailwindCSS = !!tailwindPackageInfo?.version?.startsWith('3.')
 
   /// keep-sorted
   const defaultOptions: Required<Options> = {
