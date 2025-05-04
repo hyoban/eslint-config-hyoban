@@ -15,19 +15,12 @@ export function reactConfigs({
 
   return [
     async () => {
-      const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
-      const config = strict ? eslintReact.configs.all : eslintReact.configs.recommended
-      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks')) as ESLint.Plugin
-      const reactCompiler = await interopDefault(import('eslint-plugin-react-compiler')) as ESLint.Plugin
       const reactRefresh = await interopDefault(import('eslint-plugin-react-refresh')) as ESLint.Plugin
       const reactGoogleTranslate = await interopDefault(import('eslint-plugin-react-google-translate')) as ESLint.Plugin
 
       return {
         name: `react/setup/${strict ? 'all' : 'recommended'}`,
         plugins: {
-          ...(config.plugins as unknown as Record<string, ESLint.Plugin>),
-          'react-compiler': reactCompiler,
-          'react-hooks': reactHooks,
           'react-refresh': reactRefresh,
           'react-google-translate': reactGoogleTranslate,
         },
@@ -38,9 +31,10 @@ export function reactConfigs({
       const config = strict ? eslintReact.configs.all : eslintReact.configs.recommended
 
       return {
+        ...config,
+        plugins: config.plugins as unknown as Record<string, ESLint.Plugin>,
         name: `react/${strict ? 'all' : 'recommended'}`,
         files: GLOB_TS_SRC,
-        rules: config.rules,
       } satisfies Linter.Config
     },
     () => {
@@ -51,8 +45,6 @@ export function reactConfigs({
           rules: {
             '@eslint-react/naming-convention/filename': 'off',
             '@eslint-react/naming-convention/use-state': 'off',
-            '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps': 'off',
-            '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps': 'off',
             '@eslint-react/avoid-shorthand-boolean': 'off',
             '@eslint-react/avoid-shorthand-fragment': 'off',
             '@eslint-react/prefer-react-namespace-import': 'warn',
@@ -92,16 +84,14 @@ export function reactConfigs({
         },
       } satisfies Linter.Config
     },
-    {
-      name: 'react/official',
-      files: GLOB_TS_SRC,
-      /// keep-sorted
-      rules: {
-        'react-compiler/react-compiler': 'warn',
-        'react-hooks/exhaustive-deps': 'warn',
-        'react-hooks/rules-of-hooks': 'error',
-      },
-    } satisfies Linter.Config,
+    async () => {
+      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
+      return {
+        ...reactHooks.configs.recommended,
+        name: 'react/official',
+        files: GLOB_TS_SRC,
+      } satisfies Linter.Config
+    },
     {
       name: 'react/refresh',
       files: GLOB_JSX_SRC,
