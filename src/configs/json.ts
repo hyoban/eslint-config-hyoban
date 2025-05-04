@@ -70,7 +70,9 @@ export function jsonConfigs(options: Required<Options>): Array<Linter.Config | L
       packageJson.configs.recommended,
       {
         rules: {
+          // TODO: enable in lib mode?
           'package-json/require-version': 'off',
+          'package-json/require-description': 'off',
           'package-json/order-properties': [
             'error',
             {
