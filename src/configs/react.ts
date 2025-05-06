@@ -4,6 +4,11 @@ import { GLOB_JSX_SRC, GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
 import { interopDefault } from '../utils'
 
+function excludePlugins(object: any) {
+  const { plugins, ...rest } = object
+  return rest
+}
+
 export function reactConfigs({
   react,
   strict,
@@ -17,12 +22,17 @@ export function reactConfigs({
     async () => {
       const reactRefresh = await interopDefault(import('eslint-plugin-react-refresh')) as ESLint.Plugin
       const reactGoogleTranslate = await interopDefault(import('eslint-plugin-react-google-translate')) as ESLint.Plugin
+      const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
+      const config = strict ? eslintReact.configs.all : eslintReact.configs.recommended
+      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
 
       return {
         name: `react/setup/${strict ? 'all' : 'recommended'}`,
         plugins: {
           'react-refresh': reactRefresh,
           'react-google-translate': reactGoogleTranslate,
+          'react-hooks': reactHooks,
+          ...(config.plugins as unknown as Record<string, ESLint.Plugin>),
         },
       } satisfies Linter.Config
     },
@@ -31,8 +41,7 @@ export function reactConfigs({
       const config = strict ? eslintReact.configs.all : eslintReact.configs.recommended
 
       return {
-        ...config,
-        plugins: config.plugins as unknown as Record<string, ESLint.Plugin>,
+        ...(excludePlugins(config)),
         name: `react/${strict ? 'all' : 'recommended'}`,
         files: GLOB_TS_SRC,
       } satisfies Linter.Config
@@ -87,7 +96,7 @@ export function reactConfigs({
     async () => {
       const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
       return {
-        ...reactHooks.configs.recommended,
+        ...(excludePlugins(reactHooks.configs.recommended)),
         name: 'react/official',
         files: GLOB_TS_SRC,
       } satisfies Linter.Config
