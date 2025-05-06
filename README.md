@@ -114,9 +114,26 @@ Use `eslint --flag unstable_ts_config` if you are using ESLint 9.9.0 and `eslint
 }
 ```
 
+### TypeAware Rules
+
+We recommend using [tsslint](https://github.com/johnsoncodehk/tsslint) for type-aware rules.
+
+A example `tsslint.config.ts`:
+
+```ts
+import { defineConfig } from "@tsslint/config"
+import { convertRules } from "@tsslint/eslint"
+
+export default defineConfig({
+  rules: await convertRules({
+    "react-x/no-leaked-conditional-rendering": "error",
+  }),
+})
+```
+
 ## Who is using?
 
-- [Follow](https://github.com/RSSNext/Follow)
+- [Folo](https://github.com/RSSNext/Folo)
 - [fisand](https://github.com/fisand)
 - [Shiro](https://github.com/Innei/Shiro)
 - [vite-react-tailwind-template](https://github.com/innei-template/vite-react-tailwind-template)
