@@ -39,7 +39,7 @@ export async function mergeDefaultOptions(
   const hasUnocss = isPackageExists('unocss')
 
   const tailwindPackageInfo = await getPackageInfo('tailwindcss')
-  const hasTailwindCSS = !!tailwindPackageInfo?.version?.startsWith('3.')
+  const hasTailwindCSS = !!tailwindPackageInfo?.version
 
   /// keep-sorted
   const defaultOptions: Required<Options> = {

@@ -195,6 +195,11 @@ export interface RuleOptions {
    */
   '@eslint-react/hooks-extra/prefer-use-state-lazy-initialization'?: Linter.RuleEntry<[]>
   /**
+   * Enforces that the 'key' attribute is placed before the spread attribute in JSX elements.
+   * @see https://eslint-react.xyz/docs/rules/jsx-key-before-spread
+   */
+  '@eslint-react/jsx-key-before-spread'?: Linter.RuleEntry<[]>
+  /**
    * Disallow duplicate props in JSX elements.
    * @see https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
    */
@@ -1388,6 +1393,11 @@ export interface RuleOptions {
    * @see https://typescript-eslint.io/rules/no-unnecessary-type-constraint
    */
   '@typescript-eslint/no-unnecessary-type-constraint'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow conversion idioms when they do not change the type or value of the expression
+   * @see https://typescript-eslint.io/rules/no-unnecessary-type-conversion
+   */
+  '@typescript-eslint/no-unnecessary-type-conversion'?: Linter.RuleEntry<[]>
   /**
    * Disallow type parameters that aren't used multiple times
    * @see https://typescript-eslint.io/rules/no-unnecessary-type-parameters
@@ -7064,6 +7074,8 @@ type TypescriptEslintOnlyThrowError = []|[{
     name: (string | [string, ...(string)[]])
     package: string
   })[]
+  
+  allowRethrowing?: boolean
   
   allowThrowingAny?: boolean
   
