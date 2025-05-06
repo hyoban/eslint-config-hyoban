@@ -67,7 +67,7 @@
     "eslint-plugin-jsonc": "^2.20.0",
     "eslint-plugin-package-json": "^0.31.0",
     "eslint-plugin-react-google-translate": "^0.1.1",
-    "eslint-plugin-react-hooks": "^6.0.0-rc.1",
+    "eslint-plugin-react-hooks": "6.0.0-rc.1",
     "eslint-plugin-react-refresh": "^0.4.20",
     "eslint-plugin-regexp": "^2.7.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
