@@ -96,6 +96,7 @@ export function reactConfigs({
     async () => {
       const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
       return {
+        // @ts-expect-error type error
         ...(excludePlugins(reactHooks.configs.recommended)),
         name: 'react/official',
         files: GLOB_TS_SRC,
