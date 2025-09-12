@@ -67,6 +67,9 @@ export function unicornConfigs({ fileCase, strict, preferESM, formatting }: Requ
           'unicorn/prevent-abbreviations': 'off',
           // this is common in config files
           'unicorn/no-anonymous-default-export': 'off',
+
+          'unicorn/no-array-sort': 'off',
+          'unicorn/no-array-reverse': 'off',
         },
       },
     ] satisfies Array<Linter.Config | boolean>,

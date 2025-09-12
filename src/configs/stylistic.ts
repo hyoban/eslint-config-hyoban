@@ -58,7 +58,7 @@ function formattingConfigs({ formatting, lessOpinionated }: Required<Options>): 
         '@stylistic': pluginStylistic as unknown as ESLint.Plugin,
       },
       rules: {
-        '@stylistic/quotes': ['error', formatting.quotes, { allowTemplateLiterals: true, avoidEscape: true }],
+        '@stylistic/quotes': ['error', formatting.quotes, { allowTemplateLiterals: 'always', avoidEscape: true }],
         '@stylistic/max-statements-per-line': 'off',
         '@stylistic/multiline-ternary': ['error', 'always-multiline', { ignoreJSX: true }],
         '@stylistic/operator-linebreak': ['error', formatting.lineBreak ?? 'before'],
