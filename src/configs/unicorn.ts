@@ -49,6 +49,8 @@ export function unicornConfigs({ fileCase, preferESM }: Required<Options>) {
         'unicorn/text-encoding-identifier-case': 'off',
         'unicorn/prefer-ternary': 'off',
         'unicorn/prefer-add-event-listener': 'off',
+        'unicorn/number-literal-case': 'off',
+        'unicorn/prefer-math-trunc': 'off',
       },
     } satisfies Linter.Config,
   ]
