@@ -47,6 +47,7 @@ export function unicornConfigs({ fileCase, preferESM }: Required<Options>) {
         'unicorn/no-array-reverse': 'off',
 
         'unicorn/text-encoding-identifier-case': 'off',
+        'unicorn/prefer-ternary': 'off',
       },
     } satisfies Linter.Config,
   ]
