@@ -1,8 +1,8 @@
-import type { Linter } from 'eslint'
 import typescriptEslint from 'typescript-eslint'
 
 import { GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
+import type { LinterConfig } from '../utils'
 
 export function typeScriptConfigs({
   strict,
@@ -22,7 +22,7 @@ export function typeScriptConfigs({
         : typescriptEslint.configs.recommended)
 
   return [
-    typescriptEslint.configs.base as Linter.Config,
+    typescriptEslint.configs.base as LinterConfig,
     [
       ...typescriptPreset,
       typeChecked && {
@@ -34,7 +34,7 @@ export function typeScriptConfigs({
           },
         },
       },
-    ] as Linter.Config[],
+    ] as LinterConfig[],
     [
       {
         name: 'typescript-eslint/custom',
@@ -106,7 +106,7 @@ export function typeScriptConfigs({
               '@typescript-eslint/no-deprecated': 'warn',
             },
           }),
-    ] as Linter.Config[],
+    ] as LinterConfig[],
     () => {
       if (filesDisableTypeChecking.length === 0)
         return
@@ -114,7 +114,7 @@ export function typeScriptConfigs({
       return {
         files: filesDisableTypeChecking,
         ...typescriptEslint.configs.disableTypeChecked,
-      } as Linter.Config
+      } as LinterConfig
     },
   ]
 }

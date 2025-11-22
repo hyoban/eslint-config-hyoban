@@ -1,16 +1,17 @@
-import type { ESLint, Linter } from 'eslint'
+import type { ESLint } from 'eslint'
 import pluginJsonc from 'eslint-plugin-jsonc'
 import packageJson from 'eslint-plugin-package-json'
 import * as parserJsonc from 'jsonc-eslint-parser'
 
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC, GLOB_SHOULD_BE_JSONC } from '../consts'
 import type { Options } from '../option'
+import type { LinterConfig } from '../utils'
 
-function formattingConfigs({ formatting }: Required<Options>): Linter.Config[] {
+function formattingConfigs({ formatting }: Required<Options>): LinterConfig[] {
   if (!formatting)
     return []
 
-  const jsonFormateRules: Linter.RulesRecord = {
+  const jsonFormateRules: LinterConfig['rules'] = {
     'jsonc/array-bracket-spacing': ['error', 'never'],
     'jsonc/comma-dangle': ['error', 'never'],
     'jsonc/comma-style': ['error', 'last'],
@@ -30,7 +31,7 @@ function formattingConfigs({ formatting }: Required<Options>): Linter.Config[] {
       rules: {
         ...pluginJsonc.configs['recommended-with-json'].rules,
         ...jsonFormateRules,
-      } as Linter.Config['rules'],
+      } as LinterConfig['rules'],
     },
     {
       name: 'json/jsonc',
@@ -38,7 +39,7 @@ function formattingConfigs({ formatting }: Required<Options>): Linter.Config[] {
       rules: {
         ...pluginJsonc.configs['recommended-with-jsonc'].rules,
         ...jsonFormateRules,
-      } as Linter.Config['rules'],
+      } as LinterConfig['rules'],
     },
     {
       name: 'json/json5',
@@ -46,12 +47,12 @@ function formattingConfigs({ formatting }: Required<Options>): Linter.Config[] {
       rules: {
         ...pluginJsonc.configs['recommended-with-json5'].rules,
         ...jsonFormateRules,
-      } as Linter.Config['rules'],
+      } as LinterConfig['rules'],
     },
   ]
 }
 
-export function jsonConfigs(options: Required<Options>): Array<Linter.Config | Linter.Config[]> {
+export function jsonConfigs(options: Required<Options>): Array<LinterConfig | LinterConfig[]> {
   return [
     {
       name: 'json/setup',
@@ -127,6 +128,6 @@ export function jsonConfigs(options: Required<Options>): Array<Linter.Config | L
           ],
         },
       },
-    ] as Linter.Config[],
+    ] as LinterConfig[],
   ]
 }

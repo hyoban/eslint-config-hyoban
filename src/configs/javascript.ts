@@ -1,16 +1,16 @@
 import js from '@eslint/js'
-import type { Linter } from 'eslint'
 import globals from 'globals'
 
 import { GLOB_SRC } from '../consts'
 import type { Options } from '../option'
+import type { LinterConfig } from '../utils'
 
 export function javaScriptConfigs({
   strict,
   restrictedSyntax,
   linterOptions,
   settings,
-}: Required<Options>): [Linter.Config, Linter.Config[]] {
+}: Required<Options>): [LinterConfig, LinterConfig[]] {
   return [
     /// keep-sorted
     {

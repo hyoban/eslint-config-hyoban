@@ -1,11 +1,11 @@
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { ParserOptions } from '@typescript-eslint/types'
 import defu from 'defu'
-import type { Linter } from 'eslint'
 import { getPackageInfo, isPackageExists } from 'local-pkg'
 import { readPackageUp } from 'read-package-up'
 
 import { DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
+import type { LinterConfig } from './utils'
 
 /// keep-sorted
 export type Options = {
@@ -26,7 +26,7 @@ export type Options = {
   tsconfigRootDir?: string
   typeChecked?: boolean | 'essential'
   unocss?: boolean
-} & Pick<Linter.Config, 'linterOptions' | 'settings'>
+} & Pick<LinterConfig, 'linterOptions' | 'settings'>
 
 export async function mergeDefaultOptions(
   options?: Options,

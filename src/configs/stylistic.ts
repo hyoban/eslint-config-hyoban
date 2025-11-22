@@ -1,12 +1,12 @@
 import pluginStylistic from '@stylistic/eslint-plugin'
-import type { ESLint, Linter } from 'eslint'
+import type { ESLint } from 'eslint'
 import pluginAntfu from 'eslint-plugin-antfu'
 import pluginHyoban from 'eslint-plugin-hyoban'
 import typescriptEslint from 'typescript-eslint'
 
 import { GLOB_JSX_SRC, GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
-import type { ConfigArray } from '../utils'
+import type { ConfigArray, LinterConfig } from '../utils'
 
 function formattingConfigs({ formatting, lessOpinionated }: Required<Options>): ConfigArray {
   if (!formatting) {
@@ -111,7 +111,7 @@ export function stylisticConfigs(options: Required<Options>): ConfigArray {
     ...formattingConfigs(options),
     (typeChecked === true
       ? typescriptEslint.configs.stylisticTypeChecked
-      : typescriptEslint.configs.stylistic) as Linter.Config,
+      : typescriptEslint.configs.stylistic) as LinterConfig,
     {
       name: 'typescript-eslint/stylistic/custom',
       files: GLOB_TS_SRC,

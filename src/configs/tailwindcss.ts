@@ -1,7 +1,6 @@
-import type { Linter } from 'eslint'
-
 import { GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
+import type { LinterConfig } from '../utils'
 import { interopDefault } from '../utils'
 
 export function tailwindCSSConfig({ tailwindCSS }: Required<Options>) {
@@ -22,6 +21,6 @@ export function tailwindCSSConfig({ tailwindCSS }: Required<Options>) {
           'tailwindcss/classnames-order': 'off',
         },
       },
-    ] as Linter.Config[]
+    ] as LinterConfig[]
   }
 }

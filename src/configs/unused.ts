@@ -1,7 +1,9 @@
-import type { ESLint, Linter } from 'eslint'
+import type { ESLint } from 'eslint'
 import pluginUnusedImports from 'eslint-plugin-unused-imports'
 
-export function unusedConfig(): Linter.Config {
+import type { LinterConfig } from '../utils'
+
+export function unusedConfig(): LinterConfig {
   return {
     name: 'extend/unused',
     plugins: {

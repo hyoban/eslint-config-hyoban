@@ -1,7 +1,7 @@
-import type { Linter } from 'eslint'
 import pluginUnicorn from 'eslint-plugin-unicorn'
 
 import type { Options } from '../option'
+import type { LinterConfig } from '../utils'
 
 export function unicornConfigs({ fileCase, preferESM }: Required<Options>) {
   return [
@@ -52,6 +52,6 @@ export function unicornConfigs({ fileCase, preferESM }: Required<Options>) {
         'unicorn/number-literal-case': 'off',
         'unicorn/prefer-math-trunc': 'off',
       },
-    } satisfies Linter.Config,
+    } satisfies LinterConfig,
   ]
 }

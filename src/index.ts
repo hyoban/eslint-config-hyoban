@@ -1,6 +1,3 @@
-import '../eslint-typegen.d.ts'
-
-import type { Linter } from 'eslint'
 import commandConfig from 'eslint-plugin-command/config'
 
 import { importConfig } from './configs/imports'
@@ -16,7 +13,7 @@ import { unocssConfig } from './configs/unocss'
 import { unusedConfig } from './configs/unused'
 import type { Options } from './option'
 import { mergeDefaultOptions } from './option'
-import type { ConfigArray } from './utils'
+import type { ConfigArray, LinterConfig } from './utils'
 import { config } from './utils'
 
 export * from './consts'
@@ -24,7 +21,7 @@ export * from './consts'
 export async function defineConfig(
   options?: Options,
   ...args: ConfigArray
-): Promise<Linter.Config[]> {
+): Promise<LinterConfig[]> {
   const finalOptions = await mergeDefaultOptions(options)
 
   return config(

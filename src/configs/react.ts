@@ -1,7 +1,8 @@
-import type { ESLint, Linter } from 'eslint'
+import type { ESLint } from 'eslint'
 
 import { GLOB_JSX_SRC, GLOB_TS_SRC } from '../consts'
 import type { Options } from '../option'
+import type { LinterConfig } from '../utils'
 import { interopDefault } from '../utils'
 
 function excludePlugins(object: any) {
@@ -36,7 +37,7 @@ export function reactConfigs({
           // @ts-expect-error type error
           ...(config.plugins as unknown as Record<string, ESLint.Plugin>),
         },
-      } satisfies Linter.Config
+      } satisfies LinterConfig
     },
     async () => {
       const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
@@ -46,7 +47,7 @@ export function reactConfigs({
         ...(excludePlugins(config)),
         name: `react/${strict ? 'strict' : 'recommended'}`,
         files: GLOB_TS_SRC,
-      } satisfies Linter.Config
+      } satisfies LinterConfig
     },
     () => {
       if (strict) {
@@ -60,7 +61,7 @@ export function reactConfigs({
             '@eslint-react/avoid-shorthand-fragment': 'off',
             '@eslint-react/prefer-namespace-import': 'warn',
           },
-        } satisfies Linter.Config
+        } satisfies LinterConfig
       }
       return {
         name: 'react/recommended/custom',
@@ -76,7 +77,7 @@ export function reactConfigs({
           // },
           '@eslint-react/prefer-namespace-import': 'warn',
         },
-      } satisfies Linter.Config
+      } satisfies LinterConfig
     },
     () => {
       if (!typeChecked)
@@ -92,7 +93,7 @@ export function reactConfigs({
         rules: {
           '@eslint-react/no-leaked-conditional-rendering': 'error',
         },
-      } satisfies Linter.Config
+      } satisfies LinterConfig
     },
     () => {
       return {
@@ -126,7 +127,7 @@ export function reactConfigs({
               : {}
           ),
         },
-      } satisfies Linter.Config
+      } satisfies LinterConfig
     },
     {
       name: 'react/refresh',
@@ -162,7 +163,7 @@ export function reactConfigs({
           },
         ],
       },
-    } satisfies Linter.Config,
+    } satisfies LinterConfig,
     {
       name: 'react/google-translate',
       files: GLOB_JSX_SRC,
@@ -170,6 +171,6 @@ export function reactConfigs({
         'react-google-translate/no-conditional-text-nodes-with-siblings': 'warn',
         'react-google-translate/no-return-text-nodes': 'warn',
       },
-    } satisfies Linter.Config,
+    } satisfies LinterConfig,
   ]
 }
