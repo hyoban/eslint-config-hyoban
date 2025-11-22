@@ -19,6 +19,7 @@ export type Options = {
   project?: ParserOptions['project']
   projectService?: ParserOptions['projectService']
   react?: 'vite' | 'remix' | 'next' | 'expo' | boolean
+  reactCompiler?: boolean
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   strict?: boolean
   tailwindCSS?: boolean | { order: boolean }
@@ -60,6 +61,7 @@ export async function mergeDefaultOptions(
     project: !!options?.typeChecked,
     projectService: false,
     react: hasNext ? 'next' : hasRemix ? 'remix' : hasExpo ? 'expo' : (hasVite && hasReact) ? 'vite' : hasReact,
+    reactCompiler: false,
     restrictedSyntax: [
       'DebuggerStatement',
       'LabeledStatement',

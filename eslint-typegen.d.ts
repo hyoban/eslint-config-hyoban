@@ -10,51 +10,6 @@ declare module 'eslint' {
 
 export interface RuleOptions {
   /**
-   * Enforces explicit boolean values for boolean attributes.
-   * @see https://eslint-react.xyz/docs/rules/avoid-shorthand-boolean
-   */
-  '@eslint-react/avoid-shorthand-boolean'?: Linter.RuleEntry<[]>
-  /**
-   * Enforces explicit `<Fragment>` components instead of the shorthand `<>` or `</>` syntax.
-   * @see https://eslint-react.xyz/docs/rules/avoid-shorthand-fragment
-   */
-  '@eslint-react/avoid-shorthand-fragment'?: Linter.RuleEntry<[]>
-  /**
-   * Reports all class components.
-   * @see https://eslint-react.xyz/docs/rules/debug-class-component
-   */
-  '@eslint-react/debug/class-component'?: Linter.RuleEntry<[]>
-  /**
-   * Reports all function components.
-   * @see https://eslint-react.xyz/docs/rules/debug-function-component
-   */
-  '@eslint-react/debug/function-component'?: Linter.RuleEntry<[]>
-  /**
-   * Reports all React Hooks.
-   * @see https://eslint-react.xyz/docs/rules/debug-hook
-   */
-  '@eslint-react/debug/hook'?: Linter.RuleEntry<[]>
-  /**
-   * Reports all identifiers that are initialized from React.
-   * @see https://eslint-react.xyz/docs/rules/debug-is-from-react
-   */
-  '@eslint-react/debug/is-from-react'?: Linter.RuleEntry<[]>
-  /**
-   * Reports all JSX elements and fragments.
-   * @see https://eslint-react.xyz/docs/rules/debug-jsx
-   */
-  '@eslint-react/debug/jsx'?: Linter.RuleEntry<[]>
-  /**
-   * Reports all React Hooks.
-   * @see https://eslint-react.xyz/docs/rules/debug-hook
-   */
-  '@eslint-react/debug/react-hooks'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow `children` in void DOM elements.
-   * @see https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
-   */
-  '@eslint-react/dom/no-children-in-void-dom-elements'?: Linter.RuleEntry<[]>
-  /**
    * Disallow `dangerouslySetInnerHTML`.
    * @see https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml
    */
@@ -85,7 +40,7 @@ export interface RuleOptions {
    */
   '@eslint-react/dom/no-missing-button-type'?: Linter.RuleEntry<[]>
   /**
-   * Enforces explicit `sandbox` attribute for `iframe` elements.
+   * Enforces explicit `sandbox` prop for `iframe` elements.
    * @see https://eslint-react.xyz/docs/rules/dom-no-missing-iframe-sandbox
    */
   '@eslint-react/dom/no-missing-iframe-sandbox'?: Linter.RuleEntry<[]>
@@ -109,6 +64,11 @@ export interface RuleOptions {
    * @see https://eslint-react.xyz/docs/rules/dom-no-script-url
    */
   '@eslint-react/dom/no-script-url'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows the use of string style prop.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-string-style-prop
+   */
+  '@eslint-react/dom/no-string-style-prop'?: Linter.RuleEntry<[]>
   /**
    * Disallow unknown `DOM` property.
    * @see https://eslint-react.xyz/docs/rules/dom-no-unknown-property
@@ -135,70 +95,30 @@ export interface RuleOptions {
    */
   '@eslint-react/dom/no-void-elements-with-children'?: Linter.RuleEntry<[]>
   /**
-   * Disallow useless `forwardRef` calls on components that don't use `ref`s.
-   * @see https://eslint-react.xyz/docs/rules/no-useless-forward-ref
+   * Enforces React Dom is imported via a namespace import.
+   * @see https://eslint-react.xyz/docs/rules/dom-prefer-namespace-import
    */
-  '@eslint-react/ensure-forward-ref-using-ref'?: Linter.RuleEntry<[]>
-  /**
-   * Enforces that a function with the `use` prefix should use at least one Hook inside of it.
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-prefix
-   */
-  '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unnecessary usage of `useCallback`.
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-callback
-   */
-  '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unnecessary usage of `useMemo`.
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-memo
-   */
-  '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps'?: Linter.RuleEntry<[]>
+  '@eslint-react/dom/prefer-namespace-import'?: Linter.RuleEntry<[]>
   /**
    * Disallow direct calls to the `set` function of `useState` in `useEffect`.
    * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-direct-set-state-in-use-effect
    */
   '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect'?: Linter.RuleEntry<[]>
   /**
-   * Disallow direct calls to the `set` function of `useState` in `useLayoutEffect`.
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-direct-set-state-in-use-layout-effect
+   * Prevents dollar signs from being inserted as text nodes before expressions.
+   * @see https://eslint-react.xyz/docs/rules/jsx-dollar
    */
-  '@eslint-react/hooks-extra/no-direct-set-state-in-use-layout-effect'?: Linter.RuleEntry<[]>
+  '@eslint-react/jsx-dollar'?: Linter.RuleEntry<[]>
   /**
-   * Enforces that a function with the `use` prefix should use at least one Hook inside of it.
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-prefix
-   */
-  '@eslint-react/hooks-extra/no-redundant-custom-hook'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unnecessary usage of `useCallback`.
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-callback
-   */
-  '@eslint-react/hooks-extra/no-unnecessary-use-callback'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unnecessary usage of `useMemo`.
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-memo
-   */
-  '@eslint-react/hooks-extra/no-unnecessary-use-memo'?: Linter.RuleEntry<[]>
-  /**
-   * Enforces that a function with the `use` prefix should use at least one Hook inside of it.
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-prefix
-   */
-  '@eslint-react/hooks-extra/no-unnecessary-use-prefix'?: Linter.RuleEntry<[]>
-  /**
-   * Enforces that a function with the `use` prefix should use at least one Hook inside of it.
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-prefix
-   */
-  '@eslint-react/hooks-extra/no-useless-custom-hooks'?: Linter.RuleEntry<[]>
-  /**
-   * Enforces function calls made inside `useState` to be wrapped in an `initializer function`.
-   * @see https://eslint-react.xyz/docs/rules/hooks-extra-prefer-use-state-lazy-initialization
-   */
-  '@eslint-react/hooks-extra/prefer-use-state-lazy-initialization'?: Linter.RuleEntry<[]>
-  /**
-   * Enforces that the 'key' attribute is placed before the spread attribute in JSX elements.
+   * Enforces that the 'key' prop is placed before the spread prop in JSX elements.
    * @see https://eslint-react.xyz/docs/rules/jsx-key-before-spread
    */
   '@eslint-react/jsx-key-before-spread'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents comments from being inserted as text nodes.
+   * @see https://eslint-react.xyz/docs/rules/jsx-no-comment-textnodes
+   */
+  '@eslint-react/jsx-no-comment-textnodes'?: Linter.RuleEntry<[]>
   /**
    * Disallow duplicate props in JSX elements.
    * @see https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
@@ -214,6 +134,16 @@ export interface RuleOptions {
    * @see https://eslint-react.xyz/docs/rules/jsx-no-undef
    */
   '@eslint-react/jsx-no-undef'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces shorthand syntax for boolean attributes.
+   * @see https://eslint-react.xyz/docs/rules/jsx-shorthand-boolean
+   */
+  '@eslint-react/jsx-shorthand-boolean'?: Linter.RuleEntry<EslintReactJsxShorthandBoolean>
+  /**
+   * Enforces shorthand syntax for fragments.
+   * @see https://eslint-react.xyz/docs/rules/jsx-shorthand-fragment
+   */
+  '@eslint-react/jsx-shorthand-fragment'?: Linter.RuleEntry<EslintReactJsxShorthandFragment>
   /**
    * Marks React variables as used when JSX is used.
    * @see https://eslint-react.xyz/docs/rules/jsx-uses-react
@@ -300,21 +230,6 @@ export interface RuleOptions {
    */
   '@eslint-react/no-clone-element'?: Linter.RuleEntry<[]>
   /**
-   * Prevents comments from being inserted as text nodes.
-   * @see https://eslint-react.xyz/docs/rules/no-comment-textnodes
-   */
-  '@eslint-react/no-comment-textnodes'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow complex conditional rendering in JSX expressions.
-   * @see https://eslint-react.xyz/docs/rules/no-complex-conditional-rendering
-   */
-  '@eslint-react/no-complex-conditional-rendering'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow complex conditional rendering in JSX expressions.
-   * @see https://eslint-react.xyz/docs/rules/no-complex-conditional-rendering
-   */
-  '@eslint-react/no-complicated-conditional-rendering'?: Linter.RuleEntry<[]>
-  /**
    * Replace usages of `componentWillMount` with `UNSAFE_componentWillMount`.
    * @see https://eslint-react.xyz/docs/rules/no-component-will-mount
    */
@@ -350,15 +265,16 @@ export interface RuleOptions {
    */
   '@eslint-react/no-direct-mutation-state'?: Linter.RuleEntry<[]>
   /**
-   * Disallow duplicate props in JSX elements.
-   * @see https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
-   */
-  '@eslint-react/no-duplicate-jsx-props'?: Linter.RuleEntry<[]>
-  /**
    * Disallow duplicate `key` on elements in the same array or a list of `children`.
    * @see https://eslint-react.xyz/docs/rules/no-duplicate-key
    */
   '@eslint-react/no-duplicate-key'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow certain props on components.
+   * @see https://eslint-react.xyz/docs/rules/no-forbidden-props
+   * @deprecated
+   */
+  '@eslint-react/no-forbidden-props'?: Linter.RuleEntry<EslintReactNoForbiddenProps>
   /**
    * Replaces usages of `forwardRef` with passing `ref` as a prop.
    * @see https://eslint-react.xyz/docs/rules/no-forward-ref
@@ -400,11 +316,6 @@ export interface RuleOptions {
    */
   '@eslint-react/no-nested-component-definitions'?: Linter.RuleEntry<[]>
   /**
-   * Disallow nesting component definitions inside other components.
-   * @see https://eslint-react.xyz/docs/rules/no-nested-component-definitions
-   */
-  '@eslint-react/no-nested-components'?: Linter.RuleEntry<[]>
-  /**
    * Disallow nesting lazy component declarations inside other components.
    * @see https://eslint-react.xyz/docs/rules/no-nested-lazy-component-declarations
    */
@@ -430,7 +341,7 @@ export interface RuleOptions {
    */
   '@eslint-react/no-set-state-in-component-did-update'?: Linter.RuleEntry<[]>
   /**
-   * Disallows calling `this.setState` in `componentWillUpdate` outside of functions, such as callbacks.
+   * Disallow calling `this.setState` in `componentWillUpdate` outside of functions, such as callbacks.
    * @see https://eslint-react.xyz/docs/rules/no-set-state-in-component-will-update
    */
   '@eslint-react/no-set-state-in-component-will-update'?: Linter.RuleEntry<[]>
@@ -439,6 +350,26 @@ export interface RuleOptions {
    * @see https://eslint-react.xyz/docs/rules/no-string-refs
    */
   '@eslint-react/no-string-refs'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents the use of unnecessary `key` props on JSX elements when rendering lists.
+   * @see https://eslint-react.xyz/docs/rules/no-unnecessary-key
+   */
+  '@eslint-react/no-unnecessary-key'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unnecessary usage of `useCallback`.
+   * @see https://eslint-react.xyz/docs/rules/no-unnecessary-use-callback
+   */
+  '@eslint-react/no-unnecessary-use-callback'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unnecessary usage of `useMemo`.
+   * @see https://eslint-react.xyz/docs/rules/no-unnecessary-use-memo
+   */
+  '@eslint-react/no-unnecessary-use-memo'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces that a function with the `use` prefix should use at least one Hook inside of it.
+   * @see https://eslint-react.xyz/docs/rules/no-unnecessary-use-prefix
+   */
+  '@eslint-react/no-unnecessary-use-prefix'?: Linter.RuleEntry<[]>
   /**
    * Warns the usage of `UNSAFE_componentWillMount` in class components.
    * @see https://eslint-react.xyz/docs/rules/no-unsafe-component-will-mount
@@ -463,12 +394,17 @@ export interface RuleOptions {
    * Prevents using referential-type values as default props in object destructuring.
    * @see https://eslint-react.xyz/docs/rules/no-unstable-default-props
    */
-  '@eslint-react/no-unstable-default-props'?: Linter.RuleEntry<[]>
+  '@eslint-react/no-unstable-default-props'?: Linter.RuleEntry<EslintReactNoUnstableDefaultProps>
   /**
    * Warns unused class component methods and properties.
    * @see https://eslint-react.xyz/docs/rules/no-unused-class-component-members
    */
   '@eslint-react/no-unused-class-component-members'?: Linter.RuleEntry<[]>
+  /**
+   * Warns component props that are defined but never used.
+   * @see https://eslint-react.xyz/docs/rules/no-unused-props
+   */
+  '@eslint-react/no-unused-props'?: Linter.RuleEntry<[]>
   /**
    * Warns unused class component state.
    * @see https://eslint-react.xyz/docs/rules/no-unused-state
@@ -496,29 +432,19 @@ export interface RuleOptions {
   '@eslint-react/prefer-destructuring-assignment'?: Linter.RuleEntry<[]>
   /**
    * Enforces React is imported via a namespace import.
-   * @see https://eslint-react.xyz/docs/rules/prefer-react-namespace-import
+   * @see https://eslint-react.xyz/docs/rules/prefer-namespace-import
    */
-  '@eslint-react/prefer-react-namespace-import'?: Linter.RuleEntry<[]>
+  '@eslint-react/prefer-namespace-import'?: Linter.RuleEntry<[]>
   /**
    * Enforces read-only props in components.
    * @see https://eslint-react.xyz/docs/rules/prefer-read-only-props
    */
   '@eslint-react/prefer-read-only-props'?: Linter.RuleEntry<[]>
   /**
-   * Enforces shorthand syntax for boolean attributes.
-   * @see https://eslint-react.xyz/docs/rules/prefer-shorthand-boolean
+   * Enforces function calls made inside `useState` to be wrapped in an `initializer function`.
+   * @see https://eslint-react.xyz/docs/rules/prefer-use-state-lazy-initialization
    */
-  '@eslint-react/prefer-shorthand-boolean'?: Linter.RuleEntry<[]>
-  /**
-   * Enforces shorthand syntax for fragments.
-   * @see https://eslint-react.xyz/docs/rules/prefer-shorthand-fragment
-   */
-  '@eslint-react/prefer-shorthand-fragment'?: Linter.RuleEntry<[]>
-  /**
-   * Marks variables used in JSX elements as used.
-   * @see https://eslint-react.xyz/docs/rules/jsx-uses-vars
-   */
-  '@eslint-react/use-jsx-vars'?: Linter.RuleEntry<[]>
+  '@eslint-react/prefer-use-state-lazy-initialization'?: Linter.RuleEntry<[]>
   /**
    * Prevents leaked `addEventListener` in a component or custom Hook.
    * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-event-listener
@@ -609,6 +535,11 @@ export interface RuleOptions {
    * @see https://eslint.style/rules/eol-last
    */
   '@stylistic/eol-last'?: Linter.RuleEntry<StylisticEolLast>
+  /**
+   * Enforce consistent spacing and line break styles inside brackets.
+   * @see https://eslint.style/rules/list-style
+   */
+  '@stylistic/exp-list-style'?: Linter.RuleEntry<StylisticExpListStyle>
   /**
    * Enforce line breaks between arguments of a function call
    * @see https://eslint.style/rules/function-call-argument-newline
@@ -1438,7 +1369,7 @@ export interface RuleOptions {
    * Disallow member access on a value with type `any`
    * @see https://typescript-eslint.io/rules/no-unsafe-member-access
    */
-  '@typescript-eslint/no-unsafe-member-access'?: Linter.RuleEntry<[]>
+  '@typescript-eslint/no-unsafe-member-access'?: Linter.RuleEntry<TypescriptEslintNoUnsafeMemberAccess>
   /**
    * Disallow returning a value with type `any` from a function
    * @see https://typescript-eslint.io/rules/no-unsafe-return
@@ -1459,6 +1390,11 @@ export interface RuleOptions {
    * @see https://typescript-eslint.io/rules/no-unused-expressions
    */
   '@typescript-eslint/no-unused-expressions'?: Linter.RuleEntry<TypescriptEslintNoUnusedExpressions>
+  /**
+   * Disallow unused private class members
+   * @see https://typescript-eslint.io/rules/no-unused-private-class-members
+   */
+  '@typescript-eslint/no-unused-private-class-members'?: Linter.RuleEntry<[]>
   /**
    * Disallow unused variables
    * @see https://typescript-eslint.io/rules/no-unused-vars
@@ -3492,114 +3428,332 @@ export interface RuleOptions {
    */
   'operator-linebreak'?: Linter.RuleEntry<OperatorLinebreak>
   /**
-   * Reports on unnecessary empty arrays and objects.
+   * Enforce that names for bin properties are in kebab case.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/bin-name-casing.md
    */
-  'package-json/no-empty-fields'?: Linter.RuleEntry<[]>
+  'package-json/bin-name-casing'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce consistent format for the exports field (implicit or explicit subpaths).
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/exports-subpaths-style.md
+   */
+  'package-json/exports-subpaths-style'?: Linter.RuleEntry<PackageJsonExportsSubpathsStyle>
+  /**
+   * Reports on unnecessary empty arrays and objects.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/no-empty-fields.md
+   */
+  'package-json/no-empty-fields'?: Linter.RuleEntry<PackageJsonNoEmptyFields>
   /**
    * Prevents adding unnecessary / redundant files.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/no-redundant-files.md
    */
   'package-json/no-redundant-files'?: Linter.RuleEntry<[]>
   /**
+   * Warns when publishConfig.access is used in unscoped packages.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/no-redundant-publishConfig.md
+   */
+  'package-json/no-redundant-publishConfig'?: Linter.RuleEntry<[]>
+  /**
    * Package properties must be declared in standard order
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/order-properties.md
    */
   'package-json/order-properties'?: Linter.RuleEntry<PackageJsonOrderProperties>
   /**
    * Enforce either object or shorthand declaration for repository.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/repository-shorthand.md
    */
   'package-json/repository-shorthand'?: Linter.RuleEntry<PackageJsonRepositoryShorthand>
   /**
-   * Requires the `author` property to be present.
+   * Ensures that proper attribution is included, requiring that either `author` or `contributors` is defined, and that if `contributors` is present, it should include at least one contributor.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-attribution.md
    */
-  'package-json/require-author'?: Linter.RuleEntry<[]>
+  'package-json/require-attribution'?: Linter.RuleEntry<PackageJsonRequireAttribution>
+  /**
+   * Requires the `author` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-author.md
+   */
+  'package-json/require-author'?: Linter.RuleEntry<PackageJsonRequireAuthor>
+  /**
+   * Requires the `bugs` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-bugs.md
+   */
+  'package-json/require-bugs'?: Linter.RuleEntry<PackageJsonRequireBugs>
+  /**
+   * Requires the `bundleDependencies` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-bundleDependencies.md
+   */
+  'package-json/require-bundleDependencies'?: Linter.RuleEntry<PackageJsonRequireBundleDependencies>
+  /**
+   * Requires the `dependencies` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-dependencies.md
+   */
+  'package-json/require-dependencies'?: Linter.RuleEntry<PackageJsonRequireDependencies>
   /**
    * Requires the `description` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-description.md
    */
-  'package-json/require-description'?: Linter.RuleEntry<[]>
+  'package-json/require-description'?: Linter.RuleEntry<PackageJsonRequireDescription>
+  /**
+   * Requires the `devDependencies` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-devDependencies.md
+   */
+  'package-json/require-devDependencies'?: Linter.RuleEntry<PackageJsonRequireDevDependencies>
   /**
    * Requires the `engines` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-engines.md
    */
-  'package-json/require-engines'?: Linter.RuleEntry<[]>
+  'package-json/require-engines'?: Linter.RuleEntry<PackageJsonRequireEngines>
+  /**
+   * Requires the `exports` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-exports.md
+   */
+  'package-json/require-exports'?: Linter.RuleEntry<PackageJsonRequireExports>
   /**
    * Requires the `files` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-files.md
    */
-  'package-json/require-files'?: Linter.RuleEntry<[]>
+  'package-json/require-files'?: Linter.RuleEntry<PackageJsonRequireFiles>
   /**
    * Requires the `keywords` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-keywords.md
    */
-  'package-json/require-keywords'?: Linter.RuleEntry<[]>
+  'package-json/require-keywords'?: Linter.RuleEntry<PackageJsonRequireKeywords>
+  /**
+   * Requires the `license` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-license.md
+   */
+  'package-json/require-license'?: Linter.RuleEntry<PackageJsonRequireLicense>
   /**
    * Requires the `name` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-name.md
    */
-  'package-json/require-name'?: Linter.RuleEntry<[]>
+  'package-json/require-name'?: Linter.RuleEntry<PackageJsonRequireName>
+  /**
+   * Requires the `optionalDependencies` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-optionalDependencies.md
+   */
+  'package-json/require-optionalDependencies'?: Linter.RuleEntry<PackageJsonRequireOptionalDependencies>
+  /**
+   * Requires the `peerDependencies` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-peerDependencies.md
+   */
+  'package-json/require-peerDependencies'?: Linter.RuleEntry<PackageJsonRequirePeerDependencies>
+  /**
+   * Requires the `sideEffects` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-sideEffects.md
+   */
+  'package-json/require-sideEffects'?: Linter.RuleEntry<PackageJsonRequireSideEffects>
   /**
    * Requires the `type` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-type.md
    */
-  'package-json/require-type'?: Linter.RuleEntry<[]>
+  'package-json/require-type'?: Linter.RuleEntry<PackageJsonRequireType>
   /**
    * Requires the `types` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-types.md
    */
-  'package-json/require-types'?: Linter.RuleEntry<[]>
+  'package-json/require-types'?: Linter.RuleEntry<PackageJsonRequireTypes>
   /**
    * Requires the `version` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-version.md
    */
-  'package-json/require-version'?: Linter.RuleEntry<[]>
+  'package-json/require-version'?: Linter.RuleEntry<PackageJsonRequireVersion>
   /**
    * Restricts the range of dependencies to allow or disallow specific types of ranges.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/restrict-dependency-ranges.md
    */
   'package-json/restrict-dependency-ranges'?: Linter.RuleEntry<PackageJsonRestrictDependencyRanges>
   /**
-   * Dependencies, scripts, and configuration values must be declared in alphabetical order.
+   * Disallows unnecessary properties in private packages.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/restrict-private-properties.md
+   */
+  'package-json/restrict-private-properties'?: Linter.RuleEntry<PackageJsonRestrictPrivateProperties>
+  /**
+   * Enforce that names for `scripts` are in kebab case (optionally separated by colons).
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/scripts-name-casing.md
+   */
+  'package-json/scripts-name-casing'?: Linter.RuleEntry<[]>
+  /**
+   * Selected collections must be in a consistent order (lexicographical for most; lifecycle-aware for scripts).
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/sort-collections.md
    */
   'package-json/sort-collections'?: Linter.RuleEntry<PackageJsonSortCollections>
   /**
+   * Requires that all peer dependencies are also declared as dev dependencies
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/specify-peers-locally.md
+   */
+  'package-json/specify-peers-locally'?: Linter.RuleEntry<[]>
+  /**
    * Checks a dependency isn't specified more than once (i.e. in `dependencies` and `devDependencies`)
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/unique-dependencies.md
    */
   'package-json/unique-dependencies'?: Linter.RuleEntry<[]>
   /**
-   * Enforce that the author field is a valid npm author specification
+   * Enforce that the `author` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-author.md
    */
   'package-json/valid-author'?: Linter.RuleEntry<[]>
   /**
    * Enforce that the `bin` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-bin.md
    */
-  'package-json/valid-bin'?: Linter.RuleEntry<PackageJsonValidBin>
+  'package-json/valid-bin'?: Linter.RuleEntry<[]>
   /**
-   * Enforce that the `bundleDependencies` (or `bundledDependencies`) property is valid.
+   * Enforce that the `bundleDependencies` (also: `bundledDependencies`) property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-bundleDependencies.md
    */
   'package-json/valid-bundleDependencies'?: Linter.RuleEntry<[]>
   /**
+   * Enforce that the `config` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-config.md
+   */
+  'package-json/valid-config'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `contributors` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-contributors.md
+   */
+  'package-json/valid-contributors'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `cpu` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-cpu.md
+   */
+  'package-json/valid-cpu'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `dependencies` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-dependencies.md
+   */
+  'package-json/valid-dependencies'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `description` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-description.md
+   */
+  'package-json/valid-description'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `devDependencies` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-devDependencies.md
+   */
+  'package-json/valid-devDependencies'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `directories` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-directories.md
+   */
+  'package-json/valid-directories'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `engines` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-engines.md
+   */
+  'package-json/valid-engines'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `exports` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-exports.md
+   */
+  'package-json/valid-exports'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `files` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-files.md
+   */
+  'package-json/valid-files'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `homepage` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-homepage.md
+   */
+  'package-json/valid-homepage'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `keywords` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-keywords.md
+   */
+  'package-json/valid-keywords'?: Linter.RuleEntry<[]>
+  /**
    * Enforce that the `license` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-license.md
    */
   'package-json/valid-license'?: Linter.RuleEntry<[]>
   /**
    * Checks existence of local dependencies in the package.json
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-local-dependency.md
    * @deprecated
    */
   'package-json/valid-local-dependency'?: Linter.RuleEntry<[]>
   /**
+   * Enforce that the `main` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-main.md
+   */
+  'package-json/valid-main'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `man` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-man.md
+   */
+  'package-json/valid-man'?: Linter.RuleEntry<[]>
+  /**
    * Enforce that package names are valid npm package names
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-name.md
    */
   'package-json/valid-name'?: Linter.RuleEntry<[]>
   /**
+   * Enforce that the `optionalDependencies` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-optionalDependencies.md
+   */
+  'package-json/valid-optionalDependencies'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `os` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-os.md
+   */
+  'package-json/valid-os'?: Linter.RuleEntry<[]>
+  /**
    * Enforce that package.json has all properties required by the npm spec
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-package-definition.md
+   * @deprecated
    */
   'package-json/valid-package-definition'?: Linter.RuleEntry<PackageJsonValidPackageDefinition>
   /**
+   * Enforce that the `peerDependencies` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-peerDependencies.md
+   */
+  'package-json/valid-peerDependencies'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `private` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-private.md
+   */
+  'package-json/valid-private'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `publishConfig` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-publishConfig.md
+   */
+  'package-json/valid-publishConfig'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `repository` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-repository.md
+   */
+  'package-json/valid-repository'?: Linter.RuleEntry<[]>
+  /**
    * Enforce that if repository directory is specified, it matches the path to the package.json file
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-repository-directory.md
    */
   'package-json/valid-repository-directory'?: Linter.RuleEntry<[]>
   /**
    * Enforce that the `scripts` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-scripts.md
    */
   'package-json/valid-scripts'?: Linter.RuleEntry<[]>
   /**
+   * Enforce that the `sideEffects` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-sideEffects.md
+   */
+  'package-json/valid-sideEffects'?: Linter.RuleEntry<[]>
+  /**
    * Enforce that the `type` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-type.md
    */
   'package-json/valid-type'?: Linter.RuleEntry<[]>
   /**
    * Enforce that package versions are valid semver specifiers
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-version.md
    */
   'package-json/valid-version'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that the `workspaces` property is valid.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/valid-workspaces.md
+   */
+  'package-json/valid-workspaces'?: Linter.RuleEntry<[]>
   /**
    * Require or disallow padding within blocks
    * @see https://eslint.org/docs/latest/rules/padded-blocks
@@ -3763,6 +3917,10 @@ export interface RuleOptions {
    */
   'react-hooks/immutability'?: Linter.RuleEntry<ReactHooksImmutability>
   /**
+   * Validates against usage of libraries which are incompatible with memoization (manual or automatic)
+   */
+  'react-hooks/incompatible-library'?: Linter.RuleEntry<ReactHooksIncompatibleLibrary>
+  /**
    * Internal invariants
    */
   'react-hooks/invariant'?: Linter.RuleEntry<ReactHooksInvariant>
@@ -3774,7 +3932,6 @@ export interface RuleOptions {
    * Validates against deriving values from state in an effect
    */
   'react-hooks/no-deriving-state-in-effects'?: Linter.RuleEntry<ReactHooksNoDerivingStateInEffects>
-  'react-hooks/no-unused-directives'?: Linter.RuleEntry<ReactHooksNoUnusedDirectives>
   /**
    * Validates that existing manual memoized is preserved by the compiler. React Compiler will only compile components and hooks if its inference [matches or exceeds the existing manual memoization](https://react.dev/learn/react-compiler/introduction#what-should-i-do-about-usememo-usecallback-and-reactmemo)
    */
@@ -3795,7 +3952,7 @@ export interface RuleOptions {
    * enforces the Rules of Hooks
    * @see https://react.dev/reference/rules/rules-of-hooks
    */
-  'react-hooks/rules-of-hooks'?: Linter.RuleEntry<[]>
+  'react-hooks/rules-of-hooks'?: Linter.RuleEntry<ReactHooksRulesOfHooks>
   /**
    * Validates against calling setState synchronously in an effect, which can lead to re-renders that degrade performance
    */
@@ -4415,710 +4572,725 @@ export interface RuleOptions {
   'unicode-bom'?: Linter.RuleEntry<UnicodeBom>
   /**
    * Improve regexes by making them shorter, consistent, and safer.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/better-regex.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/better-regex.md
    */
   'unicorn/better-regex'?: Linter.RuleEntry<UnicornBetterRegex>
   /**
    * Enforce a specific parameter name in catch clauses.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/catch-error-name.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/catch-error-name.md
    */
   'unicorn/catch-error-name'?: Linter.RuleEntry<UnicornCatchErrorName>
   /**
    * Enforce consistent assertion style with `node:assert`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/consistent-assert.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/consistent-assert.md
    */
   'unicorn/consistent-assert'?: Linter.RuleEntry<[]>
   /**
    * Prefer passing `Date` directly to the constructor when cloning.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/consistent-date-clone.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/consistent-date-clone.md
    */
   'unicorn/consistent-date-clone'?: Linter.RuleEntry<[]>
   /**
    * Use destructured variables over properties.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/consistent-destructuring.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/consistent-destructuring.md
    */
   'unicorn/consistent-destructuring'?: Linter.RuleEntry<[]>
   /**
    * Prefer consistent types when spreading a ternary in an array literal.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/consistent-empty-array-spread.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/consistent-empty-array-spread.md
    */
   'unicorn/consistent-empty-array-spread'?: Linter.RuleEntry<[]>
   /**
    * Enforce consistent style for element existence checks with `indexOf()`, `lastIndexOf()`, `findIndex()`, and `findLastIndex()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/consistent-existence-index-check.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/consistent-existence-index-check.md
    */
   'unicorn/consistent-existence-index-check'?: Linter.RuleEntry<[]>
   /**
    * Move function definitions to the highest possible scope.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/consistent-function-scoping.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/consistent-function-scoping.md
    */
   'unicorn/consistent-function-scoping'?: Linter.RuleEntry<UnicornConsistentFunctionScoping>
   /**
    * Enforce correct `Error` subclassing.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/custom-error-definition.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/custom-error-definition.md
    */
   'unicorn/custom-error-definition'?: Linter.RuleEntry<[]>
   /**
    * Enforce no spaces between braces.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/empty-brace-spaces.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/empty-brace-spaces.md
    */
   'unicorn/empty-brace-spaces'?: Linter.RuleEntry<[]>
   /**
    * Enforce passing a `message` value when creating a built-in error.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/error-message.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/error-message.md
    */
   'unicorn/error-message'?: Linter.RuleEntry<[]>
   /**
    * Require escape sequences to use uppercase or lowercase values.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/escape-case.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/escape-case.md
    */
   'unicorn/escape-case'?: Linter.RuleEntry<UnicornEscapeCase>
   /**
    * Add expiration conditions to TODO comments.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/expiring-todo-comments.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/expiring-todo-comments.md
    */
   'unicorn/expiring-todo-comments'?: Linter.RuleEntry<UnicornExpiringTodoComments>
   /**
    * Enforce explicitly comparing the `length` or `size` property of a value.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/explicit-length-check.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/explicit-length-check.md
    */
   'unicorn/explicit-length-check'?: Linter.RuleEntry<UnicornExplicitLengthCheck>
   /**
    * Enforce a case style for filenames.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/filename-case.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/filename-case.md
    */
   'unicorn/filename-case'?: Linter.RuleEntry<UnicornFilenameCase>
   /**
    * Enforce specific import styles per module.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/import-style.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/import-style.md
    */
   'unicorn/import-style'?: Linter.RuleEntry<UnicornImportStyle>
   /**
    * Enforce the use of `new` for all builtins, except `String`, `Number`, `Boolean`, `Symbol` and `BigInt`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/new-for-builtins.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/new-for-builtins.md
    */
   'unicorn/new-for-builtins'?: Linter.RuleEntry<[]>
   /**
    * Enforce specifying rules to disable in `eslint-disable` comments.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-abusive-eslint-disable.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-abusive-eslint-disable.md
    */
   'unicorn/no-abusive-eslint-disable'?: Linter.RuleEntry<[]>
   /**
    * Disallow recursive access to `this` within getters and setters.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-accessor-recursion.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-accessor-recursion.md
    */
   'unicorn/no-accessor-recursion'?: Linter.RuleEntry<[]>
   /**
    * Disallow anonymous functions and classes as the default export.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-anonymous-default-export.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-anonymous-default-export.md
    */
   'unicorn/no-anonymous-default-export'?: Linter.RuleEntry<[]>
   /**
    * Prevent passing a function reference directly to iterator methods.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-array-callback-reference.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-array-callback-reference.md
    */
   'unicorn/no-array-callback-reference'?: Linter.RuleEntry<[]>
   /**
    * Prefer `for…of` over the `forEach` method.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-array-for-each.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-array-for-each.md
    */
   'unicorn/no-array-for-each'?: Linter.RuleEntry<[]>
   /**
    * Disallow using the `this` argument in array methods.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-array-method-this-argument.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-array-method-this-argument.md
    */
   'unicorn/no-array-method-this-argument'?: Linter.RuleEntry<[]>
   /**
    * Replaced by `unicorn/prefer-single-call` which covers more cases.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/deprecated-rules.md#no-array-push-push
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/deprecated-rules.md#no-array-push-push
    * @deprecated
    */
   'unicorn/no-array-push-push'?: Linter.RuleEntry<[]>
   /**
    * Disallow `Array#reduce()` and `Array#reduceRight()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-array-reduce.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-array-reduce.md
    */
   'unicorn/no-array-reduce'?: Linter.RuleEntry<UnicornNoArrayReduce>
   /**
    * Prefer `Array#toReversed()` over `Array#reverse()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-array-reverse.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-array-reverse.md
    */
   'unicorn/no-array-reverse'?: Linter.RuleEntry<UnicornNoArrayReverse>
   /**
    * Prefer `Array#toSorted()` over `Array#sort()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-array-sort.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-array-sort.md
    */
   'unicorn/no-array-sort'?: Linter.RuleEntry<UnicornNoArraySort>
   /**
    * Disallow member access from await expression.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-await-expression-member.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-await-expression-member.md
    */
   'unicorn/no-await-expression-member'?: Linter.RuleEntry<[]>
   /**
    * Disallow using `await` in `Promise` method parameters.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-await-in-promise-methods.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-await-in-promise-methods.md
    */
   'unicorn/no-await-in-promise-methods'?: Linter.RuleEntry<[]>
   /**
    * Do not use leading/trailing space between `console.log` parameters.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-console-spaces.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-console-spaces.md
    */
   'unicorn/no-console-spaces'?: Linter.RuleEntry<[]>
   /**
    * Do not use `document.cookie` directly.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-document-cookie.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-document-cookie.md
    */
   'unicorn/no-document-cookie'?: Linter.RuleEntry<[]>
   /**
    * Disallow empty files.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-empty-file.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-empty-file.md
    */
   'unicorn/no-empty-file'?: Linter.RuleEntry<[]>
   /**
    * Do not use a `for` loop that can be replaced with a `for-of` loop.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-for-loop.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-for-loop.md
    */
   'unicorn/no-for-loop'?: Linter.RuleEntry<[]>
   /**
    * Enforce the use of Unicode escapes instead of hexadecimal escapes.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-hex-escape.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-hex-escape.md
    */
   'unicorn/no-hex-escape'?: Linter.RuleEntry<[]>
   /**
+   * Disallow immediate mutation after variable assignment.
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-immediate-mutation.md
+   */
+  'unicorn/no-immediate-mutation'?: Linter.RuleEntry<[]>
+  /**
    * Replaced by `unicorn/no-instanceof-builtins` which covers more cases.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/deprecated-rules.md#no-instanceof-array
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/deprecated-rules.md#no-instanceof-array
    * @deprecated
    */
   'unicorn/no-instanceof-array'?: Linter.RuleEntry<[]>
   /**
    * Disallow `instanceof` with built-in objects
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-instanceof-builtins.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-instanceof-builtins.md
    */
   'unicorn/no-instanceof-builtins'?: Linter.RuleEntry<UnicornNoInstanceofBuiltins>
   /**
    * Disallow invalid options in `fetch()` and `new Request()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-invalid-fetch-options.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-invalid-fetch-options.md
    */
   'unicorn/no-invalid-fetch-options'?: Linter.RuleEntry<[]>
   /**
    * Prevent calling `EventTarget#removeEventListener()` with the result of an expression.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-invalid-remove-event-listener.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-invalid-remove-event-listener.md
    */
   'unicorn/no-invalid-remove-event-listener'?: Linter.RuleEntry<[]>
   /**
    * Disallow identifiers starting with `new` or `class`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-keyword-prefix.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-keyword-prefix.md
    */
   'unicorn/no-keyword-prefix'?: Linter.RuleEntry<UnicornNoKeywordPrefix>
   /**
    * Replaced by `unicorn/no-unnecessary-slice-end` which covers more cases.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/deprecated-rules.md#no-length-as-slice-end
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/deprecated-rules.md#no-length-as-slice-end
    * @deprecated
    */
   'unicorn/no-length-as-slice-end'?: Linter.RuleEntry<[]>
   /**
    * Disallow `if` statements as the only statement in `if` blocks without `else`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-lonely-if.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-lonely-if.md
    */
   'unicorn/no-lonely-if'?: Linter.RuleEntry<[]>
   /**
    * Disallow a magic number as the `depth` argument in `Array#flat(…).`
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-magic-array-flat-depth.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-magic-array-flat-depth.md
    */
   'unicorn/no-magic-array-flat-depth'?: Linter.RuleEntry<[]>
   /**
    * Disallow named usage of default import and export.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-named-default.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-named-default.md
    */
   'unicorn/no-named-default'?: Linter.RuleEntry<[]>
   /**
    * Disallow negated conditions.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-negated-condition.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-negated-condition.md
    */
   'unicorn/no-negated-condition'?: Linter.RuleEntry<[]>
   /**
    * Disallow negated expression in equality check.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-negation-in-equality-check.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-negation-in-equality-check.md
    */
   'unicorn/no-negation-in-equality-check'?: Linter.RuleEntry<[]>
   /**
    * Disallow nested ternary expressions.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-nested-ternary.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-nested-ternary.md
    */
   'unicorn/no-nested-ternary'?: Linter.RuleEntry<[]>
   /**
    * Disallow `new Array()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-new-array.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-new-array.md
    */
   'unicorn/no-new-array'?: Linter.RuleEntry<[]>
   /**
    * Enforce the use of `Buffer.from()` and `Buffer.alloc()` instead of the deprecated `new Buffer()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-new-buffer.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-new-buffer.md
    */
   'unicorn/no-new-buffer'?: Linter.RuleEntry<[]>
   /**
    * Disallow the use of the `null` literal.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-null.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-null.md
    */
   'unicorn/no-null'?: Linter.RuleEntry<UnicornNoNull>
   /**
    * Disallow the use of objects as default parameters.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-object-as-default-parameter.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-object-as-default-parameter.md
    */
   'unicorn/no-object-as-default-parameter'?: Linter.RuleEntry<[]>
   /**
    * Disallow `process.exit()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-process-exit.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-process-exit.md
    */
   'unicorn/no-process-exit'?: Linter.RuleEntry<[]>
   /**
    * Disallow passing single-element arrays to `Promise` methods.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-single-promise-in-promise-methods.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-single-promise-in-promise-methods.md
    */
   'unicorn/no-single-promise-in-promise-methods'?: Linter.RuleEntry<[]>
   /**
    * Disallow classes that only have static members.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-static-only-class.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-static-only-class.md
    */
   'unicorn/no-static-only-class'?: Linter.RuleEntry<[]>
   /**
    * Disallow `then` property.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-thenable.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-thenable.md
    */
   'unicorn/no-thenable'?: Linter.RuleEntry<[]>
   /**
    * Disallow assigning `this` to a variable.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-this-assignment.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-this-assignment.md
    */
   'unicorn/no-this-assignment'?: Linter.RuleEntry<[]>
   /**
    * Disallow comparing `undefined` using `typeof`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-typeof-undefined.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-typeof-undefined.md
    */
   'unicorn/no-typeof-undefined'?: Linter.RuleEntry<UnicornNoTypeofUndefined>
   /**
    * Disallow using `1` as the `depth` argument of `Array#flat()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-unnecessary-array-flat-depth.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-unnecessary-array-flat-depth.md
    */
   'unicorn/no-unnecessary-array-flat-depth'?: Linter.RuleEntry<[]>
   /**
    * Disallow using `.length` or `Infinity` as the `deleteCount` or `skipCount` argument of `Array#{splice,toSpliced}()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-unnecessary-array-splice-count.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-unnecessary-array-splice-count.md
    */
   'unicorn/no-unnecessary-array-splice-count'?: Linter.RuleEntry<[]>
   /**
    * Disallow awaiting non-promise values.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-unnecessary-await.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-unnecessary-await.md
    */
   'unicorn/no-unnecessary-await'?: Linter.RuleEntry<[]>
   /**
    * Enforce the use of built-in methods instead of unnecessary polyfills.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-unnecessary-polyfills.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-unnecessary-polyfills.md
    */
   'unicorn/no-unnecessary-polyfills'?: Linter.RuleEntry<UnicornNoUnnecessaryPolyfills>
   /**
    * Disallow using `.length` or `Infinity` as the `end` argument of `{Array,String,TypedArray}#slice()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-unnecessary-slice-end.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-unnecessary-slice-end.md
    */
   'unicorn/no-unnecessary-slice-end'?: Linter.RuleEntry<[]>
   /**
    * Disallow unreadable array destructuring.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-unreadable-array-destructuring.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-unreadable-array-destructuring.md
    */
   'unicorn/no-unreadable-array-destructuring'?: Linter.RuleEntry<[]>
   /**
    * Disallow unreadable IIFEs.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-unreadable-iife.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-unreadable-iife.md
    */
   'unicorn/no-unreadable-iife'?: Linter.RuleEntry<[]>
   /**
    * Disallow unused object properties.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-unused-properties.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-unused-properties.md
    */
   'unicorn/no-unused-properties'?: Linter.RuleEntry<[]>
   /**
+   * Disallow useless values or fallbacks in `Set`, `Map`, `WeakSet`, or `WeakMap`.
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-useless-collection-argument.md
+   */
+  'unicorn/no-useless-collection-argument'?: Linter.RuleEntry<[]>
+  /**
    * Disallow unnecessary `Error.captureStackTrace(…)`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-useless-error-capture-stack-trace.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-useless-error-capture-stack-trace.md
    */
   'unicorn/no-useless-error-capture-stack-trace'?: Linter.RuleEntry<[]>
   /**
    * Disallow useless fallback when spreading in object literals.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-useless-fallback-in-spread.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-useless-fallback-in-spread.md
    */
   'unicorn/no-useless-fallback-in-spread'?: Linter.RuleEntry<[]>
   /**
    * Disallow useless array length check.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-useless-length-check.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-useless-length-check.md
    */
   'unicorn/no-useless-length-check'?: Linter.RuleEntry<[]>
   /**
    * Disallow returning/yielding `Promise.resolve/reject()` in async functions or promise callbacks
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-useless-promise-resolve-reject.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-useless-promise-resolve-reject.md
    */
   'unicorn/no-useless-promise-resolve-reject'?: Linter.RuleEntry<[]>
   /**
    * Disallow unnecessary spread.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-useless-spread.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-useless-spread.md
    */
   'unicorn/no-useless-spread'?: Linter.RuleEntry<[]>
   /**
    * Disallow useless case in switch statements.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-useless-switch-case.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-useless-switch-case.md
    */
   'unicorn/no-useless-switch-case'?: Linter.RuleEntry<[]>
   /**
    * Disallow useless `undefined`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-useless-undefined.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-useless-undefined.md
    */
   'unicorn/no-useless-undefined'?: Linter.RuleEntry<UnicornNoUselessUndefined>
   /**
    * Disallow number literals with zero fractions or dangling dots.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/no-zero-fractions.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/no-zero-fractions.md
    */
   'unicorn/no-zero-fractions'?: Linter.RuleEntry<[]>
   /**
    * Enforce proper case for numeric literals.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/number-literal-case.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/number-literal-case.md
    */
   'unicorn/number-literal-case'?: Linter.RuleEntry<UnicornNumberLiteralCase>
   /**
    * Enforce the style of numeric separators by correctly grouping digits.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/numeric-separators-style.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/numeric-separators-style.md
    */
   'unicorn/numeric-separators-style'?: Linter.RuleEntry<UnicornNumericSeparatorsStyle>
   /**
    * Prefer `.addEventListener()` and `.removeEventListener()` over `on`-functions.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-add-event-listener.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-add-event-listener.md
    */
   'unicorn/prefer-add-event-listener'?: Linter.RuleEntry<UnicornPreferAddEventListener>
   /**
    * Prefer `.find(…)` and `.findLast(…)` over the first or last element from `.filter(…)`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-array-find.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-array-find.md
    */
   'unicorn/prefer-array-find'?: Linter.RuleEntry<UnicornPreferArrayFind>
   /**
    * Prefer `Array#flat()` over legacy techniques to flatten arrays.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-array-flat.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-array-flat.md
    */
   'unicorn/prefer-array-flat'?: Linter.RuleEntry<UnicornPreferArrayFlat>
   /**
    * Prefer `.flatMap(…)` over `.map(…).flat()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-array-flat-map.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-array-flat-map.md
    */
   'unicorn/prefer-array-flat-map'?: Linter.RuleEntry<[]>
   /**
    * Prefer `Array#{indexOf,lastIndexOf}()` over `Array#{findIndex,findLastIndex}()` when looking for the index of an item.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-array-index-of.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-array-index-of.md
    */
   'unicorn/prefer-array-index-of'?: Linter.RuleEntry<[]>
   /**
    * Prefer `.some(…)` over `.filter(…).length` check and `.{find,findLast,findIndex,findLastIndex}(…)`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-array-some.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-array-some.md
    */
   'unicorn/prefer-array-some'?: Linter.RuleEntry<[]>
   /**
    * Prefer `.at()` method for index access and `String#charAt()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-at.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-at.md
    */
   'unicorn/prefer-at'?: Linter.RuleEntry<UnicornPreferAt>
   /**
    * Prefer `BigInt` literals over the constructor.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-bigint-literals.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-bigint-literals.md
    */
   'unicorn/prefer-bigint-literals'?: Linter.RuleEntry<[]>
   /**
    * Prefer `Blob#arrayBuffer()` over `FileReader#readAsArrayBuffer(…)` and `Blob#text()` over `FileReader#readAsText(…)`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-blob-reading-methods.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-blob-reading-methods.md
    */
   'unicorn/prefer-blob-reading-methods'?: Linter.RuleEntry<[]>
   /**
    * Prefer class field declarations over `this` assignments in constructors.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-class-fields.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-class-fields.md
    */
   'unicorn/prefer-class-fields'?: Linter.RuleEntry<[]>
   /**
    * Prefer using `Element#classList.toggle()` to toggle class names.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-classlist-toggle.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-classlist-toggle.md
    */
   'unicorn/prefer-classlist-toggle'?: Linter.RuleEntry<[]>
   /**
    * Prefer `String#codePointAt(…)` over `String#charCodeAt(…)` and `String.fromCodePoint(…)` over `String.fromCharCode(…)`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-code-point.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-code-point.md
    */
   'unicorn/prefer-code-point'?: Linter.RuleEntry<[]>
   /**
    * Prefer `Date.now()` to get the number of milliseconds since the Unix Epoch.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-date-now.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-date-now.md
    */
   'unicorn/prefer-date-now'?: Linter.RuleEntry<[]>
   /**
    * Prefer default parameters over reassignment.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-default-parameters.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-default-parameters.md
    */
   'unicorn/prefer-default-parameters'?: Linter.RuleEntry<[]>
   /**
    * Prefer `Node#append()` over `Node#appendChild()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-dom-node-append.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-dom-node-append.md
    */
   'unicorn/prefer-dom-node-append'?: Linter.RuleEntry<[]>
   /**
    * Prefer using `.dataset` on DOM elements over calling attribute methods.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-dom-node-dataset.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-dom-node-dataset.md
    */
   'unicorn/prefer-dom-node-dataset'?: Linter.RuleEntry<[]>
   /**
    * Prefer `childNode.remove()` over `parentNode.removeChild(childNode)`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-dom-node-remove.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-dom-node-remove.md
    */
   'unicorn/prefer-dom-node-remove'?: Linter.RuleEntry<[]>
   /**
    * Prefer `.textContent` over `.innerText`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-dom-node-text-content.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-dom-node-text-content.md
    */
   'unicorn/prefer-dom-node-text-content'?: Linter.RuleEntry<[]>
   /**
    * Prefer `EventTarget` over `EventEmitter`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-event-target.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-event-target.md
    */
   'unicorn/prefer-event-target'?: Linter.RuleEntry<[]>
   /**
    * Prefer `export…from` when re-exporting.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-export-from.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-export-from.md
    */
   'unicorn/prefer-export-from'?: Linter.RuleEntry<UnicornPreferExportFrom>
   /**
    * Prefer `globalThis` over `window`, `self`, and `global`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-global-this.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-global-this.md
    */
   'unicorn/prefer-global-this'?: Linter.RuleEntry<[]>
   /**
    * Prefer `import.meta.{dirname,filename}` over legacy techniques for getting file paths.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-import-meta-properties.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-import-meta-properties.md
    */
   'unicorn/prefer-import-meta-properties'?: Linter.RuleEntry<[]>
   /**
    * Prefer `.includes()` over `.indexOf()`, `.lastIndexOf()`, and `Array#some()` when checking for existence or non-existence.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-includes.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-includes.md
    */
   'unicorn/prefer-includes'?: Linter.RuleEntry<[]>
   /**
    * Prefer reading a JSON file as a buffer.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-json-parse-buffer.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-json-parse-buffer.md
    */
   'unicorn/prefer-json-parse-buffer'?: Linter.RuleEntry<[]>
   /**
    * Prefer `KeyboardEvent#key` over `KeyboardEvent#keyCode`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-keyboard-event-key.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-keyboard-event-key.md
    */
   'unicorn/prefer-keyboard-event-key'?: Linter.RuleEntry<[]>
   /**
    * Prefer using a logical operator over a ternary.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-logical-operator-over-ternary.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-logical-operator-over-ternary.md
    */
   'unicorn/prefer-logical-operator-over-ternary'?: Linter.RuleEntry<[]>
   /**
    * Prefer `Math.min()` and `Math.max()` over ternaries for simple comparisons.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-math-min-max.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-math-min-max.md
    */
   'unicorn/prefer-math-min-max'?: Linter.RuleEntry<[]>
   /**
    * Enforce the use of `Math.trunc` instead of bitwise operators.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-math-trunc.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-math-trunc.md
    */
   'unicorn/prefer-math-trunc'?: Linter.RuleEntry<[]>
   /**
    * Prefer `.before()` over `.insertBefore()`, `.replaceWith()` over `.replaceChild()`, prefer one of `.before()`, `.after()`, `.append()` or `.prepend()` over `insertAdjacentText()` and `insertAdjacentElement()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-modern-dom-apis.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-modern-dom-apis.md
    */
   'unicorn/prefer-modern-dom-apis'?: Linter.RuleEntry<[]>
   /**
    * Prefer modern `Math` APIs over legacy patterns.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-modern-math-apis.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-modern-math-apis.md
    */
   'unicorn/prefer-modern-math-apis'?: Linter.RuleEntry<[]>
   /**
    * Prefer JavaScript modules (ESM) over CommonJS.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-module.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-module.md
    */
   'unicorn/prefer-module'?: Linter.RuleEntry<[]>
   /**
    * Prefer using `String`, `Number`, `BigInt`, `Boolean`, and `Symbol` directly.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-native-coercion-functions.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-native-coercion-functions.md
    */
   'unicorn/prefer-native-coercion-functions'?: Linter.RuleEntry<[]>
   /**
    * Prefer negative index over `.length - index` when possible.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-negative-index.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-negative-index.md
    */
   'unicorn/prefer-negative-index'?: Linter.RuleEntry<[]>
   /**
    * Prefer using the `node:` protocol when importing Node.js builtin modules.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-node-protocol.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-node-protocol.md
    */
   'unicorn/prefer-node-protocol'?: Linter.RuleEntry<[]>
   /**
    * Prefer `Number` static properties over global ones.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-number-properties.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-number-properties.md
    */
   'unicorn/prefer-number-properties'?: Linter.RuleEntry<UnicornPreferNumberProperties>
   /**
    * Prefer using `Object.fromEntries(…)` to transform a list of key-value pairs into an object.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-object-from-entries.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-object-from-entries.md
    */
   'unicorn/prefer-object-from-entries'?: Linter.RuleEntry<UnicornPreferObjectFromEntries>
   /**
    * Prefer omitting the `catch` binding parameter.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-optional-catch-binding.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-optional-catch-binding.md
    */
   'unicorn/prefer-optional-catch-binding'?: Linter.RuleEntry<[]>
   /**
    * Prefer borrowing methods from the prototype instead of the instance.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-prototype-methods.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-prototype-methods.md
    */
   'unicorn/prefer-prototype-methods'?: Linter.RuleEntry<[]>
   /**
    * Prefer `.querySelector()` over `.getElementById()`, `.querySelectorAll()` over `.getElementsByClassName()` and `.getElementsByTagName()` and `.getElementsByName()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-query-selector.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-query-selector.md
    */
   'unicorn/prefer-query-selector'?: Linter.RuleEntry<[]>
   /**
    * Prefer `Reflect.apply()` over `Function#apply()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-reflect-apply.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-reflect-apply.md
    */
   'unicorn/prefer-reflect-apply'?: Linter.RuleEntry<[]>
   /**
    * Prefer `RegExp#test()` over `String#match()` and `RegExp#exec()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-regexp-test.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-regexp-test.md
    */
   'unicorn/prefer-regexp-test'?: Linter.RuleEntry<[]>
   /**
+   * Prefer `Response.json()` over `new Response(JSON.stringify())`.
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-response-static-json.md
+   */
+  'unicorn/prefer-response-static-json'?: Linter.RuleEntry<[]>
+  /**
    * Prefer `Set#has()` over `Array#includes()` when checking for existence or non-existence.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-set-has.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-set-has.md
    */
   'unicorn/prefer-set-has'?: Linter.RuleEntry<[]>
   /**
    * Prefer using `Set#size` instead of `Array#length`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-set-size.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-set-size.md
    */
   'unicorn/prefer-set-size'?: Linter.RuleEntry<[]>
   /**
    * Enforce combining multiple `Array#push()`, `Element#classList.{add,remove}()`, and `importScripts()` into one call.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-single-call.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-single-call.md
    */
   'unicorn/prefer-single-call'?: Linter.RuleEntry<UnicornPreferSingleCall>
   /**
    * Prefer the spread operator over `Array.from(…)`, `Array#concat(…)`, `Array#{slice,toSpliced}()` and `String#split('')`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-spread.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-spread.md
    */
   'unicorn/prefer-spread'?: Linter.RuleEntry<[]>
   /**
    * Prefer using the `String.raw` tag to avoid escaping `\`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-string-raw.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-string-raw.md
    */
   'unicorn/prefer-string-raw'?: Linter.RuleEntry<[]>
   /**
    * Prefer `String#replaceAll()` over regex searches with the global flag.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-string-replace-all.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-string-replace-all.md
    */
   'unicorn/prefer-string-replace-all'?: Linter.RuleEntry<[]>
   /**
    * Prefer `String#slice()` over `String#substr()` and `String#substring()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-string-slice.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-string-slice.md
    */
   'unicorn/prefer-string-slice'?: Linter.RuleEntry<[]>
   /**
    * Prefer `String#startsWith()` & `String#endsWith()` over `RegExp#test()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-string-starts-ends-with.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-string-starts-ends-with.md
    */
   'unicorn/prefer-string-starts-ends-with'?: Linter.RuleEntry<[]>
   /**
    * Prefer `String#trimStart()` / `String#trimEnd()` over `String#trimLeft()` / `String#trimRight()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-string-trim-start-end.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-string-trim-start-end.md
    */
   'unicorn/prefer-string-trim-start-end'?: Linter.RuleEntry<[]>
   /**
    * Prefer using `structuredClone` to create a deep clone.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-structured-clone.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-structured-clone.md
    */
   'unicorn/prefer-structured-clone'?: Linter.RuleEntry<UnicornPreferStructuredClone>
   /**
    * Prefer `switch` over multiple `else-if`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-switch.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-switch.md
    */
   'unicorn/prefer-switch'?: Linter.RuleEntry<UnicornPreferSwitch>
   /**
    * Prefer ternary expressions over simple `if-else` statements.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-ternary.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-ternary.md
    */
   'unicorn/prefer-ternary'?: Linter.RuleEntry<UnicornPreferTernary>
   /**
    * Prefer top-level await over top-level promises and async function calls.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-top-level-await.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-top-level-await.md
    */
   'unicorn/prefer-top-level-await'?: Linter.RuleEntry<[]>
   /**
    * Enforce throwing `TypeError` in type checking conditions.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prefer-type-error.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prefer-type-error.md
    */
   'unicorn/prefer-type-error'?: Linter.RuleEntry<[]>
   /**
    * Prevent abbreviations.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/prevent-abbreviations.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/prevent-abbreviations.md
    */
   'unicorn/prevent-abbreviations'?: Linter.RuleEntry<UnicornPreventAbbreviations>
   /**
    * Enforce consistent relative URL style.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/relative-url-style.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/relative-url-style.md
    */
   'unicorn/relative-url-style'?: Linter.RuleEntry<UnicornRelativeUrlStyle>
   /**
    * Enforce using the separator argument with `Array#join()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/require-array-join-separator.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/require-array-join-separator.md
    */
   'unicorn/require-array-join-separator'?: Linter.RuleEntry<[]>
   /**
    * Require non-empty module attributes for imports and exports
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/require-module-attributes.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/require-module-attributes.md
    */
   'unicorn/require-module-attributes'?: Linter.RuleEntry<[]>
   /**
    * Require non-empty specifier list in import and export statements.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/require-module-specifiers.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/require-module-specifiers.md
    */
   'unicorn/require-module-specifiers'?: Linter.RuleEntry<[]>
   /**
    * Enforce using the digits argument with `Number#toFixed()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/require-number-to-fixed-digits-argument.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/require-number-to-fixed-digits-argument.md
    */
   'unicorn/require-number-to-fixed-digits-argument'?: Linter.RuleEntry<[]>
   /**
    * Enforce using the `targetOrigin` argument with `window.postMessage()`.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/require-post-message-target-origin.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/require-post-message-target-origin.md
    */
   'unicorn/require-post-message-target-origin'?: Linter.RuleEntry<[]>
   /**
    * Enforce better string content.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/string-content.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/string-content.md
    */
   'unicorn/string-content'?: Linter.RuleEntry<UnicornStringContent>
   /**
    * Enforce consistent brace style for `case` clauses.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/switch-case-braces.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/switch-case-braces.md
    */
   'unicorn/switch-case-braces'?: Linter.RuleEntry<UnicornSwitchCaseBraces>
   /**
    * Fix whitespace-insensitive template indentation.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/template-indent.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/template-indent.md
    */
   'unicorn/template-indent'?: Linter.RuleEntry<UnicornTemplateIndent>
   /**
    * Enforce consistent case for text encoding identifiers.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/text-encoding-identifier-case.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/text-encoding-identifier-case.md
    */
-  'unicorn/text-encoding-identifier-case'?: Linter.RuleEntry<[]>
+  'unicorn/text-encoding-identifier-case'?: Linter.RuleEntry<UnicornTextEncodingIdentifierCase>
   /**
    * Require `new` when creating an error.
-   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v61.0.2/docs/rules/throw-new-error.md
+   * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v62.0.0/docs/rules/throw-new-error.md
    */
   'unicorn/throw-new-error'?: Linter.RuleEntry<[]>
   /**
@@ -5197,6 +5369,10 @@ type EslintReactDomNoUnknownProperty = []|[{
   ignore?: string[]
   requireDataLowercase?: boolean
 }]
+// ----- @eslint-react/jsx-shorthand-boolean -----
+type EslintReactJsxShorthandBoolean = []|[(-1 | 1)]
+// ----- @eslint-react/jsx-shorthand-fragment -----
+type EslintReactJsxShorthandFragment = []|[(-1 | 1)]
 // ----- @eslint-react/naming-convention/component-name -----
 type EslintReactNamingConventionComponentName = []|[(("PascalCase" | "CONSTANT_CASE") | {
   allowAllCaps?: boolean
@@ -5215,6 +5391,20 @@ type EslintReactNamingConventionFilenameExtension = []|[(("always" | "as-needed"
   extensions?: string[]
   ignoreFilesWithoutCode?: boolean
 })]
+// ----- @eslint-react/no-forbidden-props -----
+type EslintReactNoForbiddenProps = []|[{
+  forbid?: (string | {
+    excludedNodes?: string[]
+    prop: string
+  } | {
+    includedNodes?: string[]
+    prop: string
+  })[]
+}]
+// ----- @eslint-react/no-unstable-default-props -----
+type EslintReactNoUnstableDefaultProps = []|[{
+  safeDefaultProps?: string[]
+}]
 // ----- @eslint-react/no-useless-fragment -----
 type EslintReactNoUselessFragment = []|[{
   
@@ -5401,6 +5591,50 @@ type StylisticCurlyNewline = []|[(("always" | "never") | {
 type StylisticDotLocation = []|[("object" | "property")]
 // ----- @stylistic/eol-last -----
 type StylisticEolLast = []|[("always" | "never" | "unix" | "windows")]
+// ----- @stylistic/exp-list-style -----
+type StylisticExpListStyle = []|[{
+  singleLine?: _StylisticExpListStyle_SingleLineConfig
+  multiLine?: _StylisticExpListStyle_MultiLineConfig
+  overrides?: {
+    "[]"?: _StylisticExpListStyle_BaseConfig
+    "{}"?: _StylisticExpListStyle_BaseConfig
+    "<>"?: _StylisticExpListStyle_BaseConfig
+    "()"?: _StylisticExpListStyle_BaseConfig
+    ArrayExpression?: _StylisticExpListStyle_BaseConfig
+    ArrayPattern?: _StylisticExpListStyle_BaseConfig
+    ArrowFunctionExpression?: _StylisticExpListStyle_BaseConfig
+    CallExpression?: _StylisticExpListStyle_BaseConfig
+    ExportNamedDeclaration?: _StylisticExpListStyle_BaseConfig
+    FunctionDeclaration?: _StylisticExpListStyle_BaseConfig
+    FunctionExpression?: _StylisticExpListStyle_BaseConfig
+    ImportDeclaration?: _StylisticExpListStyle_BaseConfig
+    ImportAttributes?: _StylisticExpListStyle_BaseConfig
+    NewExpression?: _StylisticExpListStyle_BaseConfig
+    ObjectExpression?: _StylisticExpListStyle_BaseConfig
+    ObjectPattern?: _StylisticExpListStyle_BaseConfig
+    TSDeclareFunction?: _StylisticExpListStyle_BaseConfig
+    TSFunctionType?: _StylisticExpListStyle_BaseConfig
+    TSInterfaceBody?: _StylisticExpListStyle_BaseConfig
+    TSEnumBody?: _StylisticExpListStyle_BaseConfig
+    TSTupleType?: _StylisticExpListStyle_BaseConfig
+    TSTypeLiteral?: _StylisticExpListStyle_BaseConfig
+    TSTypeParameterDeclaration?: _StylisticExpListStyle_BaseConfig
+    TSTypeParameterInstantiation?: _StylisticExpListStyle_BaseConfig
+    JSONArrayExpression?: _StylisticExpListStyle_BaseConfig
+    JSONObjectExpression?: _StylisticExpListStyle_BaseConfig
+  }
+}]
+interface _StylisticExpListStyle_SingleLineConfig {
+  spacing?: ("always" | "never")
+  maxItems?: number
+}
+interface _StylisticExpListStyle_MultiLineConfig {
+  minItems?: number
+}
+interface _StylisticExpListStyle_BaseConfig {
+  singleLine?: _StylisticExpListStyle_SingleLineConfig
+  multiline?: _StylisticExpListStyle_MultiLineConfig
+}
 // ----- @stylistic/function-call-argument-newline -----
 type StylisticFunctionCallArgumentNewline = []|[("always" | "never" | "consistent")]
 // ----- @stylistic/function-call-spacing -----
@@ -5428,6 +5662,10 @@ type StylisticGeneratorStarSpacing = []|[(("before" | "after" | "both" | "neithe
     after?: boolean
   })
   method?: (("before" | "after" | "both" | "neither") | {
+    before?: boolean
+    after?: boolean
+  })
+  shorthand?: (("before" | "after" | "both" | "neither") | {
     before?: boolean
     after?: boolean
   })
@@ -5466,7 +5704,11 @@ type StylisticIndent = []|[("tab" | number)]|[("tab" | number), {
   ObjectExpression?: (number | ("first" | "off"))
   ImportDeclaration?: (number | ("first" | "off"))
   flatTernaryExpressions?: boolean
-  offsetTernaryExpressions?: boolean
+  offsetTernaryExpressions?: (boolean | {
+    CallExpression?: boolean
+    AwaitExpression?: boolean
+    NewExpression?: boolean
+  })
   offsetTernaryExpressionsOffsetCallExpressions?: boolean
   ignoredNodes?: string[]
   ignoreComments?: boolean
@@ -5676,22 +5918,6 @@ type StylisticKeywordSpacing = []|[{
       before?: boolean
       after?: boolean
     }
-    arguments?: {
-      before?: boolean
-      after?: boolean
-    }
-    as?: {
-      before?: boolean
-      after?: boolean
-    }
-    async?: {
-      before?: boolean
-      after?: boolean
-    }
-    await?: {
-      before?: boolean
-      after?: boolean
-    }
     boolean?: {
       before?: boolean
       after?: boolean
@@ -5756,10 +5982,6 @@ type StylisticKeywordSpacing = []|[{
       before?: boolean
       after?: boolean
     }
-    eval?: {
-      before?: boolean
-      after?: boolean
-    }
     export?: {
       before?: boolean
       after?: boolean
@@ -5788,15 +6010,7 @@ type StylisticKeywordSpacing = []|[{
       before?: boolean
       after?: boolean
     }
-    from?: {
-      before?: boolean
-      after?: boolean
-    }
     function?: {
-      before?: boolean
-      after?: boolean
-    }
-    get?: {
       before?: boolean
       after?: boolean
     }
@@ -5832,10 +6046,6 @@ type StylisticKeywordSpacing = []|[{
       before?: boolean
       after?: boolean
     }
-    let?: {
-      before?: boolean
-      after?: boolean
-    }
     long?: {
       before?: boolean
       after?: boolean
@@ -5849,10 +6059,6 @@ type StylisticKeywordSpacing = []|[{
       after?: boolean
     }
     null?: {
-      before?: boolean
-      after?: boolean
-    }
-    of?: {
       before?: boolean
       after?: boolean
     }
@@ -5873,10 +6079,6 @@ type StylisticKeywordSpacing = []|[{
       after?: boolean
     }
     return?: {
-      before?: boolean
-      after?: boolean
-    }
-    set?: {
       before?: boolean
       after?: boolean
     }
@@ -5924,15 +6126,7 @@ type StylisticKeywordSpacing = []|[{
       before?: boolean
       after?: boolean
     }
-    type?: {
-      before?: boolean
-      after?: boolean
-    }
     typeof?: {
-      before?: boolean
-      after?: boolean
-    }
-    using?: {
       before?: boolean
       after?: boolean
     }
@@ -5953,6 +6147,54 @@ type StylisticKeywordSpacing = []|[{
       after?: boolean
     }
     with?: {
+      before?: boolean
+      after?: boolean
+    }
+    arguments?: {
+      before?: boolean
+      after?: boolean
+    }
+    as?: {
+      before?: boolean
+      after?: boolean
+    }
+    async?: {
+      before?: boolean
+      after?: boolean
+    }
+    await?: {
+      before?: boolean
+      after?: boolean
+    }
+    eval?: {
+      before?: boolean
+      after?: boolean
+    }
+    from?: {
+      before?: boolean
+      after?: boolean
+    }
+    get?: {
+      before?: boolean
+      after?: boolean
+    }
+    let?: {
+      before?: boolean
+      after?: boolean
+    }
+    of?: {
+      before?: boolean
+      after?: boolean
+    }
+    set?: {
+      before?: boolean
+      after?: boolean
+    }
+    type?: {
+      before?: boolean
+      after?: boolean
+    }
+    using?: {
       before?: boolean
       after?: boolean
     }
@@ -6257,6 +6499,19 @@ type StylisticObjectCurlyNewline = []|[((("always" | "never") | {
 type StylisticObjectCurlySpacing = []|[("always" | "never")]|[("always" | "never"), {
   arraysInObjects?: boolean
   objectsInObjects?: boolean
+  overrides?: {
+    ObjectPattern?: ("always" | "never")
+    ObjectExpression?: ("always" | "never")
+    ImportDeclaration?: ("always" | "never")
+    ImportAttributes?: ("always" | "never")
+    ExportNamedDeclaration?: ("always" | "never")
+    ExportAllDeclaration?: ("always" | "never")
+    TSMappedType?: ("always" | "never")
+    TSTypeLiteral?: ("always" | "never")
+    TSInterfaceBody?: ("always" | "never")
+    TSEnumBody?: ("always" | "never")
+  }
+  emptyObjects?: ("ignore" | "always" | "never")
 }]
 // ----- @stylistic/object-property-newline -----
 type StylisticObjectPropertyNewline = []|[{
@@ -6410,15 +6665,19 @@ type TypescriptEslintArrayType = []|[{
 type TypescriptEslintBanTsComment = []|[{
   
   minimumDescriptionLength?: number
+  
   "ts-check"?: (boolean | "allow-with-description" | {
     descriptionFormat?: string
   })
+  
   "ts-expect-error"?: (boolean | "allow-with-description" | {
     descriptionFormat?: string
   })
+  
   "ts-ignore"?: (boolean | "allow-with-description" | {
     descriptionFormat?: string
   })
+  
   "ts-nocheck"?: (boolean | "allow-with-description" | {
     descriptionFormat?: string
   })
@@ -6512,10 +6771,15 @@ type TypescriptEslintExplicitMemberAccessibility = []|[{
   ignoredMethodNames?: string[]
   
   overrides?: {
+    
     accessors?: ("explicit" | "no-public" | "off")
+    
     constructors?: ("explicit" | "no-public" | "off")
+    
     methods?: ("explicit" | "no-public" | "off")
+    
     parameterProperties?: ("explicit" | "no-public" | "off")
+    
     properties?: ("explicit" | "no-public" | "off")
   }
 }]
@@ -6549,26 +6813,31 @@ type TypescriptEslintMaxParams = []|[{
 }]
 // ----- @typescript-eslint/member-ordering -----
 type TypescriptEslintMemberOrdering = []|[{
+  
   classes?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
     optionalityOrder?: ("optional-first" | "required-first")
     order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
+  
   classExpressions?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
     optionalityOrder?: ("optional-first" | "required-first")
     order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
+  
   default?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
     optionalityOrder?: ("optional-first" | "required-first")
     order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
+  
   interfaces?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | "never")
     optionalityOrder?: ("optional-first" | "required-first")
     order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
+  
   typeLiterals?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | "never")
     optionalityOrder?: ("optional-first" | "required-first")
@@ -7219,6 +7488,11 @@ type TypescriptEslintNoUnnecessaryTypeAssertion = []|[{
   
   typesToIgnore?: string[]
 }]
+// ----- @typescript-eslint/no-unsafe-member-access -----
+type TypescriptEslintNoUnsafeMemberAccess = []|[{
+  
+  allowOptionalChaining?: boolean
+}]
 // ----- @typescript-eslint/no-unused-expressions -----
 type TypescriptEslintNoUnusedExpressions = []|[{
   allowShortCircuit?: boolean
@@ -7243,6 +7517,8 @@ type TypescriptEslintNoUnusedVars = []|[(("all" | "local") | {
   ignoreClassWithStaticInitBlock?: boolean
   
   ignoreRestSiblings?: boolean
+  
+  ignoreUsingDeclarations?: boolean
   
   reportUsedIgnorePattern?: boolean
   
@@ -9174,12 +9450,16 @@ type NoRestrictedImports = ((string | {
   message?: string
   importNames?: string[]
   allowImportNames?: string[]
+  
+  allowTypeImports?: boolean
 })[] | []|[{
   paths?: (string | {
     name: string
     message?: string
     importNames?: string[]
     allowImportNames?: string[]
+    
+    allowTypeImports?: boolean
   })[]
   patterns?: (string[] | ({
     [k: string]: unknown | undefined
@@ -9412,34 +9692,151 @@ type OperatorLinebreak = []|[("after" | "before" | "none" | null)]|[("after" | "
     [k: string]: ("after" | "before" | "none" | "ignore") | undefined
   }
 }]
+// ----- package-json/exports-subpaths-style -----
+type PackageJsonExportsSubpathsStyle = []|[{
+  
+  prefer?: ("implicit" | "explicit")
+}]
+// ----- package-json/no-empty-fields -----
+type PackageJsonNoEmptyFields = []|[{
+  
+  ignoreProperties?: string[]
+}]
 // ----- package-json/order-properties -----
 type PackageJsonOrderProperties = []|[{
+  
   order?: (("legacy" | "sort-package-json") | string[])
 }]
 // ----- package-json/repository-shorthand -----
 type PackageJsonRepositoryShorthand = []|[{
+  
   form?: ("object" | "shorthand")
+}]
+// ----- package-json/require-attribution -----
+type PackageJsonRequireAttribution = []|[{
+  
+  preferContributorsOnly?: boolean
+}]
+// ----- package-json/require-author -----
+type PackageJsonRequireAuthor = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-bugs -----
+type PackageJsonRequireBugs = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-bundleDependencies -----
+type PackageJsonRequireBundleDependencies = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-dependencies -----
+type PackageJsonRequireDependencies = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-description -----
+type PackageJsonRequireDescription = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-devDependencies -----
+type PackageJsonRequireDevDependencies = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-engines -----
+type PackageJsonRequireEngines = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-exports -----
+type PackageJsonRequireExports = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-files -----
+type PackageJsonRequireFiles = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-keywords -----
+type PackageJsonRequireKeywords = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-license -----
+type PackageJsonRequireLicense = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-name -----
+type PackageJsonRequireName = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-optionalDependencies -----
+type PackageJsonRequireOptionalDependencies = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-peerDependencies -----
+type PackageJsonRequirePeerDependencies = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-sideEffects -----
+type PackageJsonRequireSideEffects = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-type -----
+type PackageJsonRequireType = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-types -----
+type PackageJsonRequireTypes = []|[{
+  
+  ignorePrivate?: boolean
+}]
+// ----- package-json/require-version -----
+type PackageJsonRequireVersion = []|[{
+  
+  ignorePrivate?: boolean
 }]
 // ----- package-json/restrict-dependency-ranges -----
 type PackageJsonRestrictDependencyRanges = []|[({
+  
   forDependencyTypes?: ("dependencies" | "devDependencies" | "optionalDependencies" | "peerDependencies")[]
+  
   forPackages?: string[]
+  
   forVersions?: string
+  
   rangeType: (("caret" | "pin" | "tilde") | ("caret" | "pin" | "tilde")[])
 } | {
+  
   forDependencyTypes?: ("dependencies" | "devDependencies" | "optionalDependencies" | "peerDependencies")[]
+  
   forPackages?: string[]
+  
   forVersions?: string
+  
   rangeType: (("caret" | "pin" | "tilde") | ("caret" | "pin" | "tilde")[])
 }[])]
+// ----- package-json/restrict-private-properties -----
+type PackageJsonRestrictPrivateProperties = []|[{
+  
+  blockedProperties?: string[]
+}]
 // ----- package-json/sort-collections -----
 type PackageJsonSortCollections = []|[string[]]
-// ----- package-json/valid-bin -----
-type PackageJsonValidBin = []|[{
-  enforceCase?: boolean
-}]
 // ----- package-json/valid-package-definition -----
 type PackageJsonValidPackageDefinition = []|[{
+  
   ignoreProperties?: string[]
 }]
 // ----- padded-blocks -----
@@ -9581,6 +9978,10 @@ type ReactHooksHooks = []|[{
 type ReactHooksImmutability = []|[{
   [k: string]: unknown | undefined
 }]
+// ----- react-hooks/incompatible-library -----
+type ReactHooksIncompatibleLibrary = []|[{
+  [k: string]: unknown | undefined
+}]
 // ----- react-hooks/invariant -----
 type ReactHooksInvariant = []|[{
   [k: string]: unknown | undefined
@@ -9591,10 +9992,6 @@ type ReactHooksMemoizedEffectDependencies = []|[{
 }]
 // ----- react-hooks/no-deriving-state-in-effects -----
 type ReactHooksNoDerivingStateInEffects = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/no-unused-directives -----
-type ReactHooksNoUnusedDirectives = []|[{
   [k: string]: unknown | undefined
 }]
 // ----- react-hooks/preserve-manual-memoization -----
@@ -9612,6 +10009,10 @@ type ReactHooksRefs = []|[{
 // ----- react-hooks/rule-suppression -----
 type ReactHooksRuleSuppression = []|[{
   [k: string]: unknown | undefined
+}]
+// ----- react-hooks/rules-of-hooks -----
+type ReactHooksRulesOfHooks = []|[{
+  additionalHooks?: string
 }]
 // ----- react-hooks/set-state-in-effect -----
 type ReactHooksSetStateInEffect = []|[{
@@ -10177,6 +10578,10 @@ type UnicornTemplateIndent = []|[{
   selectors?: string[]
   comments?: string[]
 }]
+// ----- unicorn/text-encoding-identifier-case -----
+type UnicornTextEncodingIdentifierCase = []|[{
+  withDash?: boolean
+}]
 // ----- unocss/enforce-class-compile -----
 type UnocssEnforceClassCompile = []|[{
   prefix?: string
@@ -10204,6 +10609,8 @@ type UnusedImportsNoUnusedImports = []|[(("all" | "local") | {
   
   ignoreRestSiblings?: boolean
   
+  ignoreUsingDeclarations?: boolean
+  
   reportUsedIgnorePattern?: boolean
   
   vars?: ("all" | "local")
@@ -10226,6 +10633,8 @@ type UnusedImportsNoUnusedVars = []|[(("all" | "local") | {
   ignoreClassWithStaticInitBlock?: boolean
   
   ignoreRestSiblings?: boolean
+  
+  ignoreUsingDeclarations?: boolean
   
   reportUsedIgnorePattern?: boolean
   

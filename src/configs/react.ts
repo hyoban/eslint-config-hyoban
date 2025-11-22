@@ -11,6 +11,7 @@ function excludePlugins(object: any) {
 
 export function reactConfigs({
   react,
+  reactCompiler,
   strict,
   typeChecked,
   filesDisableTypeChecking,
@@ -23,26 +24,27 @@ export function reactConfigs({
       const reactRefresh = await interopDefault(import('eslint-plugin-react-refresh')) as ESLint.Plugin
       const reactGoogleTranslate = await interopDefault(import('eslint-plugin-react-google-translate')) as ESLint.Plugin
       const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
-      const config = strict ? eslintReact.configs.all : eslintReact.configs.recommended
+      const config = strict ? eslintReact.configs.strict : eslintReact.configs.recommended
       const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
 
       return {
-        name: `react/setup/${strict ? 'all' : 'recommended'}`,
+        name: `react/setup/${strict ? 'strict' : 'recommended'}`,
         plugins: {
           'react-refresh': reactRefresh,
           'react-google-translate': reactGoogleTranslate,
           'react-hooks': reactHooks,
+          // @ts-expect-error type error
           ...(config.plugins as unknown as Record<string, ESLint.Plugin>),
         },
       } satisfies Linter.Config
     },
     async () => {
       const eslintReact = await interopDefault(import('@eslint-react/eslint-plugin'))
-      const config = strict ? eslintReact.configs.all : eslintReact.configs.recommended
+      const config = strict ? eslintReact.configs.strict : eslintReact.configs.recommended
 
       return {
         ...(excludePlugins(config)),
-        name: `react/${strict ? 'all' : 'recommended'}`,
+        name: `react/${strict ? 'strict' : 'recommended'}`,
         files: GLOB_TS_SRC,
       } satisfies Linter.Config
     },
@@ -56,7 +58,7 @@ export function reactConfigs({
             '@eslint-react/naming-convention/use-state': 'off',
             '@eslint-react/avoid-shorthand-boolean': 'off',
             '@eslint-react/avoid-shorthand-fragment': 'off',
-            '@eslint-react/prefer-react-namespace-import': 'warn',
+            '@eslint-react/prefer-namespace-import': 'warn',
           },
         } satisfies Linter.Config
       }
@@ -73,7 +75,7 @@ export function reactConfigs({
           //   selector: 'ImportDeclaration[source.value=\'react\'][specifiers.0.type=\'ImportDefaultSpecifier\']',
           //   message: 'Default React import not allowed, use import * as React from \'react\'',
           // },
-          '@eslint-react/prefer-react-namespace-import': 'warn',
+          '@eslint-react/prefer-namespace-import': 'warn',
         },
       } satisfies Linter.Config
     },
@@ -93,13 +95,38 @@ export function reactConfigs({
         },
       } satisfies Linter.Config
     },
-    async () => {
-      const reactHooks = await interopDefault(import('eslint-plugin-react-hooks'))
+    () => {
       return {
-        // @ts-expect-error type error
-        ...(excludePlugins(reactHooks.configs.recommended)),
         name: 'react/official',
         files: GLOB_TS_SRC,
+        rules: {
+          // Core hooks rules
+          'react-hooks/rules-of-hooks': 'error',
+          'react-hooks/exhaustive-deps': 'warn',
+
+          ...(
+            reactCompiler
+              ? {
+                  // React Compiler rules
+                  'react-hooks/config': 'error',
+                  'react-hooks/error-boundaries': 'error',
+                  'react-hooks/component-hook-factories': 'error',
+                  'react-hooks/gating': 'error',
+                  'react-hooks/globals': 'error',
+                  'react-hooks/immutability': 'error',
+                  'react-hooks/preserve-manual-memoization': 'error',
+                  'react-hooks/purity': 'error',
+                  'react-hooks/refs': 'error',
+                  'react-hooks/set-state-in-effect': 'error',
+                  'react-hooks/set-state-in-render': 'error',
+                  'react-hooks/static-components': 'error',
+                  'react-hooks/unsupported-syntax': 'warn',
+                  'react-hooks/use-memo': 'error',
+                  'react-hooks/incompatible-library': 'warn',
+                }
+              : {}
+          ),
+        },
       } satisfies Linter.Config
     },
     {
