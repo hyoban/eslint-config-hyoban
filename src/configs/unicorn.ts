@@ -11,6 +11,8 @@ export function unicornConfigs({ fileCase, preferESM }: Required<Options>) {
       rules: {
         'unicorn/filename-case': fileCase ? ['error', { case: fileCase }] : 'off',
         'unicorn/prefer-module': preferESM ? 'error' : 'off',
+        'unicorn/no-array-sort': 'off',
+        'unicorn/no-array-reverse': 'off',
       },
     } satisfies Linter.Config,
   ]
