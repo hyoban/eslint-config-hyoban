@@ -66,7 +66,7 @@ export function reactConfigs({
         name: 'react/recommended/custom',
         files: GLOB_TS_SRC,
         rules: {
-          '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks': 'warn',
+          '@eslint-react/ensure-custom-hooks-using-other-hooks': 'warn',
           '@eslint-react/no-unstable-context-value': 'warn',
           '@eslint-react/dom/no-dangerously-set-innerhtml': 'off',
           '@eslint-react/naming-convention/use-state': 'off',
