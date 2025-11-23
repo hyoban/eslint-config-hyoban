@@ -24,6 +24,6 @@ const plugins = await flatConfigsToPlugins(
     })),
   ],
 )
-const dts = await pluginsToRulesDTS(plugins)
+const dts = await pluginsToRulesDTS(plugins, { includeAugmentation: false })
 
 await fs.writeFile('eslint-typegen.d.ts', dts)

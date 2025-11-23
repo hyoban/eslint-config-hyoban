@@ -2,12 +2,6 @@
 /* prettier-ignore */
 import type { Linter } from 'eslint'
 
-declare module 'eslint' {
-  namespace Linter {
-    interface RulesRecord extends RuleOptions {}
-  }
-}
-
 export interface RuleOptions {
   /**
    * Disallow `dangerouslySetInnerHTML`.
