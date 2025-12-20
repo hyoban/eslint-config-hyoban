@@ -1405,6 +1405,11 @@ export interface RuleOptions {
    */
   '@typescript-eslint/no-useless-constructor'?: Linter.RuleEntry<[]>
   /**
+   * Disallow default values that will never be used
+   * @see https://typescript-eslint.io/rules/no-useless-default-assignment
+   */
+  '@typescript-eslint/no-useless-default-assignment'?: Linter.RuleEntry<[]>
+  /**
    * Disallow empty exports that don't change anything in a module file
    * @see https://typescript-eslint.io/rules/no-useless-empty-export
    */
@@ -3975,6 +3980,10 @@ export interface RuleOptions {
    * Validates usage of the useMemo() hook against common mistakes. See [`useMemo()` docs](https://react.dev/reference/react/useMemo) for more information.
    */
   'react-hooks/use-memo'?: Linter.RuleEntry<ReactHooksUseMemo>
+  /**
+   * Validates that useMemos always return a value and that the result of the useMemo is used by the component/hook. See [`useMemo()` docs](https://react.dev/reference/react/useMemo) for more information.
+   */
+  'react-hooks/void-use-memo'?: Linter.RuleEntry<ReactHooksVoidUseMemo>
   'react-refresh/only-export-components'?: Linter.RuleEntry<ReactRefreshOnlyExportComponents>
   /**
    * disallow confusing quantifiers
@@ -5401,6 +5410,8 @@ type EslintReactNoUnstableDefaultProps = []|[{
 }]
 // ----- @eslint-react/no-useless-fragment -----
 type EslintReactNoUselessFragment = []|[{
+  
+  allowEmptyFragment?: boolean
   
   allowExpressions?: boolean
 }]
@@ -10034,6 +10045,10 @@ type ReactHooksUnsupportedSyntax = []|[{
 }]
 // ----- react-hooks/use-memo -----
 type ReactHooksUseMemo = []|[{
+  [k: string]: unknown | undefined
+}]
+// ----- react-hooks/void-use-memo -----
+type ReactHooksVoidUseMemo = []|[{
   [k: string]: unknown | undefined
 }]
 // ----- react-refresh/only-export-components -----
