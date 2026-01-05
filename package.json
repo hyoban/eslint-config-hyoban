@@ -1,25 +1,24 @@
 {
   "name": "eslint-config-hyoban",
-  "type": "module",
   "version": "5.0.0",
-  "packageManager": "pnpm@10.27.0",
   "description": "Hyoban's ESLint Config",
+  "keywords": [
+    "eslint-config"
+  ],
+  "homepage": "https://github.com/hyoban/eslint-config-hyoban#readme",
+  "bugs": "https://github.com/hyoban/eslint-config-hyoban/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyoban/eslint-config-hyoban.git"
+  },
+  "license": "MIT",
   "author": {
     "name": "Stephen Zhou",
     "email": "hi@hyoban.cc",
     "url": "https://hyoban.cc"
   },
-  "license": "MIT",
-  "homepage": "https://github.com/hyoban/eslint-config-hyoban#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hyoban/eslint-config-hyoban.git"
-  },
-  "bugs": "https://github.com/hyoban/eslint-config-hyoban/issues",
-  "keywords": [
-    "eslint-config"
-  ],
   "sideEffects": false,
+  "type": "module",
   "exports": {
     ".": "./dist/index.js"
   },
@@ -28,9 +27,6 @@
   "files": [
     "dist"
   ],
-  "engines": {
-    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-  },
   "scripts": {
     "build": "pnpm typegen && bunchee",
     "build:inspector": "npx @eslint/config-inspector build",
@@ -43,14 +39,11 @@
     "typecheck": "tsc",
     "typegen": "tsx scripts/typegen.ts"
   },
-  "peerDependencies": {
-    "eslint": "^9.0.0",
-    "typescript": ">=4.8.4"
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
   },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    }
+  "lint-staged": {
+    "*": "eslint --fix"
   },
   "dependencies": {
     "@eslint-react/eslint-plugin": "^2.5.1",
@@ -93,10 +86,17 @@
     "typescript": "^5.9.3",
     "vitest": "^4.0.16"
   },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+  "peerDependencies": {
+    "eslint": "^9.0.0",
+    "typescript": ">=4.8.4"
   },
-  "lint-staged": {
-    "*": "eslint --fix"
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "packageManager": "pnpm@10.27.0",
+  "engines": {
+    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
   }
 }
