@@ -19,8 +19,6 @@ const plugins = await flatConfigsToPlugins(
       react: 'vite',
       strict: true,
       typeChecked: true,
-      tailwindCSS: true,
-      unocss: true,
     })),
   ],
 )
