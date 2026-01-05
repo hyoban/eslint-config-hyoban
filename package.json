@@ -71,7 +71,6 @@
     "eslint-plugin-react-refresh": "^0.4.26",
     "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-tailwindcss": "4.0.0-beta.0",
     "eslint-plugin-unicorn": "^62.0.0",
     "eslint-plugin-unused-imports": "^4.3.0",
     "globals": "^17.0.0",

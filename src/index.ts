@@ -6,7 +6,6 @@ import { jsonConfigs } from './configs/json'
 import { reactConfigs } from './configs/react'
 import { regexConfig } from './configs/regex'
 import { stylisticConfigs } from './configs/stylistic'
-import { tailwindCSSConfig } from './configs/tailwindcss'
 import { typeScriptConfigs } from './configs/typescript'
 import { unicornConfigs } from './configs/unicorn'
 import { unocssConfig } from './configs/unocss'
@@ -36,7 +35,6 @@ export async function defineConfig(
     ...stylisticConfigs(finalOptions),
     ...jsonConfigs(finalOptions),
     ...reactConfigs(finalOptions),
-    tailwindCSSConfig(finalOptions),
     unocssConfig(finalOptions),
     ...args,
   )
