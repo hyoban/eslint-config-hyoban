@@ -1,6 +1,5 @@
-import type { ESLint } from 'eslint'
 import pluginAntfu from 'eslint-plugin-antfu'
-import * as pluginImport from 'eslint-plugin-import-lite'
+import pluginImport from 'eslint-plugin-import-lite'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
 import type { LinterConfig } from '../utils'
@@ -10,7 +9,7 @@ export function importConfig(): LinterConfig {
     name: 'extend/import',
     plugins: {
       'simple-import-sort': simpleImportSort,
-      'import-lite': pluginImport as unknown as ESLint.Plugin,
+      'import-lite': pluginImport,
       'antfu': pluginAntfu,
     },
     rules: {
