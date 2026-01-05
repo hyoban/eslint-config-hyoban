@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-hyoban",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Hyoban's ESLint Config",
   "keywords": [
     "eslint-config"
