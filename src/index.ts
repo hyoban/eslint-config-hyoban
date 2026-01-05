@@ -8,7 +8,6 @@ import { regexConfig } from './configs/regex'
 import { stylisticConfigs } from './configs/stylistic'
 import { typeScriptConfigs } from './configs/typescript'
 import { unicornConfigs } from './configs/unicorn'
-import { unocssConfig } from './configs/unocss'
 import { unusedConfig } from './configs/unused'
 import type { Options } from './option'
 import { mergeDefaultOptions } from './option'
@@ -35,7 +34,6 @@ export async function defineConfig(
     ...stylisticConfigs(finalOptions),
     ...jsonConfigs(finalOptions),
     ...reactConfigs(finalOptions),
-    unocssConfig(finalOptions),
     ...args,
   )
 }
