@@ -33,7 +33,7 @@ export function reactConfigs({
         plugins: {
           'react-refresh': reactRefresh,
           'react-google-translate': reactGoogleTranslate,
-          'react-hooks': reactHooks,
+          'react-hooks': reactHooks as unknown as ESLint.Plugin,
           // @ts-expect-error type error
           ...(config.plugins as unknown as Record<string, ESLint.Plugin>),
         },

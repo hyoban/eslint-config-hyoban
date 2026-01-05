@@ -1,7 +1,7 @@
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { ParserOptions } from '@typescript-eslint/types'
 import defu from 'defu'
-import { getPackageInfo, isPackageExists, isPackageListed } from 'local-pkg'
+import { isPackageExists } from 'local-pkg'
 import { readPackageUp } from 'read-package-up'
 
 import { DEFAULT_IGNORE_FILES, GLOB_EXCLUDE } from './consts'
@@ -22,10 +22,8 @@ export type Options = {
   reactCompiler?: boolean
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   strict?: boolean
-  tailwindCSS?: boolean | { order: boolean }
   tsconfigRootDir?: string
   typeChecked?: boolean | 'essential'
-  unocss?: boolean
 } & Pick<LinterConfig, 'linterOptions' | 'settings'>
 
 export async function mergeDefaultOptions(
@@ -37,14 +35,6 @@ export async function mergeDefaultOptions(
   const hasRemix = isPackageExists('remix')
   const hasNext = isPackageExists('next')
   const hasExpo = isPackageExists('expo')
-  const hasUnocss = isPackageExists('unocss')
-
-  const [tailwindPackageInfo, tailwindPackageListed] = await Promise.all([
-    getPackageInfo('tailwindcss'),
-    isPackageListed('tailwindcss'),
-  ])
-
-  const hasTailwindCSS = tailwindPackageListed && !!tailwindPackageInfo?.version
 
   /// keep-sorted
   const defaultOptions: Required<Options> = {
@@ -75,22 +65,10 @@ export async function mergeDefaultOptions(
       'TSEnumDeclaration[const=true]',
       'TSExportAssignment',
     ],
-    settings: {
-      ...(
-        hasTailwindCSS
-          ? {
-              tailwindcss: {
-                callees: ['classnames', 'clsx', 'ctl', 'cn'],
-              },
-            }
-          : {}
-      ),
-    },
+    settings: {},
     strict: false,
-    tailwindCSS: hasTailwindCSS,
     tsconfigRootDir: process.cwd(),
     typeChecked: false,
-    unocss: hasUnocss,
   }
 
   return defu<Required<Options>, Options[]>(
