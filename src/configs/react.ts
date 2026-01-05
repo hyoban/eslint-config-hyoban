@@ -108,20 +108,20 @@ export function reactConfigs({
             reactCompiler
               ? {
                   // React Compiler rules
-                  'react-hooks/config': 'error',
-                  'react-hooks/error-boundaries': 'error',
-                  'react-hooks/component-hook-factories': 'error',
-                  'react-hooks/gating': 'error',
-                  'react-hooks/globals': 'error',
-                  'react-hooks/immutability': 'error',
-                  'react-hooks/preserve-manual-memoization': 'error',
-                  'react-hooks/purity': 'error',
-                  'react-hooks/refs': 'error',
-                  'react-hooks/set-state-in-effect': 'error',
-                  'react-hooks/set-state-in-render': 'error',
-                  'react-hooks/static-components': 'error',
+                  'react-hooks/config': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/error-boundaries': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/component-hook-factories': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/gating': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/globals': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/immutability': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/preserve-manual-memoization': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/purity': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/refs': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/set-state-in-effect': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/set-state-in-render': reactCompiler === 'warn' ? 'warn' : 'error',
+                  'react-hooks/static-components': reactCompiler === 'warn' ? 'warn' : 'error',
                   'react-hooks/unsupported-syntax': 'warn',
-                  'react-hooks/use-memo': 'error',
+                  'react-hooks/use-memo': reactCompiler === 'warn' ? 'warn' : 'error',
                   'react-hooks/incompatible-library': 'warn',
                 }
               : {}

@@ -19,7 +19,7 @@ export type Options = {
   project?: ParserOptions['project']
   projectService?: ParserOptions['projectService']
   react?: 'vite' | 'remix' | 'next' | 'expo' | boolean
-  reactCompiler?: boolean
+  reactCompiler?: boolean | 'warn'
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   strict?: boolean
   tsconfigRootDir?: string
