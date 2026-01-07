@@ -10,8 +10,8 @@ Read more about why I use ESLint for linting and formatting on [xLog](https://hy
 
 | Basic              | Style            | React         | Others              | Tools                  |
 | ------------------ | ---------------- | ------------- | ------------------- | ---------------------- |
-| [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS] ✅   | [config-inspector] ✅  |
-| [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS] ✅         | [eslint-types]         |
+| [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]      | [config-inspector] ✅  |
+| [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS]            | [eslint-types]         |
 | [unicorn] ✅       | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅ | [eslint-typegen] ✅    |
 | [import-x] ✅      | [jsonc] ✅       | [compiler] ✅ | [command] ✅        | [@antfu/eslint-config] |
 | [unused-import] ✅ | [yml]            | [jsx-a11y]    | [regexp] ✅         |                        |
@@ -27,16 +27,10 @@ Read more about why I use ESLint for linting and formatting on [xLog](https://hy
 ni -D eslint eslint-config-hyoban lint-staged simple-git-hooks
 ```
 
-If you are using ESLint 9.9.0 and `eslint.config.ts`, you need to install `jiti`.
-
-```sh
-ni -D jiti
-```
-
 > [!TIP]
 > You can install the nightly version from [pkg.pr.new](https://github.com/stackblitz-labs/pkg.pr.new), for example, `ni -D https://pkg.pr.new/hyoban/eslint-config-hyoban@{commit}`.
 
-`eslint.config.mjs` or `eslint.config.ts` if you are using ESLint 9.9.0.
+`eslint.config.mjs`
 
 ```ts
 // @ts-check
@@ -66,8 +60,6 @@ export default defineConfig()
 }
 ```
 
-Use `eslint --flag unstable_ts_config` if you are using ESLint 9.9.0 and `eslint.config.ts`.
-
 `.vscode/settings.json` for VSCode.
 
 ```jsonc
@@ -80,18 +72,12 @@ Use `eslint --flag unstable_ts_config` if you are using ESLint 9.9.0 and `eslint
     }
   },
 
-  // If you are using ESLint 9.9.0 and eslint.config.ts
-  "eslint.options": {
-    "flags": ["unstable_ts_config"]
-  },
-
   // If you do not want to auto fix some rules on save
   // You can put this in your user settings or workspace settings
   "eslint.codeActionsOnSave.rules": [
     "!prefer-const",
     "!unused-imports/no-unused-imports",
     "!@stylistic/jsx-self-closing-comp",
-    "!tailwindcss/classnames-order",
     "*"
   ],
 
@@ -103,8 +89,7 @@ Use `eslint --flag unstable_ts_config` if you are using ESLint 9.9.0 and `eslint
     { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
     { "rule": "simple-import-sort/*", "severity": "off" },
     { "rule": "prefer-const", "severity": "off" },
-    { "rule": "unused-imports/no-unused-imports", "severity": "off" },
-    { "rule": "tailwindcss/classnames-order", "severity": "off" }
+    { "rule": "unused-imports/no-unused-imports", "severity": "off" }
   ],
 
   // You can also silent all auto fixable rules
