@@ -18,7 +18,7 @@ export type Options = {
   preferESM?: boolean
   project?: ParserOptions['project']
   projectService?: ParserOptions['projectService']
-  react?: 'vite' | 'remix' | 'next' | 'expo' | boolean
+  react?: 'waku' | 'vite' | 'remix' | 'next' | 'expo' | boolean
   reactCompiler?: boolean | 'warn'
   restrictedSyntax?: Array<string | { selector: string, message?: string }>
   strict?: boolean
@@ -35,6 +35,7 @@ export async function mergeDefaultOptions(
   const hasRemix = isPackageExists('remix')
   const hasNext = isPackageExists('next')
   const hasExpo = isPackageExists('expo')
+  const hasWaku = isPackageExists('waku')
 
   /// keep-sorted
   const defaultOptions: Required<Options> = {
@@ -54,7 +55,7 @@ export async function mergeDefaultOptions(
     preferESM: packageJson?.packageJson.type === 'module',
     project: !!options?.typeChecked,
     projectService: false,
-    react: hasNext ? 'next' : hasRemix ? 'remix' : hasExpo ? 'expo' : (hasVite && hasReact) ? 'vite' : hasReact,
+    react: hasWaku ? 'waku' : hasNext ? 'next' : hasRemix ? 'remix' : hasExpo ? 'expo' : (hasVite && hasReact) ? 'vite' : hasReact,
     reactCompiler: false,
     restrictedSyntax: [
       'DebuggerStatement',
