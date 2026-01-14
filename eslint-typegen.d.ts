@@ -4,12 +4,12 @@ import type { Linter } from 'eslint'
 
 export interface RuleOptions {
   /**
-   * Disallows 'dangerouslySetInnerHTML'.
+   * Disallows DOM elements from using 'dangerouslySetInnerHTML'.
    * @see https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml
    */
   '@eslint-react/dom/no-dangerously-set-innerhtml'?: Linter.RuleEntry<[]>
   /**
-   * Disallows 'dangerouslySetInnerHTML' and 'children' at the same time.
+   * Disallows DOM elements from using 'dangerouslySetInnerHTML' and 'children' at the same time.
    * @see https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml-with-children
    */
   '@eslint-react/dom/no-dangerously-set-innerhtml-with-children'?: Linter.RuleEntry<[]>
@@ -24,17 +24,17 @@ export interface RuleOptions {
    */
   '@eslint-react/dom/no-flush-sync'?: Linter.RuleEntry<[]>
   /**
-   * Replaces usage of 'ReactDom.hydrate()' with 'hydrateRoot()'.
+   * Replaces usage of 'ReactDOM.hydrate()' with 'hydrateRoot()'.
    * @see https://eslint-react.xyz/docs/rules/dom-no-hydrate
    */
   '@eslint-react/dom/no-hydrate'?: Linter.RuleEntry<[]>
   /**
-   * Enforces explicit 'type' attribute for 'button' elements.
+   * Enforces an explicit 'type' attribute for 'button' elements.
    * @see https://eslint-react.xyz/docs/rules/dom-no-missing-button-type
    */
   '@eslint-react/dom/no-missing-button-type'?: Linter.RuleEntry<[]>
   /**
-   * Enforces explicit 'sandbox' attribute for 'iframe' elements.
+   * Enforces an explicit 'sandbox' attribute for 'iframe' elements.
    * @see https://eslint-react.xyz/docs/rules/dom-no-missing-iframe-sandbox
    */
   '@eslint-react/dom/no-missing-iframe-sandbox'?: Linter.RuleEntry<[]>
@@ -44,7 +44,7 @@ export interface RuleOptions {
    */
   '@eslint-react/dom/no-namespace'?: Linter.RuleEntry<[]>
   /**
-   * Replaces usage of 'ReactDom.render()' with 'createRoot(node).render()'.
+   * Replaces usage of 'ReactDOM.render()' with 'createRoot(node).render()'.
    * @see https://eslint-react.xyz/docs/rules/dom-no-render
    */
   '@eslint-react/dom/no-render'?: Linter.RuleEntry<[]>
@@ -64,7 +64,7 @@ export interface RuleOptions {
    */
   '@eslint-react/dom/no-string-style-prop'?: Linter.RuleEntry<[]>
   /**
-   * Disallows unknown 'DOM' property.
+   * Disallows unknown 'DOM' properties.
    * @see https://eslint-react.xyz/docs/rules/dom-no-unknown-property
    */
   '@eslint-react/dom/no-unknown-property'?: Linter.RuleEntry<EslintReactDomNoUnknownProperty>
@@ -89,12 +89,12 @@ export interface RuleOptions {
    */
   '@eslint-react/dom/no-void-elements-with-children'?: Linter.RuleEntry<[]>
   /**
-   * Enforces React DOM is imported via a namespace import.
+   * Enforces importing React DOM via a namespace import.
    * @see https://eslint-react.xyz/docs/rules/dom-prefer-namespace-import
    */
   '@eslint-react/dom/prefer-namespace-import'?: Linter.RuleEntry<[]>
   /**
-   * Disallows **direct** calls to the 'set' function of 'useState' in 'useEffect'.
+   * Disallows direct calls to the ['set' function](https://react.dev/reference/react/useState#setstate) of 'useState' in 'useEffect'.
    * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-direct-set-state-in-use-effect
    */
   '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect'?: Linter.RuleEntry<[]>
@@ -104,7 +104,7 @@ export interface RuleOptions {
    */
   '@eslint-react/jsx-dollar'?: Linter.RuleEntry<[]>
   /**
-   * Enforces that the 'key' prop is placed before the spread prop in JSX elements.
+   * Enforces that the 'key' prop is placed before the spread prop in JSX elements when using the new JSX transform.
    * @see https://eslint-react.xyz/docs/rules/jsx-key-before-spread
    */
   '@eslint-react/jsx-key-before-spread'?: Linter.RuleEntry<[]>
@@ -159,7 +159,7 @@ export interface RuleOptions {
    */
   '@eslint-react/naming-convention/context-name'?: Linter.RuleEntry<[]>
   /**
-   * Enforces consistent file naming conventions.
+   * Enforces consistent file-naming conventions.
    * @see https://eslint-react.xyz/docs/rules/naming-convention-filename
    */
   '@eslint-react/naming-convention/filename'?: Linter.RuleEntry<EslintReactNamingConventionFilename>
@@ -169,7 +169,7 @@ export interface RuleOptions {
    */
   '@eslint-react/naming-convention/filename-extension'?: Linter.RuleEntry<EslintReactNamingConventionFilenameExtension>
   /**
-   * Enforces that variables assigned from 'useRef' calls have names ending with 'Ref'.
+   * Enforces identifier names assigned from 'useRef' calls to be either 'ref' or end with 'Ref'.
    * @see https://eslint-react.xyz/docs/rules/naming-convention-ref-name
    */
   '@eslint-react/naming-convention/ref-name'?: Linter.RuleEntry<[]>
@@ -350,7 +350,7 @@ export interface RuleOptions {
    */
   '@eslint-react/no-string-refs'?: Linter.RuleEntry<[]>
   /**
-   * Prevents 'key' from being placed on non-top-level elements in list rendering.
+   * Disallows unnecessary 'key' props on elements.
    * @see https://eslint-react.xyz/docs/rules/no-unnecessary-key
    */
   '@eslint-react/no-unnecessary-key'?: Linter.RuleEntry<[]>
@@ -369,6 +369,11 @@ export interface RuleOptions {
    * @see https://eslint-react.xyz/docs/rules/no-unnecessary-use-prefix
    */
   '@eslint-react/no-unnecessary-use-prefix'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows unnecessary usage of 'useRef'.
+   * @see https://eslint-react.xyz/docs/rules/no-unnecessary-use-ref
+   */
+  '@eslint-react/no-unnecessary-use-ref'?: Linter.RuleEntry<[]>
   /**
    * Warns about the use of 'UNSAFE_componentWillMount' in class components.
    * @see https://eslint-react.xyz/docs/rules/no-unsafe-component-will-mount
@@ -669,6 +674,7 @@ export interface RuleOptions {
   /**
    * Enforce props alphabetical sorting
    * @see https://eslint.style/rules/jsx-sort-props
+   * @deprecated
    */
   '@stylistic/jsx-sort-props'?: Linter.RuleEntry<StylisticJsxSortProps>
   /**
@@ -1587,6 +1593,11 @@ export interface RuleOptions {
    * @see https://typescript-eslint.io/rules/strict-boolean-expressions
    */
   '@typescript-eslint/strict-boolean-expressions'?: Linter.RuleEntry<TypescriptEslintStrictBooleanExpressions>
+  /**
+   * Disallow passing a value-returning function in a position accepting a void function
+   * @see https://typescript-eslint.io/rules/strict-void-return
+   */
+  '@typescript-eslint/strict-void-return'?: Linter.RuleEntry<TypescriptEslintStrictVoidReturn>
   /**
    * Require switch-case statements to be exhaustive
    * @see https://typescript-eslint.io/rules/switch-exhaustiveness-check
@@ -3360,6 +3371,11 @@ export interface RuleOptions {
    * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-repository.md
    */
   'package-json/require-repository'?: Linter.RuleEntry<PackageJsonRequireRepository>
+  /**
+   * Requires the `scripts` property to be present.
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-scripts.md
+   */
+  'package-json/require-scripts'?: Linter.RuleEntry<PackageJsonRequireScripts>
   /**
    * Requires the `sideEffects` property to be present.
    * @see https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/HEAD/docs/rules/require-sideEffects.md
@@ -6407,7 +6423,7 @@ type StylisticTypeAnnotationSpacing = []|[{
   after?: boolean
   overrides?: {
     colon?: _StylisticTypeAnnotationSpacing_SpacingConfig
-    arrow?: _StylisticTypeAnnotationSpacing_SpacingConfig
+    arrow?: ("ignore" | _StylisticTypeAnnotationSpacing_SpacingConfig)
     variable?: _StylisticTypeAnnotationSpacing_SpacingConfig
     parameter?: _StylisticTypeAnnotationSpacing_SpacingConfig
     property?: _StylisticTypeAnnotationSpacing_SpacingConfig
@@ -7287,6 +7303,11 @@ type TypescriptEslintNoUnusedVars = []|[(("all" | "local") | {
   
   destructuredArrayIgnorePattern?: string
   
+  enableAutofixRemoval?: {
+    
+    imports?: boolean
+  }
+  
   ignoreClassWithStaticInitBlock?: boolean
   
   ignoreRestSiblings?: boolean
@@ -7570,6 +7591,11 @@ type TypescriptEslintStrictBooleanExpressions = []|[{
   allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
   
   allowString?: boolean
+}]
+// ----- @typescript-eslint/strict-void-return -----
+type TypescriptEslintStrictVoidReturn = []|[{
+  
+  allowReturnAny?: boolean
 }]
 // ----- @typescript-eslint/switch-exhaustiveness-check -----
 type TypescriptEslintSwitchExhaustivenessCheck = []|[{
@@ -9325,6 +9351,11 @@ type PackageJsonRequireRepository = []|[{
   
   ignorePrivate?: boolean
 }]
+// ----- package-json/require-scripts -----
+type PackageJsonRequireScripts = []|[{
+  
+  ignorePrivate?: boolean
+}]
 // ----- package-json/require-sideEffects -----
 type PackageJsonRequireSideEffects = []|[{
   
@@ -10053,6 +10084,11 @@ type UnusedImportsNoUnusedImports = []|[(("all" | "local") | {
   
   destructuredArrayIgnorePattern?: string
   
+  enableAutofixRemoval?: {
+    
+    imports?: boolean
+  }
+  
   ignoreClassWithStaticInitBlock?: boolean
   
   ignoreRestSiblings?: boolean
@@ -10077,6 +10113,11 @@ type UnusedImportsNoUnusedVars = []|[(("all" | "local") | {
   caughtErrorsIgnorePattern?: string
   
   destructuredArrayIgnorePattern?: string
+  
+  enableAutofixRemoval?: {
+    
+    imports?: boolean
+  }
   
   ignoreClassWithStaticInitBlock?: boolean
   
