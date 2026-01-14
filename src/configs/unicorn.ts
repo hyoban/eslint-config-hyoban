@@ -51,6 +51,8 @@ export function unicornConfigs({ fileCase, preferESM }: Required<Options>) {
         'unicorn/prefer-add-event-listener': 'off',
         'unicorn/number-literal-case': 'off',
         'unicorn/prefer-math-trunc': 'off',
+
+        'unicorn/prefer-response-static-json': 'off',
       },
     } satisfies LinterConfig,
   ]
