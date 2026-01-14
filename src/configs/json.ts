@@ -15,7 +15,7 @@ function formattingConfigs({ formatting }: Required<Options>): LinterConfig[] {
     'jsonc/array-bracket-spacing': ['error', 'never'],
     'jsonc/comma-dangle': ['error', 'never'],
     'jsonc/comma-style': ['error', 'last'],
-    'jsonc/indent': ['error', formatting.indent ?? 2],
+    'jsonc/indent': ['error', (typeof formatting.indent === 'number' || formatting.indent === 'tab') ? formatting.indent : 2],
     'jsonc/key-spacing': ['error', { afterColon: true, beforeColon: false }],
     'jsonc/object-curly-spacing': ['error', 'always'],
     'jsonc/quote-props': 'error',
