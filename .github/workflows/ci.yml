@@ -48,6 +48,7 @@ jobs:
 
       - name: Annotate Code
         uses: DerLev/eslint-annotations@v2
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         with:
           eslint-report: eslint_report.json
           github-token: ${{ secrets.GITHUB_TOKEN }}
