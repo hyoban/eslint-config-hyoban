@@ -19,6 +19,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
 
+    permissions:
+      checks: write
+      pull-requests: read
+
     steps:
       - uses: actions/checkout@v4
 
@@ -39,7 +43,14 @@ jobs:
 
       - name: Lint
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: pnpm run lint
+        run: pnpm run lint --output-file eslint_report.json --format json
+        continue-on-error: true
+
+      - name: Annotate Code
+        uses: DerLev/eslint-annotations@v2
+        with:
+          eslint-report: eslint_report.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Type check
         if: ${{ matrix.os == 'ubuntu-latest' }}
