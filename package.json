@@ -1,24 +1,25 @@
 {
   "name": "eslint-config-hyoban",
+  "type": "module",
   "version": "5.0.6",
+  "packageManager": "pnpm@10.28.2",
   "description": "Hyoban's ESLint Config",
-  "keywords": [
-    "eslint-config"
-  ],
-  "homepage": "https://github.com/hyoban/eslint-config-hyoban#readme",
-  "bugs": "https://github.com/hyoban/eslint-config-hyoban/issues",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hyoban/eslint-config-hyoban.git"
-  },
-  "license": "MIT",
   "author": {
     "name": "Stephen Zhou",
     "email": "hi@hyoban.cc",
     "url": "https://hyoban.cc"
   },
+  "license": "MIT",
+  "homepage": "https://github.com/hyoban/eslint-config-hyoban#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyoban/eslint-config-hyoban.git"
+  },
+  "bugs": "https://github.com/hyoban/eslint-config-hyoban/issues",
+  "keywords": [
+    "eslint-config"
+  ],
   "sideEffects": false,
-  "type": "module",
   "exports": {
     ".": "./dist/index.js"
   },
@@ -27,6 +28,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+  },
   "scripts": {
     "build": "pnpm typegen && bunchee",
     "build:inspector": "npx @eslint/config-inspector build",
@@ -39,64 +43,35 @@
     "typecheck": "tsc",
     "typegen": "tsx scripts/typegen.ts"
   },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
-  },
   "dependencies": {
-    "@eslint-react/eslint-plugin": "^2.6.2",
-    "@eslint/js": "^9.39.2",
-    "@stylistic/eslint-plugin": "^5.7.0",
-    "@typescript-eslint/types": "^8.53.0",
+    "@antfu/eslint-config": "^7.2.0",
+    "@eslint-react/eslint-plugin": "^2.8.1",
     "defu": "^6.1.4",
-    "eslint-config-flat-gitignore": "^2.1.0",
-    "eslint-plugin-antfu": "^3.1.3",
-    "eslint-plugin-command": "^3.4.0",
-    "eslint-plugin-hyoban": "^0.6.1",
-    "eslint-plugin-import-lite": "^0.5.0",
-    "eslint-plugin-jsonc": "^2.21.0",
-    "eslint-plugin-package-json": "^0.88.1",
+    "eslint-flat-config-utils": "^3.0.0",
     "eslint-plugin-react-google-translate": "^0.1.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",
-    "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-unicorn": "^62.0.0",
-    "eslint-plugin-unused-imports": "^4.3.0",
-    "globals": "^17.0.0",
-    "jsonc-eslint-parser": "^2.4.2",
-    "local-pkg": "^1.1.2",
-    "read-package-up": "^12.0.0",
-    "typescript-eslint": "^8.53.0"
+    "local-pkg": "^1.1.2"
   },
   "devDependencies": {
     "@eslint/config-inspector": "1.4.2",
-    "@types/node": "^25.0.8",
-    "@types/react": "^19.2.8",
-    "bunchee": "^6.9.3",
+    "@types/node": "^25.1.0",
+    "@types/react": "^19.2.10",
+    "bunchee": "^6.9.4",
     "eslint": "^9.39.2",
     "eslint-typegen": "^2.3.0",
     "jiti": "^2.6.1",
     "lint-staged": "^16.2.7",
     "simple-git-hooks": "^2.13.1",
-    "tailwindcss": "^4.1.18",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.17"
+    "vitest": "^4.0.18"
   },
-  "peerDependencies": {
-    "eslint": "^9.0.0",
-    "typescript": ">=4.8.4"
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
   },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    }
-  },
-  "packageManager": "pnpm@10.28.0",
-  "engines": {
-    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }

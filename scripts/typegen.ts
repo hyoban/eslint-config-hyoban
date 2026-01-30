@@ -1,27 +1,14 @@
 import fs from 'node:fs/promises'
 
-import { builtinRules } from 'eslint/use-at-your-own-risk'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import { flatConfigsToPlugins, pluginsToRulesDTS } from 'eslint-typegen/core'
 
-import { defineConfig } from '../src'
-
-const plugins = await flatConfigsToPlugins(
-  [
-    {
-      plugins: {
-        '': {
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
-          rules: Object.fromEntries(builtinRules.entries()),
-        },
-      },
+const plugins = await flatConfigsToPlugins([
+  {
+    plugins: {
+      'simple-import-sort': simpleImportSort,
     },
-    ...(await defineConfig({
-      react: 'vite',
-      strict: true,
-      typeChecked: true,
-    })),
-  ],
-)
+  },
+])
 const dts = await pluginsToRulesDTS(plugins, { includeAugmentation: false })
-
 await fs.writeFile('eslint-typegen.d.ts', dts)
