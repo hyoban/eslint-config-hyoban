@@ -51,6 +51,7 @@ export function defineConfig(
               },
             }
           : undefined,
+        pnpm: false,
       },
     ),
     ...userConfigs,

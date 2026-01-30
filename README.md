@@ -93,6 +93,7 @@ export default defineConfig()
   ],
 
   // You can also silent all auto fixable rules
+  // eslint-disable-next-line jsonc/no-dupe-keys
   "eslint.rules.customizations": [
     { "rule": "*", "fixable": true, "severity": "off" }
   ]
@@ -106,12 +107,12 @@ We recommend using [tsslint](https://github.com/johnsoncodehk/tsslint) for type-
 A example `tsslint.config.ts`:
 
 ```ts
-import { defineConfig } from "@tsslint/config"
-import { convertRules } from "@tsslint/eslint"
+import { defineConfig } from '@tsslint/config'
+import { convertRules } from '@tsslint/eslint'
 
 export default defineConfig({
   rules: await convertRules({
-    "react-x/no-leaked-conditional-rendering": "error",
+    'react-x/no-leaked-conditional-rendering': 'error',
   }),
 })
 ```
