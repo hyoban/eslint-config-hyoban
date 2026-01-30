@@ -1,5 +1,3 @@
 import { defineConfig } from './src/index'
 
-export default defineConfig({
-  react: {},
-})
+export default defineConfig()
