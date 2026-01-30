@@ -1,6 +1,6 @@
 import type { Awaitable, ConfigNames, OptionsConfig, Rules } from '@antfu/eslint-config'
 import antfu from '@antfu/eslint-config'
-import defu from 'defu'
+import { createDefu } from 'defu'
 import type { Linter } from 'eslint'
 import type { FlatConfigComposer } from 'eslint-flat-config-utils'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
@@ -25,35 +25,49 @@ type TypedFlatConfigItem = Omit<Linter.Config, 'plugins' | 'rules'> & {
 
 type Options = OptionsConfig & Omit<TypedFlatConfigItem, 'files' | 'ignores'>
 
+function isEmptyObject(obj: any) {
+  return obj && typeof obj === 'object' && !Array.isArray(obj) && Object.keys(obj).length === 0
+}
+
+const isDefaultTrue = (value: any) => isEmptyObject(value) || value === true
+
+const defu = createDefu((obj, key, value) => {
+  if (isDefaultTrue(value)) {
+    return true
+  }
+})
+
 export function defineConfig(
   options?: Options,
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
-  return antfu(
-    defu<Options, Options[]>(
-      options,
-      {
-        typescript: {
-          overrides: {
-            'ts/consistent-type-definitions': ['error', 'type'],
-            'ts/no-explicit-any': 'warn',
-          },
+  const merged = defu<Options, Options[]>(
+    options as Options,
+    {
+      typescript: {
+        overrides: {
+          'ts/consistent-type-definitions': ['error', 'type'],
+          'ts/no-explicit-any': 'warn',
         },
-        react: isPackageExists('react')
-          ? {
-              overrides: {
-                'react/no-context-provider': 'off',
-                'react/no-forward-ref': 'off',
-                'react/no-use-context': 'off',
-
-                'react-hooks/set-state-in-effect': 'off',
-                'react-hooks-extra/no-direct-set-state-in-use-effect': 'error',
-              },
-            }
-          : undefined,
-        pnpm: false,
       },
-    ),
+      react: isPackageExists('react')
+        ? {
+            overrides: {
+              'react/no-context-provider': 'off',
+              'react/no-forward-ref': 'off',
+              'react/no-use-context': 'off',
+
+              'react-hooks/set-state-in-effect': 'off',
+              'react-hooks-extra/no-direct-set-state-in-use-effect': 'error',
+            },
+          }
+        : undefined,
+      pnpm: false,
+    },
+  )
+
+  return antfu(
+    merged,
     ...userConfigs,
   )
     .insertBefore(

@@ -60,6 +60,9 @@ importers:
       lint-staged:
         specifier: ^16.2.7
         version: 16.2.7
+      react:
+        specifier: ^19.2.4
+        version: 19.2.4
       simple-git-hooks:
         specifier: ^2.13.1
         version: 2.13.1
@@ -2268,6 +2271,10 @@ packages:
 
   radix3@1.1.2:
     resolution: {integrity: sha512-b484I/7b8rDEdSDKckSSBA8knMpcdsXudlE/LNL639wFoHKwLbEkQFZHWEYwDC0wa0FKUcCY+GAF73Z7wxNVFA==}
+
+  react@19.2.4:
+    resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
+    engines: {node: '>=0.10.0'}
 
   readdirp@4.0.2:
     resolution: {integrity: sha512-yDMz9g+VaZkqBYS/ozoBJwaBhTbZo3UNYQHNRw1D3UFQB8oHB4uS/tAODO+ZLjGWmUbKnIlOWO+aaIiAxrUWHA==}
@@ -5078,6 +5085,8 @@ snapshots:
   quansync@0.2.11: {}
 
   radix3@1.1.2: {}
+
+  react@19.2.4: {}
 
   readdirp@4.0.2: {}
 
