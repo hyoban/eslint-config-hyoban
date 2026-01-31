@@ -1,6 +1,6 @@
 {
   "name": "playground",
+  "type": "module",
   "version": "4.0.2",
-  "private": true,
-  "type": "module"
+  "private": true
 }
