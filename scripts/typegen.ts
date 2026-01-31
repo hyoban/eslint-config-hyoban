@@ -13,4 +13,23 @@ const plugins = await flatConfigsToPlugins([
   },
 ])
 const dts = await pluginsToRulesDTS(plugins, { includeAugmentation: false })
-await fs.writeFile('eslint-typegen.d.ts', dts)
+
+const ruleOptionsMatch = dts.match(/export interface RuleOptions \{[\s\S]*?\n\}/)
+const declarationsMatch = dts.match(/\/\* ======= Declarations ======= \*\/[\s\S]*/)
+
+const ruleOptions = ruleOptionsMatch?.[0] ?? ''
+const declarations = declarationsMatch?.[0] ?? ''
+
+const output = `/* eslint-disable */
+/* prettier-ignore */
+import '@antfu/eslint-config'
+import type { Linter } from 'eslint'
+
+declare module '@antfu/eslint-config' {
+${ruleOptions}
+}
+
+${declarations}
+`
+
+await fs.writeFile('eslint-typegen.d.ts', output)

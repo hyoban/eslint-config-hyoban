@@ -1,7 +1,9 @@
 /* eslint-disable */
 /* prettier-ignore */
+import '@antfu/eslint-config'
 import type { Linter } from 'eslint'
 
+declare module '@antfu/eslint-config' {
 export interface RuleOptions {
   /**
    * Enforce the use of allowed or disallowed URLs for images
@@ -103,6 +105,7 @@ export interface RuleOptions {
    * @see https://github.com/lydell/eslint-plugin-simple-import-sort#sort-order
    */
   'simple-import-sort/imports'?: Linter.RuleEntry<SimpleImportSortImports>
+}
 }
 
 /* ======= Declarations ======= */
