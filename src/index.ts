@@ -1,4 +1,4 @@
-/// <reference path="../eslint-typegen.d.ts" />
+import '../eslint-typegen.d.ts'
 
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from '@antfu/eslint-config'
 import antfu, { GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN } from '@antfu/eslint-config'
