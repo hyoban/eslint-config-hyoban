@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@antfu/eslint-config": "^7.2.0",
-    "@eslint-react/eslint-plugin": "^2.9.4",
+    "@eslint-react/eslint-plugin": "^2.11.1",
     "@eslint/markdown": "^7.5.1",
     "defu": "^6.1.4",
     "eslint-flat-config-utils": "^3.0.0",
@@ -58,8 +58,8 @@
   },
   "devDependencies": {
     "@eslint/config-inspector": "1.4.2",
-    "@types/node": "^25.2.0",
-    "@types/react": "^19.2.11",
+    "@types/node": "^25.2.1",
+    "@types/react": "^19.2.13",
     "bunchee": "^6.9.4",
     "eslint": "^9.39.2",
     "eslint-typegen": "^2.3.0",
@@ -67,7 +67,7 @@
     "lint-staged": "^16.2.7",
     "react": "^19.2.4",
     "simple-git-hooks": "^2.13.1",
-    "tailwindcss": "^3.4.19",
+    "tailwindcss": "^4.1.18",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"
