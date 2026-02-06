@@ -6,6 +6,7 @@ import type {
   OptionsConfig,
   OptionsFiles,
   OptionsOverrides,
+  RuleOptions,
   TypedFlatConfigItem,
 } from '@antfu/eslint-config'
 import antfu, { GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN } from '@antfu/eslint-config'
@@ -90,14 +91,14 @@ export function defineConfig(
           'md/consistent-delete-style': ['error', { style: '~~' }],
           'md/consistent-emphasis-style': ['error', { style: '_' }],
           'md/consistent-strong-style': ['error', { style: '*' }],
-          'md/consistent-thematic-break-style': ['error', { style: '- - -' }],
+          'md/consistent-thematic-break-style': ['error', { style: '---' }],
           'md/no-url-trailing-slash': 'error',
 
           // > [!TIP]
           // >
           'markdown/no-missing-label-refs': 'off',
-        },
-      } satisfies TypedFlatConfigItem,
+        } as Partial<RuleOptions>,
+      },
     )
     .insertBefore(
       'antfu/markdown/parser',
