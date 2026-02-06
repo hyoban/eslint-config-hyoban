@@ -16,12 +16,14 @@ import type { FlatConfigComposer } from 'eslint-flat-config-utils'
 import md from 'eslint-markdown'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
+import { hyoban } from './configs/hyoban'
 import { tailwindcss } from './configs/tailwindcss'
 import { mergeOptions } from './merge-options'
 import type { OptionsTailwindcss } from './types.js'
 
 export type OptionsAddons = {
   tailwindcss?: boolean | (OptionsOverrides & OptionsFiles & OptionsTailwindcss)
+  hyoban?: boolean | (OptionsOverrides)
 }
 
 export type Options = OptionsConfig & Omit<TypedFlatConfigItem, 'files' | 'ignores'> & OptionsAddons
@@ -35,8 +37,14 @@ export function defineConfig(
   options?: Options,
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
+  const {
+    tailwindcss: enableTailwindCSS,
+    hyoban: enableHyoban = true,
+    ...antfuOptions
+  } = options || {}
+
   const config = antfu(
-    mergeOptions(options),
+    mergeOptions(antfuOptions),
     ...userConfigs,
   )
     .overrides({
@@ -115,8 +123,12 @@ export function defineConfig(
       'better-tailwindcss': 'tailwindcss',
     })
 
-  if (options?.tailwindcss) {
-    config.append(tailwindcss(typeof options.tailwindcss === 'boolean' ? {} : options.tailwindcss))
+  if (enableTailwindCSS) {
+    config.append(tailwindcss(typeof enableTailwindCSS === 'boolean' ? {} : enableTailwindCSS))
+  }
+
+  if (enableHyoban) {
+    config.append(hyoban(typeof enableHyoban === 'boolean' ? {} : enableHyoban))
   }
 
   return config

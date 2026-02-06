@@ -6,6 +6,41 @@ import type { Linter } from 'eslint'
 declare module '@antfu/eslint-config' {
 export interface RuleOptions {
   /**
+   * Ensure i18n JSON keys are flat and valid as object paths
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/i18n-flat-key.test.ts
+   */
+  'hyoban/i18n-flat-key'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce consistent spacing around JSONC attributes
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/jsonc-inline-spacing.test.ts
+   */
+  'hyoban/jsonc-inline-spacing'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce consistent spacing around JSX attributes
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/jsx-attribute-spacing.test.ts
+   */
+  'hyoban/jsx-attribute-spacing'?: Linter.RuleEntry<[]>
+  /**
+   * Format GFM markdown tables to aligned columns
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/markdown-consistent-table-width.test.ts
+   */
+  'hyoban/markdown-consistent-table-width'?: Linter.RuleEntry<[]>
+  /**
+   * Ensure dependency versions do not use configured prefixes (^ or ~)
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/no-dependency-version-prefix.test.ts
+   */
+  'hyoban/no-dependency-version-prefix'?: Linter.RuleEntry<HyobanNoDependencyVersionPrefix>
+  /**
+   * Prefer early return pattern to clean if else statement
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/prefer-early-return.test.ts
+   */
+  'hyoban/prefer-early-return'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer Tailwind CSS icon classes over icon library components
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/prefer-tailwind-icons.md
+   */
+  'hyoban/prefer-tailwind-icons'?: Linter.RuleEntry<HyobanPreferTailwindIcons>
+  /**
    * Automatically sort exports.
    * @see https://github.com/lydell/eslint-plugin-simple-import-sort#sort-order
    */
@@ -169,6 +204,25 @@ export interface RuleOptions {
 }
 
 /* ======= Declarations ======= */
+// ----- hyoban/no-dependency-version-prefix -----
+type HyobanNoDependencyVersionPrefix = []|[{
+  dependencyKeys?: string[]
+  versionPrefixes?: string[]
+}]
+// ----- hyoban/prefer-tailwind-icons -----
+type HyobanPreferTailwindIcons = []|[{
+  libraries?: {
+    source: string
+    name?: string
+    prefix?: string
+  }[]
+  
+  prefix?: string
+  
+  propMappings?: {
+    [k: string]: string | undefined
+  }
+}]
 // ----- import-sort/imports -----
 type ImportSortImports = []|[{
   groups?: string[][]

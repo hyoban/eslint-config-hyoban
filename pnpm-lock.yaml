@@ -29,6 +29,9 @@ importers:
       eslint-plugin-better-tailwindcss:
         specifier: ^4.1.1
         version: 4.1.1(eslint@9.39.2(jiti@2.6.1))(tailwindcss@4.1.18)(typescript@5.9.3)
+      eslint-plugin-hyoban:
+        specifier: ^0.11.0
+        version: 0.11.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-react-hooks:
         specifier: ^7.0.1
         version: 7.0.1(eslint@9.39.2(jiti@2.6.1))
@@ -1520,6 +1523,11 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=8'
+
+  eslint-plugin-hyoban@0.11.0:
+    resolution: {integrity: sha512-WEwDH2geOMqTEHwyQfBdLLckz0guApzsNDkRKzzal5xu4mos4viQm+46V043OzmG28U96pm9E/14K4T9+i9G7g==}
+    peerDependencies:
+      eslint: '*'
 
   eslint-plugin-import-lite@0.5.0:
     resolution: {integrity: sha512-7uBvxuQj+VlYmZSYSHcm33QgmZnvMLP2nQiWaLtjhJ5x1zKcskOqjolL+dJC13XY+ktQqBgidAnnQMELfRaXQg==}
@@ -4124,6 +4132,10 @@ snapshots:
       '@eslint-community/regexpp': 4.12.2
       eslint: 9.39.2(jiti@2.6.1)
       eslint-compat-utils: 0.5.1(eslint@9.39.2(jiti@2.6.1))
+
+  eslint-plugin-hyoban@0.11.0(eslint@9.39.2(jiti@2.6.1)):
+    dependencies:
+      eslint: 9.39.2(jiti@2.6.1)
 
   eslint-plugin-import-lite@0.5.0(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
