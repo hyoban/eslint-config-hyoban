@@ -15,15 +15,15 @@ Extras on top of `@antfu/eslint-config`:
 - optional [Tailwind CSS] preset via `tailwindcss: true`
 - little defaults config you can find in [merge-options](src/merge-options.ts)
 
-| Basic              | Style            | React         | Others              | Tools                  |
-| ------------------ | ---------------- | ------------- | ------------------- | ---------------------- |
-| [js] ✅            | [stylistic] ✅   | [react] ✅    | [Tailwind CSS]      | [config-inspector] ✅  |
-| [ts] ✅            | [antfu] ✅       | [hooks] ✅    | [UnoCSS]            | [eslint-types]         |
-| [unicorn] ✅       | [import-sort] ✅ | [refresh] ✅  | [flat-gitignore] ✅ | [eslint-typegen] ✅    |
-| [import-x] ✅      | [jsonc] ✅       | [compiler] ✅ | [command] ✅        | [@antfu/eslint-config] |
-| [unused-import] ✅ | [yml]            | [jsx-a11y]    | [regexp] ✅         |                        |
-| [n]                | [perfectionist]  | [next]        | [package-json] ✅   |                        |
-| [compat]           | [format]         | [jsx-nesting] | [cspell]            |                        |
+| Basic           | Style           | React         | Others           | Tools                  |
+| --------------- | --------------- | ------------- | ---------------- | ---------------------- |
+| [js]            | [stylistic]     | [react]       | [Tailwind CSS]   | [config-inspector]     |
+| [ts]            | [antfu]         | [hooks]       | [UnoCSS]         | [eslint-types]         |
+| [unicorn]       | [import-sort]   | [refresh]     | [flat-gitignore] | [eslint-typegen]       |
+| [import]        | [jsonc]         | [compiler]    | [command]        | [@antfu/eslint-config] |
+| [unused-import] | [yml]           | [jsx-a11y]    | [regexp]         | [npm-eslint-markdown]  |
+| [n]             | [perfectionist] | [next]        | [package-json]   | [eslint-markdown]      |
+| [compat]        | [format]        | [jsx-nesting] | [cspell]         |                        |
 
 ## Usage
 
@@ -96,7 +96,7 @@ export default defineConfig({
 [js]: https://www.npmjs.com/package/@eslint/js
 [ts]: https://typescript-eslint.io
 [unicorn]: https://github.com/sindresorhus/eslint-plugin-unicorn
-[import-x]: https://github.com/un-ts/eslint-plugin-import-x
+[import]: https://github.com/9romise/eslint-plugin-import-lite
 [n]: https://github.com/eslint-community/eslint-plugin-n
 [compat]: https://github.com/amilajack/eslint-plugin-compat
 [stylistic]: https://eslint.style
