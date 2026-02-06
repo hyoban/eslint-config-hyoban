@@ -1,27 +1,37 @@
 import fs from 'node:fs/promises'
 
-import { builtinRules } from 'eslint/use-at-your-own-risk'
+import md from 'eslint-markdown'
+import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import { flatConfigsToPlugins, pluginsToRulesDTS } from 'eslint-typegen/core'
 
-import { defineConfig } from '../src'
-
-const plugins = await flatConfigsToPlugins(
-  [
-    {
-      plugins: {
-        '': {
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
-          rules: Object.fromEntries(builtinRules.entries()),
-        },
-      },
+const plugins = await flatConfigsToPlugins([
+  {
+    plugins: {
+      'tailwindcss': eslintPluginBetterTailwindcss,
+      'import-sort': simpleImportSort,
+      md,
     },
-    ...(await defineConfig({
-      react: 'vite',
-      strict: true,
-      typeChecked: true,
-    })),
-  ],
-)
+  },
+])
 const dts = await pluginsToRulesDTS(plugins, { includeAugmentation: false })
 
-await fs.writeFile('eslint-typegen.d.ts', dts)
+const ruleOptionsMatch = dts.match(/export interface RuleOptions \{[\s\S]*?\n\}/)
+const declarationsMatch = dts.match(/\/\* ======= Declarations ======= \*\/[\s\S]*/)
+
+const ruleOptions = ruleOptionsMatch?.[0] ?? ''
+const declarations = declarationsMatch?.[0] ?? ''
+
+const output = `/* eslint-disable */
+/* prettier-ignore */
+import '@antfu/eslint-config'
+import type { Linter } from 'eslint'
+
+declare module '@antfu/eslint-config' {
+${ruleOptions}
+}
+
+${declarations}
+`
+
+await fs.writeFile('eslint-typegen.d.ts', output)
