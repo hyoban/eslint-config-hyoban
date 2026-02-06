@@ -5,16 +5,14 @@
 [![License][license-src]][license-href]
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
-Hyoban's ESLint Config is based on [@antfu/eslint-config].
-
-Read more about why I use ESLint for linting and formatting on [xLog](https://hyoban.xlog.app/why-eslint).
+Hyoban's ESLint Config is based on [@antfu/eslint-config]. Read more about why I use ESLint for linting and formatting on [my blog](https://hyoban.cc/why-eslint).
 
 Extras on top of `@antfu/eslint-config`:
 
 - replaces antfu's perfectionist sorting with [import-sort]
 - additional Markdown linting rules powered by [eslint-markdown] and [npm-eslint-markdown]
 - optional [Tailwind CSS] preset via `tailwindcss: true`
-- little defaults config you can find in [merge-options](src/merge-options.ts)
+- little defaults config you can find in [merge-options](src/merge-options.ts) and dependencies
 
 | Basic           | Style           | React         | Others           | Tools                  |
 | --------------- | --------------- | ------------- | ---------------- | ---------------------- |
