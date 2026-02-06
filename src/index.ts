@@ -110,6 +110,10 @@ export function defineConfig(
     )
     .remove('antfu/perfectionist/setup')
     .remove('antfu/markdown/parser')
+    .renamePlugins({
+      'simple-import-sort': 'import-sort',
+      'better-tailwindcss': 'tailwindcss',
+    })
 
   if (options?.tailwindcss) {
     config.append(tailwindcss(typeof options.tailwindcss === 'boolean' ? {} : options.tailwindcss))
