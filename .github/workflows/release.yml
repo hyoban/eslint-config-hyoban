@@ -35,4 +35,10 @@ jobs:
         run: pnpm install
 
       - name: Publish to NPM
-        run: npm install -g npm@latest && pnpm publish --no-git-checks
+        run: |
+          npm install -g npm@latest
+          if [[ "${GITHUB_REF_NAME}" == *beta* ]]; then
+            pnpm -r publish --access public --no-git-checks --tag beta
+          else
+            pnpm -r publish --access public --no-git-checks
+          fi
