@@ -1,6 +1,13 @@
 import '../eslint-typegen.d.ts'
 
-import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from '@antfu/eslint-config'
+import type {
+  Awaitable,
+  ConfigNames,
+  OptionsConfig,
+  OptionsFiles,
+  OptionsOverrides,
+  TypedFlatConfigItem,
+} from '@antfu/eslint-config'
 import antfu, { GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN } from '@antfu/eslint-config'
 import markdown from '@eslint/markdown'
 import type { Linter } from 'eslint'
@@ -8,9 +15,15 @@ import type { FlatConfigComposer } from 'eslint-flat-config-utils'
 import md from 'eslint-markdown'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
+import { tailwindcss } from './configs/tailwindcss'
 import { mergeOptions } from './merge-options'
+import type { OptionsTailwindcss } from './types.js'
 
-export type Options = OptionsConfig & Omit<TypedFlatConfigItem, 'files' | 'ignores'>
+export type OptionsAddons = {
+  tailwindcss?: boolean | (OptionsOverrides & OptionsFiles & OptionsTailwindcss)
+}
+
+export type Options = OptionsConfig & Omit<TypedFlatConfigItem, 'files' | 'ignores'> & OptionsAddons
 
 const GLOB_MARKDOWNS = [
   GLOB_MARKDOWN,
@@ -21,7 +34,7 @@ export function defineConfig(
   options?: Options,
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
-  return antfu(
+  const config = antfu(
     mergeOptions(options),
     ...userConfigs,
   )
@@ -96,6 +109,12 @@ export function defineConfig(
     )
     .remove('antfu/perfectionist/setup')
     .remove('antfu/markdown/parser')
+
+  if (options?.tailwindcss) {
+    config.append(tailwindcss(typeof options.tailwindcss === 'boolean' ? {} : options.tailwindcss))
+  }
+
+  return config
 }
 
 export * from '@antfu/eslint-config'

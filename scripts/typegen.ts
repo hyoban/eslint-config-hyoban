@@ -1,12 +1,14 @@
 import fs from 'node:fs/promises'
 
 import md from 'eslint-markdown'
+import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import { flatConfigsToPlugins, pluginsToRulesDTS } from 'eslint-typegen/core'
 
 const plugins = await flatConfigsToPlugins([
   {
     plugins: {
+      'better-tailwindcss': eslintPluginBetterTailwindcss,
       'simple-import-sort': simpleImportSort,
       md,
     },
