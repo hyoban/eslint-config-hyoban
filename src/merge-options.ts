@@ -20,6 +20,8 @@ export function mergeOptions(options?: Options): Options {
 
             'react-hooks/set-state-in-effect': 'off',
             'react-hooks-extra/no-direct-set-state-in-use-effect': 'error',
+
+            'react/no-implicit-key': 'off',
           },
         }
       : undefined,

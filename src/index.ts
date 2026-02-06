@@ -61,12 +61,12 @@ export function defineConfig(
       {
         name: 'hyoban/imports/simple-import-sort',
         plugins: {
-          'simple-import-sort': simpleImportSort,
+          'import-sort': simpleImportSort,
         },
         rules: {
-          'simple-import-sort/imports': 'error',
-          'simple-import-sort/exports': 'error',
-        },
+          'import-sort/imports': 'error',
+          'import-sort/exports': 'error',
+        } as Partial<RuleOptions>,
       },
     )
     .insertAfter(

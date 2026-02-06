@@ -12,27 +12,27 @@ export async function tailwindcss(
     settings = {},
   } = options
 
-  const betterTailwindCSSPlugin = await interopDefault(import('eslint-plugin-better-tailwindcss'))
+  const tailwindCSSPlugin = await interopDefault(import('eslint-plugin-better-tailwindcss'))
 
   return [
     {
       name: 'hyoban/tailwindcss/setup',
       plugins: {
-        'better-tailwindcss': betterTailwindCSSPlugin,
+        tailwindcss: tailwindCSSPlugin,
       },
     },
     {
       files,
       name: 'hyoban/tailwindcss/rules',
       rules: {
-        'better-tailwindcss/enforce-consistent-class-order': 'error',
-        'better-tailwindcss/no-duplicate-classes': 'error',
-        'better-tailwindcss/no-unnecessary-whitespace': 'error',
-        'better-tailwindcss/no-unknown-classes': 'warn',
+        'tailwindcss/enforce-consistent-class-order': 'error',
+        'tailwindcss/no-duplicate-classes': 'error',
+        'tailwindcss/no-unnecessary-whitespace': 'error',
+        'tailwindcss/no-unknown-classes': 'warn',
         ...overrides,
       } as Partial<RuleOptions>,
       settings: {
-        'better-tailwindcss': settings,
+        tailwindcss: settings,
       },
     },
   ]

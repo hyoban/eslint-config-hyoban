@@ -8,8 +8,8 @@ import { flatConfigsToPlugins, pluginsToRulesDTS } from 'eslint-typegen/core'
 const plugins = await flatConfigsToPlugins([
   {
     plugins: {
-      'better-tailwindcss': eslintPluginBetterTailwindcss,
-      'simple-import-sort': simpleImportSort,
+      'tailwindcss': eslintPluginBetterTailwindcss,
+      'import-sort': simpleImportSort,
       md,
     },
   },
