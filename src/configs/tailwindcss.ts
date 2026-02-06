@@ -32,7 +32,7 @@ export async function tailwindcss(
         ...overrides,
       } as Partial<RuleOptions>,
       settings: {
-        tailwindcss: settings,
+        'better-tailwindcss': settings,
       },
     },
   ]
