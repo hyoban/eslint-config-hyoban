@@ -24,6 +24,7 @@ export function mergeOptions(options?: Options): Options {
         }
       : undefined,
     pnpm: false,
+    stylistic: { experimental: true },
   } satisfies Options
 
   const overriddenKeys = Object.keys(defaultOptions) as (keyof typeof defaultOptions)[]
