@@ -4,9 +4,16 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 
-Hyoban's ESLint Config enables most of the recommended rules for `js`, `ts`, and `react`, uses ESLint for formatting, and provides a lot of useful plugins.
+Hyoban's ESLint Config is based on [@antfu/eslint-config].
 
 Read more about why I use ESLint for linting and formatting on [xLog](https://hyoban.xlog.app/why-eslint).
+
+Extras on top of `@antfu/eslint-config`:
+
+- replaces antfu's perfectionist sorting with [import-sort]
+- additional Markdown linting rules powered by [eslint-markdown] and [npm-eslint-markdown]
+- optional [Tailwind CSS] preset via `tailwindcss: true`
+- little defaults config you can find in [merge-options](src/merge-options.ts)
 
 | Basic              | Style            | React         | Others              | Tools                  |
 | ------------------ | ---------------- | ------------- | ------------------- | ---------------------- |
@@ -20,15 +27,11 @@ Read more about why I use ESLint for linting and formatting on [xLog](https://hy
 
 ## Usage
 
-> [!TIP]
-> You may not need `lint-staged` and `simple-git-hooks` if you don't ignore auto-fix for rules in the editor.
+Follow [@antfu/eslint-config] for installation and usage.
 
 ```sh
 ni -D eslint eslint-config-hyoban lint-staged simple-git-hooks
 ```
-
-> [!TIP]
-> You can install the nightly version from [pkg.pr.new](https://github.com/stackblitz-labs/pkg.pr.new), for example, `ni -D https://pkg.pr.new/hyoban/eslint-config-hyoban@{commit}`.
 
 `eslint.config.mjs`
 
@@ -39,81 +42,41 @@ import { defineConfig } from 'eslint-config-hyoban'
 export default defineConfig()
 ```
 
-> [!TIP]
-> You can customize the preset by passing options according to [available options](https://github.com/hyoban/eslint-config-hyoban/blob/main/src/option.ts)
+with Tailwind CSS:
 
-`package.json`
+```ts
+// @ts-check
+import { defineConfig } from 'eslint-config-hyoban'
 
-```json
-{
-  "scripts": {
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
-    "prepare": "simple-git-hooks"
+export default defineConfig({
+  tailwindcss: {
+    settings: {
+      tailwindConfig: './tailwind.config.ts',
+    },
+    overrides: {
+      'tailwindcss/no-unknown-classes': 'off',
+    },
   },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
-  }
-}
+})
 ```
 
-`.vscode/settings.json` for VSCode.
-
-```jsonc
-{
-  // You shouldn't use formatter with this ESLint config
-  "[javascript][javascriptreact][typescript][typescriptreact][json][jsonc]": {
-    "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
-  },
-
-  // If you do not want to auto fix some rules on save
-  // You can put this in your user settings or workspace settings
-  "eslint.codeActionsOnSave.rules": [
-    "!prefer-const",
-    "!unused-imports/no-unused-imports",
-    "!@stylistic/jsx-self-closing-comp",
-    "*"
-  ],
-
-  // If you want to silent stylistic rules
-  // You can put this in your user settings or workspace settings
-  "eslint.rules.customizations": [
-    { "rule": "@stylistic/*", "severity": "off", "fixable": true },
-    { "rule": "antfu/consistent-list-newline", "severity": "off" },
-    { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
-    { "rule": "simple-import-sort/*", "severity": "off" },
-    { "rule": "prefer-const", "severity": "off" },
-    { "rule": "unused-imports/no-unused-imports", "severity": "off" }
-  ],
-
-  // You can also silent all auto fixable rules
-  // eslint-disable-next-line jsonc/no-dupe-keys
-  "eslint.rules.customizations": [
-    { "rule": "*", "fixable": true, "severity": "off" }
-  ]
-}
-```
-
-### TypeAware Rules
+## TypeAware Rules
 
 We recommend using [tsslint](https://github.com/johnsoncodehk/tsslint) for type-aware rules.
 
 A example `tsslint.config.ts`:
 
 ```ts
-import { defineConfig } from '@tsslint/config'
-import { convertRules } from '@tsslint/eslint'
+import { defineConfig, importESLintRules } from '@tsslint/config'
+
+// Run `npx tsslint-docgen` to generate documentation for the configured rules.
 
 export default defineConfig({
-  rules: await convertRules({
-    'react-x/no-leaked-conditional-rendering': 'error',
-  }),
+  rules: {
+    ...await importESLintRules({
+      'react-x/no-leaked-conditional-rendering': 'error',
+    }),
+  },
 })
 ```
 
@@ -139,6 +102,8 @@ export default defineConfig({
 [stylistic]: https://eslint.style
 [antfu]: https://github.com/antfu/eslint-plugin-antfu
 [import-sort]: https://github.com/lydell/eslint-plugin-simple-import-sort
+[eslint-markdown]: https://github.com/eslint/markdown
+[npm-eslint-markdown]: https://github.com/lumirlumir/npm-eslint-markdown
 [jsonc]: https://github.com/ota-meshi/eslint-plugin-jsonc
 [yml]: https://github.com/ota-meshi/eslint-plugin-yml
 [perfectionist]: https://github.com/azat-io/eslint-plugin-perfectionist
@@ -148,7 +113,7 @@ export default defineConfig({
 [refresh]: https://github.com/ArnaudBarre/eslint-plugin-react-refresh
 [jsx-nesting]: https://github.com/MananTank/eslint-plugin-validate-jsx-nesting
 [jsx-a11y]: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
-[Tailwind CSS]: https://github.com/francoismassart/eslint-plugin-tailwindcss
+[Tailwind CSS]: https://github.com/schoero/eslint-plugin-better-tailwindcss
 [UnoCSS]: https://unocss.dev/integrations/eslint
 [flat-gitignore]: https://github.com/antfu/eslint-config-flat-gitignore
 [config-inspector]: https://github.com/eslint/config-inspector
