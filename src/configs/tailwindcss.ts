@@ -1,4 +1,4 @@
-import type { OptionsFiles, OptionsOverrides, RuleOptions, TypedFlatConfigItem } from '@antfu/eslint-config'
+import type { OptionsFiles, OptionsOverrides, TypedFlatConfigItem } from '@antfu/eslint-config'
 import { GLOB_SRC, interopDefault } from '@antfu/eslint-config'
 
 import type { OptionsTailwindcss } from '../types'
@@ -30,7 +30,7 @@ export async function tailwindcss(
         'tailwindcss/no-unnecessary-whitespace': 'error',
         'tailwindcss/no-unknown-classes': 'warn',
         ...overrides,
-      } as Partial<RuleOptions>,
+      },
       settings: {
         'better-tailwindcss': settings,
       },

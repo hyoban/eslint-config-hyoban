@@ -1,4 +1,4 @@
-import type { OptionsOverrides, RuleOptions, TypedFlatConfigItem } from '@antfu/eslint-config'
+import type { OptionsOverrides, TypedFlatConfigItem } from '@antfu/eslint-config'
 import { GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN, interopDefault } from '@antfu/eslint-config'
 
 export async function hyoban(
@@ -23,7 +23,7 @@ export async function hyoban(
       rules: {
         'hyoban/markdown-consistent-table-width': 'error',
         ...overrides,
-      } as Partial<RuleOptions>,
+      },
     },
   ]
 }

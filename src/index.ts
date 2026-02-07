@@ -6,7 +6,6 @@ import type {
   OptionsConfig,
   OptionsFiles,
   OptionsOverrides,
-  RuleOptions,
   TypedFlatConfigItem,
 } from '@antfu/eslint-config'
 import antfu, { GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN } from '@antfu/eslint-config'
@@ -74,7 +73,7 @@ export function defineConfig(
         rules: {
           'import-sort/imports': 'error',
           'import-sort/exports': 'error',
-        } as Partial<RuleOptions>,
+        },
       },
     )
     .insertAfter(
@@ -105,7 +104,7 @@ export function defineConfig(
           // > [!TIP]
           // >
           'markdown/no-missing-label-refs': 'off',
-        } as Partial<RuleOptions>,
+        },
       },
     )
     .insertBefore(
