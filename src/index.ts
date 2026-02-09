@@ -111,7 +111,7 @@ export function defineConfig(
       .insertBefore(
         'antfu/perfectionist/setup',
         {
-          name: 'hyoban/imports/simple-import-sort',
+          name: 'hyoban/import-sort/setup',
           plugins: {
             'import-sort': simpleImportSort,
           },
