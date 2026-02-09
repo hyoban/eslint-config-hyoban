@@ -1,9 +1,16 @@
-import defu from 'defu'
+import { createDefu } from 'defu'
 import { isPackageExists } from 'local-pkg'
 
 import type { Options } from './index'
 
 export function mergeOptions(options?: Options): Options {
+  const defuOverrideArray = createDefu((obj, key, value) => {
+    if (Array.isArray(obj[key]) && Array.isArray(value)) {
+      obj[key] = value
+      return true
+    }
+  })
+
   const defaultOptions = {
     typescript: {
       overrides: {
@@ -47,7 +54,7 @@ export function mergeOptions(options?: Options): Options {
       (options as any)[key] = defaultValue
     }
     else if (typeof userValue === 'object' && userValue !== null && defaultValue) {
-      (options as any)[key] = defu(userValue, defaultValue)
+      (options as any)[key] = defuOverrideArray(userValue, defaultValue)
     }
     else if (userValue === undefined) {
       (options as any)[key] = defaultValue

@@ -84,4 +84,20 @@ describe('mergeOptions', () => {
     expect(result.vue).toBe(true)
     expect(result.jsonc).toBe(false)
   })
+
+  it('should override the pre configured rules', () => {
+    const result = mergeOptions({
+      typescript: {
+        overrides: {
+          'ts/consistent-type-definitions': ['error', 'interface'],
+        },
+      },
+    })
+    expect(result.typescript).toEqual({
+      overrides: {
+        'ts/consistent-type-definitions': ['error', 'interface'],
+        'ts/no-explicit-any': 'warn',
+      },
+    })
+  })
 })
