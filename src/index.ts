@@ -23,6 +23,7 @@ import type { OptionsTailwindcss } from './types.js'
 export type OptionsAddons = {
   tailwindcss?: boolean | (OptionsOverrides & OptionsFiles & OptionsTailwindcss)
   hyoban?: boolean | (OptionsOverrides)
+  sortImports?: 'simple-import-sort' | 'perfectionist'
 }
 
 export type Options = OptionsConfig & Omit<TypedFlatConfigItem, 'files' | 'ignores'> & OptionsAddons
@@ -39,6 +40,7 @@ export function defineConfig(
   const {
     tailwindcss: enableTailwindCSS,
     hyoban: enableHyoban = true,
+    sortImports = 'simple-import-sort',
     ...antfuOptions
   } = options || {}
 
@@ -63,19 +65,6 @@ export function defineConfig(
         ignores: GLOB_MARKDOWNS,
       },
     })
-    .insertBefore(
-      'antfu/perfectionist/setup',
-      {
-        name: 'hyoban/imports/simple-import-sort',
-        plugins: {
-          'import-sort': simpleImportSort,
-        },
-        rules: {
-          'import-sort/imports': 'error',
-          'import-sort/exports': 'error',
-        },
-      },
-    )
     .insertAfter(
       'antfu/markdown/setup',
       {
@@ -115,15 +104,35 @@ export function defineConfig(
         language: 'markdown/gfm',
       },
     )
-    .remove('antfu/perfectionist/setup')
     .remove('antfu/markdown/parser')
-    .renamePlugins({
-      'simple-import-sort': 'import-sort',
-      'better-tailwindcss': 'tailwindcss',
-    })
+
+  if (sortImports === 'simple-import-sort') {
+    config
+      .insertBefore(
+        'antfu/perfectionist/setup',
+        {
+          name: 'hyoban/imports/simple-import-sort',
+          plugins: {
+            'import-sort': simpleImportSort,
+          },
+          rules: {
+            'import-sort/imports': 'error',
+            'import-sort/exports': 'error',
+          },
+        },
+      )
+      .remove('antfu/perfectionist/setup')
+      .renamePlugins({
+        'simple-import-sort': 'import-sort',
+      })
+  }
 
   if (enableTailwindCSS) {
-    config.append(tailwindcss(typeof enableTailwindCSS === 'boolean' ? {} : enableTailwindCSS))
+    config
+      .append(tailwindcss(typeof enableTailwindCSS === 'boolean' ? {} : enableTailwindCSS))
+      .renamePlugins({
+        'better-tailwindcss': 'tailwindcss',
+      })
   }
 
   if (enableHyoban) {
