@@ -9,7 +9,7 @@ Hyoban's ESLint Config is based on [@antfu/eslint-config]. Read more about why I
 
 Extras on top of `@antfu/eslint-config`:
 
-- replaces antfu's perfectionist sorting with [import-sort]
+- replaces antfu's perfectionist sorting with [import-sort] (You can configure it back by `sortImports: 'perfectionist'`)
 - additional Markdown linting rules powered by [eslint-markdown] and [npm-eslint-markdown]
 - optional [Tailwind CSS] preset via `tailwindcss: true`
 - little defaults config you can find in [merge-options](src/merge-options.ts) and dependencies
