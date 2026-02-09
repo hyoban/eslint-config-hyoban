@@ -126,6 +126,13 @@ export function defineConfig(
         'simple-import-sort': 'import-sort',
       })
   }
+  else if (sortImports === 'perfectionist') {
+    config.overrides({
+      'antfu/perfectionist/setup': {
+        ignores: GLOB_MARKDOWNS,
+      },
+    })
+  }
 
   if (enableTailwindCSS) {
     config
