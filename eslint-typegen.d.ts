@@ -86,6 +86,11 @@ export interface RuleOptions {
    */
   'md/consistent-thematic-break-style'?: Linter.RuleEntry<MdConsistentThematicBreakStyle>
   /**
+   * Enforce consistent unordered list style
+   * @see https://eslint-markdown.lumir.page/docs/rules/consistent-unordered-list-style
+   */
+  'md/consistent-unordered-list-style'?: Linter.RuleEntry<MdConsistentUnorderedListStyle>
+  /**
    * Disallow control character
    * @see https://eslint-markdown.lumir.page/docs/rules/no-control-character
    */
@@ -269,6 +274,10 @@ type MdConsistentStrongStyle = []|[{
 // ----- md/consistent-thematic-break-style -----
 type MdConsistentThematicBreakStyle = []|[{
   style?: string
+}]
+// ----- md/consistent-unordered-list-style -----
+type MdConsistentUnorderedListStyle = []|[{
+  style?: ("consistent" | "sublist" | "*" | "+" | "-")
 }]
 // ----- md/no-control-character -----
 type MdNoControlCharacter = []|[{
