@@ -2,7 +2,7 @@
   "name": "eslint-config-hyoban",
   "type": "module",
   "version": "6.0.0-beta.17",
-  "packageManager": "pnpm@10.29.2",
+  "packageManager": "pnpm@10.29.3",
   "description": "Hyoban's ESLint Config",
   "author": {
     "name": "Stephen Zhou",
@@ -41,13 +41,13 @@
     "typegen": "tsx scripts/typegen.ts"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^7.4.2",
-    "@eslint-react/eslint-plugin": "^2.12.2",
+    "@antfu/eslint-config": "^7.4.3",
+    "@eslint-react/eslint-plugin": "^2.12.4",
     "@eslint/markdown": "^7.5.1",
     "defu": "^6.1.4",
     "eslint-flat-config-utils": "^3.0.1",
     "eslint-markdown": "^0.4.0",
-    "eslint-plugin-better-tailwindcss": "^4.1.1",
+    "eslint-plugin-better-tailwindcss": "^4.2.0",
     "eslint-plugin-hyoban": "^0.11.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.0",
@@ -56,8 +56,8 @@
   },
   "devDependencies": {
     "@eslint/config-inspector": "1.4.2",
-    "@types/node": "^25.2.2",
-    "@types/react": "^19.2.13",
+    "@types/node": "^25.2.3",
+    "@types/react": "^19.2.14",
     "bunchee": "^6.9.4",
     "eslint": "^10.0.0",
     "eslint-typegen": "^2.3.0",

@@ -55,9 +55,6 @@ export function defineConfig(
       'antfu/command/rules': {
         ignores: GLOB_MARKDOWNS,
       },
-      'antfu/stylistic/rules': {
-        ignores: GLOB_MARKDOWNS,
-      },
       'antfu/regexp/rules': {
         ignores: GLOB_MARKDOWNS,
       },
@@ -105,6 +102,15 @@ export function defineConfig(
       },
     )
     .remove('antfu/markdown/parser')
+    .append(
+      {
+        name: 'hyoban/markdown/ignores',
+        files: GLOB_MARKDOWNS,
+        rules: {
+          'style/indent': 'off',
+        },
+      },
+    )
 
   if (sortImports === 'simple-import-sort') {
     config
