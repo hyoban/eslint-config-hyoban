@@ -48,20 +48,6 @@ export function defineConfig(
     mergeOptions(antfuOptions),
     ...userConfigs,
   )
-    .overrides({
-      'antfu/javascript/rules': {
-        ignores: GLOB_MARKDOWNS,
-      },
-      'antfu/command/rules': {
-        ignores: GLOB_MARKDOWNS,
-      },
-      'antfu/regexp/rules': {
-        ignores: GLOB_MARKDOWNS,
-      },
-      'antfu/jsdoc/rules': {
-        ignores: GLOB_MARKDOWNS,
-      },
-    })
     .insertAfter(
       'antfu/markdown/setup',
       {
@@ -108,6 +94,14 @@ export function defineConfig(
         files: GLOB_MARKDOWNS,
         rules: {
           'style/indent': 'off',
+          'no-irregular-whitespace': 'off',
+          'command/command': 'off',
+          'regexp/no-legacy-features': 'off',
+          'regexp/no-missing-g-flag': 'off',
+          'regexp/no-useless-dollar-replacements': 'off',
+          'regexp/no-useless-flag': 'off',
+          'perfectionist/sort-exports': 'off',
+          'perfectionist/sort-imports': 'off',
         },
       },
     )
@@ -131,13 +125,6 @@ export function defineConfig(
       .renamePlugins({
         'simple-import-sort': 'import-sort',
       })
-  }
-  else if (sortImports === 'perfectionist') {
-    config.overrides({
-      'antfu/perfectionist/setup': {
-        ignores: GLOB_MARKDOWNS,
-      },
-    })
   }
 
   if (enableTailwindCSS) {
