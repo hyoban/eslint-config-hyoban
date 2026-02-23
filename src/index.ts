@@ -93,7 +93,6 @@ export function defineConfig(
         name: 'hyoban/markdown/ignores',
         files: GLOB_MARKDOWNS,
         rules: {
-          'style/indent': 'off',
           'no-irregular-whitespace': 'off',
           'command/command': 'off',
           'regexp/no-legacy-features': 'off',
