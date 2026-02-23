@@ -15,7 +15,7 @@ describe('mergeOptions', () => {
     })
     expect(result.typescript).toEqual({
       overrides: {
-        'ts/consistent-type-definitions': ['error', 'type'],
+        'ts/consistent-type-definitions': 'off',
         'ts/no-explicit-any': 'warn',
       },
     })
@@ -32,7 +32,7 @@ describe('mergeOptions', () => {
     })
     expect(result.typescript).toEqual({
       overrides: {
-        'ts/consistent-type-definitions': ['error', 'type'],
+        'ts/consistent-type-definitions': 'off',
         'ts/no-explicit-any': 'error',
         'ts/custom-rule': 'warn',
       },
@@ -68,7 +68,7 @@ describe('mergeOptions', () => {
     })
     expect(result.typescript).toEqual({
       overrides: {
-        'ts/consistent-type-definitions': ['error', 'type'],
+        'ts/consistent-type-definitions': 'off',
         'ts/no-explicit-any': 'warn',
       },
     })
@@ -89,13 +89,13 @@ describe('mergeOptions', () => {
     const result = mergeOptions({
       typescript: {
         overrides: {
-          'ts/consistent-type-definitions': ['error', 'interface'],
+          'ts/consistent-type-definitions': 'off',
         },
       },
     })
     expect(result.typescript).toEqual({
       overrides: {
-        'ts/consistent-type-definitions': ['error', 'interface'],
+        'ts/consistent-type-definitions': 'off',
         'ts/no-explicit-any': 'warn',
       },
     })

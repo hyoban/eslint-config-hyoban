@@ -14,7 +14,7 @@ export function mergeOptions(options?: Options): Options {
   const defaultOptions = {
     typescript: {
       overrides: {
-        'ts/consistent-type-definitions': ['error', 'type'],
+        'ts/consistent-type-definitions': 'off',
         'ts/no-explicit-any': 'warn',
       },
     },
