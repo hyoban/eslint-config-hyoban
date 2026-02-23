@@ -33,8 +33,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(eslint@10.0.1(jiti@2.6.1))(tailwindcss@4.2.1)(typescript@5.9.3)
       eslint-plugin-hyoban:
-        specifier: ^0.11.1
-        version: 0.11.1(eslint@10.0.1(jiti@2.6.1))
+        specifier: ^0.11.2
+        version: 0.11.2(eslint@10.0.1(jiti@2.6.1))
       eslint-plugin-react-hooks:
         specifier: ^7.0.1
         version: 7.0.1(eslint@10.0.1(jiti@2.6.1))
@@ -1529,8 +1529,8 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
-  eslint-plugin-hyoban@0.11.1:
-    resolution: {integrity: sha512-GpLo3Ig0l6bn0Ceu3vqBbdFfWox0LKPXb1K2pha4Ov4DzJdZRQkNA8UWtulGr8ZSy9SiK3YJoKphgZfk9kWvGQ==}
+  eslint-plugin-hyoban@0.11.2:
+    resolution: {integrity: sha512-tCWk/r37PXsp3swU59e9xNYV+istWcYW2cg8j6U5fnbI7mT2p+KIA/NjAVV5jqTVVRInK1YJCiRwc8krXX4+wA==}
     peerDependencies:
       eslint: '*'
 
@@ -1771,6 +1771,12 @@ packages:
 
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
+
+  fast-string-truncated-width@3.0.3:
+    resolution: {integrity: sha512-0jjjIEL6+0jag3l2XWWizO64/aZVtpiGE3t0Zgqxv0DPuxiMjvB3M24fCyhZUO4KomJQPj3LTSUnDP3GpdwC0g==}
+
+  fast-string-width@3.0.2:
+    resolution: {integrity: sha512-gX8LrtNEI5hq8DVUfRQMbr5lpaS4nMIWV+7XEbXk2b8kiQIizgnlr12B4dA3ZEx3308ze0O4Q1R+cHts8kyUJg==}
 
   fault@2.0.1:
     resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
@@ -4093,9 +4099,10 @@ snapshots:
       eslint: 10.0.1(jiti@2.6.1)
       eslint-compat-utils: 0.5.1(eslint@10.0.1(jiti@2.6.1))
 
-  eslint-plugin-hyoban@0.11.1(eslint@10.0.1(jiti@2.6.1)):
+  eslint-plugin-hyoban@0.11.2(eslint@10.0.1(jiti@2.6.1)):
     dependencies:
       eslint: 10.0.1(jiti@2.6.1)
+      fast-string-width: 3.0.2
 
   eslint-plugin-import-lite@0.5.0(eslint@10.0.1(jiti@2.6.1)):
     dependencies:
@@ -4482,6 +4489,12 @@ snapshots:
   fast-json-stable-stringify@2.1.0: {}
 
   fast-levenshtein@2.0.6: {}
+
+  fast-string-truncated-width@3.0.3: {}
+
+  fast-string-width@3.0.2:
+    dependencies:
+      fast-string-truncated-width: 3.0.3
 
   fault@2.0.1:
     dependencies:
