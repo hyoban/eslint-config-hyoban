@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-hyoban",
   "type": "module",
-  "version": "6.0.0-beta.18",
+  "version": "6.0.0-beta.19",
   "packageManager": "pnpm@10.30.1",
   "description": "Hyoban's ESLint Config",
   "author": {
