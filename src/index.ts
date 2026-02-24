@@ -9,7 +9,6 @@ import type {
   TypedFlatConfigItem,
 } from '@antfu/eslint-config'
 import antfu, { GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN } from '@antfu/eslint-config'
-import markdown from '@eslint/markdown'
 import type { Linter } from 'eslint'
 import type { FlatConfigComposer } from 'eslint-flat-config-utils'
 import md from 'eslint-markdown'
@@ -58,12 +57,11 @@ export function defineConfig(
       },
     )
     .insertAfter(
-      'antfu/markdown/disables',
+      'antfu/markdown/rules',
       {
         name: 'hyoban/md/rules',
         files: GLOB_MARKDOWNS,
         rules: {
-          ...markdown.configs.recommended.at(0)?.rules,
           ...md.configs.recommended.rules,
           ...md.configs.stylistic.rules,
           'md/code-lang-shorthand': 'error',
@@ -72,35 +70,6 @@ export function defineConfig(
           'md/consistent-strong-style': ['error', { style: '*' }],
           'md/consistent-thematic-break-style': ['error', { style: '---' }],
           'md/no-url-trailing-slash': 'error',
-
-          // > [!TIP]
-          // >
-          'markdown/no-missing-label-refs': 'off',
-        },
-      },
-    )
-    .insertBefore(
-      'antfu/markdown/parser',
-      {
-        name: 'hyoban/markdown/language',
-        files: GLOB_MARKDOWNS,
-        language: 'markdown/gfm',
-      },
-    )
-    .remove('antfu/markdown/parser')
-    .append(
-      {
-        name: 'hyoban/markdown/ignores',
-        files: GLOB_MARKDOWNS,
-        rules: {
-          'no-irregular-whitespace': 'off',
-          'command/command': 'off',
-          'regexp/no-legacy-features': 'off',
-          'regexp/no-missing-g-flag': 'off',
-          'regexp/no-useless-dollar-replacements': 'off',
-          'regexp/no-useless-flag': 'off',
-          'perfectionist/sort-exports': 'off',
-          'perfectionist/sort-imports': 'off',
         },
       },
     )
