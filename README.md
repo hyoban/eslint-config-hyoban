@@ -9,8 +9,9 @@ Hyoban's ESLint Config is based on [@antfu/eslint-config]. Read more about why I
 
 Extras on top of `@antfu/eslint-config`:
 
-- replaces antfu's perfectionist sorting with [import-sort] (You can configure it back by `sortImports: 'perfectionist'`)
-- additional Markdown linting rules powered by [eslint-markdown] and [npm-eslint-markdown]
+- replaces antfu's perfectionist sorting with [import-sort]
+- extra Markdown linting rules powered by [eslint-markdown]
+- optional Hyoban rules via `hyoban: true` (enabled by default)
 - optional [Tailwind CSS] preset via `tailwindcss: true`
 - little defaults config you can find in [merge-options](src/merge-options.ts) and dependencies
 
@@ -22,7 +23,7 @@ Extras on top of `@antfu/eslint-config`:
 | [import]        | [jsonc]         | [compiler]    | [command]        | [@antfu/eslint-config] |
 | [unused-import] | [yml]           | [jsx-a11y]    | [regexp]         | [npm-eslint-markdown]  |
 | [n]             | [perfectionist] | [next]        | [package-json]   | [eslint-markdown]      |
-| [compat]        | [format]        | [jsx-nesting] | [cspell]         |                        |
+| [compat]        | [format]        | [jsx-nesting] | [cspell]         | [hyoban]               |
 
 ## Usage
 
@@ -126,3 +127,4 @@ export default defineConfig({
 [regexp]: https://github.com/ota-meshi/eslint-plugin-regexp
 [compiler]: https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler
 [cspell]: https://github.com/streetsidesoftware/cspell/tree/main/packages/cspell-eslint-plugin#readme
+[hyoban]: https://github.com/hyoban/eslint-plugin-hyoban
