@@ -1,15 +1,8 @@
 {
-  // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
-  "editor.formatOnSave": false,
-
-  // Auto fix
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.fixAll.eslint": "explicit"
   },
 
-  // Silent the stylistic rules in your IDE, but still auto fix them
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off", "fixable": true },
     { "rule": "format/*", "severity": "off", "fixable": true },
@@ -21,12 +14,11 @@
     { "rule": "*-newline", "severity": "off", "fixable": true },
     { "rule": "*quotes", "severity": "off", "fixable": true },
     { "rule": "*semi", "severity": "off", "fixable": true },
+    { "rule": "import-sort/*", "severity": "off" },
 
     { "rule": "unused-imports/no-unused-imports", "severity": "warn" },
     { "rule": "test/no-only-tests", "severity": "warn" },
-    { "rule": "prefer-const", "severity": "warn" },
-    { "rule": "import-sort/*", "severity": "warn" }
-
+    { "rule": "prefer-const", "severity": "warn" }
   ],
 
   "eslint.codeActionsOnSave.rules": [
@@ -34,30 +26,5 @@
     "!test/no-only-tests",
     "!prefer-const",
     "*"
-  ],
-
-  // Enable eslint for all supported languages
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml",
-    "toml",
-    "xml",
-    "gql",
-    "graphql",
-    "astro",
-    "svelte",
-    "css",
-    "less",
-    "scss",
-    "pcss",
-    "postcss"
   ]
 }
