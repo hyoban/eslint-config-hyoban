@@ -37,7 +37,7 @@ export function defineConfig(
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
     tailwindcss: enableTailwindCSS,
-    hyoban: enableHyoban,
+    hyoban: enableHyoban = true,
     ...antfuOptions
   } = options || {}
 

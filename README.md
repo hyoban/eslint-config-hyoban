@@ -5,7 +5,8 @@
 [![License][license-src]][license-href]
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
-Hyoban's ESLint Config is based on [@antfu/eslint-config]. Read more about why I use ESLint for linting and formatting on [my blog](https://hyoban.cc/why-eslint).
+Hyoban's ESLint Config is based on [@antfu/eslint-config].
+Read more about why I use ESLint for linting and formatting on [my blog](https://hyoban.cc/why-eslint).
 
 Extras on top of `@antfu/eslint-config`:
 

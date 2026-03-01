@@ -3,5 +3,6 @@ import { defineConfig } from './src/index'
 export default defineConfig(
   {
     tailwindcss: true,
+    hyoban: true,
   },
 )

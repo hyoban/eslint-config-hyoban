@@ -22,9 +22,14 @@ export interface RuleOptions {
   'hyoban/jsx-attribute-spacing'?: Linter.RuleEntry<[]>
   /**
    * Format GFM markdown tables to aligned columns
-   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/markdown-consistent-table-width.test.ts
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/md-consistent-table-width.test.ts
    */
-  'hyoban/markdown-consistent-table-width'?: Linter.RuleEntry<[]>
+  'hyoban/md-consistent-table-width'?: Linter.RuleEntry<[]>
+  /**
+   * Wrap markdown paragraphs so each sentence is on its own line
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/md-one-sentence-per-line.test.ts
+   */
+  'hyoban/md-one-sentence-per-line'?: Linter.RuleEntry<[]>
   /**
    * Ensure dependency versions do not use configured prefixes (^ or ~)
    * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/no-dependency-version-prefix.test.ts

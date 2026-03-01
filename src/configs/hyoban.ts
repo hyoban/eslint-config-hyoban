@@ -21,7 +21,8 @@ export async function hyoban(
       files: [GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN],
       name: 'hyoban/hyoban/rules',
       rules: {
-        'hyoban/markdown-consistent-table-width': 'error',
+        'hyoban/md-consistent-table-width': 'error',
+        'hyoban/md-one-sentence-per-line': 'error',
         ...overrides,
       },
     },
