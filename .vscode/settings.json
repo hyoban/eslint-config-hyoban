@@ -20,7 +20,20 @@
     { "rule": "*-dangle", "severity": "off", "fixable": true },
     { "rule": "*-newline", "severity": "off", "fixable": true },
     { "rule": "*quotes", "severity": "off", "fixable": true },
-    { "rule": "*semi", "severity": "off", "fixable": true }
+    { "rule": "*semi", "severity": "off", "fixable": true },
+
+    { "rule": "unused-imports/no-unused-imports", "severity": "warn" },
+    { "rule": "test/no-only-tests", "severity": "warn" },
+    { "rule": "prefer-const", "severity": "warn" },
+    { "rule": "import-sort/*", "severity": "warn" }
+
+  ],
+
+  "eslint.codeActionsOnSave.rules": [
+    "!unused-imports/no-unused-imports",
+    "!test/no-only-tests",
+    "!prefer-const",
+    "*"
   ],
 
   // Enable eslint for all supported languages
