@@ -5,6 +5,10 @@
 [![License][license-src]][license-href]
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
+> [!IMPORTANT]
+> This preset is for my own use and the projects I maintain.
+> Please use it with caution if you intend to use it.
+
 Hyoban's ESLint Config is based on [@antfu/eslint-config].
 Read more about why I use ESLint for linting and formatting on [my blog](https://hyoban.cc/why-eslint).
 
