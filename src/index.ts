@@ -12,6 +12,7 @@ import antfu, { GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN } from '@antfu/eslint-c
 import type { Linter } from 'eslint'
 import type { FlatConfigComposer } from 'eslint-flat-config-utils'
 import md from 'eslint-markdown'
+import markdownPreferences from 'eslint-plugin-markdown-preferences'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
 import { hyoban } from './configs/hyoban'
@@ -50,6 +51,7 @@ export function defineConfig(
         name: 'hyoban/md/setup',
         plugins: {
           md,
+          'markdown-preferences': markdownPreferences,
         },
       },
     )
@@ -59,14 +61,7 @@ export function defineConfig(
         name: 'hyoban/md/rules',
         files: GLOB_MARKDOWNS,
         rules: {
-          ...md.configs.recommended.rules,
-          ...md.configs.stylistic.rules,
-          'md/code-lang-shorthand': 'error',
-          'md/consistent-delete-style': ['error', { style: '~~' }],
-          'md/consistent-emphasis-style': ['error', { style: '_' }],
-          'md/consistent-strong-style': ['error', { style: '*' }],
-          'md/consistent-thematic-break-style': ['error', { style: '---' }],
-          'md/no-url-trailing-slash': 'error',
+          ...markdownPreferences.configs.standard.rules,
         },
       },
     )

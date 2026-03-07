@@ -1,8 +1,10 @@
 import fs from 'node:fs/promises'
 
+import type { ESLint } from 'eslint'
 import md from 'eslint-markdown'
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 import eslintPluginHyoban from 'eslint-plugin-hyoban'
+import markdownPreferences from 'eslint-plugin-markdown-preferences'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import { flatConfigsToPlugins, pluginsToRulesDTS } from 'eslint-typegen/core'
 
@@ -11,8 +13,9 @@ const plugins = await flatConfigsToPlugins([
     plugins: {
       'tailwindcss': eslintPluginBetterTailwindcss,
       'import-sort': simpleImportSort,
-      'hyoban': eslintPluginHyoban,
-      md,
+      'hyoban': eslintPluginHyoban as ESLint.Plugin,
+      'md': md as ESLint.Plugin,
+      'markdown-preferences': markdownPreferences as ESLint.Plugin,
     },
   },
 ])
