@@ -85,6 +85,48 @@ export default defineConfig({
 })
 ```
 
+## Disabling Auto-Fix Or Change Severity
+
+You can also disable auto-fix for these rules via editor or LSP settings.
+For example, in VS Code:
+
+```jsonc
+{
+  "eslint.rules.customizations": [
+    { "rule": "unused-imports/no-unused-imports", "severity": "warn" },
+    { "rule": "test/no-only-tests", "severity": "warn" },
+    { "rule": "prefer-const", "severity": "warn" }
+  ],
+
+  "eslint.codeActionsOnSave.rules": [
+    "!unused-imports/no-unused-imports",
+    "!test/no-only-tests",
+    "!prefer-const",
+    "*"
+  ]
+}
+```
+
+In Zed or Neovim, add the same rules under the ESLint LSP settings:
+
+```jsonc
+{
+  "rulesCustomizations": [
+    { "rule": "unused-imports/no-unused-imports", "severity": "warn" },
+    { "rule": "test/no-only-tests", "severity": "warn" },
+    { "rule": "prefer-const", "severity": "warn" }
+  ],
+  "codeActionOnSave": {
+    "rules": [
+      "!unused-imports/no-unused-imports",
+      "!test/no-only-tests",
+      "!prefer-const",
+      "*"
+    ]
+  }
+}
+```
+
 [@antfu/eslint-config]: https://github.com/antfu/eslint-config
 [Tailwind CSS]: https://github.com/schoero/eslint-plugin-better-tailwindcss
 [UnoCSS]: https://unocss.dev/integrations/eslint
