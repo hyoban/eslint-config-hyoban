@@ -14,11 +14,10 @@ Read more about why I use ESLint for linting and formatting on [my blog](https:/
 
 Extras on top of `@antfu/eslint-config`:
 
-- replaces antfu's perfectionist sorting with [import-sort]
-- extra Markdown linting rules powered by [eslint-markdown]
-- optional Hyoban rules via `hyoban: true` (enabled by default)
-- optional [Tailwind CSS] preset via `tailwindcss: true`
-- little defaults config you can find in [merge-options](src/merge-options.ts) and dependencies
+- Replaces perfectionist sorting with [import-sort]
+- Extra Markdown linting rules powered by [npm-eslint-markdown] and [markdown-preferences]
+- Optional [Tailwind CSS] preset via `tailwindcss: true`
+- Little defaults config you can find in [merge-options](src/merge-options.ts) and dependencies
 
 | Basic           | Style           | React         | Others           | Tools                  |
 | --------------- | --------------- | ------------- | ---------------- | ---------------------- |
