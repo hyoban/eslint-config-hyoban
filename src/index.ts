@@ -12,17 +12,16 @@ import antfu, { GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN } from '@antfu/eslint-c
 import type { Linter } from 'eslint'
 import type { FlatConfigComposer } from 'eslint-flat-config-utils'
 import md from 'eslint-markdown'
+import hyoban from 'eslint-plugin-hyoban'
 import markdownPreferences from 'eslint-plugin-markdown-preferences'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
-import { hyoban } from './configs/hyoban'
 import { tailwindcss } from './configs/tailwindcss'
 import { mergeOptions } from './merge-options'
 import type { OptionsTailwindcss } from './types.js'
 
 export type OptionsAddons = {
   tailwindcss?: boolean | (OptionsOverrides & OptionsFiles & OptionsTailwindcss)
-  hyoban?: boolean | (OptionsOverrides)
 }
 
 export type Options = OptionsConfig & Omit<TypedFlatConfigItem, 'files' | 'ignores'> & OptionsAddons
@@ -38,7 +37,6 @@ export function defineConfig(
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
     tailwindcss: enableTailwindCSS,
-    hyoban: enableHyoban = true,
     ...antfuOptions
   } = options || {}
 
@@ -86,16 +84,31 @@ export function defineConfig(
       'simple-import-sort': 'import-sort',
     })
 
+  base
+    .append(
+      {
+        name: 'hyoban/hyoban/setup',
+        plugins: {
+          hyoban,
+        },
+      },
+    )
+    .append(
+      {
+        files: GLOB_MARKDOWNS,
+        name: 'hyoban/hyoban/rules',
+        rules: {
+          'hyoban/md-one-sentence-per-line': 'error',
+        },
+      },
+    )
+
   if (enableTailwindCSS) {
     base
       .append(tailwindcss(typeof enableTailwindCSS === 'boolean' ? {} : enableTailwindCSS))
       .renamePlugins({
         'better-tailwindcss': 'tailwindcss',
       })
-  }
-
-  if (enableHyoban) {
-    base.append(hyoban(typeof enableHyoban === 'boolean' ? {} : enableHyoban))
   }
 
   return base
