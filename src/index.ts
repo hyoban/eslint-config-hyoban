@@ -62,6 +62,7 @@ export function defineConfig(
         files: GLOB_MARKDOWNS,
         rules: {
           ...markdownPreferences.configs.standard.rules,
+          'md/no-url-trailing-slash': 'error',
         },
       },
     )
