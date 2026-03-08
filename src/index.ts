@@ -8,7 +8,7 @@ import type {
   OptionsOverrides,
   TypedFlatConfigItem,
 } from '@antfu/eslint-config'
-import antfu, { GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN } from '@antfu/eslint-config'
+import antfu, { GLOB_MARKDOWN } from '@antfu/eslint-config'
 import type { Linter } from 'eslint'
 import type { FlatConfigComposer } from 'eslint-flat-config-utils'
 import md from 'eslint-markdown'
@@ -25,11 +25,6 @@ export type OptionsAddons = {
 }
 
 export type Options = OptionsConfig & Omit<TypedFlatConfigItem, 'files' | 'ignores'> & OptionsAddons
-
-const GLOB_MARKDOWNS = [
-  GLOB_MARKDOWN,
-  GLOB_MARKDOWN_IN_MARKDOWN,
-]
 
 export function defineConfig(
   options?: Options,
@@ -57,7 +52,7 @@ export function defineConfig(
       'antfu/markdown/rules',
       {
         name: 'hyoban/md/rules',
-        files: GLOB_MARKDOWNS,
+        files: [GLOB_MARKDOWN],
         rules: {
           ...markdownPreferences.configs.standard.rules,
           'md/no-url-trailing-slash': 'error',
@@ -95,7 +90,7 @@ export function defineConfig(
     )
     .append(
       {
-        files: GLOB_MARKDOWNS,
+        files: [GLOB_MARKDOWN],
         name: 'hyoban/hyoban/rules',
         rules: {
           'hyoban/md-one-sentence-per-line': 'error',
