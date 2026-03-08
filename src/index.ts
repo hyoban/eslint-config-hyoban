@@ -40,7 +40,7 @@ export function defineConfig(
     ...antfuOptions
   } = options || {}
 
-  const base = antfu(mergeOptions(antfuOptions), ...userConfigs)
+  const base = antfu(mergeOptions(antfuOptions))
 
   base
     .insertAfter(
@@ -110,6 +110,8 @@ export function defineConfig(
         'better-tailwindcss': 'tailwindcss',
       })
   }
+
+  base.append(...userConfigs as any)
 
   return base
 }
