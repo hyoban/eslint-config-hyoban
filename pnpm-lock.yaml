@@ -30,8 +30,8 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(eslint@10.0.3(jiti@2.6.1))
       eslint-plugin-hyoban:
-        specifier: ^0.13.3
-        version: 0.13.3(eslint@10.0.3(jiti@2.6.1))
+        specifier: ^0.14.1
+        version: 0.14.1(eslint@10.0.3(jiti@2.6.1))
       eslint-plugin-markdown-preferences:
         specifier: ^0.40.3
         version: 0.40.3(@eslint/markdown@7.5.1)(eslint@10.0.3(jiti@2.6.1))
@@ -1915,8 +1915,8 @@ packages:
     peerDependencies:
       eslint: ^8.40.0 || ^9.0.0 || ^10.0.0
 
-  eslint-plugin-hyoban@0.13.3:
-    resolution: {integrity: sha512-M3gae1C14RTwmy/kJDzLrz9oA1VppkPs+vu8dU4NHwgIuru7X+QxVmi7jJPI/picSEwE7Isd3PfMpv8KmJtUnw==}
+  eslint-plugin-hyoban@0.14.1:
+    resolution: {integrity: sha512-R7UX1AMUilGfFftGoHKTlG0BVN5PsiZLN78Yqi6GZBaheQkvwRj4Dw+k+wW+1nKcueyh4IKdvt+n+0ayLEnZYA==}
     peerDependencies:
       eslint: '*'
 
@@ -2163,12 +2163,6 @@ packages:
 
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
-
-  fast-string-truncated-width@3.0.3:
-    resolution: {integrity: sha512-0jjjIEL6+0jag3l2XWWizO64/aZVtpiGE3t0Zgqxv0DPuxiMjvB3M24fCyhZUO4KomJQPj3LTSUnDP3GpdwC0g==}
-
-  fast-string-width@3.0.2:
-    resolution: {integrity: sha512-gX8LrtNEI5hq8DVUfRQMbr5lpaS4nMIWV+7XEbXk2b8kiQIizgnlr12B4dA3ZEx3308ze0O4Q1R+cHts8kyUJg==}
 
   fault@2.0.1:
     resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
@@ -4821,10 +4815,9 @@ snapshots:
       prettier: 3.8.1
       synckit: 0.11.12
 
-  eslint-plugin-hyoban@0.13.3(eslint@10.0.3(jiti@2.6.1)):
+  eslint-plugin-hyoban@0.14.1(eslint@10.0.3(jiti@2.6.1)):
     dependencies:
       eslint: 10.0.3(jiti@2.6.1)
-      fast-string-width: 3.0.2
 
   eslint-plugin-import-lite@0.5.2(eslint@10.0.3(jiti@2.6.1)):
     dependencies:
@@ -5231,12 +5224,6 @@ snapshots:
   fast-json-stable-stringify@2.1.0: {}
 
   fast-levenshtein@2.0.6: {}
-
-  fast-string-truncated-width@3.0.3: {}
-
-  fast-string-width@3.0.2:
-    dependencies:
-      fast-string-truncated-width: 3.0.3
 
   fault@2.0.1:
     dependencies:

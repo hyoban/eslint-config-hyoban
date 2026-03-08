@@ -21,15 +21,10 @@ export interface RuleOptions {
    */
   'hyoban/jsx-attribute-spacing'?: Linter.RuleEntry<[]>
   /**
-   * Format GFM markdown tables to aligned columns
-   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/md-consistent-table-width.test.ts
-   */
-  'hyoban/md-consistent-table-width'?: Linter.RuleEntry<[]>
-  /**
    * Wrap markdown paragraphs so each sentence is on its own line
-   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/md-one-sentence-per-line.test.ts
+   * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/md-one-sentence-per-line.md
    */
-  'hyoban/md-one-sentence-per-line'?: Linter.RuleEntry<[]>
+  'hyoban/md-one-sentence-per-line'?: Linter.RuleEntry<HyobanMdOneSentencePerLine>
   /**
    * Ensure dependency versions do not use configured prefixes (^ or ~)
    * @see https://github.com/hyoban/eslint-plugin-hyoban/blob/main/src/no-dependency-version-prefix.test.ts
@@ -484,6 +479,10 @@ export interface RuleOptions {
 }
 
 /* ======= Declarations ======= */
+// ----- hyoban/md-one-sentence-per-line -----
+type HyobanMdOneSentencePerLine = []|[{
+  ignorePatterns?: string[]
+}]
 // ----- hyoban/no-dependency-version-prefix -----
 type HyobanNoDependencyVersionPrefix = []|[{
   dependencyKeys?: string[]
